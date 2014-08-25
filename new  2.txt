@@ -1,0 +1,593 @@
+{
+	"lastModified": 1359830369000,
+	"name": "Ulminia",
+	"realm": "Zangarmarsh",
+	"battlegroup": "Retaliation",
+	"class": 3,
+	"race": 4,
+	"gender": 1,
+	"level": 90,
+	"achievementPoints": 9165,
+	"thumbnail": "zangarmarsh/236/568300-avatar.jpg",
+	"calcClass": "Y",
+	"items": {
+		"averageItemLevel": 480,
+		"averageItemLevelEquipped": 480,
+		"head": {
+			"id": 86636,
+			"name": "Yaungol Slayer's Headguard",
+			"icon": "inv_helm_mail_raidhunter_l_01",
+			"quality": 4,
+			"itemLevel": 483,
+			"tooltipParams": {
+				"gem0": 76884,
+				"gem1": 76680,
+				"set": [86636,
+				86638],
+				"reforge": 165,
+				"upgrade": {
+					"current": 0,
+					"total": 2,
+					"itemLevelIncrement": 0
+				}
+			},
+			"stats": [{
+				"stat": 49,
+				"amount": 375,
+				"reforgedAmount": -249
+			},
+			{
+				"stat": 3,
+				"amount": 844
+			},
+			{
+				"stat": 7,
+				"amount": 1626
+			},
+			{
+				"stat": 37,
+				"amount": 567
+			},
+			{
+				"stat": 31,
+				"amount": 249,
+				"reforged": true
+			}],
+			"armor": 3144
+		},
+		"neck": {
+			"id": 89065,
+			"name": "Choker of the Klaxxi'va",
+			"icon": "inv_jewelry_necklace_98",
+			"quality": 4,
+			"itemLevel": 489,
+			"tooltipParams": {
+				"upgrade": {
+					"current": 0,
+					"total": 2,
+					"itemLevelIncrement": 0
+				}
+			},
+			"stats": [{
+				"stat": 32,
+				"amount": 463
+			},
+			{
+				"stat": 3,
+				"amount": 638
+			},
+			{
+				"stat": 31,
+				"amount": 363
+			},
+			{
+				"stat": 7,
+				"amount": 958
+			}],
+			"armor": 0
+		},
+		"shoulder": {
+			"id": 81698,
+			"name": "Harlan's Shoulders",
+			"icon": "inv_shoulder_mail_dungeonmail_c_06",
+			"quality": 3,
+			"itemLevel": 463,
+			"tooltipParams": {
+				"gem0": 83151,
+				"enchant": 4804,
+				"reforge": 168,
+				"transmogItem": 16848,
+				"upgrade": {
+					"current": 0,
+					"total": 1,
+					"itemLevelIncrement": 0
+				}
+			},
+			"stats": [{
+				"stat": 49,
+				"amount": 270,
+				"reforgedAmount": -180
+			},
+			{
+				"stat": 32,
+				"amount": 329
+			},
+			{
+				"stat": 3,
+				"amount": 588
+			},
+			{
+				"stat": 7,
+				"amount": 1002
+			},
+			{
+				"stat": 37,
+				"amount": 180,
+				"reforged": true
+			}],
+			"armor": 2705
+		},
+		"back": {
+			"id": 81123,
+			"name": "Wind-Soaked Drape",
+			"icon": "inv_cape_pandaria_c_01",
+			"quality": 3,
+			"itemLevel": 463,
+			"tooltipParams": {
+				"enchant": 4424,
+				"reforge": 165,
+				"upgrade": {
+					"current": 0,
+					"total": 1,
+					"itemLevelIncrement": 0
+				}
+			},
+			"stats": [{
+				"stat": 32,
+				"amount": 358
+			},
+			{
+				"stat": 49,
+				"amount": 176,
+				"reforgedAmount": -117
+			},
+			{
+				"stat": 3,
+				"amount": 501
+			},
+			{
+				"stat": 7,
+				"amount": 752
+			},
+			{
+				"stat": 31,
+				"amount": 117,
+				"reforged": true
+			}],
+			"armor": 1018
+		},
+		"chest": {
+			"id": 86638,
+			"name": "Yaungol Slayer's Tunic",
+			"icon": "inv_chest_mail_raidhunter_l_01",
+			"quality": 4,
+			"itemLevel": 483,
+			"tooltipParams": {
+				"gem0": 76658,
+				"gem1": 76658,
+				"enchant": 4419,
+				"set": [86636,
+				86638],
+				"reforge": 168,
+				"transmogItem": 31004,
+				"upgrade": {
+					"current": 0,
+					"total": 2,
+					"itemLevelIncrement": 0
+				}
+			},
+			"stats": [{
+				"stat": 32,
+				"amount": 683
+			},
+			{
+				"stat": 49,
+				"amount": 362,
+				"reforgedAmount": -241
+			},
+			{
+				"stat": 3,
+				"amount": 924
+			},
+			{
+				"stat": 7,
+				"amount": 1626
+			},
+			{
+				"stat": 37,
+				"amount": 241,
+				"reforged": true
+			}],
+			"armor": 3869
+		},
+		"tabard": {
+			"id": 5976,
+			"name": "Guild Tabard",
+			"icon": "inv_shirt_guildtabard_01",
+			"quality": 1,
+			"itemLevel": 1,
+			"tooltipParams": {
+				
+			},
+			"stats": [],
+			"armor": 0
+		},
+		"wrist": {
+			"id": 86740,
+			"name": "Stonemaw Armguards",
+			"icon": "inv_bracer_mail_reputation_c_01",
+			"quality": 4,
+			"itemLevel": 480,
+			"tooltipParams": {
+				"reforge": 153,
+				"transmogItem": 34443,
+				"upgrade": {
+					"current": 1,
+					"total": 2,
+					"itemLevelIncrement": 4
+				}
+			},
+			"stats": [{
+				"stat": 32,
+				"amount": 403
+			},
+			{
+				"stat": 3,
+				"amount": 587
+			},
+			{
+				"stat": 36,
+				"amount": 224,
+				"reforgedAmount": -148
+			},
+			{
+				"stat": 7,
+				"amount": 880
+			},
+			{
+				"stat": 37,
+				"amount": 148,
+				"reforged": true
+			}],
+			"armor": 1675
+		},
+		"hands": {
+			"id": 87826,
+			"name": "Grips of Terra Cotta",
+			"icon": "inv_glove_mail_reputation_c_01",
+			"quality": 4,
+			"itemLevel": 476,
+			"tooltipParams": {
+				"gem0": 76680,
+				"enchant": 4431,
+				"reforge": 151,
+				"transmogItem": 16852,
+				"upgrade": {
+					"current": 0,
+					"total": 2,
+					"itemLevelIncrement": 0
+				}
+			},
+			"stats": [{
+				"stat": 3,
+				"amount": 674
+			},
+			{
+				"stat": 36,
+				"amount": 320,
+				"reforgedAmount": -213
+			},
+			{
+				"stat": 7,
+				"amount": 1131
+			},
+			{
+				"stat": 37,
+				"amount": 342
+			},
+			{
+				"stat": 31,
+				"amount": 213,
+				"reforged": true
+			}],
+			"armor": 2361
+		},
+		"waist": {
+			"id": 89986,
+			"name": "Shadowgrip Girdle",
+			"icon": "inv_belt_mail_dungeonmail_c_05",
+			"quality": 4,
+			"itemLevel": 483,
+			"tooltipParams": {
+				"gem0": 76659,
+				"gem1": 76680,
+				"gem2": 83151,
+				"extraSocket": true,
+				"reforge": 144,
+				"upgrade": {
+					"current": 0,
+					"total": 2,
+					"itemLevelIncrement": 0
+				}
+			},
+			"stats": [{
+				"stat": 32,
+				"amount": 302,
+				"reforgedAmount": -201
+			},
+			{
+				"stat": 3,
+				"amount": 645
+			},
+			{
+				"stat": 36,
+				"amount": 378
+			},
+			{
+				"stat": 7,
+				"amount": 1208
+			},
+			{
+				"stat": 31,
+				"amount": 201,
+				"reforged": true
+			}],
+			"armor": 2176
+		},
+		"legs": {
+			"id": 86781,
+			"name": "Subetai's Pillaging Leggings",
+			"icon": "inv_pant_mail_reputation_c_01",
+			"quality": 4,
+			"itemLevel": 480,
+			"tooltipParams": {
+				"gem0": 76693,
+				"gem1": 76680,
+				"enchant": 4822,
+				"reforge": 151,
+				"transmogItem": 16847,
+				"upgrade": {
+					"current": 1,
+					"total": 2,
+					"itemLevelIncrement": 4
+				}
+			},
+			"stats": [{
+				"stat": 32,
+				"amount": 640
+			},
+			{
+				"stat": 3,
+				"amount": 888
+			},
+			{
+				"stat": 36,
+				"amount": 351,
+				"reforgedAmount": -234
+			},
+			{
+				"stat": 7,
+				"amount": 1581
+			},
+			{
+				"stat": 31,
+				"amount": 234,
+				"reforged": true
+			}],
+			"armor": 3351
+		},
+		"feet": {
+			"id": 86861,
+			"name": "Monstrous Stompers",
+			"icon": "inv_boots_chain_07",
+			"quality": 4,
+			"itemLevel": 483,
+			"tooltipParams": {
+				"gem0": 76658,
+				"reforge": 151,
+				"upgrade": {
+					"current": 0,
+					"total": 2,
+					"itemLevelIncrement": 0
+				}
+			},
+			"stats": [{
+				"stat": 32,
+				"amount": 491
+			},
+			{
+				"stat": 3,
+				"amount": 725
+			},
+			{
+				"stat": 36,
+				"amount": 299,
+				"reforgedAmount": -198
+			},
+			{
+				"stat": 7,
+				"amount": 1208
+			},
+			{
+				"stat": 31,
+				"amount": 198,
+				"reforged": true
+			}],
+			"armor": 2660
+		},
+		"finger1": {
+			"id": 89070,
+			"name": "Anji's Keepsake",
+			"icon": "inv_misc_epicring_b3",
+			"quality": 4,
+			"itemLevel": 489,
+			"tooltipParams": {
+				"reforge": 139,
+				"upgrade": {
+					"current": 0,
+					"total": 2,
+					"itemLevelIncrement": 0
+				}
+			},
+			"stats": [{
+				"stat": 3,
+				"amount": 638
+			},
+			{
+				"stat": 36,
+				"amount": 485
+			},
+			{
+				"stat": 31,
+				"amount": 194,
+				"reforgedAmount": -129
+			},
+			{
+				"stat": 7,
+				"amount": 958
+			},
+			{
+				"stat": 37,
+				"amount": 129,
+				"reforged": true
+			}],
+			"armor": 0
+		},
+		"finger2": {
+			"id": 86869,
+			"name": "Regail's Band of the Endless",
+			"icon": "inv_jewelry_ring_143",
+			"quality": 4,
+			"itemLevel": 483,
+			"tooltipParams": {
+				"reforge": 151,
+				"upgrade": {
+					"current": 0,
+					"total": 2,
+					"itemLevelIncrement": 0
+				}
+			},
+			"stats": [{
+				"stat": 32,
+				"amount": 420
+			},
+			{
+				"stat": 3,
+				"amount": 604
+			},
+			{
+				"stat": 36,
+				"amount": 224,
+				"reforgedAmount": -149
+			},
+			{
+				"stat": 7,
+				"amount": 906
+			},
+			{
+				"stat": 31,
+				"amount": 149,
+				"reforged": true
+			}],
+			"armor": 0
+		},
+		"trinket1": {
+			"id": 86890,
+			"name": "Terror in the Mists",
+			"icon": "inv_misc_pvp_trinket",
+			"quality": 4,
+			"itemLevel": 483,
+			"tooltipParams": {
+				"upgrade": {
+					"current": 0,
+					"total": 2,
+					"itemLevelIncrement": 0
+				}
+			},
+			"stats": [{
+				"stat": 3,
+				"amount": 1021
+			}],
+			"armor": 0
+		},
+		"trinket2": {
+			"id": 79328,
+			"name": "Relic of Xuen",
+			"icon": "inv_inscription_trinket_tiger",
+			"quality": 4,
+			"itemLevel": 476,
+			"tooltipParams": {
+				"upgrade": {
+					"current": 0,
+					"total": 2,
+					"itemLevelIncrement": 0
+				}
+			},
+			"stats": [{
+				"stat": 3,
+				"amount": 956
+			}],
+			"armor": 0
+		},
+		"mainHand": {
+			"id": 86889,
+			"name": "Taoren, the Soul Burner",
+			"icon": "inv_firearm_2h_rifle_pandaraid_d_01",
+			"quality": 4,
+			"itemLevel": 491,
+			"tooltipParams": {
+				"enchant": 4699,
+				"reforge": 168,
+				"transmogItem": 30906,
+				"upgrade": {
+					"current": 2,
+					"total": 2,
+					"itemLevelIncrement": 8
+				}
+			},
+			"stats": [{
+				"stat": 49,
+				"amount": 455,
+				"reforgedAmount": -303
+			},
+			{
+				"stat": 3,
+				"amount": 1081
+			},
+			{
+				"stat": 36,
+				"amount": 697
+			},
+			{
+				"stat": 7,
+				"amount": 1751
+			},
+			{
+				"stat": 37,
+				"amount": 303,
+				"reforged": true
+			}],
+			"armor": 0,
+			"weaponInfo": {
+				"damage": {
+					"min": 8956,
+					"max": 16634,
+					"exactMin": 8956.026,
+					"exactMax": 16633.0
+				},
+				"weaponSpeed": 3.0,
+				"dps": 4264.838
+			}
+		}
+	}
+}

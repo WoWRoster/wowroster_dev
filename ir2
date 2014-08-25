@@ -1,0 +1,10 @@
+#! /bin/bash
+# Generate a new release
+
+zip -qrXu dlfiles/uploads/4_interface_imagepack_latest Interface/ -x */*.svn/* -x */*.db/*
+
+# Additonal help info
+cat << !
+
+Interface file download updated
+!

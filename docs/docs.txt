@@ -1,0 +1,10 @@
+WoWRoster Documentation
+$Id: docs.txt 2566 2012-07-09 03:18:16Z c.treyce@gmail.com $
+
+Check out our WiKi - http://www.wowroster.net/MediaWiki
+
+
+
+--------------------------------------
+The WoWRoster Dev Team
+http://www.wowroster.net

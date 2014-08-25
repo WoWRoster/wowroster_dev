@@ -1,0 +1,34 @@
+<div class="container">
+	<div class="tier-1-a">
+		<div class="tier-1-b">
+			<div class="tier-1-c">
+				<div class="tier-1-title">Activity Feed for {MBR_STR}</div>
+				
+				<!-- IF B_PAGINATION -->
+				<table cellpadding="0" cellspacing="0" style="width:100%;">
+					<thead>
+						<tr>
+							<th class="membersHeader" style="text-align:center;color:#ffffff">
+
+								<span class="pagi-active">{CURRENT_PAGE} of {TOTAL_PAGES}</span>
+								<!-- IF PAGINATION_PREV --><a href="{PAGINATION_PREV}" class="internal_link"><span class="pagi-active">&lt; <!-- TRANSLATE prev --></span></a><!-- ELSE --><span class="pagi-inactive">&lt; <!-- TRANSLATE prev --></span><!-- ENDIF -->
+								{PAGE}
+								<!-- IF PAGINATION_NEXT --><a href="{PAGINATION_NEXT}" class="internal_link"><span class="pagi-active"><!-- TRANSLATE next --> &gt;</span></a><!-- ELSE --><span class="pagi-inactive"><!-- TRANSLATE next --> &gt;</span><!-- ENDIF -->
+						</tr>
+					</thead>
+				</table>
+				<!-- ENDIF -->
+
+				<div class="tier-2-a">
+					<div class="tier-2-b">
+
+							<!-- BEGIN feed -->
+							{feed.STR}
+							<!-- END feed -->
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
