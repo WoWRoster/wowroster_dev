@@ -252,164 +252,29 @@ class userPage extends user
 		}
 		else
 		{
-			include_once ('memberslist.php');
+			$query = "SELECT * FROM `". $roster->db->table('user_link', 'user') ."` WHERE `uid` = '". $roster->auth->user['id'] ."';";
+			$result = $roster->db->query($query);
 
-		$charlist = new memberslist(array('group_alts'=>-1));
-	
-			$uid = $_COOKIE['roster_u'];//$roster->session->session_id ;//$_COOKIE['roster_u'];
+			if( !$result )
+			{
+				die_quietly($roster->db->error, 'claim alt', __FILE__,__LINE__,$query);
+			}
+			while( $row = $roster->db->fetch($result) )
+			{
 
-			$mainQuery =
-				'SELECT '.
-				'`user`.`id`, '.
-				'`members`.`member_id`, '.
-			'`members`.`name`, '.
-			'`members`.`class`, '.
-			'`members`.`classid`, '.
-			'`members`.`level`, '.
-			'`members`.`zone`, '.
-			'`members`.`online`, '.
-			'`members`.`last_online`, '.
-			"UNIX_TIMESTAMP(`members`.`last_online`) AS 'last_online_stamp', ".
-			"DATE_FORMAT(  DATE_ADD(`members`.`last_online`, INTERVAL ".$roster->config['localtimeoffset']." HOUR ), '".$roster->locale->act['timeformat']."' ) AS 'last_online_format', ".
-			'`members`.`note`, '.
-			'`members`.`guild_title`, '.
-
-			//'`alts`.`main_id`, '.
-
-			'`guild`.`update_time`, '.
-			'`guild`.`factionEn`, '.
-
-			"IF( `members`.`note` IS NULL OR `members`.`note` = '', 1, 0 ) AS 'nisnull', ".
-			'`members`.`officer_note`, '.
-			"IF( `members`.`officer_note` IS NULL OR `members`.`officer_note` = '', 1, 0 ) AS 'onisnull', ".
-			'`members`.`guild_rank`, '.
-
-			'`players`.`server`, '.
-			'`players`.`race`, '.
-			'`players`.`sex`, '.
-			'`players`.`exp`, '.
-			'`players`.`clientLocale`, '.
-
-			'`players`.`lifetimeRankName`, '.
-			'`players`.`lifetimeHighestRank`, '.
-			"IF( `players`.`lifetimeHighestRank` IS NULL OR `players`.`lifetimeHighestRank` = '0', 1, 0 ) AS 'risnull', ".
-			'`players`.`hearth`, '.
-			"IF( `players`.`hearth` IS NULL OR `players`.`hearth` = '', 1, 0 ) AS 'hisnull', ".
-			"UNIX_TIMESTAMP( `players`.`dateupdatedutc`) AS 'last_update_stamp', ".
-			"DATE_FORMAT(  DATE_ADD(`players`.`dateupdatedutc`, INTERVAL ".$roster->config['localtimeoffset']." HOUR ), '".$roster->locale->act['timeformat']."' ) AS 'last_update_format', ".
-			"IF( `players`.`dateupdatedutc` IS NULL OR `players`.`dateupdatedutc` = '', 1, 0 ) AS 'luisnull', ".
-
-			"GROUP_CONCAT( DISTINCT CONCAT( `proftable`.`skill_name` , '|', `proftable`.`skill_level` ) ORDER BY `proftable`.`skill_order`) as professions, ".
-			"GROUP_CONCAT( DISTINCT CONCAT( `talenttable`.`build`, '|', `talenttable`.`tree` , '|', `talenttable`.`pointsspent` , '|', `talenttable`.`background`,'|', `talenttable`.`order` ) ORDER BY `talenttable`.`order`, `talenttable`.`build`) AS 'talents', ".
-			"GROUP_CONCAT( DISTINCT CONCAT( `talenttre`.`tree` , '|', `talenttre`.`roles` , '|', `talenttre`.`icon` ) ORDER BY `talenttre`.`tree`) AS 'talents2' ".
-
-			'FROM `'.$roster->db->table('user_members').'` AS user '.
-			'LEFT JOIN `'.$roster->db->table('members').'` AS members ON `user`.`id` = `members`.`account_id`'.
-			'LEFT JOIN `'.$roster->db->table('players').'` AS players ON `members`.`member_id` = `players`.`member_id` '.
-			'LEFT JOIN `'.$roster->db->table('skills').'` AS proftable ON `members`.`member_id` = `proftable`.`member_id` '.
-			'LEFT JOIN `'.$roster->db->table('talenttree').'` AS talenttable ON `members`.`member_id` = `talenttable`.`member_id` '.
-			'LEFT JOIN `'.$roster->db->table('talenttree_data').'` AS talenttre ON `members`.`classid` = `talenttre`.`class_id` '.
-			//fs'LEFT JOIN `'.$roster->db->table('alts',$addon['basename']).'` AS alts ON `members`.`member_id` = `alts`.`member_id` '.
-			'LEFT JOIN `'.$roster->db->table('guild').'` AS guild ON `members`.`guild_id` = `guild`.`guild_id`'.
-			
-			
-			'';
-			$where[] = '`user`.`id` = "'.$uid.'" ';
-			$where[] = '`members`.`guild_id` = "'.$roster->data['guild_id'].'" ';
-
-			$group[] = '`members`.`member_id`';
-			$order_first[] = 'IF(`members`.`member_id` = `players`.`member_id`,1,0)';
-			$order_last[] = '`members`.`level` DESC';
-			$order_last[] = '`members`.`name` ASC';//, `talenttable`.`order` ASC ';
-
-			$always_sort = '';//' `members`.`level` DESC, `members`.`name` ASC';
-
-			$addon = getaddon('memberslist');
-
-			$FIELD['name'] = array (
-				'lang_field' => 'name',
-				'order'    => array( '`members`.`name` ASC' ),
-				'order_d'    => array( '`members`.`name` DESC' ),
-				'value' => 'name_value',
-				'js_type' => 'ts_string',
-				'display' => 3,
-			);
-
-			$FIELD['class'] = array (
-				'lang_field' => 'class',
-				'order'    => array( '`members`.`class` ASC' ),
-				'order_d'    => array( '`members`.`class` DESC' ),
-				'value' => 'class_value',
-				'js_type' => 'ts_string',
-				'display' => $addon['config']['member_class'],
-			);
-
-			$FIELD['level'] = array (
-				'lang_field' => 'level',
-				'order_d'    => array( '`members`.`level` ASC' ),
-				'value' => 'level_value',
-				'js_type' => 'ts_number',
-				'display' => $addon['config']['member_level'],
-			);
-
-			$FIELD['guild_title'] = array (
-				'lang_field' => 'title',
-				'order' => array( '`members`.`guild_rank` ASC' ),
-				'order_d' => array( '`members`.`guild_rank` DESC' ),
-				'js_type' => 'ts_number',
-				'jsort' => 'guild_rank',
-				'display' => $addon['config']['member_gtitle'],
-			);
-
-			$FIELD['lifetimeRankName'] = array (
-				'lang_field' => 'currenthonor',
-				'order' => array( 'risnull', '`players`.`lifetimeHighestRank` DESC' ),
-				'order_d' => array( 'risnull', '`players`.`lifetimeHighestRank` ASC' ),
-				'value' => 'honor_value',
-				'js_type' => 'ts_number',
-				'display' => $addon['config']['member_hrank'],
-			);
-
-			$FIELD['professions'] = array (
-				'lang_field' => 'professions',
-				'value' => 'tradeskill_icons',
-				'js_type' => '',
-				'display' => $addon['config']['member_prof'],
-			);
-
-			$FIELD['last_online'] = array (
-				'lang_field' => 'lastonline',
-				'order' => array( '`members`.`last_online` DESC' ),
-				'order_d' => array( '`members`.`last_online` ASC' ),
-				'value' => 'last_online_value',
-				'js_type' => 'ts_date',
-				'display' => $addon['config']['member_online'],
-			);
-
-			$FIELD['last_update_format'] = array (
-				'lang_field' => 'lastupdate',
-				'order' => array( 'luisnull','`players`.`dateupdatedutc` DESC' ),
-				'order_d' => array( 'luisnull','`players`.`dateupdatedutc` ASC' ),
-				'jsort' => 'last_update_stamp',
-				'js_type' => 'ts_date',
-				'display' => $addon['config']['member_update'],
-			);
-
-
-			$charlist->prepareData($mainQuery, $always_sort,$where, $group, $order_first, $order_last, $FIELD, 'charlist');
-			//prepareData($mainQuery, $always_sort, $FIELD, 'charlist');
-
-			$addon = getaddon('user');
-			
-			$roster->output['show_menu']['acc_menu'] = 1;  // Display the button listing
-
-			$roster->tpl->assign_block_vars('user_chars', array(
-				'MESSAGE' => $user->message,
-				'BORDER_START' => border('sblue','start', $roster->locale->act['user_page']['chars']),
-				'CHARS_LIST' => $charlist->makeMembersList(),
-				'BORDER_END' => border('sblue','end'),
-				)
-			);
+				$roster->tpl->assign_block_vars('chars', array(
+						'THUMB'		=> 'http://us.battle.net/static-render/us/'.$row['thumbnail'],
+						'NAME'		=> $row['name'],
+						'LEVEL'		=> $row['level'],
+						'RACE'		=> $row['race'],
+						'GENDER'	=> $row['gender'],
+						'SERVER'	=> $row['realm'],
+						'GUILD'		=> $row['guild'],
+						'IS_MAIN'	=> (bool)$row['is_main'],
+						'CLASS'		=> $roster->locale->act['id_to_class'][$row['class']],
+					)
+				);
+			}
 	
 			$roster->tpl->set_filenames(array('user_chars' => $addon['basename'] . '/chars.html'));
 			$roster->tpl->display('user_chars');

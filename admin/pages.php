@@ -79,6 +79,11 @@ $config_pages['userman'] = array(
 	'title'=>	'pagebar_userman',
 	'file'=>	'user_manager.php',
 	);
+$config_pages['usergroups'] = array(
+	'href'=>	$roster->pages[0].'-usergroups',
+	'title'=>	'pagebar_usergroups',
+	'file'=>	'user_groups.php',
+	);
 $config_pages['config_reset'] = array(
 	'href'=>	$roster->pages[0].'-config_reset',
 	'title'=>	'pagebar_configreset',

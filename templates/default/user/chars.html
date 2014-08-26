@@ -1,7 +1,16 @@
-<!-- BEGIN user_chars -->
-<br />
-{user_chars.MESSAGE}
-{user_chars.BORDER_START}
-{user_chars.CHARS_LIST}
-{user_chars.BORDER_END}
-<!-- END user_chars -->
+<!-- BEGIN chars -->
+<div class="my-chars">
+	<div class="avatar">
+		<img src="{chars.THUMB}?alt=wow/static/images/2d/avatar/{chars.RACE}-{chars.GENDER}.jpg">
+	</div>
+	<div class="title">
+		{chars.NAME}<br>Level {chars.LEVEL} {chars.CLASS}
+		<!-- IF chars.IS_MAIN -->
+		<img style="float:center;" src="img/pvp-win.gif" alt="" />
+		<!-- ENDIF -->
+	</div>
+	<div class="info">{chars.GUILD} @ {chars.SERVER}</div>
+	<div class="main"> <label for="complete_yes">Is Main</label><input type="radio" name="main" value="" id="complete_yes" <!-- IF chars.IS_MAIN --> 'checked="checked"<!-- ENDIF -->/></div>
+	<input type="hidden" name="main_name" value="" />
+</div>
+<!-- END chars -->

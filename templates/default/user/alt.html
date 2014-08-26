@@ -4,12 +4,15 @@
 	<div class="tier-2-b">
 		<div class="tier-1-title">
 			<div class="icon">
-				<img src="http://www.wowroster.net/Interface/Icons/inv_misc_gear_02.png" alt="" />
+				<img src="{INTERFACE_URL}Interface/Icons/inv_misc_gear_02.png" alt="" />
 				<div class="mask"></div>
 			</div>
 			<!-- TRANSLATE alt_clame -->
 		</div>
-		
+
+<!-- IF STAGE eq 1 -->
+
+<form name="claim" style="display:inline;" method="post" enctype="multipart/form-data" action="">		
 		<div class="tier-1-a" style="margin-top: 5px;">
 			<div class="tier-1-b">
 				<div class="tier-1-c exp-content">
@@ -17,99 +20,53 @@
 						<!-- TRANSLATE alt_header -->
 						<br>
 						<!-- TRANSLATE alt_desc -->
-						<br><div id="photo"></div>
-						<table>
-							<tr>
-								<td width="100">{N_EQUIP_1}</td>
-								<td width="100">{N_EQUIP_2}</td>
-								<td width="100">{N_EQUIP_3}</td>
-							</tr>
-							<tr>
-								<td>
-										<img src="{R_IMAGE_PTH}{R_EQUIP_1}.gif" alt="" />
-										<div id="EQ1" class="RGquestion"></div>
-								</td>
-								<td>
-
-										<img src="{R_IMAGE_PTH}{R_EQUIP_2}.gif" alt="" />
-										<div id="EQ2" class="RGquestion"></div>
-
-								</td>
-								<td>
-										<img src="{R_IMAGE_PTH}{R_EQUIP_3}.gif" alt="" />
-										<div id="EQ3" class="RGquestion"></div>
-								</td>
-							</tr>
-						</table>
-
-						<div class="tier-3-a">
-							<div class="tier-3-b">
-								<div class="config">
-									<div class="config-name">
-										<span class="ui-icon ui-icon-help" style="cursor:help;" {CNAMETT} onmouseout="return nd();"></span>
-									<label for="username">{CNAME}</label> <input type="submit" name="submit" class="button" id="submit_btn" value="Check Me" />
-									</div>
-				<form name="register" style="display:inline;" method="post" enctype="multipart/form-data" action="">
-									<div class="config-input">
-										<input type="text" name="username" value="" id="pUsername" />
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="tier-3-a">
-							<div class="tier-3-b">
-								<div class="config">
-									<div class="config-name">
-										<span class="ui-icon ui-icon-help" style="cursor:help;" {CLASSTT} onmouseout="return nd();"></span>
-									<label for="username">{CLASS}</label>
-									</div>
-									<div class="config-input">
-										<input type="text" name="class" value="" id="class" disabled="disabled" />
-									</div>
-								</div>
-							</div>
-						</div>
-						
-						<div class="tier-3-a">
-							<div class="tier-3-b">
-								<div class="config">
-									<div class="config-name">
-										<span class="ui-icon ui-icon-help" style="cursor:help;" {LEVELTT} onmouseout="return nd();"></span>
-									<label for="username">{LEVEL}</label>
-									</div>
-									<div class="config-input">
-										<input type="text" name="level" value="" id="level" disabled="disabled" />
-									</div>
-								</div>
-							</div>
-						</div>
-						
-						
-						<div class="tier-3-a">
-							<div class="tier-3-b">
-								<div class="config">
-									<div class="config-name">
-										<span class="ui-icon ui-icon-help" style="cursor:help;" {RANKTT} onmouseout="return nd();"></span>
-									<label for="username">{RANK}</label>
-									</div>
-									<div class="config-input">
-										<input type="hidden" name="rank" value="" id="rank" /><div id="title"></div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						{XXX}
-						<input type="hidden" name="member_id" value="" id="member_id" />
-						<span id="validateUsername">{R_MSG_ERROR}</span>
 						<br>
-						<input type="hidden" name="op" value="alt" id="op" />
-						<input type="submit" name="submit" class="button" id="xsubmit" value="Claim" />
-
+						{TEXT}
+						<br>
+						<button xmlns="http://www.w3.org/1999/xhtml" type="submit" id="submit" class="btn btn-primary btn-block" data-loading-text="" tabindex="1">
+Begin
+<i class="spinner-battlenet"></i>
+</button>
+<input type="hidden" name="op" value="start" id="op" />
+<input type="hidden" name="stage" value="{STAGE}" id="stage" />
 					</div>
 				</div>
 			</div>
 		</div>
+
+</form>
+<!-- ENDIF -->
+
+<!-- IF STAGE eq 2 -->
+		<div class="tier-1-a" style="margin-top: 5px;">
+			<div class="tier-1-b">
+				<div class="tier-1-c exp-content">
+					<div class="info-text-h">
+						{TEXT}
+						<!-- BEGIN chars -->
+
+						<div class="my-chars">
+							<div class="avatar">
+								<img src="{chars.THUMB}?alt=wow/static/images/2d/avatar/{chars.RACE}-{chars.GENDER}.jpg">
+							</div>
+							<div class="title">
+								{chars.NAME}<br>Level {chars.LEVEL} {chars.CLASS}
+								<!-- IF chars.IS_MAIN -->
+								<img style="float:center;" src="img/pvp-win.gif" alt="" />
+								<!-- ENDIF -->
+							</div>
+							<div class="info">{chars.GUILD} @ {chars.SERVER}</div>
+							<div class="main"> <label for="complete_yes">Is Main</label><input type="radio" name="main" value="" id="complete_yes" <!-- IF chars.IS_MAIN --> 'checked="checked"<!-- ENDIF -->/></div>
+							<input type="hidden" name="main_name" value="" />
+						</div>
+			
+						<!-- END chars -->
+					</div>
+				</div>
+			</div>
+		</div>
+<!-- ENDIF -->
+
+
 	</div>
 </div>
-</form>

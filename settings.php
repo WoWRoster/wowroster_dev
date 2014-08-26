@@ -208,16 +208,7 @@ if( $locale != '' )
 }
 unset($locale);
 
-/**
- * Include API class
- * MUST to be after the local define for url parsing
- * since we use it for the API url
- */
-if  (function_exists('curl_init'))
-{
-	require_once (ROSTER_API . 'api.php');
-	$roster->api = new WowAPI($roster->config['api_url_region']);
-}
+
 /**
  * Include cms linking file
  */
@@ -237,7 +228,20 @@ if( file_exists($roster->tpl->root . DIR_SEP . 'theme.php') )
 {
 	include_once ($roster->tpl->root . DIR_SEP . 'theme.php');
 }
-
+/**
+ * Include API class
+ * MUST to be after the local define for url parsing
+ * since we use it for the API url
+ */
+if  (function_exists('curl_init'))
+{
+	require_once (ROSTER_API . 'api.php');
+	$roster->api = new WowAPI($roster->config['api_url_region']);
+	require_once(ROSTER_LIB . 'api2/Client.php');
+	//$client = new OAuth2\Client($client_id, $client_secret, $region, $locale, $redirect_uri);
+	$roster->api2 = new OAuth2\Client($roster->config['api_key_public'],$roster->config['api_key_private'],$roster->config['api_url_region'],$roster->config['api_url_locale'],ROSTER_URL.makelink('user-user-alt&stage=2'));
+	
+}
 /**
  * Cache addon data
  */

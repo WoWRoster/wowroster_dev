@@ -84,16 +84,26 @@ class userInstall
 			KEY (`uid`)"
 			);
 		$installer->create_table($installer->table('user_link'),"
-			`uid` INT(11) unsigned NOT NULL default '0',
-			`member_id` INT(11) unsigned NOT NULL default '0',
-			`guild_id` INT(11) unsigned NOT NULL default '0',
-			`group_id` smallint(6) NOT NULL default '1',
-			`is_main` smallint(6) NOT NULL default '0',
-			`realm` varchar(32) NOT NULL default '',
-			`region` varchar(32) NOT NULL default '',
-			PRIMARY KEY (`member_id`),
-			KEY `uid` (`uid`)"
-			);
+			`link_id` int(11) NOT NULL AUTO_INCREMENT,
+			  `uid` int(11) unsigned NOT NULL DEFAULT '0',
+			  `member_id` int(11) unsigned NOT NULL DEFAULT '0',
+			  `guild_id` int(11) unsigned NOT NULL DEFAULT '0',
+			  `group_id` smallint(6) NOT NULL DEFAULT '1',
+			  `is_main` smallint(6) NOT NULL DEFAULT '0',
+			  `realm` varchar(32) NOT NULL DEFAULT '',
+			  `region` varchar(32) NOT NULL DEFAULT '',
+			  `name` varchar(45) NOT NULL DEFAULT '',
+			  `battlegroup` varchar(32) NOT NULL DEFAULT '',
+			  `class` varchar(2) NOT NULL DEFAULT '',
+			  `race` varchar(2) NOT NULL DEFAULT '',
+			  `gender` varchar(2) NOT NULL DEFAULT '',
+			  `level` varchar(4) NOT NULL DEFAULT '',
+			  `achievementPoints` varchar(32) NOT NULL DEFAULT '',
+			  `thumbnail` varchar(255) NOT NULL DEFAULT '',
+			  `guild` varchar(64) NOT NULL DEFAULT '',
+			  `guildRealm` varchar(32) NOT NULL DEFAULT '',
+			  PRIMARY KEY (`link_id`)
+			");
 		/**
 		* admin section settings
 		**/
@@ -115,7 +125,7 @@ class userInstall
 		$installer->add_menu_button('user_menu_chars','user','chars','spell_holy_divinespirit');
 		$installer->add_menu_button('user_menu_guilds','user','guilds','inv_misc_tabardpvp_02');
 		$installer->add_menu_button('user_menu_realms','user','realms','spell_holy_lightsgrace');
-		$installer->add_menu_button('user_menu_mail','user','mail','sor-mail');
+		$installer->add_menu_button('user_menu_mail','user','mail','achievement_guildperk_gmail');
 		$installer->add_menu_button('user_menu_settings','user','settings','inv_misc_wrench_02');
 		$installer->add_menu_button('user_alt','user','alt','spell_holy_holynova');
 		return true;
@@ -172,6 +182,32 @@ class userInstall
 		if( version_compare('0.2.5', $oldversion,'>') == true )
 		{
 			$installer->add_menu_button('user_alt','user','alt','spell_holy_holynova');
+		}
+		if( version_compare('0.3.0', $oldversion,'>') == true )
+		{
+
+			$installer->drop_table($roster->db->table('user_link'));
+			$installer->create_table($installer->table('user_link'),"
+				`link_id` int(11) NOT NULL AUTO_INCREMENT,
+				`uid` int(11) unsigned NOT NULL DEFAULT '0',
+				`member_id` int(11) unsigned NOT NULL DEFAULT '0',
+				`guild_id` int(11) unsigned NOT NULL DEFAULT '0',
+				`group_id` smallint(6) NOT NULL DEFAULT '1',
+				`is_main` smallint(6) NOT NULL DEFAULT '0',
+				`realm` varchar(32) NOT NULL DEFAULT '',
+				`region` varchar(32) NOT NULL DEFAULT '',
+				`name` varchar(45) NOT NULL DEFAULT '',
+				`battlegroup` varchar(32) NOT NULL DEFAULT '',
+				`class` varchar(2) NOT NULL DEFAULT '',
+				`race` varchar(2) NOT NULL DEFAULT '',
+				`gender` varchar(2) NOT NULL DEFAULT '',
+				`level` varchar(4) NOT NULL DEFAULT '',
+				`achievementPoints` varchar(32) NOT NULL DEFAULT '',
+				`thumbnail` varchar(255) NOT NULL DEFAULT '',
+				`guild` varchar(64) NOT NULL DEFAULT '',
+				`guildRealm` varchar(32) NOT NULL DEFAULT '',
+				PRIMARY KEY (`link_id`)
+			");
 		}
 		return true;
 	}

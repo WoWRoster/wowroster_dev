@@ -404,4 +404,3 @@ if( file_exists(ROSTER_BASE . 'valid.inc') )
 
 $roster->tpl->set_handle('roster_header', 'header.html');
 $roster->tpl->display('roster_header');
-

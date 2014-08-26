@@ -4,8 +4,20 @@ if( !isset($user) )
 {
 include_once ($addon['inc_dir'] . 'conf.php');
 }
-
-if(isset($_POST['op']) && $_POST['op']=='alt')
+	
+if (isset($_POST['stage']))
+{
+	$stage = $_POST['stage'];
+}
+else if (isset($_GET['stage']))
+{
+	$stage = $_GET['stage'];
+}
+else
+{
+	$stage = 1;
+}
+if(isset($_POST['op']) && $_POST['op']=='start')
 {
 
 	// If the Register form has been submitted
@@ -13,204 +25,125 @@ if(isset($_POST['op']) && $_POST['op']=='alt')
 	print_r($_POST);
 	echo '</pre>';
 	$err = array();
-	
-	$user_id = $roster->auth->uid;
-		//$row = $roster->db->fetch($resulta);
-		
-		$userlink = array(
-			'uid' => $user_id,
-			'member_id' => $_POST['member_id'],
-			'guild_id' => $roster->data['guild_id'],
-			'group_id' => '2',
-			'is_main' => '0',
-			'realm' => $roster->data['server'],
-			'region' => $roster->data['region']
-		);
-		$query2 = 'INSERT INTO `' . $roster->db->table('user_link', 'user') . '` ' . $roster->db->build_query('INSERT', $data2);
-		$result2 = $roster->db->query($query2);
-		
-		$update_sql = "UPDATE `" . $roster->db->table('members') . "`"
-					  . " SET `account_id` = '" . $user_id . "'"
-					  . " WHERE `member_id` = '".$_POST['member_id']."';";
-		$accid = $roster->db->query($update_sql);
-
-	if(count($err))
+	if ($stage == 1)
 	{
-		$e = implode('<br />',$err);
+		if (!isset($_GET['code']))
+		{
+
+			$auth_url = $roster->api2->getAuthenticationUrl($roster->api2->baseurl[$roster->api2->region]['AUTHORIZATION_ENDPOINT'], $roster->api2->redirect_uri);
+			header('Location: ' . $auth_url);
+			die('Redirect');
+		}
+		else
+		{
+
+		}
+	}
+	
+	// blah blah blah for sakes perpous the code worked and 
+	$stage++;
+	
+}
+if (isset($_GET['stage']) && $_GET['stage'] == 2)
+{
+		
+	$params = array('code' => $_GET['code'], 'auth_flow' => 'auth_code', 'redirect_uri' => $roster->api2->redirect_uri);
+	$response = $roster->api2->getAccessToken($roster->api2->baseurl[$roster->api2->region]['TOKEN_ENDPOINT'], 'authorization_code', $params);
+	$roster->api2->setAccessToken($response['result']['access_token']);
+	$chars = $roster->api2->fetch('wowprofile');
+	$update_sql = array();
+	if (is_array($chars['result']['characters']))
+	{
+		$query1 = 'DELETE FROM `' . $roster->db->table('user_link', 'user') . '` WHERE `uid` = '.$roster->auth->user['id'].'';
+		$result1 = $roster->db->query($query1);
+		foreach ($chars['result']['characters'] as $id => $char)
+		{
+			$data = array(
+				'uid'					=> $roster->auth->user['id'],
+				'member_id'				=> '',
+				'guild_id'				=> '',
+				'group_id'				=> '',
+				'is_main'				=> '0',
+				'realm'					=> $char['realm'],
+				'region'				=> $roster->api2->region,
+				'name'					=> $char['name'],
+				'battlegroup'			=> $char['battlegroup'],
+				'class'					=> $char['class'],
+				'race'					=> $char['race'],
+				'gender'				=> $char['gender'],
+				'level'					=> $char['level'],
+				'achievementPoints'		=> $char['achievementPoints'],
+				'thumbnail'				=> $char['thumbnail'],
+				'guild'					=> (isset($char['guild']) ? $char['guild'] : ''),
+				'guildRealm'			=> (isset($char['guildRealm']) ? $char['guildRealm'] : ''),
+			);
+			$query = 'INSERT INTO `' . $roster->db->table('user_link', 'user') . '` ' . $roster->db->build_query('INSERT', $data);
+			$result = $roster->db->query($query);
+			$update_sql[] = "UPDATE `" . $roster->db->table('members') . "`"
+								  . " SET `account_id` = '" . $roster->auth->user['id'] . "'"
+								  . " WHERE `name` = '".$roster->db->escape($char['name'])."' AND `server` = '".$roster->db->escape($char['realm'])."';";
+			
+		}
+		foreach( $update_sql as $sql )
+		{
+			$result = $roster->db->query($sql);
+		}
 	}
 }
 
-	$num1=$num2=$num3=null;
-	function generateUniqueRandoms($min, $max, $count)  
-	{
-		if($count > $max)  
-		{  // this prevents an infinite loop
-			echo "ERROR: The array count is greater than the random number maximum.<br>\n";
-			echo "Therefore, it is impossible to build an array of unique random numbers.<br>\n";
-			break;
-		}    
-		$numArray = array('0'=>'','1'=>'','2'=>'');
-		for($i = 0; $i < $count; $i++)
-		{        
-			$numArray[$i] = mt_rand($min,$max);         // set random number
-			
-			for($j = 0; $j < $count; $j++)                 // for each number, check for duplicates
-			  if($j != $i)                                 // except for the one you are checking of course
-				if($numArray[$i] == $numArray[$j])
-				{
-					$numArray[$i] = mt_rand(1,10);         // if duplicate, generate new random
-					$j = 0;                                // go back through and check new number
-				} 
-		}
-		return $numArray;
-	}
-
-		$x = generateUniqueRandoms(0, 18, 3);
-		$r = implode(':',$x);
-		list($num1,$num2,$num3) = explode(':',$r);
-
-		$s = "
-		$(document).ready(function () {  
-			$('#xsubmit').attr('disabled', 'true');
-			$('input#submit_btn').click(function(){
-			//$('#pUsername').keyup(function () {
-				var t = this;
-				var char = $('input#pUsername').val();
-				var validateUsername = $('#validateUsername');
-				var pUsername = $('#pUsername');
-				var pclass = $('input#class');
-				var plevel = $('input#level');
-				var prank = $('#rank');
-				var pmember_id = $('#member_id');
-				var ptitle = $('#title');
-				var photo = $('#photo');
-				var EQ1 = $('div#EQ1');
-				var EQ2 = $('div#EQ2');
-				var EQ3 = $('div#EQ3');
-			
-
-					if (this.timer) clearTimeout(this.timer);
-					validateUsername.removeClass('error').html('<img src=\"".$roster->config['img_url']."canvas-loader.gif\" height=\"18\" width=\"18\" /> checking availability...');
-					this.timer = setTimeout(function () {
-						$.ajax({
-							url: 'index.php?p=user-user-ajaxcvar',
-							//url: 'index.php?p=ajaxcvar',
-							data: 'action=check_username&server=".$roster->data['server']."&slot=".$num1.'-'.$num2.'-'.$num3."&guild_id=".$roster->data['guild_id']."&character=' + char,
-							dataType: 'json',
-							type: 'post',
-							success: function (j) {
-								if (j.ok)
-								{
-									validateUsername.html(j.msg);
-									pUsername.val(char);
-									$('div#EQ1').removeClass(\"RGaccepy RGdenyed RGquestion\").addClass(j.EEQQ1);
-									$('div#EQ2').removeClass(\"RGaccepy RGdenyed RGquestion\").addClass(j.EEQQ2);
-									$('div#EQ3').removeClass(\"RGaccepy RGdenyed RGquestion\").addClass(j.EEQQ3);
-									
-									pclass.val(j.cla55);
-									plevel.val(j.level);
-									prank.val(j.rank);
-									pmember_id.val(j.member_id);
-									ptitle.html(j.title);
-									
-									photo.html('<img src=\"http://us.battle.net/static-render/us/'+j.thumb+'\" height=\"75\" width=\"75\" /></a>');
-									
-									$('#xsubmit').removeAttr('disabled');
-									$('input#submit_btn').attr('disabled', 'true');
-								}
-								else
-								{
-									photo.html('<img src=\"http://us.battle.net/static-render/us/'+j.thumb+'\" height=\"75\" width=\"75\" /></a>');
-									validateUsername.html(j.msg);
-									$('div#EQ1').removeClass(\"RGaccepy RGdenyed RGquestion\").addClass(j.EEQQ1);
-									$('div#EQ2').removeClass(\"RGaccepy RGdenyed RGquestion\").addClass(j.EEQQ2);
-									$('div#EQ3').removeClass(\"RGaccepy RGdenyed RGquestion\").addClass(j.EEQQ3);
-									pclass.val(j.cla55);
-									plevel.val(j.level);
-									prank.val(j.rank);
-									ptitle.html(j.title);
-									$('#xsubmit').attr('disabled', 'true');
-								}
-								
-							}
-
-						});
-					}, 200);
-
-			});
-		});";
-
-		roster_add_js($s,'inline');
-
-	
-	function _getItemSlot($value) {
-		$ret = '';
-		switch ($value) 
-		{
-			case 0: $ret = "Head";break;		case 1: $ret = "Neck";break;			case 2: $ret = "Shoulder";break;
-			case 3: $ret = "Shirt";break;		case 4: $ret = "Chest";break;			case 5: $ret = "Waist";break;
-			case 6: $ret = "Legs";break;		case 7: $ret = "Feet";break;			case 8: $ret = "Wrist";break;
-			case 9: $ret = "Hands";break;		case 10: $ret = "Finger1";break;		case 11: $ret = "Finger2";break;
-			case 12: $ret = "Trinket1";break;	case 13: $ret = "Trinket2";break;		case 14: $ret = "Back";break;
-			case 15: $ret = "MainHand";break;	case 16: $ret = "SecondaryHand";break;	case 17: $ret = "Ranged";break;
-			case 18: $ret = "Tabard";break;		
-		}
-		return $ret;
-	}
-	function _getItemSlotn($value) {
-		$ret = '';
-		switch ($value) 
-		{
-			case 0: $ret = "Head";break;		case 1: $ret = "Neck";break;			case 2: $ret = "Shoulder";break;
-			case 3: $ret = "Shirt";break;		case 4: $ret = "Chest";break;			case 5: $ret = "Waist";break;
-			case 6: $ret = "Legs";break;		case 7: $ret = "Feet";break;			case 8: $ret = "Wrist";break;
-			case 9: $ret = "Hands";break;		case 10: $ret = "Finger 0";break;		case 11: $ret = "Finger 1";break;
-			case 12: $ret = "Trinket 0";break;	case 13: $ret = "Trinket 1";break;		case 14: $ret = "Back";break;
-			case 15: $ret = "MainHand";break;	case 16: $ret = "SecondaryHand";break;	case 17: $ret = "Ranged";break;
-			case 18: $ret = "Tabard";break;		
-		}
-		return $ret;
-	}
-
 $form = 'userApp';
 //$user->form->newForm('post', makelink('util-accounts-application'), $form, 'formClass', 4);
-
 $user->form->newForm('post', makelink('user-user-alt'), $form, 'formClass', 4);
 
-
-
+if ($stage == 1)
+{
 	$roster->tpl->assign_vars(array(
-		'R_EQUIP_1'     => _getItemSlot($num1),
-		'R_EQUIP_2'     => _getItemSlot($num2),
-		'R_EQUIP_3'     => _getItemSlot($num3),
-		'N_EQUIP_1'     => _getItemSlotn($num1),
-		'N_EQUIP_2'     => _getItemSlotn($num2),
-		'N_EQUIP_3'     => _getItemSlotn($num3),
-		'R_IMAGE_PTH'	=> $roster->config['img_url'].'Interface/EmptyEquip/',
-		//'R_Q_CHAR'     => @$_REQUEST['character'],
-		//'R_Q_RANK'     => @$_REQUEST['rank'],
-		'R_MSG_ERROR'	=> (!empty($e) ? $e : ''),
-		'CHAR_AUTH'		=> $addon['config']['char_auth'],
-		'CNAMETT' 		=> makeOverlib($roster->locale->act['cname_tt'],$roster->locale->act['cname'],'',1,'',',WRAP'),
-		'CNAME' 		=> $roster->locale->act['cname'],
-		'CLASSTT' 		=> makeOverlib($roster->locale->act['cclass_tt'],$roster->locale->act['cclass'],'',1,'',',WRAP'),
-		'CLASS'			=> $roster->locale->act['cclass'],
-		'LEVELTT' 		=> makeOverlib($roster->locale->act['clevel_tt'],$roster->locale->act['clevel'],'',1,'',',WRAP'),
-		'LEVEL' 		=> $roster->locale->act['clevel'],
-		'RANKTT' 		=> makeOverlib($roster->locale->act['cgrank_tt'],$roster->locale->act['cgrank'],'',1,'',',WRAP'),
-		'RANK' 			=> $roster->locale->act['cgrank'],
-		'XXX'			=> $user->form->getTableOfElements_3(1,$form),
+			'STAGE'		=> $stage,
+			'TEXT'		=> 'stage 1',
+		)
+	);
+/*
+$r = $roster->api2->fetch('character',array('name'=>'zenlee','server'=>'zangarmarsh'));
+echo '<pre>';
+print_r($r);
+echo '</pre>';
+*/
+}
+if ($stage == 2)
+{
+	$roster->tpl->assign_vars(array(
+			'STAGE'		=> $stage,
+			'TEXT'		=> 'Select the character to be your main char',
 		)
 	);
 
+	$query = "SELECT * FROM `". $roster->db->table('user_link', 'user') ."` WHERE `uid` = '". $roster->auth->user['id'] ."';";
+	$result = $roster->db->query($query);
 
-/*
-$roster->tpl->set_filenames(array(
-	'alt' => $addon['basename'].'alt.html'
-	)
-);
-$roster->tpl->display('alt');	
-*/
+	if( !$result )
+	{
+		die_quietly($roster->db->error, 'claim alt', __FILE__,__LINE__,$query);
+	}
+	while( $row = $roster->db->fetch($result) )
+	{
+
+		$roster->tpl->assign_block_vars('chars', array(
+				'THUMB'		=> 'http://us.battle.net/static-render/us/'.$row['thumbnail'],
+				'NAME'		=> $row['name'],
+				'ID'		=> $row['link_id'],
+				'LEVEL'		=> $row['level'],
+				'RACE'		=> $row['race'],
+				'GENDER'	=> $row['gender'],
+				'SERVER'	=> $row['realm'],
+				'GUILD'		=> $row['guild'],
+				'IS_MAIN'	=> (bool)$row['is_main'],
+				'CLASS'		=> $roster->locale->act['id_to_class'][$row['class']],
+			)
+		);
+	}
+
+}
+
 $roster->tpl->set_filenames(array('alt' => $addon['basename'] . '/alt.html'));
 $roster->tpl->display('alt');
 			
