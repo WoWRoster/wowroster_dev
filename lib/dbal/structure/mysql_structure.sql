@@ -371,7 +371,7 @@ CREATE TABLE `renprefix_items` (
   `item_subtype` varchar(64) default NULL,
   `item_rarity` int(4) NOT NULL default -1,
   `locale` varchar(4) default NULL,
-  `json` longtext DEFAULT NULL
+  `json` longtext DEFAULT NULL,
   PRIMARY KEY  (`member_id`,`item_parent`,`item_slot`),
   KEY `parent` (`item_parent`),
   KEY `slot` (`item_slot`),

@@ -1698,4 +1698,45 @@ vertical-align: middle;
 	position: relative;
 vertical-align: middle;
 }
-
+/*
+	user group style
+*/
+.mgname {
+width: 40%;
+display: inline;
+margin: auto;
+padding: 1px;
+overflow: auto;
+position: relative;
+float: left;
+}
+.mgmember {
+width: 18%;
+display: inline;
+text-align: center;
+margin: auto;
+padding: 1px;
+overflow: auto;
+position: relative;
+float: left;
+}
+.mgsetting {
+width: 22%;
+display: inline;
+text-align: center;
+margin: auto;
+padding: 1px;
+overflow: auto;
+position: relative;
+float: left;
+}
+.mgaction {
+width: 18%;
+display: inline;
+text-align: center;
+margin: auto;
+padding: 1px;
+overflow: auto;
+position: relative;
+float: left;
+}

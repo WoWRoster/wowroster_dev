@@ -198,7 +198,7 @@ class roster_db
 	 */
 	function connect_error()
 	{
-		return @sqlsrv_errors() . ': ' . sqlsrv_errors();
+		return sqlsrv_errors() . ': ' . sqlsrv_errors();
 	}
 
 	/**

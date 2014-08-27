@@ -65,6 +65,11 @@ function roster_add_js( $data = NULL , $type = 'module' , $scope = 'header' , $d
 						'defer' => FALSE,
 						'preprocess' => TRUE,
 					),
+					'js/ckeditor/ckeditor.js' => array(
+						'cache' => FALSE,
+						'defer' => FALSE,
+						'preprocess' => TRUE,
+					),
 				),
 				'module' => array(),
 				'theme' => array(

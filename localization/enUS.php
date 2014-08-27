@@ -1238,8 +1238,8 @@ $lang['admin']['rs_color_recommended'] = "Recommended|Color for recommended real
 
 // update_access
 $lang['admin']['authenticated_user'] = "Access to Update.php|Controls access to update.php<br /><br />Turning this off disables access for EVERYONE";
-$lang['admin']['api_key_private'] = "Blizzard API Private key|This is the Private key given to you by Blizzard<br />This enables WoWRoster to make more then 3000 requests per day to the Armory";
-$lang['admin']['api_key_public'] = "Blizzard API Public key|This is the Public key given to you by Blizzard<br />This enables WoWRoster to make more then 3000 requests per day to the Armory";
+$lang['admin']['api_key_private'] = "Blizzard API Secret|This is the secret key given to you by Blizzard<br />This enables WoWRoster to make more then 3000 requests per day to the Armory";
+$lang['admin']['api_key_public'] = "Blizzard API Key|This is the Public key given to you by Blizzard<br />This enables WoWRoster to make more then 3000 requests per day to the Armory";
 $lang['admin']['api_url_region'] = "Blizzard API Region|this is the armory region that you are accessing";
 $lang['admin']['api_url_locale'] = "Blizzard API Locale|These locales are REGION dependent and will display<br>info in the desired language";
 $lang['admin']['update_inst'] = 'Update Instructions|Controls the display of the Update Instructions on the update page';

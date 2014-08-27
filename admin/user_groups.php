@@ -69,7 +69,7 @@ if( isset($_POST['process']) && $_POST['process'] == 'process' )
 // Change scope to guild, and rerun detection to load default
 //print_r($roster->auth->rosterAccess());
 // Get the scope select data
-$dm_query = "SELECT * FROM `" . $roster->db->table('user_groups') . "` ORDER BY `id` ASC";
+$dm_query = "SELECT * FROM `" . $roster->db->table('user_groups') . "` ORDER BY `group_id` ASC";
 
 $dm_result = $roster->db->query($dm_query);
 $x = '';

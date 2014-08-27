@@ -28,3 +28,4 @@ $lang['admin']['forum_reply_post'] = 'Post Reply|Select which groups can post re
 $lang['admin']['forum_html_posts'] = 'Html Posts|Select which groups can use html in there posts';
 $lang['admin']['forum_nicedit'] = 'NicEdit|Use Nicedit for the html posts';
 $lang['admin']['forum_lock'] = 'Lock Access|the ranks able to lock and unloack topics';
+$lang['parent'] = 'Parent Forum';
