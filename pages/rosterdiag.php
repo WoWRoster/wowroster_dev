@@ -216,6 +216,25 @@ echo "<table width=\"100%\" border=\"0\" cellspacing=\"6\"><tr><td valign=\"top\
 
 // Display basic server info
 $rowstripe = 0;
+
+$re = ROSTER_URL.makelink('user-user-alt&stage=2');
+$r = preg_replace('/http:/', 'https:', $re);
+echo '<tr><td colspan="2">
+<div class="tier-2-a">
+	<div class="tier-2-b">
+		<div class="tier-2-title">Dev.battle.net application redirect url</div>
+		<table class="border_frame" width="100%" cellspacing="0">
+			<tr>
+				<td class="membersRow'. ((($rowstripe = 0) % 2) + 1) . '">Url</td>
+				<td class="membersRow' . ((($rowstripe) % 2) + 1) . '">' . $r . '</td>
+			</tr>
+		</table>
+	</div>
+</div>';
+
+// Table display fix
+echo "</td></tr><tr><td>\n";
+
 echo '
 <div class="tier-2-a">
 	<div class="tier-2-b">
