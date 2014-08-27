@@ -21,18 +21,14 @@ if(isset($_POST['op']) && $_POST['op']=='start')
 {
 
 	// If the Register form has been submitted
-	echo '<pre>';
-	print_r($_POST);
-	echo '</pre>';
 	$err = array();
 	if ($stage == 1)
 	{
 		if (!isset($_GET['code']))
 		{
-
 			$auth_url = $roster->api2->getAuthenticationUrl($roster->api2->baseurl[$roster->api2->region]['AUTHORIZATION_ENDPOINT'], $roster->api2->redirect_uri);
 			header('Location: ' . $auth_url);
-			die('Redirect');
+			exit();
 		}
 		else
 		{
