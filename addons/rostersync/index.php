@@ -14,7 +14,7 @@ if($roster->pages[2] == 'addguild')
 	{
 		$job->_showStartPage('addguild');
 	}
-	if ($addon['config']['rsync_skip_start'] == 0 && isset($_POST['action']) && $_POST['action'] == 'addguild')
+	if ($addon['config']['rsync_skip_start'] == 0 && isset($_POST['action']) && $_POST['action'] == 'start')
 	{
 		$job->_showAddScreen();
 	}

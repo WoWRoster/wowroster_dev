@@ -81,7 +81,7 @@ class WowAPI {
 	
 	public function Settings($array)
 	{
-		$this->regionsw($array['locale']);
+		$this->regionlsw($array['region']);
 		define('API_DEBUG', $array['debug']);
 		define('API_pub_key', $array['pub_key']);
 		define('API_pri_key', $array['pri_key']);
@@ -124,6 +124,44 @@ class WowAPI {
 			break;
 
 			case 'zh_CN':
+			//define(API_URI, 'http://battlenet.com.cn/');
+			$this->api_url = 'http://battlenet.com.cn/';
+			$e = 'http://battlenet.com.cn/';
+			break;
+		}
+		define('API_URI', $e);
+	}
+	public function regionlsw($region)
+	{
+		$e = '';
+		switch($region)
+		{
+			case 'US':
+
+			//define(API_URI, 'http://us.battle.net/');
+			$this->api_url = 'http://us.battle.net/';
+			$e = 'http://us.battle.net/';
+			break;
+
+			case 'EU':
+			//define(API_URI, 'http://eu.battle.net/');
+			$this->api_url = 'http://eu.battle.net/';
+			$e = 'http://eu.battle.net/';
+			break;
+
+			case 'KR':
+			//define(API_URI, 'http://kr.battle.net/');
+			$this->api_url = 'http://kr.battle.net/';
+			$e = 'http://kr.battle.net/';
+			break;
+
+			case 'TW':
+			//define(API_URI, 'http://tw.battle.net/');
+			$this->api_url = 'http://tw.battle.net/';
+			$e = 'http://tw.battle.net/';
+			break;
+
+			case 'CN':
 			//define(API_URI, 'http://battlenet.com.cn/');
 			$this->api_url = 'http://battlenet.com.cn/';
 			$e = 'http://battlenet.com.cn/';
