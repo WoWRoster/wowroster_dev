@@ -81,12 +81,12 @@ if( !$dm_result )
 $c = 1;
 while( $row = $roster->db->fetch($dm_result) )
 {
-	$roster->tpl->assign_block_vars('group', array(
+	$roster->tpl->assign_block_vars('groups', array(
 		'ID'		=> $row['group_id'],
 		'NAME'		=> $row['group_name'],
 		'MEM'		=> '',
-		'SETURL'	=> makelink('&amp;action=settings&amp;id='.$row['group_id']),
-		'DELURL'	=> makelink('&amp;action=delete&amp;id='.$row['group_id']),
+		'SETURL'	=> makelink('&amp;type=settings&amp;id='.$row['group_id']),
+		'DELURL'	=> makelink('&amp;type=delete&amp;id='.$row['group_id']),
 		)
 	);
 }

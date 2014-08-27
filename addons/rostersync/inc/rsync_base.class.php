@@ -192,14 +192,14 @@ class rsyncBase {
 			
 		$this->jobid = $this->_insertJobID($this->time_started);
 		
-		if ( $this->_checkGuildExist( $this->guild_name, $this->server, $roster->data['region'] ) )
+		if ( $this->_checkGuildExist( $_POST['name'], $this->server, $roster->data['region'] ) )
 		{
 
 			$this->_getGuildInfo();
 			include_once(ROSTER_LIB . 'update.lib.php');
 			$update = new update;
 
-			$update->uploadData['wowrcp']['cpProfile'][$this->server]['Guild'][$this->data['name']] = $this->data;
+			$update->uploadData['wowrcp']['cpProfile'][$this->server]['Guild'][$_POST['name']] = $this->data;
 			$this->message = $update->processGuildRoster();
 			$tmp = explode( "\n", $this->message);
 			$this->message = implode( '', $tmp);
@@ -208,7 +208,7 @@ class rsyncBase {
 				<div class="tier-1-a">
 					<div class="tier-1-b">
 						<div class="tier-1-c">
-							<div class="tier-1-title"> adding '.$this->guild_name.' @ '.$roster->data['region'].'-'.$this->server.'</div>
+							<div class="tier-1-title"> adding '.$_POST['name'].' @ '.$roster->data['region'].'-'.$this->server.'</div>
 							
 							
 							<div class="tier-2-a">
