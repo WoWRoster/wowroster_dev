@@ -213,7 +213,7 @@ class RosterLogin
 				'L_LOGIN_WORD'    => '',
 				'S_LOGIN_MESSAGE' => (bool)$this->message,
 				'L_LOGIN_MESSAGE' => $this->message,
-				'L_REGISTER'      => '',
+				'L_REGISTER'      => '<a href="'.makelink('user-user-register').'">'.$roster->locale->act['register'].'</a>',
 				'U_LOGIN'         => 0
 			));
 
@@ -234,6 +234,7 @@ class RosterLogin
 			'U_LOGIN_ACTION'  => $this->action,
 			'S_LOGIN_MESSAGE' => (bool)$this->message,
 			'L_LOGIN_MESSAGE' => $this->message,
+			'L_REGISTER'      => '<a href="'.makelink('user-user-register').'">'.$roster->locale->act['register'].'</a>',
 			'U_LOGIN'         => $this->valid
 		));
 
