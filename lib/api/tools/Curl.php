@@ -134,7 +134,6 @@ class Curl {
 	public function makeRequest($url, $method='GET', $options=array(),$uri,$method) 
 	{
         $open_basedir_value = ini_get('open_basedir');
-		echo $url;
 		$ch = curl_init($url);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_0 );
