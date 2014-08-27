@@ -51,7 +51,7 @@ class feedsInstall
 		# Config menu entries
 		$installer->add_config("7551,'display',NULL,'blockframe','menu'");
 		$installer->add_config("7552,'page_size','0','text{4|30','display'");
-		$installer->add_config("7552,'icon_size','24','select{12^12|14^14|18^18|24^24|30^30|36^36|50^50|56^56','display'");		
+		$installer->add_config("7553,'icon_size','24','select{12^12|14^14|18^18|24^24|30^30|36^36|50^50|56^56','display'");		
 		
 		$installer->create_table($installer->table('char_feed'),"
 			`id` int(11) NOT NULL AUTO_INCREMENT,

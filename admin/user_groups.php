@@ -81,40 +81,12 @@ if( !$dm_result )
 $c = 1;
 while( $row = $roster->db->fetch($dm_result) )
 {
-	$tooltip = array();
-	$tooltip[] = "User ID\t". $row['id'];
-	$tooltip[] = "Username\t". $row['usr'];
-	$tooltip[] = "Email\t". $row['email'];
-	$tooltip[] = "Reg IP\t". $row['regIP'];
-	$tooltip[] = "Access\t". $row['access'];
-	$tooltip[] = "Name\t". $row['fname'] .' '. $row['lname'];
-	$tooltip[] = "Age\t". $row['age'];
-	$tooltip[] = "City\t". $row['city'];
-	$tooltip[] = "State\t". $row['state'];
-	$tooltip[] = "Country\t". $row['country'];
-	$tooltip[] = "Zone\t". $row['zone'];
-	$tooltip[] = "Homepage\t". $row['homepage'];
-	$tooltip[] = "Other Guilds\t". $row['other_guilds'];
-	$tooltip[] = "Why\t". $row['why'];
-	$tooltip[] = "About\t". $row['about'];
-	$tooltip[] = "Notes\t". $row['notes'];
-	$tooltip[] = "Last Login\t". $row['last_login'];
-	$tooltip[] = "Joined\t". $row['date_joined'];
-	$tooltip[] = "Is Member\t". $row['is_member'];
-	$tooltip[] = "Active\t". $row['active'];
-	$tooltip[] = "Online\t". $row['online'];
-	$tooltip[] = "Last online\t". $row['user_lastvisit'];
-
-	$roster->tpl->assign_block_vars('user', array(
-		'ROW_CLASS' => $roster->switch_row_class(),
-		'ID'        => $row['id'],
-		'IDC'       => $c++,
-		'IDX'       => $c++,
-		'ACTIVE'    => (bool)$row['active'],
-		'NAME'      => $row['usr'],
-		'TOOLTIP'   => makeOverlib(implode("\n", $tooltip), $row['usr'], '', 1, '', ''),
-		'EMAIL'     => $row['email'],
-		'ACCESS'    => $roster->auth->rosterAccess(array('guild_id' => ''.$row['group_id'].'','name' => ''.$row['id'].'[access]', 'value' => $row['access']))
+	$roster->tpl->assign_block_vars('group', array(
+		'ID'		=> $row['group_id'],
+		'NAME'		=> $row['group_name'],
+		'MEM'		=> '',
+		'SETURL'	=> makelink('&amp;action=settings&amp;id='.$row['group_id']),
+		'DELURL'	=> makelink('&amp;action=delete&amp;id='.$row['group_id']),
 		)
 	);
 }

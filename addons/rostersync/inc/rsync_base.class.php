@@ -417,10 +417,13 @@ class rsyncBase {
 		
 		//PAGERELOAD
 		$header = '
+		jQuery(document).ready( function($){
+
 		function nextMember() {
-		document.linker.submit();
+		$( "#rsynclinker" ).submit();
 		}
-		self.setTimeout(\'nextMember()\', '. ($reloadTime). ');
+		setTimeout( nextMember(),'. ($reloadTime). ' );
+		});
 		';		   
 		
 		$this->_debug( 1, htmlspecialchars($header), 'Printed reload java code', $header ? 'OK' : 'Failed');

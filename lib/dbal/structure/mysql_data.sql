@@ -122,7 +122,7 @@ INSERT INTO `renprefix_config` VALUES (10000, 'authenticated_user', '1', 'radio{
 INSERT INTO `renprefix_config` VALUES (10001, 'api_key_private', '', 'text{64|40', 'update_access');
 INSERT INTO `renprefix_config` VALUES (10002, 'api_key_public', '', 'text{64|40', 'update_access');
 INSERT INTO `renprefix_config` VALUES (10003, 'api_url_region', 'US', 'select{US^US|Europe^EU|Korea^KR|Taiwan^TW|China^CN', 'update_access');
-INSERT INTO `renprefix_config` VALUES (10004, 'api_url_locale', 'en_US', 'selectAmericas English (US)^en_US|Americas Español (AL)^es_MX|Americas Português (AL)^pt_BR|Europe Deutsch^de_DE|Europe English^en_GB|Europe Español^es_ES|Europe Français^fr_FR|Europe Italiano^it_IT|Europe Português^pt_PT|Europe Pyccknn^ru_RU|Korea^ko_KR|Taiwan^zh_TW|China^zh_CN|Southeast Asia^en_US', 'update_access');
+INSERT INTO `renprefix_config` VALUES (10004, 'api_url_locale', 'en_US', 'select{Americas English (US)^en_US|Americas Espanol (AL)^es_MX|Americas Portugues (AL)^pt_BR|Europe Deutsch^de_DE|Europe English^en_GB|Europe Espanol^es_ES|Europe Francais^fr_FR|Europe Italiano^it_IT|Europe Portugues^pt_PT|Europe Pyccknn^ru_RU|Korea^ko_KR|Taiwan^zh_TW|China^zh_CN|Southeast Asia^en_US', 'update_access');
 INSERT INTO `renprefix_config` VALUES (10006, 'use_api_onupdate', '0', 'select{Yes^1|No^0', 'update_access');
 INSERT INTO `renprefix_config` VALUES (10005, 'update_inst', '1', 'radio{on^1|off^0', 'update_access');
 INSERT INTO `renprefix_config` VALUES (10010, 'gp_user_level', '11', 'access', 'update_access');
