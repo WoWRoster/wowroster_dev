@@ -4,10 +4,10 @@
  * DO NOT EDIT !!!
  */
 
-$db_config['host']         = 'localhost';
-$db_config['username']     = 'root';
-$db_config['password']     = 'uraccp';
-$db_config['database']     = 'wowroster';
+$db_config['host']         = '';
+$db_config['username']     = '';
+$db_config['password']     = '';
+$db_config['database']     = '';
 $db_config['table_prefix'] = 'roster_';
 $db_config['dbtype']       = 'mysql';
 
