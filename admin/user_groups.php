@@ -23,77 +23,62 @@ $start = (isset($_GET['start']) ? $_GET['start'] : 0);
 
 $roster->output['title'] .= $roster->locale->act['pagebar_userman'];
 
-
 //user_desc
-if( isset($_POST['process']) && $_POST['process'] == 'process' )
+if( isset($_POST['process']))
 {
-	//echo '<pre>';print_r($_POST);echo '</pre>';
-		if (isset($_POST['delete']))
-		{
-			foreach ($_POST['delete'] as $user => $id)
-			{
-				$dl_query = "DELETE FROM `" . $roster->db->table('user_members') . "` WHERE `id` = '".$id."';";
-				$dl_result = $roster->db->query($dl_query);
-				$dla_query = "DELETE FROM `" . $roster->db->table('user_link', 'user') . "` WHERE `uid` = '".$id."';";
-				$dla_result = $roster->db->query($dla_query);
-			}
-		}
-	foreach ($_POST as $name => $value)
+	if ($_POST['process'] == 'addgroup' )
 	{
-		$query = $access = '';
-		$ad = array();
-
-		if ($name != 'action' && $name != 'process')
-		{
-
-			$name = substr($name, 7);
-			$a=$b='';
-			if (isset($value['access']))
-			{
-				$access = implode(":",$value['access']);
-				$a = "`access` = '".$access."' ";
-			}
-			if (isset($value['active']))
-			{
-				$b = ", `active` = '".$value['active']."' ";
-			}
-			if ($name != '')
-			{
-				$up_query = "UPDATE `" . $roster->db->table('user_members') . "` SET $a $b WHERE `id` = '".$name."';";
-				$up_result = $roster->db->query($up_query);
-			}
-		}
+		$data = array(
+			'group_name'	=> $_POST['name'],
+			'group_desc'	=> $_POST['desc'],
+		);
+		$query = 'INSERT INTO `' . $roster->db->table('user_groups') . '` ' . $roster->db->build_query('INSERT', $data);
+		$result = $roster->db->query($query);
 	}
 }
+$type = (isset($_GET['type']) ? $_GET['type'] : '');
 
-// Change scope to guild, and rerun detection to load default
-//print_r($roster->auth->rosterAccess());
-// Get the scope select data
-$dm_query = "SELECT * FROM `" . $roster->db->table('user_groups') . "` ORDER BY `group_id` ASC";
-
-$dm_result = $roster->db->query($dm_query);
-$x = '';
-if( !$dm_result )
+if ($type == 'delete')
 {
-	die_quietly($roster->db->error(), 'Database error', __FILE__, __LINE__, $dm_query);
+	$adm_query = "DELETE FROM `" . $roster->db->table('user_groups') . "` WHERE `group_id` = '".$_GET['id']."'";
+	$adm_result = $roster->db->query($adm_query);
+	$roster->db->free_result($adm_result);
+	$type = '';
+}
+if ($type == '')
+{
+	$dm_query = "SELECT * FROM `" . $roster->db->table('user_groups') . "` ORDER BY `group_id` ASC";
+
+	$dm_result = $roster->db->query($dm_query);
+	$x = '';
+	if( !$dm_result )
+	{
+		die_quietly($roster->db->error(), 'Database error', __FILE__, __LINE__, $dm_query);
+	}
+
+	$c = 1;
+	while( $row = $roster->db->fetch($dm_result) )
+	{
+		$queryb = "SELECT COUNT(`id`) AS `count` FROM `" . $roster->db->table('user_members') . "` WHERE `group_id` = '".$row['group_id']."' ";
+		$resultsb = $roster->db->query($queryb);
+		$c = $roster->db->fetch($resultsb);
+		
+		$roster->tpl->assign_block_vars('groups', array(
+			'ID'		=> $row['group_id'],
+			'NAME'		=> $row['group_name'],
+			'MEM'		=> $c['count'],
+			'DELURL'	=> makelink('&amp;type=delete&amp;id='.$row['group_id']),
+			)
+		);
+	}
+	$roster->db->free_result($dm_result);
 }
 
-$c = 1;
-while( $row = $roster->db->fetch($dm_result) )
-{
-	$roster->tpl->assign_block_vars('groups', array(
-		'ID'		=> $row['group_id'],
-		'NAME'		=> $row['group_name'],
-		'MEM'		=> '',
-		'SETURL'	=> makelink('&amp;type=settings&amp;id='.$row['group_id']),
-		'DELURL'	=> makelink('&amp;type=delete&amp;id='.$row['group_id']),
-		)
-	);
-}
-
-$roster->db->free_result($dm_result);
 $roster->tpl->assign_vars(array(
-  'L_USER_MANAGER' => $roster->locale->act['admin']['user_groups_desc'],
+		'L_USER_MANAGER'	=> $roster->locale->act['admin']['user_groups_desc'],
+		'ADDGROUP'			=>  makelink('&amp;type=add'),
+		'ADDGROUPF'			=>  makelink('&amp;type='),
+		'GPTYPE'			=>  $type,
 	)
 );
 

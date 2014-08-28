@@ -1121,7 +1121,7 @@ $lang['pagebar_update'] = 'Mise à jour';
 $lang['pagebar_rosterdiag'] = 'Diagnostic';
 $lang['pagebar_menuconf'] = 'Configuration des menus';
 $lang['pagebar_configreset'] = 'Remise à zéro de la configuration';
-
+$lang['pagebar_usergroups'] = 'Groups';
 $lang['pagebar_addonconf'] = 'Greffons';
 
 $lang['roster_config_menu'] = 'Menu de configuration';
@@ -1256,6 +1256,7 @@ $lang['admin']['per_character_display'] = 'Affichage par personnage';
 
 // user admin
 $lang['admin']['user_desc'] = 'CP Admin - This option gives the selected user admin access to WoWRoster<br/>Public - The default access given to all users. Allows the user to see any and all public pages in Roster. Removing this option only lets them see the content their other ranks allow<br/>** Other ranks are scaned from the currently selected guilds\' rank names and you can assign user access accordingly to users.';
+$lang['admin']['user_groups_desc'] = 'User Groups';
 
 //Overlib for Allow/Disallow rules
 $lang['guildname'] = 'Nom de la guilde';

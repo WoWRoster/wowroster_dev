@@ -10,7 +10,7 @@
  * @since      File available since Release 1.03
  */
 
-body { background:#000000; font-size:62.5%; }
+body { background:#000000; font-size:62.5%; background: url(../images/background.png) repeat;Background-attachment:fixed;}
 a:link,
 a:visited,
 a:active { color:#4C3000; text-decoration:none; font-weight:bold; }
@@ -135,6 +135,7 @@ padding-right: 10px;
 .realm { background: url(../images/bg_neutral.png) no-repeat left top; }
 .alliance { background: url(../images/bg_alliance_new2.png) no-repeat left top; }
 .horde { background: url(../images/bg_horde_new2.png) no-repeat left top; }
+.user { background: url(../images/bg_user_menu.png) no-repeat left top; }
 
 .info-header .text { position: absolute; left: 75px; top: 20px; color: #FFFFFF; text-align: left; padding: 0; width: 580px; text-shadow:1px 2px 0 #000000; }
 .info-header .text:hover { background: none; }
@@ -689,7 +690,7 @@ hr {
 	position: relative;
 }
 .config-body-menu {
-	width: 710px;
+	min-width: 710px;
 	margin-left: 145px;
 	position: relative;
 }

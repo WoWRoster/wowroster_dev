@@ -857,6 +857,8 @@ $lang['tooltip_preg_use']='/Benutzen: (.+)/';
 $lang['tooltip_preg_chance']='/Gewährt (.+)/';
 $lang['tooltip_preg_chance_hit']='/Chance ^(to|on) hit: (.+)/';
 $lang['tooltip_preg_heroic']='/Heroisch/';
+$lang['tooltip_preg_timeless']='/Timeless/';
+$lang['tooltip_preg_warforged']='/^(Flexible|Warforged)/';
 $lang['tooltip_preg_lfr']='/Raid Finder/';
 $lang['tooltip_garbage1']='/\<Zum Sockeln Shift-Rechtsklick\>/';
 $lang['tooltip_garbage2']='/\<Zum Lesen rechtsklicken\>/';
@@ -870,7 +872,7 @@ $lang['tooltip_garbage8'] = '/You may sell this item to a vendor within (\d+) ho
 $lang['tooltip_preg_weapon_types']='/^(Pfeil|Axt|Bogen|Kugel|Armbrust|Dolch|Angel|Faustwaffe|Schußwaffe|Götze|Streitkolben|Waffenhand|Nebenhand|Stangenwaffe|Stab|Schwert|Wurfwaffe|Zauberstab|Fernkampf|Einhand|Zweihand|Relikt)/';
 $lang['tooltip_preg_speed']='/Geschwindigkeit/';
 
-$lang['tooltip_preg_armor']='/^([0-9, ]+) Rüstung/';
+$lang['tooltip_preg_armor']='/^([0-9,]+) Rüstung/';
 $lang['tooltip_preg_durability']='/Haltbarkeit(|:) (\d+) \/ (\d+)/';
 $lang['tooltip_preg_madeby']='/\<Hergestellt von (.+)\>/';
 $lang['tooltip_preg_bags']='/(\d+) Platz/';
@@ -1121,7 +1123,7 @@ $lang['pagebar_update'] = 'Upload Profil';
 $lang['pagebar_rosterdiag'] = 'Roster Diagnose Seite';
 $lang['pagebar_menuconf'] = 'Menü Konfiguration';
 $lang['pagebar_configreset'] = 'Einstellungen zurücksetzen';
-
+$lang['pagebar_usergroups'] = 'Groups';
 $lang['pagebar_addonconf'] = 'Addon Konfiguration';
 
 $lang['roster_config_menu'] = 'Einstellungsmenü';
@@ -1256,6 +1258,7 @@ $lang['admin']['per_character_display'] = 'Charakterspezifische Anzeige-Einstell
 
 // user admin
 $lang['admin']['user_desc'] = 'CP Admin - This option gives the selected user admin access to WoWRoster<br/>Public - The default access given to all users. Allows the user to see any and all public pages in Roster. Removing this option only lets them see the content their other ranks allow<br/>** Other ranks are scaned from the currently selected guilds\' rank names and you can assign user access accordingly to users.';
+$lang['admin']['user_groups_desc'] = 'User Groups';
 
 //Overlib for Allow/Disallow rules
 $lang['guildname'] = 'Gildenname';

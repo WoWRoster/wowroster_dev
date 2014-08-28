@@ -178,7 +178,7 @@
 
 <div class="theme-wrap">
 
-<!-- IF ROSTER_SCOPE eq "page" or ROSTER_SCOPE eq "util"  or ROSTER_SCOPE eq "user" -->
+<!-- IF ROSTER_SCOPE eq "page" or ROSTER_SCOPE eq "util" -->
 	<div class="info-header realm">
 		<div class="text<!-- IF S_REALMSTATUS --> up<!-- ENDIF -->">
 			<div class="name">{ROSTER_TITLE} <small>{ROSTER_SUBTITLE}</small></div>
@@ -192,6 +192,19 @@
 	<div class="util<!-- IF ROSTER_SCOPE eq "page" -->-page<!-- ENDIF -->-wrap">
 <!-- ENDIF -->
 
+<!-- IF ROSTER_SCOPE eq "user" -->
+	<div class="info-header user">
+		<div class="text<!-- IF S_REALMSTATUS --> up<!-- ENDIF -->">
+			<div class="name">{ROSTER_TITLE} <small>{ROSTER_SUBTITLE}</small></div>
+			<!-- IF PAGE_INFO --><div class="info">{PAGE_INFO}</div><!-- ENDIF -->
+		</div>
+
+<!-- IF S_REALMSTATUS -->
+		<div class="realm-status">{REALMSTATUS}</div>
+<!-- ENDIF -->
+	</div>
+	<div class="char-wrap">
+<!-- ENDIF -->
 
 <!-- IF ROSTER_SCOPE eq "realm" -->
 	<div class="info-header realm">

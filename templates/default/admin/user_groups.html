@@ -1,13 +1,51 @@
-<!-- BEGIN groups -->
-<div class="tier-3-a">
-	<div class="tier-3-b">
-		<div class="config">
-			<div class="mgname"><strong>{groups.NAME}</strong></div>
-			<div class="mgmember">{groups.MEM}</div>
-			<div class="mgsetting"><a href="{groups.SETURL}">Settings</a></div>
-			<div class="mgaction"><a href="{groups.DELURL}">Delete</a></div>
-			</tr>
+<!-- IF GPTYPE eq "" -->
+	<!-- BEGIN groups -->
+	<div class="tier-3-a">
+		<div class="tier-3-b">
+			<div class="config">
+				<div class="mgname"><strong>{groups.NAME}</strong></div>
+				<div class="mgmember">{groups.MEM}</div>
+				<div class="mgaction"><a href="{groups.DELURL}">Delete</a></div>
+				</tr>
+			</div>
 		</div>
 	</div>
-</div>
-<!-- END groups -->
+	<!-- END groups -->
+	<br>
+	<a href="{ADDGROUP}">Add Group</a>
+<!-- ENDIF -->
+
+<!-- IF GPTYPE eq "add" -->
+<form name="add" method="post" enctype="multipart/form-data" action="{ADDGROUPF}">
+	<div class="tier-3-a">
+		<div class="tier-3-b">
+			<div class="config">
+				<div class="config-name">
+					<span class="ui-icon ui-icon-help" style="cursor:help;"></span>
+				<label for="name">Group Name</label>
+				</div>
+				<div class="config-input">
+					<input type="text" name="name" value="" id="name" size="45"/>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tier-3-a">
+		<div class="tier-3-b">
+			<div class="config">
+				<div class="config-name">
+					<span class="ui-icon ui-icon-help" style="cursor:help;"></span>
+				<label for="desc">Group Description</label>
+				</div>
+				<div class="config-input">
+					<input type="text" name="desc" value="" id="desc" size="45"/>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="config-submit">
+		<input type="submit" value="Add Group" class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
+		<input type="hidden" name="process" value="addgroup">
+	</div>
+</form>
+<!-- ENDIF -->

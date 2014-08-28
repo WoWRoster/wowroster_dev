@@ -52,16 +52,27 @@
   right: auto;
   bottom: auto;
 }
+.exp-content {
+overflow: auto;
+display: block;
+position: relative;
+}
 #left {
-  position: relative;
-  float: left;
-  width: 658px;
+position: relative; */
+/* float: left; */
+/* display: inline-block; */
+/* width: 658px; */
+margin-right: 10px;
+overflow: auto;
+/* width: 90%; */
+padding-right: 5px;
 }
 
 #right {
-  width: 255px;
-  margin-left: 660px;
-  position: relative;
+width: 255px;
+/* margin-left: 660px; */
+position: relative;
+float: right;
 }
 
 #homepage .name {
