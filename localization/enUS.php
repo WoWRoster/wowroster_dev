@@ -678,6 +678,45 @@ $lang['id_to_race'] = array(
 	26 => 'Pandaren',
 );
 
+/*
+	profession stuff
+*/
+$lang['id_to_prof'] = array(
+	171 => 'Alchemy',
+	164 => 'Blacksmithing',
+	333 => 'Enchanting',
+	202 => 'Engineering',
+	182 => 'Herbalism',
+	773 => 'Inscription',
+	755 => 'Jewelcrafting',
+	165 => 'Leatherworking',
+	186 => 'Mining',
+	393 => 'Skinning',
+	197 => 'Tailoring',
+	794 => 'Archaeology',
+	185 => 'Cooking',
+	129 => 'First Aid',
+	356 => 'Fishing'
+);
+
+$lang['prof_to_id'] = array(
+ 	'Alchemy'			=> 171,
+	'Blacksmithing'		=> 164,
+	'Enchanting'		=> 333,
+	'Engineering'		=> 202,
+	'Herbalism'			=> 182,
+	'Inscription'		=> 773,
+	'Jewelcrafting'		=> 755,
+	'Leatherworking'	=> 165,
+	'Mining'			=> 186,
+	'Skinning'			=> 393,
+	'Tailoring'			=> 197,
+	'Archaeology'		=> 794,
+	'Cooking'			=> 185,
+	'First Aid'			=> 129,
+	'Fishing'			=> 356
+);
+
 $lang['hslist']=' Honor System Stats';
 $lang['hslist1']='Highest Lifetime Rank';
 $lang['hslist2']='Highest Lifetime HKs';
