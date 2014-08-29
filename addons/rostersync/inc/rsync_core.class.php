@@ -305,20 +305,13 @@ class rsync extends rsyncBase {
 		$array = array();
 		$ranks = array();
 		if ( $addon['config']['rsync_rank_set_order'] >= 1 ) {
-			$query =	"SELECT ".
-							"guild_rank, guild_title ".
-							"FROM ". $roster->db->table('members'). " AS members ".
-							"WHERE ".
-							"members.guild_id=". $guild_id. " ".
-							"AND NOT members.guild_title='' ".
-							"GROUP BY guild_rank, guild_title ".
-							"ORDER BY guild_rank;";
+			$query =	"SELECT rank, title FROM ". $roster->db->table('guild_rank'). " WHERE guild_id=". $guild_id. " ORDER BY guild_rank;";
 			$result = $roster->db->query($query);
 			if( $roster->db->num_rows($result) > 0 ) {
 
 				$tmp = $roster->db->fetch_all();
 				foreach ( $tmp as $rank ) {
-					$ranks[$rank['guild_rank']] = $rank['guild_title'];
+					$ranks[$rank['rank']] = $rank['title'];
 				}
 			}
 		}

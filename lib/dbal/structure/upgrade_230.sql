@@ -16,6 +16,16 @@ CREATE TABLE `renprefix_user_groups` (
   PRIMARY KEY (`group_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `renprefix_guild_rank`;
+CREATE TABLE `renprefix_guild_rank` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `rank` tinyint(4) NOT NULL DEFAULT '0',
+  `title` varchar(255) NOT NULL DEFAULT '',
+  `control` varchar(255) NOT NULL DEFAULT '0',
+  `guild_id` int(11) unsigned NOT NULL default '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+
 DROP TABLE IF EXISTS `renprefix_api_enchant`;
 CREATE TABLE `renprefix_api_enchant` (
  `id` int(11) UNSIGNED NOT NULL DEFAULT '0',

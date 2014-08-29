@@ -12,7 +12,7 @@
  * @link       http://www.wowroster.net
  * @since      File available since Release 1.5.0
  * @package    WoWRoster
- * @subpackage Locale
+ * @subpackage Locale 
  */
 
 $lang['langname'] = 'German';

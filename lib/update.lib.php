@@ -505,6 +505,7 @@ class update
 								$guilddata['Locale'] = $char['Locale'];
 								$guilddata['Info'] = '';
 								$guildId = $this->update_guild($realm_name, 'GuildLess-' . substr($char['FactionEn'],0,1), strtotime($timestamp), $guilddata, $region);
+
 								unset($guilddata);
 
 								// Copy the array so we can set Online to 1 until I can find a better way to set last online time
@@ -663,7 +664,8 @@ class update
 								// Update the guild
 								$guildId = $this->update_guild($realm_name, $guild_name, $currentTimestamp, $guild, $region);
 								$guild['guild_id'] = $guildId;
-
+																// update and upload guild ranks
+								$this->update_guild_ranks($guild, $guildId);
 								$guildMembers = $guild['Members'];
 
 								$guild_output = '';
@@ -3471,6 +3473,25 @@ CREATE TABLE `renprefix_quest_task_data` (
 		}
 	}
 
+	function get_guild_rank( $guild_id )
+	{
+		global $roster;
+
+		$querystr = "SELECT * FROM `" . $roster->db->table('guild_rank') . "` WHERE `guild_id` = '$guild_id';";
+		$result = $roster->db->query($querystr) or die_quietly($roster->db->error(),'WowDB Error',__FILE__ . '<br />Function: ' . (__FUNCTION__),__LINE__,$querystr);
+
+		if( $roster->db->num_rows() > 0 )
+		{
+			$retval = $roster->db->fetch_all($result);
+			$roster->db->free_result($result);
+
+			return $retval;
+		}
+		else
+		{
+			return null;
+		}
+	}
 
 	/**
 	 * Function to prepare the memberlog data
@@ -3502,7 +3523,46 @@ CREATE TABLE `renprefix_quest_task_data` (
 		}
 	}
 
+	/**
+	 * Updates or creates the guild rank database
+	 *
+	 * @param array $guild
+	 */
+	function update_guild_ranks($guild , $guild_id )
+	{
+		global $roster;
+		
+		$guild_ranks = $this->get_guild_rank($guild_id);
+		$ranks = array();
+		if (is_array($guild_ranks))
+		{
+			foreach($guild_ranks as $r => $rw)
+			{
+				$ranks[$rw['rank']] = array('title' => $rw['title'],'control' => $rw['control']);
+			}
+		}
+		
+		foreach($guild['Ranks'] as $id => $d)
+		{
+			$this->reset_values();
+			$this->add_value('rank', $id);
+			$this->add_value('guild_id', $guild_id);
+			$this->add_ifvalue($d, 'Title', 'title');
+			$this->add_ifvalue($d, 'Control', 'control');
 
+			if( isset($ranks[$id]['title']) && $ranks[$id]['title'] == $d['Title'] )
+			{
+				$querystra = "UPDATE `" . $roster->db->table('guild_rank') . "` SET " . $this->assignstr . " WHERE `rank` = '" . $id . "' AND `guild_id` = '" . $guild_id . "';";
+			}
+			else
+			{
+				$querystra = "INSERT INTO `" . $roster->db->table('guild_rank') . "` SET " . $this->assignstr;
+			}
+
+			$roster->db->query($querystra) or die_quietly($roster->db->error(),'WowDB Error',__FILE__ . '<br />Function: ' . (__FUNCTION__),__LINE__,$querystra);
+		}
+	}
+	
 	/**
 	 * Updates or creates an entry in the guild table in the database
 	 * Then returns the guild ID
@@ -3541,8 +3601,10 @@ CREATE TABLE `renprefix_quest_task_data` (
 
 		$this->add_ifvalue($guild, 'DBversion');
 		$this->add_ifvalue($guild, 'GPversion');
-
-		$this->add_value('guild_info_text', str_replace('\n',"<br />",$guild['Info']));
+		if (is_array($guild['Info']))
+		{
+			$this->add_value('guild_info_text', str_replace('\n',"<br />",$guild['Info']));
+		}
 
 		if( is_array($guildInfo) )
 		{
