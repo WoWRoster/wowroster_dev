@@ -25,7 +25,7 @@ class userInstall
 	var $active = true;
 	var $icon = 'inv_misc_bag_26_spellfire';
 
-	var $version = '0.2.5';
+	var $version = '0.3.1';
 	var $wrnet_id = '0';
 
 	var $fullname = 'User Pages';
@@ -208,6 +208,10 @@ class userInstall
 				`guildRealm` varchar(32) NOT NULL DEFAULT '',
 				PRIMARY KEY (`link_id`)
 			");
+		}
+		if( version_compare('0.3.1', $oldversion,'>') == true )
+		{
+			$installer->remove_menu_button('menu_register','user','register','inv_misc_bag_26_spellfire');
 		}
 		return true;
 	}

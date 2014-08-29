@@ -1741,3 +1741,65 @@ overflow: auto;
 position: relative;
 float: left;
 }
+
+
+/*
+	user login / register boxes
+*/
+.input-container {
+display: block;
+position: relative;
+}
+.input-block:hover {
+border-color: rgba(73, 170, 247, 0.9) !important;
+background-color: rgba(0,0,0,0.5) !important;
+color: rgba(255,255,255,0.7) !important;
+}
+.input-block {
+display: inline-block;
+vertical-align: middle;
+height: 34px;
+width: 100%;
+padding: 0 10px;
+margin-top: 3px;
+margin-bottom: 3px !important;
+font-size: 15px !important;
+line-height: 20px;
+border: 1px solid rgba(255,255,255,0.15) !important;
+background-color: rgba(0,0,0,0.5) !important;
+color: rgba(255,255,255,0.7) !important;
+-moz-box-sizing: border-box !important;
+box-sizing: border-box !important;
+border-radius: 2px !important;
+}
+#help-links {
+margin-bottom: 20px;
+}
+.persistWrapper {
+/* margin: 0px 124px; */
+margin: 0 auto;
+padding: 1px;
+/* overflow: hidden; */
+display: table;
+}
+.btn {
+margin: 3px 0;
+padding: 6px 20px;
+font-size: 15px;
+line-height: 20px;
+height: 34px;
+background-color: rgba(0,0,0,0.15);
+color: #00aeff;
+border: 1px solid rgba(255,255,255,0.15);
+box-shadow: 0 0 rgba(0,0,0,0);
+border-radius: 2px;
+-webkit-transition: background-color .2s,box-shadow .2s,background-color .2s,border-color .2s,color .2s;
+transition: background-color .2s,box-shadow .2s,background-color .2s,border-color .2s,color .2s;
+}
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill {
+  color: inherit;
+  background: inherit;
+  border: inherit;
+}

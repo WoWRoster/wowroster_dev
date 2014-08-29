@@ -13,18 +13,33 @@
 	</div>
 <!-- ENDIF -->
 <!-- IF U_LOGIN eq 0 -->
-	<form action="{U_LOGIN_ACTION}" method="post" enctype="multipart/form-data">
-		<div class="menu-login-user">
-			<label for="menu_login_user"><!-- TRANSLATE user -->:</label>
-			<input class="box" id="menu_login_user" name="username" type="text" size="14" maxlength="30" />
+	<div xmlns="http://www.w3.org/1999/xhtml" class="input-container" id="login-wrapper">
+		<form action="{U_LOGIN_ACTION}" method="post" id="password-form" class=" username-required input-focus">
+		<div class="control-group">
+			<div class="controls">
+			<input aria-labelledby="accountName-label" id="accountName" value="" name="accountName" title="Username" maxlength="320" type="text" tabindex="1" class="input-block" placeholder="Username" autofocus="autofocus" />
+			</div>
 		</div>
-		<div class="menu-login-pass">
-			<label for="menu_login_pass"><!-- TRANSLATE pass -->:</label>
-			<input class="box" id="menu_login_pass" name="password" type="password" size="14" maxlength="30" />
+		<div class="control-group">
+			<div class="controls">
+			<input aria-labelledby="password-label" id="password" value="" name="password" title="Enter your Password" maxlength="32" type="password" tabindex="1" class="input-block" autocomplete="off" placeholder="Enter your Password" />
+			</div>
 		</div>
-		<div class="menu-login-button">
-			<button type="submit"><span class="ui-icon ui-icon-key"></span> <!-- TRANSLATE login --></button>
+		<div class="control-group">
+			<button type="submit" id="submit" class="btn btn-primary btn-block" data-loading-text="" tabindex="1">
+			Log In
+			<i class="spinner-battlenet"></i>
+			</button>
 		</div>
-	</form>
+		<div class="persistWrapper">
+			<label for="rememberme"><!-- TRANSLATE remember_me --></label>
+			<input name="rememberme" id="rememberme" type="checkbox" checked="checked" value="1" />
+		</div>
+		<div id="help-links">
+			{L_REGISTER}
+			<i class="icon-external-link"></i>
+		</div>
+		</form>
+	</div>
 <!-- ENDIF -->
 </div>

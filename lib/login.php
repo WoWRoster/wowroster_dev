@@ -213,7 +213,7 @@ class RosterLogin
 				'L_LOGIN_WORD'    => '',
 				'S_LOGIN_MESSAGE' => (bool)$this->message,
 				'L_LOGIN_MESSAGE' => $this->message,
-				'L_REGISTER'      => '<a href="'.makelink('user-user-register').'">'.$roster->locale->act['register'].'</a>',
+				'L_REGISTER'      => '<a href="'.makelink('register').'" class="btn btn-block">'.$roster->locale->act['register'].'</a>',
 				'U_LOGIN'         => 0
 			));
 
@@ -234,7 +234,7 @@ class RosterLogin
 			'U_LOGIN_ACTION'  => $this->action,
 			'S_LOGIN_MESSAGE' => (bool)$this->message,
 			'L_LOGIN_MESSAGE' => $this->message,
-			'L_REGISTER'      => '<a href="'.makelink('user-user-register').'">'.$roster->locale->act['register'].'</a>',
+			'L_REGISTER'      => '<a href="'.makelink('register').'" class="btn btn-block">'.$roster->locale->act['register'].'</a>',
 			'U_LOGIN'         => $this->valid
 		));
 
@@ -360,6 +360,20 @@ function GetUserInfo($uid)
 		}
 	}
 
+	function checkEMail($mail_address)
+	{
+		global $roster, $addon, $user;
+		
+		if (preg_match("/^[0-9a-z]+(([\.\-_])[0-9a-z]+)*@[0-9a-z]+(([\.\-])[0-9a-z-]+)*\.[a-z]{2,4}$/i", $mail_address))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
 	function getUUID( $d )
 	{
 		global $roster;

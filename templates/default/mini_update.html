@@ -45,46 +45,42 @@
 	</div>
 </div>
 
-<div class="mini-list" id="mini_login" style="width:470px;top:45px;display:none;">
-	<form action="{U_LOGIN_ACTION}" method="post" enctype="multipart/form-data">
-		<div class="tier-2-a login-box">
+<div class="mini-list" id="mini_login" style="width:375px;top:45px;right:5px;display:none;">
+
+		<div class="tier-2-a">
 			<div class="tier-2-b">
 				<div class="tier-2-title">
-					<div class="right">
-						<label for="rememberme"><!-- TRANSLATE remember_me --></label>
-						<input name="rememberme" id="rememberme" type="checkbox" checked="checked" value="1" />
-						<button type="submit"><span class="ui-icon ui-icon-key"></span> <!-- TRANSLATE login --></button>
-					</div>
 					<!-- TRANSLATE auth_req -->
 				</div>
-
-				<div class="tier-3-a">
-					<div class="tier-3-b">
-						<div class="config">
-							<div class="config-name">
-								<!-- TRANSLATE username -->:
-							</div>
-							<div class="config-input">
-								<input name="username" type="text" size="20" maxlength="30" />
-							</div>
+		
+				<div xmlns="http://www.w3.org/1999/xhtml" class="input-container" id="login-wrapper">
+					<form action="{U_LOGIN_ACTION}" method="post" id="password-form" class=" username-required input-focus">
+					<div class="control-group">
+						<div class="controls">
+						<input aria-labelledby="accountName-label" id="accountName" value="" name="accountName" title="Username" maxlength="320" type="text" tabindex="1" class="input-block" placeholder="Username" autofocus="autofocus" />
 						</div>
 					</div>
-				</div>
-
-				<div class="tier-3-a">
-					<div class="tier-3-b">
-						<div class="config">
-							<div class="config-name">
-								<!-- TRANSLATE password -->:
-							</div>
-							<div class="config-input">
-								<input name="password" type="password" size="20" maxlength="30" />
-							</div>
+					<div class="control-group">
+						<div class="controls">
+						<input aria-labelledby="password-label" id="password" value="" name="password" title="Enter your Password" maxlength="32" type="password" tabindex="1" class="input-block" autocomplete="off" placeholder="Enter your Password" />
 						</div>
 					</div>
+					<div class="control-group">
+						<button type="submit" id="submit" class="btn btn-primary btn-block" data-loading-text="" tabindex="1">
+						Log In
+						<i class="spinner-battlenet"></i>
+						</button>
+					</div>
+					<div class="persistWrapper">
+						<label for="rememberme"><!-- TRANSLATE remember_me --></label>
+						<input name="rememberme" id="rememberme" type="checkbox" checked="checked" value="1" />
+					</div>
+					<div id="help-links">
+						{L_REGISTER}
+						<i class="icon-external-link"></i>
+					</div>
+					</form>
 				</div>
-				{L_REGISTER}
-
 			</div>
 	<!-- IF S_LOGIN_MESSAGE -->
 			<div class="message">
@@ -92,5 +88,5 @@
 			</div>
 	<!-- ENDIF -->
 		</div>
-	</form>
+
 </div>

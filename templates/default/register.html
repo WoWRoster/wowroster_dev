@@ -1,81 +1,37 @@
-
-<form name="register" style="display:inline;" method="post" enctype="multipart/form-data" action="">
-<div class="tier-2-a">
-	<div class="tier-2-b">
-		<div class="tier-1-title">
-			<div class="icon">
-				<img src="http://www.wowroster.net/Interface/Icons/inv_misc_gear_02.png" alt="" />
-				<div class="mask"></div>
-			</div>
-			<!-- TRANSLATE register -->
-		</div>
-		
-		<div class="tier-1-a" style="margin-top: 5px;">
-			<div class="tier-1-b">
-				<div class="tier-1-c exp-content">
-					<div class="info-text-h">
-						User Registration<br>
-						<div class="tier-3-a">
-							<div class="tier-3-b">
-								<div class="config">
-									<div class="config-name">
-										<span class="ui-icon ui-icon-help" style="cursor:help;" {CNAMETT} onmouseout="return nd();"></span>
-									<label for="username">{CNAME}</label>
-									</div>
-									<div class="config-input">
-										<input type="text" name="username" value="" id="pUsername" size="45"/>
-									</div>
-								</div>
-							</div>
-						</div>						
-						<div class="tier-3-a">
-							<div class="tier-3-b">
-								<div class="config">
-									<div class="config-name">
-										<span class="ui-icon ui-icon-help" style="cursor:help;" {EMAILTT} onmouseout="return nd();"></span>
-									<label for="username">{EMAIL}</label>
-									</div>
-									<div class="config-input">
-										<input type="text" name="email" value="" id="email" size="60"/>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="tier-3-a">
-							<div class="tier-3-b">
-								<div class="config">
-									<div class="config-name">
-										<span class="ui-icon ui-icon-help" style="cursor:help;" data-tooltip="text-choose your password DONOT use your wow password">
-										</span>
-									<label for="username"><!-- TRANSLATE password --></label>
-									</div>
-									<div class="config-input">
-										<input type="password" name="password1" value="" id="password1" size="30"/>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="tier-3-a">
-							<div class="tier-3-b">
-								<div class="config">
-									<div class="config-name">
-										<span class="ui-icon ui-icon-help" style="cursor:help;" data-tooltip="text-confirm your password above"></span>
-									<label for="username"><!-- TRANSLATE new_pass_confirm --></label>
-									</div>
-									<div class="config-input">
-										<input type="password" name="password2" value="" id="password2" size="30"/>
-									</div>
-								</div>
-							</div>
-						</div>
-						<input type="hidden" name="op" value="register" id="op" />
-						<input type="hidden" name="active" value="{CHAR_AUTH}" id="active" />
-						<input type="submit" name="submit" class="button" id="xsubmit" value="Register" />
-
-					</div>
-				</div>
+<div class="input-container" id="login-wrapper" style="margin: 0 auto;width: 350px;">
+	<form action="" method="post" id="reg-form" class="input-focus" autocomplete="off">
+		<div class="control-group">
+			<div class="controls">
+			<input aria-labelledby="accountName-label" id="username" value="" name="username" title="Username" maxlength="320" type="text" tabindex="1" class="input-block" placeholder="Username" autofocus="autofocus" />
 			</div>
 		</div>
-	</div>
+		<div class="control-group">
+			<div class="controls">
+			<input aria-labelledby="accountName-label" id="email1" value="" name="email1" title="email1" type="text" tabindex="1" class="input-block" placeholder="E-mail address" autofocus="autofocus" />
+			</div>
+		</div>
+		<div class="control-group">
+			<div class="controls">
+			<input aria-labelledby="accountName-label" id="email2" value="" name="email2" title="email2" type="text" tabindex="1" class="input-block" placeholder="Confirm E-mail address" autofocus="autofocus" />
+			</div>
+		</div>
+		<div class="control-group">
+			<div class="controls">
+			<input aria-labelledby="password-label" id="password1" value="" name="password1" title="Enter your Password" maxlength="32" type="password" tabindex="1" class="input-block" autocomplete="off" placeholder="Enter a Password" />
+			</div>
+		</div>
+		<div class="control-group">
+			<div class="controls">
+			<input aria-labelledby="password-label" id="password2" value="" name="password2" title="Confirm your Password" maxlength="32" type="password" tabindex="1" class="input-block" autocomplete="off" placeholder="Enter it again" />
+			</div>
+		</div>
+		<div class="control-group">
+			<button type="submit" id="submit" class="btn btn-primary btn-block" data-loading-text="" tabindex="1">
+			Sign Up
+			<i class="spinner-battlenet"></i>
+			</button>
+		</div>
+		<input type="hidden" name="op" value="register" id="op" />
+	</form>
 </div>
-</form>
+				
