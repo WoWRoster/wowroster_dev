@@ -12,9 +12,9 @@
  * @subpackage Locale
  */
 
-$lang['guildinfo'] = 'Informaci贸n de la hermandad';
-$lang['guildinfo_desc'] = 'Muestra el texto de informaci贸n de la hermandad';
-$lang['ginfobutton'] = 'Informaci贸n de la hermandad|Muestra el texto de informaci贸n de la hermandad';
+$lang['guildinfo'] = 'Informaci髇 de la hermandad';
+$lang['guildinfo_desc'] = 'Muestra el texto de informaci髇 de la hermandad';
+$lang['ginfobutton'] = 'Informaci髇 de la hermandad|Muestra el texto de informaci髇 de la hermandad';
 
 $lang['TXP']				= 'Top 10 Total XP';
 $lang['WXP']				= 'Top 10 Weekly XP';

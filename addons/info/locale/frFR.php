@@ -14,29 +14,29 @@
 */
 
 $lang['char_info'] = 'Informations des personnages';
-$lang['char_info_desc'] = 'Affiche les informations relatives aux personnages qui ont Ã©tÃ© tÃ©lÃ©chargÃ©es sur le roster';
+$lang['char_info_desc'] = 'Affiche les informations relatives aux personnages qui ont été téléchargées sur le roster';
 
 // Menu Buttons
-$lang['cb_character'] = 'Personnage|Affichage des statistiques, Ã©quipements, rÃ©putations, talents, informations JcJ du personnage';
+$lang['cb_character'] = 'Personnage|Affichage des statistiques, équipements, réputations, talents, informations JcJ du personnage';
 $lang['cb_talents'] = 'Talents|Affichage de l\'arbre de talents actuel';
-$lang['cb_spellbook'] = 'Livre de sorts|Affichage des sorts, actions et capacitÃ©s passives disponibles';
-$lang['cb_mailbox'] = 'BoÃ®te aux lettres|Affichage du contenu de la boÃ®te aux lettres';
+$lang['cb_spellbook'] = 'Livre de sorts|Affichage des sorts, actions et capacités passives disponibles';
+$lang['cb_mailbox'] = 'Boîte aux lettres|Affichage du contenu de la boîte aux lettres';
 $lang['cb_bags'] = 'Sacs|Affichage du contenu des sacs du personnage';
 $lang['cb_bank'] = 'Banque|Affichage du contenu de la banque du personnage';
-$lang['cb_quests'] = 'QuÃªtes|Affichage de la liste des quÃªtes en cours du personnage';
+$lang['cb_quests'] = 'Quêtes|Affichage de la liste des quêtes en cours du personnage';
 $lang['cb_recipes'] = 'Recettes|Affichage des objets que le personnage sait confectionner';
 $lang['cb_inventory'] = 'Inventory|Shows the current inventory of the players bank and bags';
 
 $lang['char_stats'] = 'Statisques du personnage : %1$s';
 $lang['talents'] = 'Talents';
 $lang['talent_specialization'] = 'Talent Specialization';
-$lang['unusedtalentpoints']='Points de talent non utilisÃ©s';
+$lang['unusedtalentpoints']='Points de talent non utilisés';
 $lang['hybrid']='Hybrid';
 
 $lang['pets']='Pets';
 $lang['companions']='Companions';
 $lang['mounts']='Mounts';
-$lang['unusedtrainingpoints']='Points de formation non utilisÃ©s';
+$lang['unusedtrainingpoints']='Points de formation non utilisés';
 
 // Spellbook
 $lang['spellbook'] = 'Grimoire';
@@ -46,32 +46,32 @@ $lang['no_spellbook'] = 'Pas de grimoire pour %1$s';
 $lang['currency'] = 'Currency';
 
 // Mailbox
-$lang['mailbox'] = 'BoÃ®te aux lettres';
-$lang['maildateutc'] = 'Messages CapturÃ©s';
+$lang['mailbox'] = 'Boîte aux lettres';
+$lang['maildateutc'] = 'Messages Capturés';
 $lang['mail_item'] = 'Objet';
-$lang['mail_sender'] = 'ExpÃ©diteur';
+$lang['mail_sender'] = 'Expéditeur';
 $lang['mail_subject'] = 'Sujet';
-$lang['mail_expires'] = 'Messages expirÃ©s';
+$lang['mail_expires'] = 'Messages expirés';
 $lang['mail_money'] = 'Argent Inclus';
 $lang['no_mail'] = 'Pas de courrier pour %1$s';
 
 // Quests
-$lang['no_quests'] = '%1$s n\'a pas de quÃªtes';
+$lang['no_quests'] = '%1$s n\'a pas de quêtes';
 
 //skills
 $lang['skilltypes'] = array(
-	1 => 'CompÃ©tences de Classe',
-	2 => 'MÃ©tiers',
-	3 => 'CompÃ©tences secondaires',
-	4 => 'CompÃ©tences dâ€™armes',
+	1 => 'Compétences de Classe',
+	2 => 'Métiers',
+	3 => 'Compétences secondaires',
+	4 => 'Compétences d’armes',
 	5 => 'Armures portables',
 	6 => 'Langues'
 );
 
 // item slots, for missing items on characters
-$lang['Head']          = 'TÃªte';
+$lang['Head']          = 'Tête';
 $lang['Neck']          = 'Cou';
-$lang['Shoulder']      = 'Ã‰paules';
+$lang['Shoulder']      = 'Épaules';
 $lang['Back']          = 'Dos';
 $lang['Chest']         = 'Torse';
 $lang['Shirt']         = 'Chemise';
@@ -79,7 +79,7 @@ $lang['Tabard']        = 'Tabard';
 $lang['Wrist']         = 'Poignets';
 $lang['MainHand']      = 'Main droite';
 $lang['SecondaryHand'] = 'Main gauche';
-$lang['Ranged']        = 'Ã€ distance';
+$lang['Ranged']        = 'À distance';
 $lang['Ammo']          = 'Munitions';
 $lang['Hands']         = 'Mains';
 $lang['Waist']         = 'Taille';
@@ -93,55 +93,55 @@ $lang['Trinket1']      = 'Bijou 1';
 //tabs
 $lang['profile']='Profile';
 $lang['model_viewer']='Model Viewer';
-$lang['reputation']='RÃ©putation';
-$lang['skills']='CompÃ©tences';
+$lang['reputation']='Réputation';
+$lang['skills']='Compétences';
 $lang['pvp']='JcJ';
 
-$lang['strength_tooltip']='Augmente la puissance d\'attaque avec arme de mÃªlÃ©e.<br />Augmente le nombre de points de dÃ©gÃ¢ts bloquÃ©s par le bouclier.';
-$lang['agility_tooltip']= 'Augmente votre puissance d\'attaque avec arme de jet.<br />AmÃ©liore vos chances de rÃ©aliser une attaque critique avec toutes les armes.<br />Augmente votre armure et votre chance d\'esquiver les attaques.';
+$lang['strength_tooltip']='Augmente la puissance d\'attaque avec arme de mêlée.<br />Augmente le nombre de points de dégâts bloqués par le bouclier.';
+$lang['agility_tooltip']= 'Augmente votre puissance d\'attaque avec arme de jet.<br />Améliore vos chances de réaliser une attaque critique avec toutes les armes.<br />Augmente votre armure et votre chance d\'esquiver les attaques.';
 $lang['stamina_tooltip']= 'Augmente vos points de vie.';
-$lang['intellect_tooltip']= 'Augmente vos points de mana et vos chances de rÃ©aliser une attaque critique aux moyens de sorts.<br />Augmente la vitesse d\'apprentissage des compÃ©tences en arme.';
-$lang['spirit_tooltip']= 'Augmente la vitesse de rÃ©gÃ©nÃ©ration de vos points de vie et de mana.';
+$lang['intellect_tooltip']= 'Augmente vos points de mana et vos chances de réaliser une attaque critique aux moyens de sorts.<br />Augmente la vitesse d\'apprentissage des compétences en arme.';
+$lang['spirit_tooltip']= 'Augmente la vitesse de régénération de vos points de vie et de mana.';
 $lang['armor_tooltip']= 'Reduces physical damage taken by %1$s%%';
 
 $lang['mainhand']='Main Hand';
 $lang['offhand']='Off Hand';
-$lang['ranged']='Ã€ distance';
-$lang['melee']='En mÃªlÃ©e';
-$lang['spell']='SortilÃ¨ges';
+$lang['ranged']='À distance';
+$lang['melee']='En mêlée';
+$lang['spell']='Sortilèges';
 
-$lang['weapon_skill']='CompÃ©tence';
-$lang['weapon_skill_tooltip']='<span style="float:right;color:#fff;">%1$d</span>CompÃ©tence d\'arme<br /><span style="float:right;color:#fff;">%2$d</span>Niveau de la compÃ©tence d\'arme';
-$lang['damage']='DÃ©gÃ¢ts';
-$lang['damage_tooltip']='<span style="float:right;color:#fff;">%.2f</span>Vitesse d\'attaque (secondes) :<br /><span style="float:right;color:#fff;">%d-%d</span>DÃ©gÃ¢ts :<br /><span style="float:right;color:#fff;">%.1f</span>DÃ©gÃ¢ts par seconde :<br />';
+$lang['weapon_skill']='Compétence';
+$lang['weapon_skill_tooltip']='<span style="float:right;color:#fff;">%1$d</span>Compétence d\'arme<br /><span style="float:right;color:#fff;">%2$d</span>Niveau de la compétence d\'arme';
+$lang['damage']='Dégâts';
+$lang['damage_tooltip']='<span style="float:right;color:#fff;">%.2f</span>Vitesse d\'attaque (secondes) :<br /><span style="float:right;color:#fff;">%d-%d</span>Dégâts :<br /><span style="float:right;color:#fff;">%.1f</span>Dégâts par seconde :<br />';
 $lang['speed']='Vitesse';
 $lang['atk_speed']='Vitesse d\'attaque';
 $lang['haste_tooltip']='Haste Rating ';
 
-$lang['melee_att_power']='Puissance d\'attaque en mÃªlÃ©e';
-$lang['melee_att_power_tooltip']='Augmente les points de dÃ©gÃ¢ts infligÃ©s avec des armes de mÃªlÃ©e de %.1f points de dÃ©gÃ¢ts par seconde.';
-$lang['ranged_att_power']='Puissance d\'attaque Ã  distance';
-$lang['ranged_att_power_tooltip']='Augmente les pÃ´ints de dÃ©gÃ¢ts infligÃ©s avec des armes Ã  distance de %.1f points de dÃ©gÃ¢ts par seconde.';
+$lang['melee_att_power']='Puissance d\'attaque en mêlée';
+$lang['melee_att_power_tooltip']='Augmente les points de dégâts infligés avec des armes de mêlée de %.1f points de dégâts par seconde.';
+$lang['ranged_att_power']='Puissance d\'attaque à distance';
+$lang['ranged_att_power_tooltip']='Augmente les pôints de dégâts infligés avec des armes à distance de %.1f points de dégâts par seconde.';
 
 $lang['weapon_hit_rating']='Sc. toucher';
 $lang['weapon_hit_rating_tooltip']='Augmente vos chances de toucher votre adversaire.';
 $lang['weapon_expertise']='Expertise';
-$lang['weapon_expertise_tooltip']='RÃ©duit les chances de voter adversaire d\'esquiver ou de parer.';
+$lang['weapon_expertise_tooltip']='Réduit les chances de voter adversaire d\'esquiver ou de parer.';
 $lang['weapon_crit_rating']='Critiques';
 $lang['weapon_crit_rating_tooltip']='Chance de coup critique de %.2f%%.';
 
-$lang['damage']='DÃ©gÃ¢ts';
+$lang['damage']='Dégâts';
 $lang['energy']='Energie';
 $lang['rage']='Rage';
 $lang['power']='Puissance';
 
-$lang['melee_rating']='Rang de l\'Attaque en MÃªlÃ©e';
-$lang['melee_rating_tooltip']='Votre rang d\'attaque influence vos chances de toucher une cible.<br />Et est basÃ© sur votre habilitÃ© Ã  utiliser l\'arme que vous portez.';
-$lang['range_rating']='Rang de l\'Attaque Ã  Distance';
-$lang['range_rating_tooltip']='Votre rang d\'attaque influence vos chances de toucher une cible.<br />Et est basÃ© sur votre habilitÃ© Ã  utiliser l\'arme que vous manipulez.';
+$lang['melee_rating']='Rang de l\'Attaque en Mêlée';
+$lang['melee_rating_tooltip']='Votre rang d\'attaque influence vos chances de toucher une cible.<br />Et est basé sur votre habilité à utiliser l\'arme que vous portez.';
+$lang['range_rating']='Rang de l\'Attaque à Distance';
+$lang['range_rating_tooltip']='Votre rang d\'attaque influence vos chances de toucher une cible.<br />Et est basé sur votre habilité à utiliser l\'arme que vous manipulez.';
 
 $lang['spell_damage']='+Damage';
-$lang['holy']='SacrÃ©';
+$lang['holy']='Sacré';
 $lang['fire']='Feu';
 $lang['nature']='Nature';
 $lang['frost']='Givre';
@@ -161,30 +161,30 @@ $lang['mana_regen_tooltip']='%1$d mana regenerated every 5 seconds while not cas
 
 $lang['defense_rating']='Defense Rating ';
 $lang['def_tooltip']='Increases your chance to %s';
-$lang['resilience']='RÃ©silience';
+$lang['resilience']='Résilience';
 
 $lang['buffs'] = 'Buffs';
 $lang['resistances'] = 'Resistances';
 
-$lang['res_arcane']='RÃ©sistance aux arcanes';
-$lang['res_arcane_tooltip']='Augmente la capacitÃ© Ã  rÃ©sister aux attaques, sorts et techniques de type Arcane.';
-$lang['res_fire']='RÃ©sistance au feu';
-$lang['res_fire_tooltip']='Augmente la capacitÃ© Ã  rÃ©sister aux attaques, sorts et techniques de type Feu.';
-$lang['res_nature']='RÃ©sistance Ã  la nature';
-$lang['res_nature_tooltip']='Augmente la capacitÃ© Ã  rÃ©sister aux attaques, sorts et techniques de type Nature.';
-$lang['res_frost']='RÃ©sistance au givre';
-$lang['res_frost_tooltip']='Augmente la capacitÃ© Ã  rÃ©sister aux attaques, sorts et techniques de type Givre.';
-$lang['res_shadow']='RÃ©sistance Ã  l\'ombre';
-$lang['res_shadow_tooltip']='Augmente la capacitÃ© Ã  rÃ©sister aux attaques, sorts et techniques de type Ombre.';
+$lang['res_arcane']='Résistance aux arcanes';
+$lang['res_arcane_tooltip']='Augmente la capacité à résister aux attaques, sorts et techniques de type Arcane.';
+$lang['res_fire']='Résistance au feu';
+$lang['res_fire_tooltip']='Augmente la capacité à résister aux attaques, sorts et techniques de type Feu.';
+$lang['res_nature']='Résistance à la nature';
+$lang['res_nature_tooltip']='Augmente la capacité à résister aux attaques, sorts et techniques de type Nature.';
+$lang['res_frost']='Résistance au givre';
+$lang['res_frost_tooltip']='Augmente la capacité à résister aux attaques, sorts et techniques de type Givre.';
+$lang['res_shadow']='Résistance à l\'ombre';
+$lang['res_shadow_tooltip']='Augmente la capacité à résister aux attaques, sorts et techniques de type Ombre.';
 
-$lang['empty_equip']='Aucun Ã©quipement';
-$lang['pointsspent']='Points utilisÃ©s dans %1$s Talents';
+$lang['empty_equip']='Aucun équipement';
+$lang['pointsspent']='Points utilisés dans %1$s Talents';
 $lang['export_url']='http://eu.wowarmory.com/talent-calc.xml?locale=fr_fr&amp;cid=%1$s&amp;tal=%2$s';
 $lang['export_url2']='http://www.wowhead.com/talent#%1$s-%2$s';
 $lang['no_talents']='Aucun talent pour %1$s';
 
 // item_bonus locales //
-$lang['item_bonuses_full'] = 'Bonus dÃ»s Ã  l\'Ã©quipement';
+$lang['item_bonuses_full'] = 'Bonus dûs à l\'équipement';
 $lang['item_bonuses'] = 'Objets bonus';
 $lang['item_bonuses_preg_linesplits']='/(et|\/|&)/i';
 $lang['item_bonuses_preg_main']='/(?!\d*\s(sec|min))(-{0,1}\d*\.{0,1}\d+)/i';
@@ -279,36 +279,36 @@ $lang['item_bonuses_tabs'] = array(
 // item_bonus end //
 $lang['inactive'] = 'Inactif';
 
-$lang['admin']['char_conf'] = 'Page de Personnage|DÃ©finir ce qui est affichÃ© sur la page de personnage';
+$lang['admin']['char_conf'] = 'Page de Personnage|Définir ce qui est affiché sur la page de personnage';
 $lang['admin']['char_links'] = "Liens de la page de personnage|Afficher le lien rapide vers la page de personnage sur chaque page de personnage";
-$lang['admin']['recipe_disp'] = "Affichage des recettes|ContrÃ´le la faÃ§on dont la page des recettes est affichÃ©e Ã  son chargement<br />Les listes peuvent Ãªtre repliÃ©es ou ouvertes en cliquant sur l'en-tÃªte du tableau<br /><br />&quot;show&quot; laissera apparaÃ®tre les listes au chargement<br />&quot;collapse&quot; laissera les listes repliÃ©es";
+$lang['admin']['recipe_disp'] = "Affichage des recettes|Contrôle la façon dont la page des recettes est affichée à son chargement<br />Les listes peuvent être repliées ou ouvertes en cliquant sur l'en-tête du tableau<br /><br />&quot;show&quot; laissera apparaître les listes au chargement<br />&quot;collapse&quot; laissera les listes repliées";
 $lang['admin']['mail_disp'] = "Mail Display|Controls how the mail is displayed<br /><br />&quot;Table&quot; Shows the mail in a table view<br />&quot;Bag&quot; Shows each mail as a bag of items<br />&quot;Both&quot; Shows both";
-$lang['admin']['show_money'] = "Argent|Affichage de l'argent<br /><br />Le paramÃªtre est global et Ã©crase le paramÃªtre par personnage";
+$lang['admin']['show_money'] = "Argent|Affichage de l'argent<br /><br />Le paramêtre est global et écrase le paramêtre par personnage";
 $lang['admin']['show_played'] = "Time Played|Controls the display of Time Played and Time Level Played<br /><br />Setting is global and overrides per-user setting";
 $lang['admin']['show_model'] = "Model Viewer|Controls the display of Blizzard's Model Viewer<br /><br />Setting is global and overrides per-user setting";
-$lang['admin']['show_pets'] = "Familiers|Affichage des familiers<br /><br />Le paramÃªtre est global et Ã©crase le paramÃªtre par personnage";
-$lang['admin']['show_reputation'] = "RÃ©putation|Affichage des rÃ©putations<br /><br />Le paramÃªtre est global et Ã©crase le paramÃªtre par personnage";
-$lang['admin']['show_skills'] = "CompÃ©tences|Affichage des compÃ©tences<br /><br />Le paramÃªtre est global et Ã©crase le paramÃªtre par personnage";
-$lang['admin']['show_honor'] = "JcJ|Affichage du JcJ<br /><br />Le paramÃªtre est global et Ã©crase le paramÃªtre par personnage";
+$lang['admin']['show_pets'] = "Familiers|Affichage des familiers<br /><br />Le paramêtre est global et écrase le paramêtre par personnage";
+$lang['admin']['show_reputation'] = "Réputation|Affichage des réputations<br /><br />Le paramêtre est global et écrase le paramêtre par personnage";
+$lang['admin']['show_skills'] = "Compétences|Affichage des compétences<br /><br />Le paramêtre est global et écrase le paramêtre par personnage";
+$lang['admin']['show_honor'] = "JcJ|Affichage du JcJ<br /><br />Le paramêtre est global et écrase le paramêtre par personnage";
 $lang['admin']['show_currency'] = "Currency|Controls the display of the Currency Page<br /><br />Setting is global and overrides per-user setting";
-$lang['admin']['show_talents'] = "Talents|Affichage des talents<br /><br />Le paramÃªtre est global et Ã©crase le paramÃªtre par personnage";
+$lang['admin']['show_talents'] = "Talents|Affichage des talents<br /><br />Le paramêtre est global et écrase le paramêtre par personnage";
 $lang['admin']['show_glyphs'] = "Glyphs|Controls the display of Glpyhs<br /><br />Setting is global and overrides per-user setting";
-$lang['admin']['show_spellbook'] = "Grimoire|Affichage du grimoire<br /><br />Le paramÃªtre est global et Ã©crase le paramÃªtre par personnage";
-$lang['admin']['show_mail'] = "Courrier|Affichage du courrier<br /><br />Le paramÃªtre est global et Ã©crase le paramÃªtre par personnage";
-$lang['admin']['show_bags'] = "Sacs|Affichage des sacs<br /><br />Le paramÃªtre est global et Ã©crase le paramÃªtre par personnage";
-$lang['admin']['show_bank'] = "Banque|Affichage du contenu de la banque<br /><br />Le paramÃªtre est global et Ã©crase le paramÃªtre par personnage";
-$lang['admin']['show_recipes'] = "Recettes|Affichage des recettes<br /><br />Le paramÃªtre est global et Ã©crase le paramÃªtre par personnage";
-$lang['admin']['show_quests'] = "QuÃªtes|Affichage des quÃªtes<br /><br />Le paramÃªtre est global et Ã©crase le paramÃªtre par personnage";
-$lang['admin']['show_bg'] = "Champs de bataille|Affichage des donnÃ©es de champs de bataille<br />NÃ©cessite le tÃ©lÃ©chargement des donnÃ©es PvPLog<br /><br />Le paramÃªtre est global et Ã©crase le paramÃªtre par personnage";
-$lang['admin']['show_pvp'] = "Joueur contre joueur|Affichage des donnÃ©es joueur contre joueur<br />NÃ©cessite le tÃ©lÃ©chargement des donnÃ©es PvPLog<br /><br />Le paramÃªtre est global et Ã©crase le paramÃªtre par personnage";
-$lang['admin']['show_duels'] = "Duel|Affichage des donnÃ©es de duel<br />NÃ©cessite le tÃ©lÃ©chargement des donnÃ©es PvPLog<br /><br />Le paramÃªtre est global et Ã©crase le paramÃªtre par personnage";
-$lang['admin']['show_item_bonuses'] = "Bonus d'Ã©quipement|Affichage des bonus d'Ã©quipement<br /><br />Le paramÃªtre est global et Ã©crase le paramÃªtre par personnage";
+$lang['admin']['show_spellbook'] = "Grimoire|Affichage du grimoire<br /><br />Le paramêtre est global et écrase le paramêtre par personnage";
+$lang['admin']['show_mail'] = "Courrier|Affichage du courrier<br /><br />Le paramêtre est global et écrase le paramêtre par personnage";
+$lang['admin']['show_bags'] = "Sacs|Affichage des sacs<br /><br />Le paramêtre est global et écrase le paramêtre par personnage";
+$lang['admin']['show_bank'] = "Banque|Affichage du contenu de la banque<br /><br />Le paramêtre est global et écrase le paramêtre par personnage";
+$lang['admin']['show_recipes'] = "Recettes|Affichage des recettes<br /><br />Le paramêtre est global et écrase le paramêtre par personnage";
+$lang['admin']['show_quests'] = "Quêtes|Affichage des quêtes<br /><br />Le paramêtre est global et écrase le paramêtre par personnage";
+$lang['admin']['show_bg'] = "Champs de bataille|Affichage des données de champs de bataille<br />Nécessite le téléchargement des données PvPLog<br /><br />Le paramêtre est global et écrase le paramêtre par personnage";
+$lang['admin']['show_pvp'] = "Joueur contre joueur|Affichage des données joueur contre joueur<br />Nécessite le téléchargement des données PvPLog<br /><br />Le paramêtre est global et écrase le paramêtre par personnage";
+$lang['admin']['show_duels'] = "Duel|Affichage des données de duel<br />Nécessite le téléchargement des données PvPLog<br /><br />Le paramêtre est global et écrase le paramêtre par personnage";
+$lang['admin']['show_item_bonuses'] = "Bonus d'équipement|Affichage des bonus d'équipement<br /><br />Le paramêtre est global et écrase le paramêtre par personnage";
 $lang['admin']['show_pet_talents'] = "Pet Talents|Controls the display of Pet Talents<br /><br />Setting is global and overrides per-user setting";
 $lang['admin']['show_pet_spells'] = "Pet Spells|Controls the display of Pet Spells<br /><br />Setting is global and overrides per-user setting";
 $lang['admin']['show_companions'] = "Companions|Controls the display of Companions<br /><br />Setting is global and overrides per-user setting";
 $lang['admin']['show_mounts'] = "Mounts|Controls the display of Mounts<br /><br />Setting is global and overrides per-user setting";
 
-$lang['admin']['char_pref'] = 'PrÃ©fÃ©rences d\'affichage|DÃ©finir ce qui est affichÃ© sur la page de personnage pour chacun d\'eux';
+$lang['admin']['char_pref'] = 'Préférences d\'affichage|Définir ce qui est affiché sur la page de personnage pour chacun d\'eux';
 $lang['admin']['api_image'] = 'Character Image|save the Characters image on update for display on the profile';
-$lang['admin']['no_data'] = 'Aucune donnÃ©e';
+$lang['admin']['no_data'] = 'Aucune donnée';
 $lang['admin']['nothing_to_config'] = 'Nothing to configure<br />All Global settings are set to override per-character settings';

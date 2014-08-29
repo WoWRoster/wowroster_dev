@@ -11,11 +11,11 @@
  * @subpackage Locale
 */
 
-$lang['professions_desc'] = 'EnumÃ¨re les mÃ©tiers des membres de la guilde';
+$lang['professions_desc'] = 'Enumère les métiers des membres de la guilde';
 
-$lang['professions_menu'] = 'MÃ©tiers|Affiche la liste des mÃ©tiers de tous les membres';
+$lang['professions_menu'] = 'Métiers|Affiche la liste des métiers de tous les membres';
 
-$lang['admin']['professions_conf'] = 'MÃ©tiers|Configuration des options';
+$lang['admin']['professions_conf'] = 'Métiers|Configuration des options';
 
-$lang['admin']['show_new_skills'] = 'Montrer les mÃ©tiers rÃ©cents|Ceci active l\'affichage des mÃ©tiers Ã  1';
-$lang['admin']['collapse_list'] = 'Option d\'affichage de la liste des mÃ©tier|ContrÃ´le la faÃ§on dont les listes sont affichÃ©es au chargement de la page.<br />Les listes peuvent Ãªtre ouvertes ou fermÃ©es en cliquant sur l\'en-tÃªte du tableau :<br /><br /> &quot;Show&quot; ouvrira la liste au chargement de la page<br /> &quot;Hide&quot; la laissera fermÃ©e';
+$lang['admin']['show_new_skills'] = 'Montrer les métiers récents|Ceci active l\'affichage des métiers à 1';
+$lang['admin']['collapse_list'] = 'Option d\'affichage de la liste des métier|Contrôle la façon dont les listes sont affichées au chargement de la page.<br />Les listes peuvent être ouvertes ou fermées en cliquant sur l\'en-tête du tableau :<br /><br /> &quot;Show&quot; ouvrira la liste au chargement de la page<br /> &quot;Hide&quot; la laissera fermée';

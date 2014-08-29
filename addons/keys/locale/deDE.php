@@ -13,20 +13,20 @@
  * @subpackage Locale
 */
 
-$lang['keys'] = 'SchlÃ¼ssel';
-$lang['keys_desc'] = 'Listet die Azeroth InstanzschlÃ¼ssel der Gildenmitglieder auf';
-$lang['keybutton'] = 'SchlÃ¼ssel|Zeigt die Azeroth InstanzschlÃ¼ssel der Gildenmitglieder';
-$lang['menupanel_keypane'] = 'SchlÃ¼ssel';
+$lang['keys'] = 'Schlüssel';
+$lang['keys_desc'] = 'Listet die Azeroth Instanzschlüssel der Gildenmitglieder auf';
+$lang['keybutton'] = 'Schlüssel|Zeigt die Azeroth Instanzschlüssel der Gildenmitglieder';
+$lang['menupanel_keypane'] = 'Schlüssel';
 
 $lang['category'] = 'Kategorie';
-$lang['key_categories'] = 'SchlÃ¼sselkategorien';
-$lang['key_category_assignment'] = 'SchlÃ¼ssel Kategorie Zuordnungen';
+$lang['key_categories'] = 'Schlüsselkategorien';
+$lang['key_category_assignment'] = 'Schlüssel Kategorie Zuordnungen';
 
-$lang['admin']['keys_conf'] = 'Haupteinstellungen|Haupteinstellungen fÃ¼r InstanzschlÃ¼ssel';
-$lang['admin']['keys_cats'] = 'Kategorien|Definiere welche SchlÃ¼ssel in welchen Kategorien angezeigt werden';
-$lang['admin']['colorcmp'] = 'Vortschritt Farbe|Farbe der Fortschrittsanzeige fÃ¼r Quests/Teile Tooltip';
+$lang['admin']['keys_conf'] = 'Haupteinstellungen|Haupteinstellungen für Instanzschlüssel';
+$lang['admin']['keys_cats'] = 'Kategorien|Definiere welche Schlüssel in welchen Kategorien angezeigt werden';
+$lang['admin']['colorcmp'] = 'Vortschritt Farbe|Farbe der Fortschrittsanzeige für Quests/Teile Tooltip';
 $lang['admin']['colorcur'] = 'Stand Farbe|Farbe zur Anzeige des aktuellen Stands im Quests/Teile Tooltip';
-$lang['admin']['colorno'] = 'Nicht Abgeschlossen Farbe|Farbe fÃ¼r noch nicht abgeschlossene Schritte im Quest/Teile Tooltip';
+$lang['admin']['colorno'] = 'Nicht Abgeschlossen Farbe|Farbe für noch nicht abgeschlossene Schritte im Quest/Teile Tooltip';
 
 // language definitions for the rogue instance keys 'fix'
 $lang['thievestools']='Diebeswerkzeug';
@@ -37,12 +37,12 @@ $lang['Parts'] = 'Teile';
 $lang['key_status'] = '%1$s %2$s Status';
 
 $lang['rep2level'] = array(
-	'HasserfÃ¼llt' => -42000,
+	'Hasserfüllt' => -42000,
 	'Feindselig' => -6000,
 	'Unfreundlich' => -3000,
 	'Neutral' => 0,
 	'Freundlich' => 3000,
 	'Wohlwollend' => 9000,
 	'Respektvoll' => 21000,
-	'EhrfÃ¼rchtig' => 42000
+	'Ehrfürchtig' => 42000
 );

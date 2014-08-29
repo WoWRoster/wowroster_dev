@@ -29,8 +29,8 @@ $lang['admin']['colorcur'] = 'Color actual|Indica el color de la parte actual pa
 $lang['admin']['colorno'] = 'Color incompleto|Indica el color de las partes incompletas para conseguir la llave';
 
 // language definitions for the rogue instance keys 'fix'
-$lang['thievestools']='Herramientas de ladrÃ³n';
-$lang['lockpicking']='GanzÃºa';
+$lang['thievestools']='Herramientas de ladrón';
+$lang['lockpicking']='Ganzúa';
 
 $lang['Quests'] = 'Misiones';
 $lang['Parts'] = 'Partes';

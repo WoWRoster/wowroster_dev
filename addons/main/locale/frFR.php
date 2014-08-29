@@ -14,7 +14,7 @@
 
 // Installer names
 $lang['news']         = 'Articles';
-$lang['news_desc']    = 'Syst√®me de gestion d\'articles avec commentaires';
+$lang['news_desc']    = 'SystËme de gestion d\'articles avec commentaires';
 
 // Button names
 $lang['cms_button']   = 'Guild Portal|Post articles and other items of interest';
@@ -24,13 +24,13 @@ $lang['bad_news_id']  = 'Mauvais identifiant d\'article';
 
 $lang['add_news']     = 'Ajouter un article';
 $lang['enable_html']  = 'Activer HTML';
-$lang['disable_html'] = 'D√©sactiver HTML';
-$lang['posted_by']    = '√âcrit par';
-$lang['edit']         = '√âditer';
-$lang['edit_news']    = '√âditer l\'article';
+$lang['disable_html'] = 'DÈsactiver HTML';
+$lang['posted_by']    = '…crit par';
+$lang['edit']         = '…diter';
+$lang['edit_news']    = '…diter l\'article';
 $lang['comments']     = 'Commentaires';
 $lang['add_comment']  = 'Ajouter un commentaire';
-$lang['edit_comment'] = '√âditer un commentaire';
+$lang['edit_comment'] = '…diter un commentaire';
 $lang['n_comment']    = '%s commentaire';
 $lang['n_comments']   = '%s commentaires';
 
@@ -48,28 +48,28 @@ $lang['b_add']    = 'Add Slider Image';
 $lang['b_upload'] = 'Upload a Slider Image';
 $lang['b_video'] = 'Video';
 
-$lang['news_edit_success']     = 'Article √©dit√© avec succ√®s';
-$lang['news_add_success']      = 'Article ajout√© avec succ√®s';
+$lang['news_edit_success']     = 'Article ÈditÈ avec succËs';
+$lang['news_add_success']      = 'Article ajoutÈ avec succËs';
 $lang['slider_add_success']    = 'Slider image %1$s added successfully';
 $lang['slider_error_db']       = 'There was a Database error while adding the slider image';
 $lang['slider_file_error']     = 'Your upload was not completed. Image [%1$s] could not be uploaded.';
-$lang['news_error_process']    = 'Il y a eu un probl√®me lors du traitement de l\'article';
+$lang['news_error_process']    = 'Il y a eu un problËme lors du traitement de l\'article';
 
-$lang['comment_edit_success']  = 'Commentaire √©dit√© avec succ√®s';
-$lang['comment_add_success']   = 'Commentaire ajout√© avec succ√®s';
-$lang['comment_error_process'] = 'Il y a eu un probl√®me lors du traitement de votre commentaire';
+$lang['comment_edit_success']  = 'Commentaire ÈditÈ avec succËs';
+$lang['comment_add_success']   = 'Commentaire ajoutÈ avec succËs';
+$lang['comment_error_process'] = 'Il y a eu un problËme lors du traitement de votre commentaire';
 
 // Config strings
 $lang['admin']['cmsmain_conf']          = 'Configuration des articles|Configuration de base pour les articles';
 $lang['admin']['cmsmain_slider']        = 'Slider|Image Slider configuration';
 $lang['admin']['cmsmain_slider_images'] = 'Slider Images';
 $lang['admin']['cmsmain_slider_add']    = 'Add Images';
-$lang['admin']['news_add']              = 'Ajouter des articles|Accr√©ditation minimale pour pouvoir ajouter un article.';
-$lang['admin']['news_edit']             = '√âditer des articles|Accr√©ditation minimale pour pouvoir √©diter un article.';
-$lang['admin']['comm_add']              = 'Ajouter des commentaires|Accr√©ditation minimale pour pouvoir ajouter un commentaire.';
-$lang['admin']['comm_edit']             = '√âditer des commentaires|Accr√©ditation minimale pour pouvoir √©diter un commentaire.';
-$lang['admin']['news_html']             = 'HTML dans l\'article|Pour autoriser ou interdire par d√©faut l\'usage du HTML dans les articles.<br />N\'affecte pas les articles d√©j√† existants.';
-$lang['admin']['comm_html']             = 'HTML dans le commentaire|Pour autoriser ou interdire par d√©faut l\'usage du HTML dans les commentaires.<br />N\'affecte pas les commentaires d√©j√† existants.';
+$lang['admin']['news_add']              = 'Ajouter des articles|AccrÈditation minimale pour pouvoir ajouter un article.';
+$lang['admin']['news_edit']             = '…diter des articles|AccrÈditation minimale pour pouvoir Èditer un article.';
+$lang['admin']['comm_add']              = 'Ajouter des commentaires|AccrÈditation minimale pour pouvoir ajouter un commentaire.';
+$lang['admin']['comm_edit']             = '…diter des commentaires|AccrÈditation minimale pour pouvoir Èditer un commentaire.';
+$lang['admin']['news_html']             = 'HTML dans l\'article|Pour autoriser ou interdire par dÈfaut l\'usage du HTML dans les articles.<br />N\'affecte pas les articles dÈj‡ existants.';
+$lang['admin']['comm_html']             = 'HTML dans le commentaire|Pour autoriser ou interdire par dÈfaut l\'usage du HTML dans les commentaires.<br />N\'affecte pas les commentaires dÈj‡ existants.';
 $lang['admin']['news_nicedit']          = 'Nicedit text Box|Whether to enable or disable the Nicedit text box.';
 
 // Slider options

@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Dev.PKComp.net WoWRoster Addon
  *

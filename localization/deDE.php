@@ -1,4 +1,4 @@
-ï»¿<?php
+<?php
 /**
  * WoWRoster.net WoWRoster
  *
@@ -21,15 +21,15 @@ $lang['langname'] = 'German';
 $lang['update_link']='Hier klicken um zur Aktualisierungsanleitung zu gelangen';
 $lang['update_instructions']='Anleitung zur Aktualisierung';
 
-$lang['lualocation']='WÃ¤hle deine *.lua Datei fÃ¼r den Upload aus';
+$lang['lualocation']='Wähle deine *.lua Datei für den Upload aus';
 
 $lang['filelocation']='zu finden unter<br /><i>*WOWDIR*</i>\\\\WTF\\\\Account\\\\<i>*ACCOUNT_NAME*</i>\\\\SavedVariables';
 
 $lang['nodata']='Konnte Gilde <b>\'%1$s\'</b> auf dem Server <b>\'%2$s\'</b> nicht finden.<br />Du musst erst einmal die <a href="%3$s">Gildendaten hochladen</a> oder die <a href="%4$s">Konfiguration beenden</a>.<br /><br /><a href="http://www.wowroster.net/MediaWiki/Roster:Install" target="_blank">Klicke hier um zur Installationsanleitung zu gelangen</a>';
 $lang['no_char_in_db']='Das Mitglied <b>\'%1$s\'</b> ist nicht in der Datenbank';
 $lang['no_default_guild']='Es wurde bisher keine Standardgilde gesetzt. Bitte hier eine angeben.';
-$lang['not_valid_anchor']='Der Anker(a=) Parameter ist ungÃ¼ltig oder falsch.';
-$lang['nodefguild']='Es wurde bisher keine Standardgilde gesetzt. Bitte versichere dich, dass die <a href="%1$s">Konfiguration abgeschlossen wurde</a><br /><br /><a href="http://www.wowroster.net/MediaWiki/Roster:Install" target="_blank">FÃ¼r Installationsanleitung hier klicken</a>';
+$lang['not_valid_anchor']='Der Anker(a=) Parameter ist ungültig oder falsch.';
+$lang['nodefguild']='Es wurde bisher keine Standardgilde gesetzt. Bitte versichere dich, dass die <a href="%1$s">Konfiguration abgeschlossen wurde</a><br /><br /><a href="http://www.wowroster.net/MediaWiki/Roster:Install" target="_blank">Für Installationsanleitung hier klicken</a>';
 $lang['nodata_title']='Keine Gildendaten vorhanden';
 
 $lang['update_page']='Gildenmitglied aktualisieren';
@@ -41,79 +41,79 @@ $lang['update_disabled']='Update.php Zugriff deaktiviert.';
 
 $lang['nofileUploaded']='UniUploader hat keine oder die falschen Dateien hochgeladen.';
 $lang['roster_upd_pwLabel']='Roster Update Passwort';
-$lang['roster_upd_pw_help']='Manche .lua-Dateien benÃ¶tigen vielleicht ein Passwort';
+$lang['roster_upd_pw_help']='Manche .lua-Dateien benötigen vielleicht ein Passwort';
 
 
 $lang['roster_error'] = 'Roster Fehler';
 $lang['sql_queries'] = 'SQL Abfragen';
-$lang['invalid_char_module'] = 'UngÃ¼ltige Zeichen im Modulnamen';
+$lang['invalid_char_module'] = 'Ungültige Zeichen im Modulnamen';
 $lang['module_not_exist'] = 'Das Modul [%1$s] existiert nicht';
 
 $lang['addon_error'] = 'Addon Fehler';
 $lang['specify_addon'] = 'Du musste einen Addonnamen angeben!';
 $lang['addon_not_exist'] = '<b>Das Addon [%1$s] existiert nicht!</b>';
 $lang['addon_disabled'] = '<b>Das Addon [%1$s] wurde deaktiviert</b>';
-$lang['addon_no_access'] = '<b>UngenÃ¼gende Rechte um auf [%1$s] zuzugreifen.</b>';
+$lang['addon_no_access'] = '<b>Ungenügende Rechte um auf [%1$s] zuzugreifen.</b>';
 $lang['addon_upgrade_notice'] = '<b>Das Addon [%1$s] wurde deaktiviert, da es aktualisiert werden muss</b>';
 $lang['addon_not_installed'] = '<b>Das Addon [%1$s] wurde bis jetzt noch nicht installiert</b>';
 $lang['addon_no_config'] = '<b>Das Addon [%1$s] wurde noch nicht konfiguriert</b>';
 
 $lang['char_error'] = 'Charakterfehler';
 $lang['specify_char'] = 'Charakter wurde nicht spezifiziert';
-$lang['no_char_id'] = 'Entschuldige, keine Charakterdaten fÃ¼r member_id [ %1$s ]';
-$lang['no_char_name'] = 'Sorry keine Charakterdaten fÃ¼r <strong>%1$s</strong> von <strong>%2$s</strong>';
+$lang['no_char_id'] = 'Entschuldige, keine Charakterdaten für member_id [ %1$s ]';
+$lang['no_char_name'] = 'Sorry keine Charakterdaten für <strong>%1$s</strong> von <strong>%2$s</strong>';
 
 $lang['roster_cp'] = 'Roster Konfigurationsbereich';
 $lang['roster_cp_ab'] = 'RosterCP';
 $lang['roster_cp_not_exist'] = 'Seite [%1$s] existiert nicht';
-$lang['roster_cp_invalid'] = 'UngÃ¼ltige Seite angegeben oder ungÃ¼ltige Berechtigung um diese Seite aufzurufen';
+$lang['roster_cp_invalid'] = 'Ungültige Seite angegeben oder ungültige Berechtigung um diese Seite aufzurufen';
 $lang['access_level'] = 'Zugriffslevel';
 
 $lang['parsing_files'] = 'Analysiere Dateien';
 $lang['parsed_time'] = '%1$s analysiert in %2$s Sekunden';
-$lang['error_parsed_time'] = 'Fehler wÃ¤hrend Analyse von %1$s nach %2$s Sekunden';
+$lang['error_parsed_time'] = 'Fehler während Analyse von %1$s nach %2$s Sekunden';
 $lang['upload_not_accept'] = 'Es ist nicht erlaubt %1$s hochzuladen';
 
 $lang['processing_files'] = 'Verarbeite Dateien';
 $lang['error_addon'] = 'Es gab einen Fehler im Addon %1$s in der Methode %2$s';
 $lang['addon_messages'] = 'Addon Nachrichten:';
 
-$lang['not_accepted'] = '%1$s %2$s @ %3$s-%4$s nicht akzeptiert. Die Daten stimmen nicht mit den Upload Regeln Ã¼berein.';
+$lang['not_accepted'] = '%1$s %2$s @ %3$s-%4$s nicht akzeptiert. Die Daten stimmen nicht mit den Upload Regeln überein.';
 
-$lang['not_updating'] = 'Keine Aktualisierung %1$s fÃ¼r [%2$s] - %3$s';
-$lang['not_update_guild'] = 'Keine Aktualisierung der Gildenliste fÃ¼r %1$s@%3$s-%2$s';
-$lang['not_update_guild_time'] = 'Keine Aktualisierung der Gildenliste fÃ¼r %1$s. Die hochgeladenen Gildendaten wurden am %2$s gescannt, die gespeichert Gildendaten sind vom %3$s';
+$lang['not_updating'] = 'Keine Aktualisierung %1$s für [%2$s] - %3$s';
+$lang['not_update_guild'] = 'Keine Aktualisierung der Gildenliste für %1$s@%3$s-%2$s';
+$lang['not_update_guild_time'] = 'Keine Aktualisierung der Gildenliste für %1$s. Die hochgeladenen Gildendaten wurden am %2$s gescannt, die gespeichert Gildendaten sind vom %3$s';
 $lang['not_update_char_time'] = 'Keine Aktualisierung des Charakters %1$s. Profildaten wurde am %2$s gescannt, die gespeicherten Profildaten sind vom %3$s';
 $lang['no_members'] = 'Daten enthalten keine Gildemmitglieder';
-$lang['upload_data'] = 'Aktualisiere %1$s Daten fÃ¼r [%2$s@%4$s-%3$s]';
-$lang['realm_ignored'] = 'Realm: %1$s nicht Ã¼berprÃ¼ft';
-$lang['guild_realm_ignored'] = 'Gilde: %1$s @ Realm: %2$s nicht Ã¼berprÃ¼ft';
+$lang['upload_data'] = 'Aktualisiere %1$s Daten für [%2$s@%4$s-%3$s]';
+$lang['realm_ignored'] = 'Realm: %1$s nicht überprüft';
+$lang['guild_realm_ignored'] = 'Gilde: %1$s @ Realm: %2$s nicht überprüft';
 $lang['update_members'] = 'Aktualisiere Mitglieder';
 $lang['update_errors'] = 'Aktualisierungsfehler';
 $lang['update_log'] = 'Update Log';
-$lang['select_files'] = 'Bitte Dateien wÃ¤hlen';
+$lang['select_files'] = 'Bitte Dateien wählen';
 $lang['save_error_log'] = 'Speichere Fehler Log';
 $lang['save_update_log'] = 'Speichere Update Log';
 
-$lang['new_version_available'] = 'Eine neue Version von %1$s ist verfÃ¼gbar v%2$s<br />Released: %3$s<br />Download <a href="%4$s" target="_blank">HIER</a>';
+$lang['new_version_available'] = 'Eine neue Version von %1$s ist verfügbar v%2$s<br />Released: %3$s<br />Download <a href="%4$s" target="_blank">HIER</a>';
 
 $lang['remove_install_files'] = 'Entferne Installationsdateien';
 $lang['remove_install_files_text'] = 'Bitte entferne <span class="redB">install.php</span> im Roster Verzeichnis';
 
 $lang['upgrade_wowroster'] = 'Upgrade WoWRoster';
 $lang['upgrade'] = 'Upgrade';
-$lang['select_version'] = 'WÃ¤hle Version';
-$lang['no_upgrade'] = 'Du hast den Roster bereits aktualisiert<br />oder du hast eine aktuellere Version als dieses Upgrade<br /><a class="input" href="%1$s">ZurÃ¼ck zum WoWRoster</a>';
-$lang['upgrade_complete'] = 'Deine WoWRoster-Installation wurde erfolgreich aktualisiert<br /><a class="input" href="%1$s">ZurÃ¼ck zum WoWRoster</a>';
+$lang['select_version'] = 'Wähle Version';
+$lang['no_upgrade'] = 'Du hast den Roster bereits aktualisiert<br />oder du hast eine aktuellere Version als dieses Upgrade<br /><a class="input" href="%1$s">Zurück zum WoWRoster</a>';
+$lang['upgrade_complete'] = 'Deine WoWRoster-Installation wurde erfolgreich aktualisiert<br /><a class="input" href="%1$s">Zurück zum WoWRoster</a>';
 
 // Menu buttons
-$lang['menu_header_scope_panel'] = '%s MenÃ¼';
+$lang['menu_header_scope_panel'] = '%s Menü';
 
 $lang['menu_totals'] = 'Gesamt: %1$s (+%2$s Alts)';
 $lang['menu_totals_level'] = ' min. L%1$s';
 
 // Updating Instructions
-$lang['index_text_uniloader'] = '(Du kannst dieses Programm von der WoW-Roster-Webseite herunterladen, schaue nach dem "UniUploader Installer" fÃ¼r die aktuellste Version)';
+$lang['index_text_uniloader'] = '(Du kannst dieses Programm von der WoW-Roster-Webseite herunterladen, schaue nach dem "UniUploader Installer" für die aktuellste Version)';
 
 $lang['update_instruct']='
 <strong>Empfehlung zur automatischen Aktualisierung:</strong>
@@ -126,7 +126,7 @@ $lang['update_instruct']='
 <li>Lade den <a href="%3$s" target="_blank">WoWRoster-Profiler</a> herunter</li>
 <li>Extrahiere die Zip-Datei in ein eigenes Verzeichnis unter C:\Programme\World of Warcraft\Interface\Addons\wowroster\ (oder an dem Ort wo dein World of Warcraft installiert ist)</li>
 <li>Starte WoW</li>
-<li>Ã–ffne einmal dein Bankschliessfach, deine RucksÃ¤cke, deine Berufsseiten und deine Charakter-Ãœbersicht</li>
+<li>Öffne einmal dein Bankschliessfach, deine Rucksäcke, deine Berufsseiten und deine Charakter-Übersicht</li>
 <li>Logge aus oder beende WoW (Siehe oben, falls das der UniUploader automatisch erledigen soll.)</li>
 <li>Gehe zur <a href="%4$s">Update-Seite</a></li>
 <li>%5$s</li>
@@ -138,7 +138,7 @@ $lang['update_instructpvp']='
 <li>Lade <a href="%1$s" target="_blank">PvPLog</a> herunter</li>
 <li>Auch in ein eigenes Addon-Verzeichnis entpacken</li>
 <li>Mache ein paar Duelle oder PvP-Kills</li>
-<li>Lade "PvPLog.lua" Ã¼ber die Update-Seite hoch</li>
+<li>Lade "PvPLog.lua" über die Update-Seite hoch</li>
 </ol>';
 
 $lang['roster_credits']='WoWRoster Home - <a href="http://www.wowroster.net" target="_blank">www.wowroster.net</a>';
@@ -176,7 +176,7 @@ $lang['util']='Einstellungen';
 $lang['char']='Charakter';
 $lang['equipment']='Equipment';
 $lang['upload']='Upload';
-$lang['required']='BenÃ¶tigt';
+$lang['required']='Benötigt';
 $lang['optional']='Optional';
 $lang['attack']='Attacke';
 $lang['defense']='Verteidigung';
@@ -191,7 +191,7 @@ $lang['name']='Name';
 $lang['health']='Gesundheit';
 $lang['mana']='Mana';
 $lang['gold']='Gold';
-$lang['armor']='RÃ¼stung';
+$lang['armor']='Rüstung';
 $lang['lastonline']='Zuletzt Online';
 $lang['online']='Online';
 $lang['lastupdate']='Zuletzt aktualisiert';
@@ -215,32 +215,32 @@ $lang['menuhonor']='Ehre';
 $lang['basename']='Basisname';
 $lang['scope']='Bereich';
 $lang['tag']='Tag';
-$lang['daily']='TÃ¤glich';
+$lang['daily']='Täglich';
 $lang['user'] = 'Benutzer';
 
 // Item Quality
-$lang['quality']='QualitÃ¤t';
+$lang['quality']='Qualität';
 $lang['poor']='Schlecht';
-$lang['common']='GewÃ¶hnlich';
-$lang['uncommon']='UngewÃ¶hnlich';
+$lang['common']='Gewöhnlich';
+$lang['uncommon']='Ungewöhnlich';
 $lang['rare']='Rar';
 $lang['epic']='Episch';
-$lang['legendary']='LegendÃ¤r';
+$lang['legendary']='Legendär';
 $lang['artifact']='Artefakt';
-$lang['heirloom']='ErbstÃ¼ck';
+$lang['heirloom']='Erbstück';
 
 //start search engine
 $lang['search']='Suche';
 $lang['search_roster']='Suche im Roster';
 $lang['search_onlyin']='Suche nur in diesen AddOns';
-$lang['search_advancedoptionsfor']='Erweiterte Options fÃ¼r';
-$lang['search_results']='Suche Ergebnisse fÃ¼r';
+$lang['search_advancedoptionsfor']='Erweiterte Options für';
+$lang['search_results']='Suche Ergebnisse für';
 $lang['search_results_from']='Hier sind deine Suchergebnisse';
 $lang['search_nomatches']='Sorry, die Suche hat keine Treffer gefunden';
 $lang['search_didnotfind']='Du hast nicht gefunden, was du gesucht hast?? Versuch\'s hier!';
 $lang['search_for']='Suche Roster';
-$lang['search_next_matches'] = 'NÃ¤chste Ergebnisse fÃ¼r';
-$lang['search_previous_matches'] = 'Vorherige Ergebnisse fÃ¼r';
+$lang['search_next_matches'] = 'Nächste Ergebnisse für';
+$lang['search_previous_matches'] = 'Vorherige Ergebnisse für';
 $lang['search_results_count'] = 'Ergebnisse';
 $lang['submited_author'] = 'Verfasst von:';
 $lang['submited_date'] = 'Am';
@@ -250,10 +250,10 @@ $lang['credit']='Credits';
 $lang['who_made']='Wer entwickelte und programmierte den WoWRoster';
 $lang['members']='Mitglieder';
 $lang['member_profiles']='Mitglieder Profile';
-$lang['items']='GegenstÃ¤nde';
+$lang['items']='Gegenstände';
 $lang['find']='Suche nach';
 $lang['upprofile']='Profil Updaten';
-$lang['backlink']='ZurÃ¼ck zur Ãœbersicht';
+$lang['backlink']='Zurück zur Übersicht';
 $lang['gender']='Geschlecht';
 $lang['unusedtrainingpoints']='Unbenutzte Trainingspunkte';
 $lang['unusedtalentpoints']='Unbenutzte Talentpunkte';
@@ -269,8 +269,8 @@ $lang['failed'] = 'Fehler';
 $lang['completedsteps'] = 'Abgeschlossene Stufe';
 $lang['currentstep'] = 'Aktuelle Stufe';
 $lang['uncompletedsteps'] = 'Nicht abgeschlosse Stufe';
-$lang['key'] = 'SchlÃ¼ssel';
-$lang['keyring'] = 'SchlÃ¼sselring';
+$lang['key'] = 'Schlüssel';
+$lang['keyring'] = 'Schlüsselring';
 $lang['timeplayed'] = 'Zeit gespielt';
 $lang['timelevelplayed'] = 'Zeit gespielt Level'; // muss so kurz sein wegen der Anzeige
 $lang['Addon'] = 'Addons';
@@ -285,13 +285,13 @@ $lang['server'] = 'Server';
 $lang['faction'] = 'Fraktion';
 $lang['page'] = 'Seite';
 $lang['general'] = 'Allgemein';
-$lang['prev'] = 'ZurÃ¼ck';
+$lang['prev'] = 'Zurück';
 $lang['next'] = 'Vor';
 $lang['memberlog'] = 'Mitglieder Log';
 $lang['removed'] = 'Entfernt';
-$lang['added'] = 'ZugefÃ¼gt';
-$lang['add'] = 'HinzufÃ¼gen';
-$lang['delete'] = 'LÃ¶schen';
+$lang['added'] = 'Zugefügt';
+$lang['add'] = 'Hinzufügen';
+$lang['delete'] = 'Löschen';
 $lang['updated'] = 'aktualisiert';
 $lang['no_info'] = 'Keine Information';
 $lang['info'] = 'Info';
@@ -305,14 +305,14 @@ $lang['language'] = 'Sprache';
 $lang['default'] = 'Standart';
 $lang['proceed'] = 'weiter';
 $lang['submit'] = 'senden';
-$lang['strength']='StÃ¤rke';
+$lang['strength']='Stärke';
 $lang['agility']='Beweglichkeit';
 $lang['stamina']='Ausdauer';
 $lang['intellect']='Intelligenz';
 $lang['spirit']='Willenskraft';
 
 $lang['rosterdiag'] = 'Roster Diagnose Seite';
-$lang['updates_available'] = 'Update verfÃ¼gbar!';
+$lang['updates_available'] = 'Update verfügbar!';
 $lang['updates_available_message'] = 'Als Admin anmelden um die Updatedateien herunterzuladen';
 $lang['download_update_pkg'] = 'Download Update Paket';
 $lang['download_update'] = 'Download Update';
@@ -327,7 +327,7 @@ $lang['recipe_1'] = 'belanglos';
 $lang['roster_config'] = 'Roster Einstellung';
 
 $lang['search_names'] = 'Nach Namen suchen';
-$lang['search_items'] = 'Nach GegenstÃ¤nden suchen';
+$lang['search_items'] = 'Nach Gegenständen suchen';
 $lang['search_tooltips'] = 'Suche im Tooltip';
 
 // Talent Builds
@@ -344,7 +344,7 @@ $lang['login'] = 'Anmelden';
 $lang['logout'] = 'Abmelden';
 $lang['logged_in'] = 'Angemeldet';
 $lang['logged_out'] = 'Abgemeldet';
-$lang['login_invalid'] = 'UngÃ¼ltiges Passwort';
+$lang['login_invalid'] = 'Ungültiges Passwort';
 $lang['login_fail'] = 'Fehler bei dem Abrufen der Passwort Informationen';
 $lang['login_inactive'] = 'Your account is not active or is not approved by the admin. Only "Public" areas can be accessed.';
 $lang['active'] = 'Aktiv';
@@ -352,15 +352,15 @@ $lang['inactive'] = 'Inaktiv';
 
 //this needs to be exact as it is the wording in the db
 $lang['professions']='Berufe';
-$lang['secondary']='SekundÃ¤re Fertigkeiten';
+$lang['secondary']='Sekundäre Fertigkeiten';
 $lang['Blacksmithing']='Schmiedekunst';
 $lang['Mining']='Bergbau';
-$lang['Herbalism']='KrÃ¤uterkunde';
+$lang['Herbalism']='Kräuterkunde';
 $lang['Alchemy']='Alchemie';
-$lang['Archaeology']='ArchÃ¤ologie';
+$lang['Archaeology']='Archäologie';
 $lang['Leatherworking']='Lederverarbeitung';
 $lang['Jewelcrafting']='Juwelenschleifen';
-$lang['Skinning']='KÃ¼rschnerei';
+$lang['Skinning']='Kürschnerei';
 $lang['Tailoring']='Schneiderei';
 $lang['Enchanting']='Verzauberkunst';
 $lang['Engineering']='Ingenieurskunst';
@@ -374,7 +374,7 @@ $lang['backpack']='Rucksack';
 $lang['PvPRankNone']='none';
 
 // Uses preg_match() to find required level in recipe tooltip
-$lang['requires_level'] = '/BenÃ¶tigt Stufe ([\d]+)/';
+$lang['requires_level'] = '/Benötigt Stufe ([\d]+)/';
 
 // Skills to EN id array
 $lang['skill_to_id'] = array(
@@ -476,7 +476,7 @@ $lang['ts_flyingIcon'] = array(
 $lang['class_iconArray'] = array (
 	'Todesritter'=>'deathknight_icon',
 	'Druide'=>'druid_icon',
-	'JÃ¤ger'=>'hunter_icon',
+	'Jäger'=>'hunter_icon',
 	'Magier'=>'mage_icon',
 	'Paladin'=>'paladin_icon',
 	'Priester'=>'priest_icon',
@@ -484,11 +484,11 @@ $lang['class_iconArray'] = array (
 	'Schamane'=>'shaman_icon',
 	'Hexenmeister'=>'warlock_icon',
 	'Kriegerin'=>'warrior_icon',
-	'MÃ¶nch'=>'monk_icon',
+	'Mönch'=>'monk_icon',
 // Female variation
 	// 'Todesritter'=>'deathknight_icon',
 	'Druidin'=>'druid_icon',
-	'JÃ¤gerin'=>'hunter_icon',
+	'Jägerin'=>'hunter_icon',
 	'Magierin'=>'mage_icon',
 	// 'Paladin'=>'paladin_icon',
 	'Priesterin'=>'priest_icon',
@@ -496,14 +496,14 @@ $lang['class_iconArray'] = array (
 	'Schamanin'=>'shaman_icon',
 	'Hexenmeisterin'=>'warlock_icon',
 	'Krieger'=>'warrior_icon',
-	// 'MÃ¶nch'=>'monk_icon',
+	// 'Mönch'=>'monk_icon',
 );
 
 // Class Color-Array
 $lang['class_colorArray'] = array(
 	'Todesritter'=>'C41F3B',
 	'Druide' => 'FF7D0A',
-	'JÃ¤ger' => 'ABD473',
+	'Jäger' => 'ABD473',
 	'Magier' => '69CCF0',
 	'Paladin' => 'F58CBA',
 	'Priester' => 'FFFFFF',
@@ -511,11 +511,11 @@ $lang['class_colorArray'] = array(
 	'Schamane' => '2459FF',
 	'Hexenmeister' => '9482C9',
 	'Krieger' => 'C79C6E',
-	'MÃ¶nch' => '00C77b',
+	'Mönch' => '00C77b',
 // Female variation
 	// 'Todesritter'=>'C41F3B',
 	'Druidin' => 'FF7D0A',
-	'JÃ¤gerin' => 'ABD473',
+	'Jägerin' => 'ABD473',
 	'Magierin' => '69CCF0',
 	// 'Paladin' => 'F58CBA',
 	'Priesterin' => 'FFFFFF',
@@ -523,14 +523,14 @@ $lang['class_colorArray'] = array(
 	'Schamanin' => '2459FF',
 	'Hexenmeisterin' => '9482C9',
 	'Kriegerin' => 'C79C6E',
-	// 'MÃ¶nch' => '00C77b'
+	// 'Mönch' => '00C77b'
 );
 
 // Class To English Translation
 $lang['class_to_en'] = array(
 	'Todesritter'=>'Death Knight',
 	'Druide' => 'Druid',
-	'JÃ¤ger' => 'Hunter',
+	'Jäger' => 'Hunter',
 	'Magier' => 'Mage',
 	'Paladin' => 'Paladin',
 	'Priester' => 'Priest',
@@ -542,7 +542,7 @@ $lang['class_to_en'] = array(
 // Female variation
 	// 'Todesritter'=>'Death Knight',
 	'Druidin' => 'Druid',
-	'JÃ¤gerin' => 'Hunter',
+	'Jägerin' => 'Hunter',
 	'Magierin' => 'Mage',
 	// 'Paladin' => 'Paladin',
 	'Priesterin' => 'Priest',
@@ -557,28 +557,28 @@ $lang['class_to_en'] = array(
 $lang['class_to_id'] = array(
 	'Krieger' => 1,
 	'Paladin' => 2,
-	'JÃ¤ger' => 3,
+	'Jäger' => 3,
 	'Schurke' => 4,
 	'Priester' => 5,
 	'Todesritter'=>6,
 	'Schamane' => 7,
 	'Magier' => 8,
 	'Hexenmeister' => 9,
-	'MÃ¶nch' => 10,
+	'Mönch' => 10,
 	'Druide' => 11,
 	'Pandaren'	=> 25,
 	'Pandaren'	=> 26,
 // Female variation
 	'Kriegerin' => 1,
 	// 'Paladin' => 2,
-	'JÃ¤gerin' => 3,
+	'Jägerin' => 3,
 	'Schurkin' => 4,
 	'Priesterin' => 5,
 	// 'Todesritter'=>6,
 	'Schamanin' => 7,
 	'Magierin' => 8,
 	'Hexenmeisterin' => 9,
-	// 'MÃ¶nch' => 10,
+	// 'Mönch' => 10,
 	'Druidin' => 11,
 );
 
@@ -586,14 +586,14 @@ $lang['class_to_id'] = array(
 $lang['id_to_class'] = array(
 	1 => 'Krieger',
 	2 => 'Paladin',
-	3 => 'JÃ¤ger',
+	3 => 'Jäger',
 	4 => 'Schurke',
 	5 => 'Priester',
 	6 => 'Todesritter',
 	7 => 'Schamane',
 	8 => 'Magier',
 	9 => 'Hexenmeister',
-	10 => 'MÃ¶nch',
+	10 => 'Mönch',
 	11 => 'Druide',
 	25 => 'Pandaren',
 	26 => 'Pandaren',
@@ -737,14 +737,14 @@ $lang['ts_id_icon'] = array (
 );
 
 $lang['hslist']=' Ehren Statistiken';
-$lang['hslist1']='HÃ¶chster Lebenszeit Rang';
-$lang['hslist2']='HÃ¶chsten Lebenszeit ES';
+$lang['hslist1']='Höchster Lebenszeit Rang';
+$lang['hslist2']='Höchsten Lebenszeit ES';
 $lang['hslist3']='Die meisten Ehrenpunkte';
 $lang['hslist4']='Die meisten Arenapunkte';
 
 $lang['Death Knight']='Todesritter';
 $lang['Druid']='Druide';
-$lang['Hunter']='JÃ¤ger';
+$lang['Hunter']='Jäger';
 $lang['Mage']='Magier';
 $lang['Monk']='Monk';
 $lang['Paladin']='Paladin';
@@ -768,7 +768,7 @@ $lang['honorkills']='Ehrenhafte Siege';
 $lang['dishonorkills']='Ruchlose Morde';
 $lang['honor']='Ehre';
 $lang['standing']='Platzierung';
-$lang['highestrank']='HÃ¶chster Rang';
+$lang['highestrank']='Höchster Rang';
 $lang['arena']='Arena';
 
 $lang['when']='Wann';
@@ -784,21 +784,21 @@ $lang['loss']='Niederlage';
 $lang['unknown']='Unbekannt';
 
 //strings for Rep-tab
-$lang['exalted']='EhrfÃ¼rchtig';
+$lang['exalted']='Ehrfürchtig';
 $lang['revered']='Respektvoll';
 $lang['honored']='Wohlwollend';
 $lang['friendly']='Freundlich';
 $lang['neutral']='Neutral';
 $lang['unfriendly']='Unfreundlich';
 $lang['hostile']='Feindselig';
-$lang['hated']='HasserfÃ¼llt';
+$lang['hated']='Hasserfüllt';
 $lang['atwar']='Im Krieg';
 $lang['notatwar']='Nicht im Krieg';
 
 // Factions to EN id
 $lang['faction_to_id'] = array(
 	'Allianz' => 'alliance',
-	'StreitkrÃ¤fte der Allianz' => 'allianceforces',
+	'Streitkräfte der Allianz' => 'allianceforces',
 	'Vorposten der Allianz' => 'alliancevanguard',
 	'Classic' => 'classic',
 	'Other' => 'other',
@@ -810,7 +810,7 @@ $lang['faction_to_id'] = array(
 	'Sholazarbecken' => 'sholazarbasin',
 	'Expedition der Horde' => 'horde',
 	'Horde' => 'horde',
-	'StreitkrÃ¤fte der Horde' => 'horde',
+	'Streitkräfte der Horde' => 'horde',
 	'Cataclysm' => 'cataclysm',
 	'Guild' => 'guild',
 	'Reputation' => 'reputation',
@@ -877,24 +877,24 @@ $lang['google_links']['Google News'] = 'http://news.google.com/news?q=';
 
 // Definitions for item tooltip coloring
 $lang['tooltip_use']='Benutzen.';
-$lang['tooltip_requires']='BenÃ¶tigt';
-$lang['tooltip_reinforced']='VerstÃ¤rkte';
+$lang['tooltip_requires']='Benötigt';
+$lang['tooltip_reinforced']='Verstärkte';
 $lang['tooltip_soulbound']='Seelengebunden';
 $lang['tooltip_accountbound']='Accountgebunden';
 $lang['tooltip_boe']='Wird beim Anlegen gebunden';
 $lang['tooltip_equip']='Anlegen:';
 $lang['tooltip_equip_restores']='Anlegen: Stellt';
-$lang['tooltip_equip_when']='Anlegen: ErhÃ¶ht';
-$lang['tooltip_chance']='GewÃ¤hrt';
+$lang['tooltip_equip_when']='Anlegen: Erhöht';
+$lang['tooltip_chance']='Gewährt';
 $lang['tooltip_enchant']='Verzauberung';
-$lang['tooltip_random_enchant']='ZufÃ¤llige Verzauberung';
+$lang['tooltip_random_enchant']='Zufällige Verzauberung';
 $lang['tooltip_set']='Set:';
 $lang['tooltip_rank']='Rang';
-$lang['tooltip_next_rank']='NÃ¤chster Rang';
+$lang['tooltip_next_rank']='Nächster Rang';
 $lang['tooltip_spell_damage']='Schaden';
 $lang['tooltip_school_damage']='\\+.*Schaden';
 $lang['tooltip_healing_power']='Heilung';
-$lang['tooltip_reinforced_armor']='VerstÃ¤rkte RÃ¼stung';
+$lang['tooltip_reinforced_armor']='Verstärkte Rüstung';
 $lang['tooltip_damage_reduction']='Schadensreduzierung';
 //--Tooltip Parsing -- Translated by Jellow
 $lang['tooltip_durability']='Haltbarkeit';
@@ -916,7 +916,7 @@ $lang['tooltip_preg_item_equip']='/Anlegen: (.+)/';
 $lang['tooltip_preg_item_set']='/Set: (.+)/';
 $lang['tooltip_preg_item_set_n']='/\(([0-9])\) Set: (.+)/';
 $lang['tooltip_preg_use']='/Benutzen: (.+)/';
-$lang['tooltip_preg_chance']='/GewÃ¤hrt (.+)/';
+$lang['tooltip_preg_chance']='/Gewährt (.+)/';
 $lang['tooltip_preg_chance_hit']='/Chance ^(to|on) hit: (.+)/';
 $lang['tooltip_preg_heroic']='/Heroisch/';
 $lang['tooltip_preg_timeless']='/Timeless/';
@@ -926,31 +926,31 @@ $lang['tooltip_garbage1']='/\<Zum Sockeln Shift-Rechtsklick\>/';
 $lang['tooltip_garbage2']='/\<Zum Lesen rechtsklicken\>/';
 $lang['tooltip_garbage3']='/Dauer (.+)/';
 $lang['tooltip_garbage4']='/Cooldown remaining (.+)/';
-$lang['tooltip_garbage5']='/\<Zum Ã–ffnen rechtsklicken\>/';
+$lang['tooltip_garbage5']='/\<Zum Öffnen rechtsklicken\>/';
 $lang['tooltip_garbage6']='/Equipment Sets: (.+)/';
 $lang['tooltip_garbage7'] = '/You may sell this item to a vendor within (.+) for a full refund./';
 $lang['tooltip_garbage8'] = '/You may sell this item to a vendor within (\d+) hour (\d+) min for a full refund./';
 //^(Red|Yellow|Blue|Meta)
-$lang['tooltip_preg_weapon_types']='/^(Pfeil|Axt|Bogen|Kugel|Armbrust|Dolch|Angel|Faustwaffe|SchuÃŸwaffe|GÃ¶tze|Streitkolben|Waffenhand|Nebenhand|Stangenwaffe|Stab|Schwert|Wurfwaffe|Zauberstab|Fernkampf|Einhand|Zweihand|Relikt)/';
+$lang['tooltip_preg_weapon_types']='/^(Pfeil|Axt|Bogen|Kugel|Armbrust|Dolch|Angel|Faustwaffe|Schußwaffe|Götze|Streitkolben|Waffenhand|Nebenhand|Stangenwaffe|Stab|Schwert|Wurfwaffe|Zauberstab|Fernkampf|Einhand|Zweihand|Relikt)/';
 $lang['tooltip_preg_speed']='/Geschwindigkeit/';
 
-$lang['tooltip_preg_armor']='/^([0-9,]+) RÃ¼stung/';
+$lang['tooltip_preg_armor']='/^([0-9,]+) Rüstung/';
 $lang['tooltip_preg_durability']='/Haltbarkeit(|:) (\d+) \/ (\d+)/';
 $lang['tooltip_preg_madeby']='/\<Hergestellt von (.+)\>/';
 $lang['tooltip_preg_bags']='/(\d+) Platz/';
 $lang['tooltip_preg_socketbonus']='/Sockelbonus: (.+)/';
 $lang['tooltip_preg_classes']='/^(Klassen:) (.+)/';
-$lang['tooltip_preg_races']='/^(VÃ¶lker:) (.+)/';
+$lang['tooltip_preg_races']='/^(Völker:) (.+)/';
 $lang['tooltip_preg_charges']='/(\d+) Aufladungen/';
 $lang['tooltip_preg_block']='/([0-9, ]+) (Blocken)/';
 $lang['tooltip_preg_emptysocket']='/(Meta|Roter|Gelber|Blauer|Prismatischer|Hydraulic|Sha-Touched)(?:.?sockel)/i';
-$lang['tooltip_preg_reinforcedarmor']='/(VerstÃ¤rkt \(\+\d+ RÃ¼stung\))/';
+$lang['tooltip_preg_reinforcedarmor']='/(Verstärkt \(\+\d+ Rüstung\))/';
 $lang['tooltip_preg_tempenchants']='/(.+\s\(\d+\s(min|sek)\.?\))\n/i';
-$lang['tooltip_preg_meta_requires']='/BenÃ¶tigt.*?Edelstein?/';
-$lang['tooltip_preg_meta_requires_min']='/BenÃ¶tigt mindestens (\d) Edelstein.*?der Kategorie (\S+)/';
-$lang['tooltip_preg_meta_requires_more']='/BenÃ¶tigt mehr Edelsteine der Kategorie (\S+) als Edelsteine der Kategorie (\S+)/';
+$lang['tooltip_preg_meta_requires']='/Benötigt.*?Edelstein?/';
+$lang['tooltip_preg_meta_requires_min']='/Benötigt mindestens (\d) Edelstein.*?der Kategorie (\S+)/';
+$lang['tooltip_preg_meta_requires_more']='/Benötigt mehr Edelsteine der Kategorie (\S+) als Edelsteine der Kategorie (\S+)/';
 $lang['tooltip_preg_item_level']='/Gegenstandsstufe (\d+)/';
-$lang['tooltip_feral_ap']='ErhÃ¶ht die Angriffskraft um';
+$lang['tooltip_feral_ap']='Erhöht die Angriffskraft um';
 $lang['tooltip_source']='Quelle';
 $lang['tooltip_sha'] = 'Sha-Touched';
 $lang['tooltip_boss']='Boss';
@@ -961,30 +961,30 @@ $lang['tooltip_transmogb'] = 'Umgeschmiedet zu: ';
 $lang['tooltip_transmoga'] = "Umgeschmiedet zu:\n";
 
 $lang['tooltip_chance_hit']='Trefferchance'; // needs to find 'chance on|to hit:'
-$lang['tooltip_reg_requires']='BenÃ¶tigt';
-$lang['tooltip_reg_onlyworksinside']='Wirkt nur in der Festung der StÃ¼rme';
-$lang['tooltip_reg_conjureditems']='Herbeigezauberte GegenstÃ¤nde verschwinden';
+$lang['tooltip_reg_requires']='Benötigt';
+$lang['tooltip_reg_onlyworksinside']='Wirkt nur in der Festung der Stürme';
+$lang['tooltip_reg_conjureditems']='Herbeigezauberte Gegenstände verschwinden';
 $lang['tooltip_reg_weaponorbulletdps']='^\(|^Verursacht ';
 
-$lang['tooltip_armor_types']='Stoff|Leder|Schwere RÃ¼stung|Platte';
-$lang['tooltip_weapon_types']='Axt|Bogen|Armbrust|Dolch|Angel|Faustwaffe|SchuÃŸwaffe|Schusswaffe|Streitkolben|Waffenhand|Stangenwaffe|Stab|Schwert|Wurfwaffe|Zauberstab|In Schildhand gefÃ¼hrt|EinhÃ¤ndig|Kugel|Pfeil';
+$lang['tooltip_armor_types']='Stoff|Leder|Schwere Rüstung|Platte';
+$lang['tooltip_weapon_types']='Axt|Bogen|Armbrust|Dolch|Angel|Faustwaffe|Schußwaffe|Schusswaffe|Streitkolben|Waffenhand|Stangenwaffe|Stab|Schwert|Wurfwaffe|Zauberstab|In Schildhand geführt|Einhändig|Kugel|Pfeil';
 $lang['tooltip_bind_types']='Seelengebunden|Wird beim Anlegen gebunden|Questgegenstand|Wird bei Benutzung gebunden|Dieser Gegenstand startet eine Quest|Wird beim Aufheben gebunden|Accountgebunden';
-$lang['tooltip_misc_types']='Finger|Hals|RÃ¼cken|Hemd|Schmuck|Wappenrock|Kopf|Brust|Beine|FÃ¼ÃŸe';
-$lang['tooltip_garbage']='<Zum Sockeln Shift-Rechtsklick>|<Zum Lesen rechtsklicken>|Dauer|Verbleibende Abklingzeit|<Zum Ã–ffnen rechtsklicken>';
+$lang['tooltip_misc_types']='Finger|Hals|Rücken|Hemd|Schmuck|Wappenrock|Kopf|Brust|Beine|Füße';
+$lang['tooltip_garbage']='<Zum Sockeln Shift-Rechtsklick>|<Zum Lesen rechtsklicken>|Dauer|Verbleibende Abklingzeit|<Zum Öffnen rechtsklicken>';
 
 //CP v2.1.1+ Gems info
 //uses preg_match() to find the type and color of the gem
-$lang['gem_preg_singlecolor'] = '/Am besten fÃ¼r einen (.+) Sockel geeignet/';
-$lang['gem_preg_multicolor'] = '/Am besten fÃ¼r einen (.+) oder (.+) Sockel geeignet\./';
+$lang['gem_preg_singlecolor'] = '/Am besten für einen (.+) Sockel geeignet/';
+$lang['gem_preg_multicolor'] = '/Am besten für einen (.+) oder (.+) Sockel geeignet\./';
 $lang['gem_preg_meta'] = '/Passt nur in einen Sockel der Kategorie Meta/';
-$lang['gem_preg_prismatic'] = '/Am besten fÃ¼r einen roten, gelben oder blauen Sockel geeignet/';
+$lang['gem_preg_prismatic'] = '/Am besten für einen roten, gelben oder blauen Sockel geeignet/';
 
 //Gems color Array
 $lang['gem_colors'] = array(
 	'red' => 'roten',
 	'blue' => 'blauen',
 	'yellow' => 'gelben',
-	'green' => 'grÃ¼n',
+	'green' => 'grün',
 	'orange' => 'orange',
 	'purple' => 'violett',
 	'prismatic' => 'prismatisch',
@@ -996,7 +996,7 @@ $lang['gem_colors_to_en'] = array(
 	'rot' => 'red',
 	'blau' => 'blue',
 	'gelb' => 'yellow',
-	'grÃ¼n' => 'green',
+	'grün' => 'green',
 	'orange' => 'orange',
 	'violett' => 'purple',
 	'prismatisch' => 'prismatic',
@@ -1021,20 +1021,20 @@ $lang['socket_colors_to_en'] = array(
 $lang['Imp']='Wichtel';
 $lang['Voidwalker']='Leerwandler';
 $lang['Succubus']='Sukkubus';
-$lang['Felhunter']='TeufelsjÃ¤ger';
-$lang['Infernal']='HÃ¶llenbestie';
+$lang['Felhunter']='Teufelsjäger';
+$lang['Infernal']='Höllenbestie';
 $lang['Felguard']='Teufelswache';
 
 // Max experiance for exp bar on char page
 $lang['max_exp']='Max XP';
 
 // Error messages
-$lang['CPver_err']='Die zur Speicherung der Daten fÃ¼r diesen Charakter verwendete Version des WoWRoster-Profiler ist Ã¤lter als die fÃ¼r den Upload minimal zugelassene Version.<br />Bitte stelle sicher, daÃŸ Du mindestens v%1$s verwendest, und daÃŸ Du diese Version verwendet hast, um die Daten fÃ¼r diesen Charakter zu speichern.';
-$lang['GPver_err']='Die zur Speicherung der Daten fÃ¼r diese Gilde verwendete Version von WoWRoster-GuildProfiler ist Ã¤lter als die fÃ¼r den Upload minimal zugelassene Version.<br />Bitte stelle sicher, daÃŸ Du mindestens v%1$s verwendest.';
+$lang['CPver_err']='Die zur Speicherung der Daten für diesen Charakter verwendete Version des WoWRoster-Profiler ist älter als die für den Upload minimal zugelassene Version.<br />Bitte stelle sicher, daß Du mindestens v%1$s verwendest, und daß Du diese Version verwendet hast, um die Daten für diesen Charakter zu speichern.';
+$lang['GPver_err']='Die zur Speicherung der Daten für diese Gilde verwendete Version von WoWRoster-GuildProfiler ist älter als die für den Upload minimal zugelassene Version.<br />Bitte stelle sicher, daß Du mindestens v%1$s verwendest.';
 
 // Menu titles
 $lang['menu_upprofile']='Update Profile|Aktualisiere dein Profil auf dieser Seite';
-$lang['menu_search']='Suche|Suche GegenstÃ¤nde oder Rezepte in der Datenbank';
+$lang['menu_search']='Suche|Suche Gegenstände oder Rezepte in der Datenbank';
 $lang['menu_roster_cp']='RosterCP|Roster Konfigurationsbereich';
 $lang['menupanel_util']  = 'Einstellungen';
 $lang['menupanel_realm'] = 'Realm';
@@ -1042,12 +1042,12 @@ $lang['menupanel_guild'] = 'Gilde';
 $lang['menupanel_char']  = 'Charakter';
 $lang['menupanel_user'] = 'UserCP|Benutzer Konfigurationsbereich';
 
-$lang['menuconf_sectionselect']='WÃ¤hle Auswahl';
+$lang['menuconf_sectionselect']='Wähle Auswahl';
 $lang['menuconf_section']='Sektion';
-$lang['menuconf_changes_saved']='VerÃ¤nderungen von %1$s gespeichert';
-$lang['menuconf_no_changes_saved']='Keine VerÃ¤nderungen gespeichert';
-$lang['menuconf_add_button']='Button hinzufÃ¼gen';
-$lang['menuconf_drag_delete']='Ziehe hierher zum LÃ¶schen';
+$lang['menuconf_changes_saved']='Veränderungen von %1$s gespeichert';
+$lang['menuconf_no_changes_saved']='Keine Veränderungen gespeichert';
+$lang['menuconf_add_button']='Button hinzufügen';
+$lang['menuconf_drag_delete']='Ziehe hierher zum Löschen';
 $lang['menuconf_addon_inactive']='Addon ist inaktiv';
 $lang['menuconf_unused_buttons']='Ungenutze Buttons';
 
@@ -1062,7 +1062,7 @@ $lang['installer_uninstall_2']='Deinstallation von %1$s fehlgeschlagen und Wiede
 $lang['installer_upgrade_0']='Upgrade von %1$s erfolgreich';
 $lang['installer_upgrade_1']='Upgrade von %1$s fehlgeschlagen, aber Wiederherstellung erfolgreich';
 $lang['installer_upgrade_2']='Upgrade von %1$s fehlgeschlagen und Wiederherstellung ebenfalls fehlgeschlagen';
-$lang['installer_purge_0']='SÃ¤uberung von %1$s erfolgreich';
+$lang['installer_purge_0']='Säuberung von %1$s erfolgreich';
 
 $lang['installer_icon'] = 'Icon';
 $lang['installer_addoninfo'] = 'Addon Info';
@@ -1075,70 +1075,70 @@ $lang['installer_activate_1'] = 'Addon %1$s aktiviert';
 $lang['installer_deactivated'] = 'Deaktiviert';
 $lang['installer_activated'] = 'Aktiviert';
 $lang['installer_installed'] = 'Installiert';
-$lang['installer_upgrade_avail'] = 'Upgrade verfÃ¼gbar';
+$lang['installer_upgrade_avail'] = 'Upgrade verfügbar';
 $lang['installer_not_installed'] = 'Nicht installiert';
 $lang['installer_install'] = 'Installieren';
 $lang['installer_uninstall'] = 'Deinstallieren';
 $lang['installer_activate'] = 'Aktivieren';
 $lang['installer_deactivate'] = 'Deaktivieren';
 $lang['installer_upgrade'] = 'Aktualisieren';
-$lang['installer_purge'] = 'SÃ¤ubern';
+$lang['installer_purge'] = 'Säubern';
 
 $lang['installer_turn_off'] = 'Klicken zum Deaktivieren';
 $lang['installer_turn_on'] = 'Klicken zum Aktivieren';
 $lang['installer_click_uninstall'] = 'Klicken zum Deinstallieren';
 $lang['installer_click_upgrade'] = 'Klicken um %1$s auf %2$s zu aktualisieren';
 $lang['installer_click_install'] = 'Klicken zum Installieren ';
-$lang['installer_overwrite'] = 'Alte Versionen Ã¼berschreiben';
-$lang['installer_replace_files'] = 'Du hast ein AddOn durch eine Ã¤ltere Version Ã¼berschrieben<br />Ersetze die Dateien durch eine aktuelle Version<br /><br />oder klicke um das Addon zu bereinigen';
+$lang['installer_overwrite'] = 'Alte Versionen überschreiben';
+$lang['installer_replace_files'] = 'Du hast ein AddOn durch eine ältere Version überschrieben<br />Ersetze die Dateien durch eine aktuelle Version<br /><br />oder klicke um das Addon zu bereinigen';
 
 $lang['installer_error'] = 'Fehler bei der Installation';
-$lang['installer_invalid_type'] = 'UngÃ¼ltiger Installationstyp';
-$lang['installer_no_success_sql'] = 'Abfragen wurden nicht erfolgreich zum Installer hinzugefÃ¼gt';
-$lang['installer_no_class'] = 'Die Installations-Definitionsdatei fÃ¼r %1$s enthielt keine korrekte Installations-Klasse';
-$lang['installer_no_installdef'] = 'inc/install.def.php fÃ¼r %1$s wurde nicht gefunden';
+$lang['installer_invalid_type'] = 'Ungültiger Installationstyp';
+$lang['installer_no_success_sql'] = 'Abfragen wurden nicht erfolgreich zum Installer hinzugefügt';
+$lang['installer_no_class'] = 'Die Installations-Definitionsdatei für %1$s enthielt keine korrekte Installations-Klasse';
+$lang['installer_no_installdef'] = 'inc/install.def.php für %1$s wurde nicht gefunden';
 
 $lang['installer_no_empty'] = 'Kann leeren AddOn Namen nicht installieren';
-$lang['installer_fetch_failed'] = 'Abrufen der Addondaten fÃ¼r %1$s fehlgeschlagen';
-$lang['installer_addon_exist'] = '%1$s beinhaltet bereits %2$s. Du kannst zurÃ¼ck gehen und dieses Addon zuerst deinstallieren oder upgraden oder du installierst das Addon unter einem anderen Namen.';
-$lang['installer_no_upgrade'] = '%1$s enthÃ¤lt keine Daten zum upgraden';
+$lang['installer_fetch_failed'] = 'Abrufen der Addondaten für %1$s fehlgeschlagen';
+$lang['installer_addon_exist'] = '%1$s beinhaltet bereits %2$s. Du kannst zurück gehen und dieses Addon zuerst deinstallieren oder upgraden oder du installierst das Addon unter einem anderen Namen.';
+$lang['installer_no_upgrade'] = '%1$s enthält keine Daten zum upgraden';
 $lang['installer_not_upgradable'] = '%1$s kann %2$s nicht upgraden, weil der Basisname %3$s nicht in der Liste der upgradebaren Addons ist';
-$lang['installer_no_uninstall'] = '%1$s enthÃ¤lt kein Addon zum deinstallieren';
-$lang['installer_not_uninstallable'] = '%1$s enthÃ¤lt ein Addon %2$s welches mit dessen Addon-Deinstaller deinstalliert werden muss';
+$lang['installer_no_uninstall'] = '%1$s enthält kein Addon zum deinstallieren';
+$lang['installer_not_uninstallable'] = '%1$s enthält ein Addon %2$s welches mit dessen Addon-Deinstaller deinstalliert werden muss';
 
 // After Install guide
 $lang['install'] = 'Installation';
 $lang['setup_guide'] = 'Nach Installationsanleitung';
-$lang['skip_setup'] = 'Setup Ã¼berspringen';
+$lang['skip_setup'] = 'Setup überspringen';
 $lang['default_data'] = 'Standard Daten';
-$lang['default_data_help'] = 'Hier die standardmÃ¤ÃŸig zugelassene Gilde einstellen<br />Eine Standardgilde wird von vielen Addons benÃ¶tigt um korrekt zu funktionieren<br />Weitere Gilden kÃ¶nnen in RosterCP-&gt;Upload Regeln zugelassen werden<br /><br />Falls dies eine Gildenlose Roster Installation ist:<br />Guildless-F als Gildenname angeben<br />F mit der eigenen Fraktion ersetzen (A=Allianz, H=Horde)<br />Realm und Region eingeben<br />Upload Regeln fÃ¼r Charaktere einstellen unter RosterCP-&gt;Upload Regeln';
+$lang['default_data_help'] = 'Hier die standardmäßig zugelassene Gilde einstellen<br />Eine Standardgilde wird von vielen Addons benötigt um korrekt zu funktionieren<br />Weitere Gilden können in RosterCP-&gt;Upload Regeln zugelassen werden<br /><br />Falls dies eine Gildenlose Roster Installation ist:<br />Guildless-F als Gildenname angeben<br />F mit der eigenen Fraktion ersetzen (A=Allianz, H=Horde)<br />Realm und Region eingeben<br />Upload Regeln für Charaktere einstellen unter RosterCP-&gt;Upload Regeln';
 $lang['guide_complete'] = 'Das Nach Installationssetup ist komplett';
 $lang['guide_next'] = 'Denke daran,';
 $lang['guide_next_text'] = '<ul><li><a href="%1$s" target="_blank">Installiere Roster AddOns</a></li><li><a href="%2$s" target="_blank">Upload Regeln einstellen</a></li><li><a href="%3$s" target="_blank">Aktualisiere Daten vom Arsenal</a></li></ul>';
-$lang['guide_already_complete'] = 'Der Installationsassistent wurde bereits beendet<br />Er kann nicht nochmal ausgefÃ¼hrt werden';
+$lang['guide_already_complete'] = 'Der Installationsassistent wurde bereits beendet<br />Er kann nicht nochmal ausgeführt werden';
 
 // Armory Data
 $lang['adata_update_talents'] = 'Talente';
 $lang['adata_update_class'] = 'Klasse %1$s aktualisiert';
-$lang['adata_update_row'] = '%1$s Zeilen zur Datenbank hinzugefÃ¼gt.';
+$lang['adata_update_row'] = '%1$s Zeilen zur Datenbank hinzugefügt.';
 
 // Password Stuff
 $lang['username'] = 'Username';
 $lang['password'] = 'Passwort';
 $lang['remember_me'] = 'Remember me';
 $lang['pass'] = 'Pass';
-$lang['changeadminpass'] = 'Ã„ndere das Admin Passwort';
-$lang['changeofficerpass'] = 'Ã„ndere das Offizer Passwort';
-$lang['changeguildpass'] = 'Ã„ndere das Gilden Passwort';
+$lang['changeadminpass'] = 'Ändere das Admin Passwort';
+$lang['changeofficerpass'] = 'Ändere das Offizer Passwort';
+$lang['changeguildpass'] = 'Ändere das Gilden Passwort';
 $lang['old_pass'] = 'Altes Passwort';
 $lang['new_pass'] = 'Neues Passwort';
-$lang['new_pass_confirm'] = 'Neues Passwort [ bestÃ¤tigen ]';
+$lang['new_pass_confirm'] = 'Neues Passwort [ bestätigen ]';
 $lang['pass_old_error'] = 'Falsches Passwort. Bitte gebe das richtige alte Passwort ein';
-$lang['pass_submit_error'] = 'Ãœbertragungsfehler. Das alte, das neue und das bestÃ¤tigte neue Passwort mÃ¼ssen angegeben werden';
-$lang['pass_mismatch'] = 'PasswÃ¶rter stimmen nicht Ã¼berein. Bitte gib das gleiche Passwort in beiden Passwortfeldern ein';
+$lang['pass_submit_error'] = 'Übertragungsfehler. Das alte, das neue und das bestätigte neue Passwort müssen angegeben werden';
+$lang['pass_mismatch'] = 'Passwörter stimmen nicht überein. Bitte gib das gleiche Passwort in beiden Passwortfeldern ein';
 $lang['pass_blank'] = 'Leere Passwortfelder sind nicht erlaubt. Bitte gib in beiden Feldern ein Passwort ein';
-$lang['pass_isold'] = 'Passwort nicht geÃ¤ndert. Das Neue ist das gleiche Passwort wie das Alte';
-$lang['pass_changed'] = '&quot;%1$s&quot; Passwort geÃ¤ndert. Dein neues Passwort ist [ %2$s ].<br /> VergiÃŸ das Passwort nicht, da es verschlÃ¼sselt gespeichert ist';
+$lang['pass_isold'] = 'Passwort nicht geändert. Das Neue ist das gleiche Passwort wie das Alte';
+$lang['pass_changed'] = '&quot;%1$s&quot; Passwort geändert. Dein neues Passwort ist [ %2$s ].<br /> Vergiß das Passwort nicht, da es verschlüsselt gespeichert ist';
 $lang['auth_req'] = 'Anmeldung erforderlich';
 
 // Upload Rules
@@ -1147,23 +1147,23 @@ $lang['enforce_rules_never'] = 'Niemals';
 $lang['enforce_rules_all'] = 'Bei allen LUA Dateien';
 $lang['enforce_rules_cp'] = 'Nur bei wowroster.lua';
 $lang['enforce_rules_gp'] = 'Nur bei Gilden aktualisierung';
-$lang['upload_rules_error'] = 'Du kannst beim HinzufÃ¼gen einer Regel kein Feld leer lassen';
-$lang['upload_rules_help'] = 'Die Regeln sind in zwei BlÃ¶cke unterteilt.<ul><li>FÃ¼r jeden hochgeladene Gilde/Charakter wird zuerst der oberste Block Ã¼berprÃ¼ft.<br />Wenn der Name@Server Ã¼bereinstimmt mit einer der \'Verbieten\' Regeln, wird er abgewiesen.</li><li>AnschlieÃŸend wird der zweite Block Ã¼berprÃ¼ft.<br />Wenn der Name@Server Ã¼bereinstimmt mit einer der \'Erlauben\' Regeln, wird er akzeptiert.</li><li>Wenn er mit keiner Regel Ã¼bereinstimmt, wird er abgewiesen.</li></ul>You can use % for a wildcard.<br /><br />Remember to set a default guild here as well.';
+$lang['upload_rules_error'] = 'Du kannst beim Hinzufügen einer Regel kein Feld leer lassen';
+$lang['upload_rules_help'] = 'Die Regeln sind in zwei Blöcke unterteilt.<ul><li>Für jeden hochgeladene Gilde/Charakter wird zuerst der oberste Block überprüft.<br />Wenn der Name@Server übereinstimmt mit einer der \'Verbieten\' Regeln, wird er abgewiesen.</li><li>Anschließend wird der zweite Block überprüft.<br />Wenn der Name@Server übereinstimmt mit einer der \'Erlauben\' Regeln, wird er akzeptiert.</li><li>Wenn er mit keiner Regel übereinstimmt, wird er abgewiesen.</li></ul>You can use % for a wildcard.<br /><br />Remember to set a default guild here as well.';
 
 // Data Manager
-$lang['clean'] = 'EintrÃ¤ge auf den Regeln basierent sÃ¤ubern';
-$lang['clean_help'] = 'Dies wird alle EintrÃ¤ge anhand der \'Upload Regeln\' sÃ¤ubern.';
-$lang['select_guild'] = 'Gilde auswÃ¤hlen';
-$lang['delete_checked'] = 'Markierte lÃ¶schen';
-$lang['delete_guild'] = 'Gilde lÃ¶schen';
-$lang['delete_guild_confirm'] = 'Dies entfernt die gesamte Gilde und setzt alle ihre Mitglieder auf Gildenlos.\\n Bist du sicher das Du das tun willst?\\n\\nHINWEIS: Dies kann nicht RÃ¼ckgÃ¤ngig gemacht werden!';
+$lang['clean'] = 'Einträge auf den Regeln basierent säubern';
+$lang['clean_help'] = 'Dies wird alle Einträge anhand der \'Upload Regeln\' säubern.';
+$lang['select_guild'] = 'Gilde auswählen';
+$lang['delete_checked'] = 'Markierte löschen';
+$lang['delete_guild'] = 'Gilde löschen';
+$lang['delete_guild_confirm'] = 'Dies entfernt die gesamte Gilde und setzt alle ihre Mitglieder auf Gildenlos.\\n Bist du sicher das Du das tun willst?\\n\\nHINWEIS: Dies kann nicht Rückgängig gemacht werden!';
 
 // Config Reset
-$lang['config_is_reset'] = 'Konfiguration wurde zurÃ¼ckgesetzt. Bitte vergiss nicht ALLE deine Einstellung erneut einzugeben, bevor du versuchst deine Daten hochzuladen';
+$lang['config_is_reset'] = 'Konfiguration wurde zurückgesetzt. Bitte vergiss nicht ALLE deine Einstellung erneut einzugeben, bevor du versuchst deine Daten hochzuladen';
 $lang['config_reset_confirm'] = 'Dies ist unumkehrbar. Willst du wirklich fortfahren?';
-$lang['config_reset_help'] = 'Dies wird deine Roster Konfiguration komplett zurÃ¼cksetzen.<br />
-Alle Daten in den Roster Konfigurationstabellen werden dauerhaft gelÃ¶scht und die Standardwerte werden gespeichert.<br />
-Gildendaten, Charakterdaten, Addon Konfigurationen, Addondaten, MenÃ¼-Buttons und Upload-Regeln bleiben erhalten.<br />
+$lang['config_reset_help'] = 'Dies wird deine Roster Konfiguration komplett zurücksetzen.<br />
+Alle Daten in den Roster Konfigurationstabellen werden dauerhaft gelöscht und die Standardwerte werden gespeichert.<br />
+Gildendaten, Charakterdaten, Addon Konfigurationen, Addondaten, Menü-Buttons und Upload-Regeln bleiben erhalten.<br />
 Das Gilden-, Offizier und das Admin-Passwort werden ebenfalls erhalten bleiben.<br />
 <br />
 Um fortzufahren gibt dein Admin-Passwort unten ein und klicke auf \'weiter\'.';
@@ -1178,25 +1178,25 @@ $lang['pagebar_uploadrules'] = 'Upload Regeln';
 $lang['pagebar_dataman'] = 'Daten Manager';
 $lang['pagebar_userman'] = 'Benutzer Manager';
 $lang['pagebar_armory_data'] = 'Arsenal Daten';
-$lang['pagebar_changepass'] = 'Passwort Ã¤ndern';
+$lang['pagebar_changepass'] = 'Passwort ändern';
 $lang['pagebar_addoninst'] = 'Verwalte Addons';
 $lang['pagebar_plugin'] = 'Plugin Verwaltung';
 $lang['pagebar_update'] = 'Upload Profil';
 $lang['pagebar_rosterdiag'] = 'Roster Diagnose Seite';
-$lang['pagebar_menuconf'] = 'MenÃ¼ Konfiguration';
-$lang['pagebar_configreset'] = 'Einstellungen zurÃ¼cksetzen';
+$lang['pagebar_menuconf'] = 'Menü Konfiguration';
+$lang['pagebar_configreset'] = 'Einstellungen zurücksetzen';
 $lang['pagebar_usergroups'] = 'Groups';
 $lang['pagebar_addonconf'] = 'Addon Konfiguration';
 
-$lang['roster_config_menu'] = 'EinstellungsmenÃ¼';
-$lang['menu_config_help'] = 'MenÃ¼ Button hinzufÃ¼gen Hilfe';
-$lang['menu_config_help_text'] = 'Benutzen um einen neuen Button hinzuzufÃ¼gen. Der neue Button wird in der aktuellen Sektion hinzugefÃ¼gt.<ul><li>Titel - Der Name des Buttons.</li><li>URL - Der Link fÃ¼r den Button. Das kann eine interne URL sein oder eine komplette URL (dann bitte http:// voranstellen).</li><li>Icon - Das Icon fÃ¼r den Button. Dieses muss ein Icon aus dem Interface Image Pack sein, ohne den Pfad und ohne Dateiendung (Bsp. inv_misc_gear_01)</ul>';
+$lang['roster_config_menu'] = 'Einstellungsmenü';
+$lang['menu_config_help'] = 'Menü Button hinzufügen Hilfe';
+$lang['menu_config_help_text'] = 'Benutzen um einen neuen Button hinzuzufügen. Der neue Button wird in der aktuellen Sektion hinzugefügt.<ul><li>Titel - Der Name des Buttons.</li><li>URL - Der Link für den Button. Das kann eine interne URL sein oder eine komplette URL (dann bitte http:// voranstellen).</li><li>Icon - Das Icon für den Button. Dieses muss ein Icon aus dem Interface Image Pack sein, ohne den Pfad und ohne Dateiendung (Bsp. inv_misc_gear_01)</ul>';
 
 // Submit/Reset confirm questions
 $lang['config_submit_button'] = 'Speichere Einstellungen';
-$lang['config_reset_button'] = 'ZurÃ¼cksetzen';
-$lang['confirm_config_submit'] = 'Dies wird die Ã„nderungen in die Datenbank schreiben. Bist Du sicher?';
-$lang['confirm_config_reset'] = 'Dies wird das Formular in den Zustand zurÃ¼cksetzen in dem es am Anfang war. Bist Du sicher?';
+$lang['config_reset_button'] = 'Zurücksetzen';
+$lang['confirm_config_submit'] = 'Dies wird die Änderungen in die Datenbank schreiben. Bist Du sicher?';
+$lang['confirm_config_reset'] = 'Dies wird das Formular in den Zustand zurücksetzen in dem es am Anfang war. Bist Du sicher?';
 
 // All strings here
 // Each variable must be the same name as the config variable name
@@ -1212,108 +1212,108 @@ $lang['confirm_config_reset'] = 'Dies wird das Formular in den Zustand zurÃ¼ckse
 
 
 // Main Menu words
-$lang['admin']['main_conf'] = 'Haupt Konfig.|Roster Haupteinstellungen<br />EnthÃ¤lt Roster URL, Bilder URL und andere grundlegende Einstellungen...';
+$lang['admin']['main_conf'] = 'Haupt Konfig.|Roster Haupteinstellungen<br />Enthält Roster URL, Bilder URL und andere grundlegende Einstellungen...';
 $lang['admin']['defaults_conf'] = 'Standart Konfig.|Setz die Einstellung auf Standart';
 $lang['admin']['index_conf'] = 'Indexseite|Einstellen, was auf der Startseite angezeigt werden soll';
-$lang['admin']['menu_conf'] = 'MenÃ¼ Konfig.|Einstellen, welche Elemente im MenÃ¼ angezeigt werden sollen';
+$lang['admin']['menu_conf'] = 'Menü Konfig.|Einstellen, welche Elemente im Menü angezeigt werden sollen';
 $lang['admin']['display_conf'] = 'Anzeigen Konfig.|Verschiedene Anzeigeeinstellungen: css, javascript, motd, etc...';
-$lang['admin']['realmstatus_conf'] = 'Serverstatus|Optionen fÃ¼r den Serverstatus';
+$lang['admin']['realmstatus_conf'] = 'Serverstatus|Optionen für den Serverstatus';
 $lang['admin']['data_links'] = 'Daten Links|Externe Links';
-$lang['admin']['update_access'] = 'Update Zugriff|Optionale phpBB Authorisierung fÃ¼r Update';
+$lang['admin']['update_access'] = 'Update Zugriff|Optionale phpBB Authorisierung für Update';
 
-$lang['admin']['documentation'] = 'Dokumentation|WoWRoster Dokumentation Ã¼ber das wowroster.net-Wiki';
+$lang['admin']['documentation'] = 'Dokumentation|WoWRoster Dokumentation über das wowroster.net-Wiki';
 
 // main_conf
 $lang['admin']['roster_dbver'] = "Roster Datenbank Version|Die Version der Datenbank";
 $lang['admin']['version'] = "Roster Version|Aktuelle Version des Rosters";
-$lang['admin']['debug_mode'] = "Debug Mode|aus - Keine Debug- oder Fehlermeldungen<br />ein - Anzeige von Fehler- und einfachen Debugmeldungen<br />erweitert - VollstÃ¤ndiger Debugmodus und Ablaufverfolgung bei Fehlermeldungen";
-$lang['admin']['sql_window'] = "SQL Fenster|aus - Query Fenster nicht anzeigen<br />ein - Query Fenster in FuÃŸzeile anzeigen<br />erweitert - DESCRIBE statements einbeziehen";
+$lang['admin']['debug_mode'] = "Debug Mode|aus - Keine Debug- oder Fehlermeldungen<br />ein - Anzeige von Fehler- und einfachen Debugmeldungen<br />erweitert - Vollständiger Debugmodus und Ablaufverfolgung bei Fehlermeldungen";
+$lang['admin']['sql_window'] = "SQL Fenster|aus - Query Fenster nicht anzeigen<br />ein - Query Fenster in Fußzeile anzeigen<br />erweitert - DESCRIBE statements einbeziehen";
 $lang['admin']['minCPver'] = "Min CP Version|Minimum WoWRoster-Profiler Version zum Upload";
 $lang['admin']['minGPver'] = "Min GP version|Minimum WoWRoster-GuildProfiler Version zum Upload";
 $lang['admin']['locale'] = "Roster Hauptsprache|Sprache, in welcher der Roster angezeigt wird";
 $lang['admin']['default_page'] = "Standard Seite|Seite, die angezeigt wird, wenn keine Seite in der URL angegeben ist";
-$lang['admin']['external_auth'] = "Roster Auth|Hier kannst du die Anmeldedatei auswÃ¤hlen die der Roster benutzen soll<br />&quot;Roster&quot; ist das Standard, Anmeldesystem";
-$lang['admin']['website_address'] = "Webseitenadresse|Wird benÃ¶tigt fÃ¼r das Logo, den Gildennamenlink und das HauptmenÃ¼<br />Einige Roster Addons benÃ¶tigen diese auch";
+$lang['admin']['external_auth'] = "Roster Auth|Hier kannst du die Anmeldedatei auswählen die der Roster benutzen soll<br />&quot;Roster&quot; ist das Standard, Anmeldesystem";
+$lang['admin']['website_address'] = "Webseitenadresse|Wird benötigt für das Logo, den Gildennamenlink und das Hauptmenü<br />Einige Roster Addons benötigen diese auch";
 $lang['admin']['interface_url'] = "Interface Verzeichnis URL|Verzeichnis zu den Interface Images<br />Das Standartverzeichnis ist &quot;img/&quot;<br /><br />Du kannst auch eine andere URL verwenden.";
 $lang['admin']['img_suffix'] = "Bilder Dateierweiterung|Die Dateierweiterung deiner Interface Images";
 $lang['admin']['alt_img_suffix'] = "Alternative Bilder Dateierweiterung|Die Dateierweiterung deiner Interface Images";
 $lang['admin']['img_url'] = "Roster Bilder Verzeichnis URL|Verzeichnis zu den Roster's Images<br />Das Standartverzeichnis ist &quot;img/&quot;<br /><br />Du kannst auch eine andere URL verwenden.";
 $lang['admin']['timezone'] = "Zeitzone|Wird hinter der Zeit angezeigt, damit man weiss in welcher Zeitzone sich der Zeithinweis befindet";
 $lang['admin']['localtimeoffset'] = "Zeitzonenabstand|Der Zeitzonenabstand zur UTC/GMT<br />Die Zeiten im Roster werden durch diesen Abstand zur UTC/GMT berechnet.";
-$lang['admin']['use_update_triggers'] = "Addon Update Triggers|Addon Update Triggers werden fÃ¼r einige AddOns wÃ¤hrend eines Charakter- oder Gildenupdates benÃ¶tigt.<br />Einige Addons benÃ¶tigen diese Funktion voraussichtlich.";
-$lang['admin']['check_updates'] = "ÃœberprÃ¼fe auf Updates|Dies erlaubt deiner Rosterkopie (und Addons, die dieses Feature benutzen)<br />zu Ã¼berprÃ¼fen, ob Du die neueste Version der Software hast";
+$lang['admin']['use_update_triggers'] = "Addon Update Triggers|Addon Update Triggers werden für einige AddOns während eines Charakter- oder Gildenupdates benötigt.<br />Einige Addons benötigen diese Funktion voraussichtlich.";
+$lang['admin']['check_updates'] = "Überprüfe auf Updates|Dies erlaubt deiner Rosterkopie (und Addons, die dieses Feature benutzen)<br />zu überprüfen, ob Du die neueste Version der Software hast";
 $lang['admin']['seo_url'] = "Suchmaschinen freundliche URLs|Aktiviert SEO URL Links im Roster<br /><br />ein - /some/page/here/param=value.html<br />aus - index.php?p=some-page-here&amp;param=value";
-$lang['admin']['local_cache']= "Dateisystem Cache|Benutze lokales Server Dateisystem um einige Dateien zu cachen und damit die Leistung zu erhÃ¶hen.";
-$lang['admin']['use_temp_tables'] = "Benutze Temporary Tables|Diese Einstellung deaktivieren wenn dein Webhoster es nicht erlaubt temporary database tables zu generieren (CREATE TEMPORARY TABLE privilege).<br/>Diese Einstellung eingeschaltet zu lassen wird aus PerformancegrÃ¼nden empfohlen.";
-$lang['admin']['preprocess_js'] = "Javascript Dateien zusammenfassen|Bestimmte Javascript Dateien werden automatisch optimiert, was zu einer Reduzierung der DateigrÃ¶ÃŸe und Anzahl der Zugriffe auf die Webseite fÃ¼hren kann.<br />Es wird empfohlen diese Option aktiviert zu lassen, fÃ¼r besser Perfomance.";
-$lang['admin']['preprocess_css'] = "CSS Dateien zusammenfassen und komprimieren|Bestimmte CSS Dateien werden automatisch optimiert, was zu einer Reduzierung der DateigrÃ¶ÃŸe und Anzahl der Zugriffe auf die Webseite fÃ¼hren kann.<br />Es wird empfohlen diese Option aktiviert zu lassen, fÃ¼r besser Perfomance.";
-$lang['admin']['enforce_rules'] = "Upload Regeln erzwingen|Diese Einstellung erzwingt die Anwendung der Upload Regeln bei jedem lua Upload<ul class='ul-no-m'><li>Niemals: Regeln niemals erzwingen</li><li>Alle LUA Updates: Regeln bei jedem lua Update erzwingen</li><li>CP Updates: Regeln nur bei CP.lua Updates erzwingen</li><li>Gilden Updates: Regeln nur bei Gildenupdates erzwingen</li></ul>Diese Einstellungen kÃ¶nnen auch auf der &quot;Upload Regeln&quot; Seite eingestellt werden.";
+$lang['admin']['local_cache']= "Dateisystem Cache|Benutze lokales Server Dateisystem um einige Dateien zu cachen und damit die Leistung zu erhöhen.";
+$lang['admin']['use_temp_tables'] = "Benutze Temporary Tables|Diese Einstellung deaktivieren wenn dein Webhoster es nicht erlaubt temporary database tables zu generieren (CREATE TEMPORARY TABLE privilege).<br/>Diese Einstellung eingeschaltet zu lassen wird aus Performancegründen empfohlen.";
+$lang['admin']['preprocess_js'] = "Javascript Dateien zusammenfassen|Bestimmte Javascript Dateien werden automatisch optimiert, was zu einer Reduzierung der Dateigröße und Anzahl der Zugriffe auf die Webseite führen kann.<br />Es wird empfohlen diese Option aktiviert zu lassen, für besser Perfomance.";
+$lang['admin']['preprocess_css'] = "CSS Dateien zusammenfassen und komprimieren|Bestimmte CSS Dateien werden automatisch optimiert, was zu einer Reduzierung der Dateigröße und Anzahl der Zugriffe auf die Webseite führen kann.<br />Es wird empfohlen diese Option aktiviert zu lassen, für besser Perfomance.";
+$lang['admin']['enforce_rules'] = "Upload Regeln erzwingen|Diese Einstellung erzwingt die Anwendung der Upload Regeln bei jedem lua Upload<ul class='ul-no-m'><li>Niemals: Regeln niemals erzwingen</li><li>Alle LUA Updates: Regeln bei jedem lua Update erzwingen</li><li>CP Updates: Regeln nur bei CP.lua Updates erzwingen</li><li>Gilden Updates: Regeln nur bei Gildenupdates erzwingen</li></ul>Diese Einstellungen können auch auf der &quot;Upload Regeln&quot; Seite eingestellt werden.";
 
 // defaults_conf
 $lang['admin']['default_name'] = "WowRoster Name|Einen Namen eingeben, dieser wird angezeigt wenn man nicht in der Gilden- oder Charakteransicht ist";
 $lang['admin']['default_desc'] = "Beschreibung|Eine kurze Beschreibung eingeben, diese wird angezeigt wenn man nicht in der Gilden- oder Charakteransicht ist";
-$lang['admin']['alt_type'] = "2.-Char Suche (Twinks)|Text, der zur Anzeige der Anzahl der 2.-Charaktere auf der Hautpseite benutzt wird<br /><br /><span class=\"red\">Das Addon Mitgliederliste benutzt das nicht fÃ¼r die Twink Gruppierung</span>";
-$lang['admin']['alt_location'] = "Twink Suchfeld|In welchem Feld soll der Twink-Text gesucht werden<br /><br /><span class=\"red\">Das Addon Mitgliederliste benutzt das nicht fÃ¼r die Twink Gruppierung</span>";
+$lang['admin']['alt_type'] = "2.-Char Suche (Twinks)|Text, der zur Anzeige der Anzahl der 2.-Charaktere auf der Hautpseite benutzt wird<br /><br /><span class=\"red\">Das Addon Mitgliederliste benutzt das nicht für die Twink Gruppierung</span>";
+$lang['admin']['alt_location'] = "Twink Suchfeld|In welchem Feld soll der Twink-Text gesucht werden<br /><br /><span class=\"red\">Das Addon Mitgliederliste benutzt das nicht für die Twink Gruppierung</span>";
 
 // display_conf
-$lang['admin']['theme'] = "Roster Theme|WÃ¤hle das generelle Aussehen des Rosters<br /><span class=\"red\">ACHTUNG:</span> Momentan Ã¼nterstÃ¼tzen nicht alle Teile des Rosters dieses Feature<br />Ein anderes als das Standardaussehen zu wÃ¤hlen, kann zu unerwartete Ereignissen fÃ¼hren";
-$lang['admin']['logo'] = "URL fÃ¼r das Kopf-Logo|Die volle URL fÃ¼r das Logo<br />Oder &quot;img/&quot; vor den Namen setzen, um im /img-Verzeichnis des Rosters nachzugucken";
-$lang['admin']['roster_bg'] = "URL fÃ¼r das Hintergrundbild|Die volle URL fÃ¼r den Haupthintergrund<br />Oder &quot;img/&quot; vor den Namen setzen, um im /img-Verzeichnis des Rosters nachzugucken";
-$lang['admin']['motd_display_mode'] = "MOTD Anzeige Modus|Wie die MOTD (Nachricht des Tages) angezeigt werden soll:<br /><br />&quot;Text&quot; - Zeigt MOTD in rotem Text<br />&quot;Image&quot; - Zeigt MOTD als Bild (BenÃ¶tigt GD!)";
-$lang['admin']['header_locale'] = "Sprachauswahl|Kontrolliert die Anzeige der Sprachauswahl im oberen Ausschnitt des HauptmenÃ¼s";
+$lang['admin']['theme'] = "Roster Theme|Wähle das generelle Aussehen des Rosters<br /><span class=\"red\">ACHTUNG:</span> Momentan ünterstützen nicht alle Teile des Rosters dieses Feature<br />Ein anderes als das Standardaussehen zu wählen, kann zu unerwartete Ereignissen führen";
+$lang['admin']['logo'] = "URL für das Kopf-Logo|Die volle URL für das Logo<br />Oder &quot;img/&quot; vor den Namen setzen, um im /img-Verzeichnis des Rosters nachzugucken";
+$lang['admin']['roster_bg'] = "URL für das Hintergrundbild|Die volle URL für den Haupthintergrund<br />Oder &quot;img/&quot; vor den Namen setzen, um im /img-Verzeichnis des Rosters nachzugucken";
+$lang['admin']['motd_display_mode'] = "MOTD Anzeige Modus|Wie die MOTD (Nachricht des Tages) angezeigt werden soll:<br /><br />&quot;Text&quot; - Zeigt MOTD in rotem Text<br />&quot;Image&quot; - Zeigt MOTD als Bild (Benötigt GD!)";
+$lang['admin']['header_locale'] = "Sprachauswahl|Kontrolliert die Anzeige der Sprachauswahl im oberen Ausschnitt des Hauptmenüs";
 $lang['admin']['header_login'] = "Login im Kopfbereich|Anzeigen der Loginbox im Kopfbereich";
 $lang['admin']['header_search'] = "Suchen im Kopfbereich|Anzeigen der Suchbox im Kopfbereich";
-$lang['admin']['signaturebackground'] = "img.php Hintergrund|Support fÃ¼r die (alten) Standard Signaturen";
-$lang['admin']['processtime'] = "Seiten Gen. Zeit/DB Abfragen|Zeit fÃ¼r die Berechnung der Seite und die Anzahl der Datenbankabfragen in der FuÃŸzeile anzeigen<br />&quot;<i>x.xx | xx</i>&quot;";
+$lang['admin']['signaturebackground'] = "img.php Hintergrund|Support für die (alten) Standard Signaturen";
+$lang['admin']['processtime'] = "Seiten Gen. Zeit/DB Abfragen|Zeit für die Berechnung der Seite und die Anzahl der Datenbankabfragen in der Fußzeile anzeigen<br />&quot;<i>x.xx | xx</i>&quot;";
 
 // data_links
 $lang['admin']['profiler'] = "WoWRoster-Profiler Downloadlink|URL um das WoWRoster-Profiler Addon herunterzuladen";
 $lang['admin']['uploadapp'] = "UniUploader Downloadlink|URL um den UniUploader herunterzuladen";
 
 // realmstatus_conf
-$lang['admin']['rs_display'] = "Anzeige Modus|Wie der Status angezeigt werden soll<ul class='ul-no-m'><li>off: Do not show realm status</li><li>Text: Zeigt den Realmstatus in einem DIV Container mit Text und Standardbildern</li><li>Image: Zeigt Realmstatus als ein Bild (BENÃ–TIGT GD!)</li></ul>";
+$lang['admin']['rs_display'] = "Anzeige Modus|Wie der Status angezeigt werden soll<ul class='ul-no-m'><li>off: Do not show realm status</li><li>Text: Zeigt den Realmstatus in einem DIV Container mit Text und Standardbildern</li><li>Image: Zeigt Realmstatus als ein Bild (BENÖTIGT GD!)</li></ul>";
 $lang['admin']['rs_timer'] = "Refresh Timer|Setzt das Intervall, in dem neue Realmstatusdaten abgefragt werden";
 $lang['admin']['rs_left'] = "Realm Anzeige|";
 $lang['admin']['rs_middle'] = "Typ Anzeige|";
-$lang['admin']['rs_right'] = "BevÃ¶lkerungsanzeige|";
-$lang['admin']['rs_font_server'] = "Schriftart|Schriftart fÃ¼r den Realmnamen<br />(Nur Image Modus!)";
-$lang['admin']['rs_size_server'] = "SchriftgrÃ¶ÃŸe|SchriftgrÃ¶ÃŸe fÃ¼r den Realmnamen<br />(Nur Image Modus!)";
+$lang['admin']['rs_right'] = "Bevölkerungsanzeige|";
+$lang['admin']['rs_font_server'] = "Schriftart|Schriftart für den Realmnamen<br />(Nur Image Modus!)";
+$lang['admin']['rs_size_server'] = "Schriftgröße|Schriftgröße für den Realmnamen<br />(Nur Image Modus!)";
 $lang['admin']['rs_color_server'] = "Farbe|Farbe des Realmnamens";
 $lang['admin']['rs_color_shadow'] = "Schattenfarbe|Farbe des Textschattens<br />(Nur Image Modus!)";
-$lang['admin']['rs_font_type'] = "Typschriftart|Schriftart fÃ¼r den Realmtyp<br />(Nur Image Modus!)";
-$lang['admin']['rs_size_type'] = "TypschriftgrÃ¶ÃŸe|SchriftgrÃ¶ÃŸe fÃ¼r den Realmtyp<br />(Nur Image Modus!)";
-$lang['admin']['rs_color_rppvp'] = "RP-PvP Farbe|Farbe fÃ¼r RP-PvP";
-$lang['admin']['rs_color_pve'] = "Normal Farbe|Farbe fÃ¼r Normal";
-$lang['admin']['rs_color_pvp'] = "PvP Farbe|Farbe fÃ¼r PvP";
-$lang['admin']['rs_color_rp'] = "RP Farbe|Farbe fÃ¼r RP";
-$lang['admin']['rs_color_unknown'] = "Unbekannt Farbe|Farbe fÃ¼r Unbekannt";
-$lang['admin']['rs_font_pop'] = "Bev. Schriftart|Schriftart fÃ¼r die RealmbevÃ¶lkerung<br />(Nur Image Modus!)";
-$lang['admin']['rs_size_pop'] = "Bev. SchriftgrÃ¶ÃŸe|SchriftgrÃ¶ÃŸe fÃ¼r die RealmbevÃ¶lkerung<br />(Nur Image Modus!)";
-$lang['admin']['rs_color_low'] = "Farbe Niedrig|Farbe fÃ¼r niedrige BevÃ¶lkerung";
-$lang['admin']['rs_color_medium'] = "Farbe Mittel|Farbe fÃ¼r mittlere BevÃ¶lkerung";
-$lang['admin']['rs_color_high'] = "Farbe Hoch|Farbe fÃ¼r hohe BevÃ¶lkerung";
-$lang['admin']['rs_color_max'] = "Farbe Max|Farbe fÃ¼r maximale BevÃ¶lkerung";
-$lang['admin']['rs_color_error'] = "Farbe Fehler|Farbe fÃ¼r Realm Fehler";
-$lang['admin']['rs_color_offline'] = "Farbe Offline|Farbe fÃ¼r offline Realms";
-$lang['admin']['rs_color_full'] = "Farbe Voll|Farbe fÃ¼r volle Realms (Nur EU Realms)";
-$lang['admin']['rs_color_recommended'] = "Farbe Empfohlen|Farbe fÃ¼r empfohlene Realms (Nur EU Realms)";
+$lang['admin']['rs_font_type'] = "Typschriftart|Schriftart für den Realmtyp<br />(Nur Image Modus!)";
+$lang['admin']['rs_size_type'] = "Typschriftgröße|Schriftgröße für den Realmtyp<br />(Nur Image Modus!)";
+$lang['admin']['rs_color_rppvp'] = "RP-PvP Farbe|Farbe für RP-PvP";
+$lang['admin']['rs_color_pve'] = "Normal Farbe|Farbe für Normal";
+$lang['admin']['rs_color_pvp'] = "PvP Farbe|Farbe für PvP";
+$lang['admin']['rs_color_rp'] = "RP Farbe|Farbe für RP";
+$lang['admin']['rs_color_unknown'] = "Unbekannt Farbe|Farbe für Unbekannt";
+$lang['admin']['rs_font_pop'] = "Bev. Schriftart|Schriftart für die Realmbevölkerung<br />(Nur Image Modus!)";
+$lang['admin']['rs_size_pop'] = "Bev. Schriftgröße|Schriftgröße für die Realmbevölkerung<br />(Nur Image Modus!)";
+$lang['admin']['rs_color_low'] = "Farbe Niedrig|Farbe für niedrige Bevölkerung";
+$lang['admin']['rs_color_medium'] = "Farbe Mittel|Farbe für mittlere Bevölkerung";
+$lang['admin']['rs_color_high'] = "Farbe Hoch|Farbe für hohe Bevölkerung";
+$lang['admin']['rs_color_max'] = "Farbe Max|Farbe für maximale Bevölkerung";
+$lang['admin']['rs_color_error'] = "Farbe Fehler|Farbe für Realm Fehler";
+$lang['admin']['rs_color_offline'] = "Farbe Offline|Farbe für offline Realms";
+$lang['admin']['rs_color_full'] = "Farbe Voll|Farbe für volle Realms (Nur EU Realms)";
+$lang['admin']['rs_color_recommended'] = "Farbe Empfohlen|Farbe für empfohlene Realms (Nur EU Realms)";
 
 // update_access
-$lang['admin']['authenticated_user'] = "Zugriff auf Update.php|Kontrolliert den Zugriff auf update.php<br /><br />OFF deaktiviert den Zugriff fÃ¼r JEDEN";
-$lang['admin']['api_key_private'] = "Blizzard API PrivatschlÃ¼ssel|Dies ist der private SchlÃ¼ssel, den man von Blizzard erhÃ¤lt.<br />Dieser aktiviert das der WoWRoster mehr als 3000 Anfrage pro Tag an das Arsenal senden darf.";
-$lang['admin']['api_key_public'] = "Blizzard API Ã–ffentlicherschlÃ¼ssel|Dies ist der Ã¶ffentliche SchlÃ¼ssel, den man von Blizzard erhÃ¤lt<br />Dieser aktiviert das der WoWRoster mehr als 3000 Anfrage pro Tag an das Arsenal senden darf.";
-$lang['admin']['api_url_region'] = "Blizzard API Region|Arsenal Region fÃ¼r Aktualisierungen";
-$lang['admin']['api_url_locale'] = "Blizzard API Sprache|Diese Sprachen sind RegionsabhÃ¤ngig";
+$lang['admin']['authenticated_user'] = "Zugriff auf Update.php|Kontrolliert den Zugriff auf update.php<br /><br />OFF deaktiviert den Zugriff für JEDEN";
+$lang['admin']['api_key_private'] = "Blizzard API Privatschlüssel|Dies ist der private Schlüssel, den man von Blizzard erhält.<br />Dieser aktiviert das der WoWRoster mehr als 3000 Anfrage pro Tag an das Arsenal senden darf.";
+$lang['admin']['api_key_public'] = "Blizzard API Öffentlicherschlüssel|Dies ist der öffentliche Schlüssel, den man von Blizzard erhält<br />Dieser aktiviert das der WoWRoster mehr als 3000 Anfrage pro Tag an das Arsenal senden darf.";
+$lang['admin']['api_url_region'] = "Blizzard API Region|Arsenal Region für Aktualisierungen";
+$lang['admin']['api_url_locale'] = "Blizzard API Sprache|Diese Sprachen sind Regionsabhängig";
 $lang['admin']['update_inst'] = 'Aktualisierungsanleitung|Kontrolliert die Anzeige der Aktualisierungsanleitung auf der Update Seite';
-$lang['admin']['gp_user_level'] = "Gildendaten-Level|Level benÃ¶tigt um WoWRoster-GuildProfiler Daten zu verarbeiten";
-$lang['admin']['cp_user_level'] = "Charakterdata-Level|Level benÃ¶tigt um WoWRoster-Profiler Daten zu verarbeiten";
-$lang['admin']['lua_user_level'] = "Andere LUA Daten Level|Level benÃ¶tigt um andere LUA-Dateien zu verarbeiten<br />Dies gilt fÃ¼r JEDE andere LUA-Datei, die in den Roster hochgeladen werden kann";
+$lang['admin']['gp_user_level'] = "Gildendaten-Level|Level benötigt um WoWRoster-GuildProfiler Daten zu verarbeiten";
+$lang['admin']['cp_user_level'] = "Charakterdata-Level|Level benötigt um WoWRoster-Profiler Daten zu verarbeiten";
+$lang['admin']['lua_user_level'] = "Andere LUA Daten Level|Level benötigt um andere LUA-Dateien zu verarbeiten<br />Dies gilt für JEDE andere LUA-Datei, die in den Roster hochgeladen werden kann";
 $lang['admin']['use_api_onupdate'] = "Api on Lua Update|process an api call on each lua char update pulling all api info for the character some addons may use this data";
 
 //session
-$lang['admin']['sess_time'] = 'Session Dauer|Die Zeit wie lange eine Session gÃ¼ltig ist.';
+$lang['admin']['sess_time'] = 'Session Dauer|Die Zeit wie lange eine Session gültig ist.';
 $lang['admin']['save_login'] = 'Login speichern|Cookie benutzen um Login zu speichern?';
-$lang['admin']['acc_session'] = 'Session Konfig.|Konfiguration der Einstellung fÃ¼r Account Sessions.';
+$lang['admin']['acc_session'] = 'Session Konfig.|Konfiguration der Einstellung für Account Sessions.';
 
 // Character Display Settings
 $lang['admin']['per_character_display'] = 'Charakterspezifische Anzeige-Einstellungen';
@@ -1331,7 +1331,7 @@ $lang['charname'] = 'Charaktername';
 //register locals
 $lang['register'] 	= 'Registrieren';
 $lang['menu_register'] 	= 'Registrieren|Registriere dich um Zugriff auf deine Gildenseite zu haben';
-$lang['cname_tt'] 	='Dein Benutzername sollte der Name deines Hauptcharakter sein. Twinks kÃ¶nnen spÃ¤ter hinzugefÃ¼gt werden.';
+$lang['cname_tt'] 	='Dein Benutzername sollte der Name deines Hauptcharakter sein. Twinks können später hinzugefügt werden.';
 $lang['cname'] 		='Charakter Name';
 $lang['cclass_tt'] 	='Deine Charakter Klasse';
 $lang['cclass'] 	='Charakter Klasse';
@@ -1339,5 +1339,5 @@ $lang['clevel_tt'] 	='Dein Charakter Level';
 $lang['clevel']		='Charakter Level';
 $lang['cgrank_tt'] 	='Dies ist ein Rang in der Gilde';
 $lang['cgrank'] 	='Gildenrang';
-$lang['cemail_tt'] 	='Deine E-Mail Adresse. NIEMALS die gleiche E-Mail Adresse wie fÃ¼r das battle.net verwenden.';
+$lang['cemail_tt'] 	='Deine E-Mail Adresse. NIEMALS die gleiche E-Mail Adresse wie für das battle.net verwenden.';
 $lang['cemail'] 	='E-Mail Adresse';

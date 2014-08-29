@@ -1,4 +1,4 @@
-ï»¿<?php
+<?php
 /** 
  * WoWRoster Addon
  * 
@@ -28,10 +28,10 @@ $lang['reply_topic']			= 'Antworte auf Nachricht';
 /*
 $lang['description'] = 'Description';
 */
-$lang['admin']['forum_conf'] = 'Forum Konfig.|Haupteinstellung fÃ¼r das Forum';
+$lang['admin']['forum_conf'] = 'Forum Konfig.|Haupteinstellung für das Forum';
 $lang['admin']['forum_edit'] = 'Manage Foren';
 $lang['admin']['topic_edit'] = 'Manage Themen';
 $lang['admin']['forum_start_topic'] = 'Start Themen|Einstellen welche Gruppe neue Themen starten kann';
-$lang['admin']['forum_reply_post'] = 'Antworten|Gruppe auswÃ¤hlen, welche Antworten erstellen kann';
-$lang['admin']['forum_html_posts'] = 'HTML Antworten|AuswÃ¤hlen, ob HTML in BeitrÃ¤gen benutzt werden kann';
-$lang['admin']['forum_nicedit'] = 'NicEdit|Benutze Nicedit fÃ¼r HTML BeitrÃ¤ge';
+$lang['admin']['forum_reply_post'] = 'Antworten|Gruppe auswählen, welche Antworten erstellen kann';
+$lang['admin']['forum_html_posts'] = 'HTML Antworten|Auswählen, ob HTML in Beiträgen benutzt werden kann';
+$lang['admin']['forum_nicedit'] = 'NicEdit|Benutze Nicedit für HTML Beiträge';

@@ -22,14 +22,14 @@ $lang['cms_button']   = 'Guild Portal|Post articles and other items of interest'
 $lang['no_news']      = 'No hay noticias disponibles';
 $lang['bad_news_id']  = 'Invalido ID de noticias';
 
-$lang['add_news']     = 'AÃ±adir noticias';
+$lang['add_news']     = 'Añadir noticias';
 $lang['enable_html']  = 'Activar HTML';
 $lang['disable_html'] = 'Desactivar HTML';
 $lang['posted_by']    = 'Publicado por';
 $lang['edit']         = 'Editar';
 $lang['edit_news']    = 'Editar noticias';
 $lang['comments']     = 'Comentarios';
-$lang['add_comment']  = 'AÃ±adir comentario';
+$lang['add_comment']  = 'Añadir comentario';
 $lang['edit_comment'] = 'Editar comentario';
 $lang['n_comment']    = '%s comentario';
 $lang['n_comments']   = '%s comentarios';
@@ -49,25 +49,25 @@ $lang['b_upload'] = 'Upload a Slider Image';
 $lang['b_video'] = 'Video';
 
 $lang['news_edit_success']     = 'La noticia se ha editado satisfactoriamente';
-$lang['news_add_success']      = 'La noticia se ha aÃ±adido satisfactoriamente';
+$lang['news_add_success']      = 'La noticia se ha añadido satisfactoriamente';
 $lang['slider_add_success']    = 'Slider image %1$s added successfully';
 $lang['slider_error_db']       = 'There was a Database error while adding the slider image';
 $lang['slider_file_error']     = 'Your upload was not completed. Image [%1$s] could not be uploaded.';
-$lang['news_error_process']    = 'Ha surgido un problema procesando el artÃ­culo';
+$lang['news_error_process']    = 'Ha surgido un problema procesando el artículo';
 
 $lang['comment_edit_success']  = 'El comentario se ha editado satisfactoriamente';
-$lang['comment_add_success']   = 'El comentario se ha aÃ±adido satisfactoriamente';
+$lang['comment_add_success']   = 'El comentario se ha añadido satisfactoriamente';
 $lang['comment_error_process'] = 'Ha surgido un problema procesando el comentario';
 
 // Config strings
-$lang['admin']['cmsmain_conf']          = 'Configurar noticias|ConfiguraciÃ³n de las noticias';
+$lang['admin']['cmsmain_conf']          = 'Configurar noticias|Configuración de las noticias';
 $lang['admin']['cmsmain_slider']        = 'Slider|Image Slider configuration';
 $lang['admin']['cmsmain_slider_images'] = 'Slider Images';
 $lang['admin']['cmsmain_slider_add']    = 'Add Images';
-$lang['admin']['news_add']              = 'AÃ±adir noticias|Elige el nivel mÃ­nimo necesario para aÃ±adir una noticia.';
-$lang['admin']['news_edit']             = 'Editar noticias|Elige el nivel mÃ­nimo necesario para editar una noticia.';
-$lang['admin']['comm_add']              = 'AÃ±adir comentarios|Elige el nivel mÃ­nimo necesario para aÃ±adir un comentario.';
-$lang['admin']['comm_edit']             = 'Editar comentarios|Elige el nivel mÃ­nimo necesario para editar un comentario.';
+$lang['admin']['news_add']              = 'Añadir noticias|Elige el nivel mínimo necesario para añadir una noticia.';
+$lang['admin']['news_edit']             = 'Editar noticias|Elige el nivel mínimo necesario para editar una noticia.';
+$lang['admin']['comm_add']              = 'Añadir comentarios|Elige el nivel mínimo necesario para añadir un comentario.';
+$lang['admin']['comm_edit']             = 'Editar comentarios|Elige el nivel mínimo necesario para editar un comentario.';
 $lang['admin']['news_html']             = 'Noticias HTML|Activa o desactiva HTML en las noticias predeterminadamente, o desactiva HTML definitivamente.<br />Esto no afecta a las noticias existentes';
 $lang['admin']['comm_html']             = 'Comentario HTML|Activa o desactiva HTML en los comentarios predeterminadamente, o desactiva HTML definitivamente.<br />Esto no afecta a los comentarios existentes';
 $lang['admin']['news_nicedit']          = 'Nicedit caja de texto|Permite activar o desactivar la caja de texto Nicedit.';

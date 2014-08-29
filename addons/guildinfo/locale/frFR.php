@@ -13,7 +13,7 @@
 */
 
 $lang['guildinfo'] = 'Informations de guilde';
-$lang['guildinfo_desc'] = 'Affiche le contenu de la boÃ®te informations de guilde du jeu';
+$lang['guildinfo_desc'] = 'Affiche le contenu de la boîte informations de guilde du jeu';
 $lang['ginfobutton'] = 'Informations de guilde|Affiche les informations de guilde';
 
 $lang['TXP']				= 'Top 10 Total XP';
