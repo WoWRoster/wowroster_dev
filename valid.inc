@@ -1,4 +1,3 @@
-
 <div class="tier-2-a">
 	<div class="tier-2-b">
 		<div class="tier-2-title">Beta Software</div>

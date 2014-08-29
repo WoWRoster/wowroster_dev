@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * WoWRoster.net WoWRoster
  *
@@ -12,7 +12,7 @@
  * @link       http://www.wowroster.net
  * @since      File available since Release 1.7.1
  * @package    WoWRoster
- * @subpackage Locale 
+ * @subpackage Locale
  */
 
 $lang['langname'] = 'Français';
