@@ -565,6 +565,8 @@ $lang['class_to_id'] = array(
 	'Mage' => 8,
 	'Démoniste' => 9,
 	'Druide' => 11,
+	'Pandaren'	=> 25,
+	'Pandaren'	=> 26,
 // Female variation
 	'Guerrière' => 1,
 //	'Paladin' => 2,
@@ -592,7 +594,9 @@ $lang['id_to_class'] = array(
 	8 => 'Mage',
 	9 => 'Démoniste',
 	10 => 'Monk',
-	11 => 'Druide'
+	11 => 'Druide',
+	25 => 'Pandaren',
+	26 => 'Pandaren',
 );
 
 // Race to English Translation
@@ -670,8 +674,8 @@ $lang['id_to_race'] = array(
 	11 => 'Draeneï',
 	22 => 'Worgen',
 	9 => 'Gobelin',
-
-
+	25 => 'Pandaren',
+	26 => 'Pandaren',
 );
 
 $lang['hslist']=' Statistiques du Système d\'Honneur';
