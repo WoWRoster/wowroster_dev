@@ -716,6 +716,25 @@ $lang['prof_to_id'] = array(
 	'First Aid'			=> 129,
 	'Fishing'			=> 356
 );
+$lang['ts_id_icon'] = array (
+	171 => 'trade_alchemy',
+	794 => 'trade_archaeology',
+	182 => 'trade_herbalism',
+	164 =>'trade_blacksmithing',
+	186 =>'trade_mining',
+	165 =>'trade_leatherworking',
+	755 =>'inv_misc_gem_02',
+	393 =>'inv_misc_pelt_wolf_01',
+	197 =>'trade_tailoring',
+	333 =>'trade_engraving',
+	202 =>'trade_engineering',
+	773 =>'inv_inscription_tradeskill01',
+	001 =>'spell_deathknight_frozenruneweapon',
+	185 =>'inv_misc_food_15',
+	356 =>'trade_fishing',
+	129 =>'spell_holy_sealofsacrifice',
+	000 =>'ability_poisons'
+);
 
 $lang['hslist']=' Estadísticas de honor';
 $lang['hslist1']='Personaje con mayor rango';
