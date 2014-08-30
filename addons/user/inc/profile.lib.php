@@ -276,7 +276,7 @@ class usersProfile extends user
 	function getMain($uid)
 	{
 		global $roster, $addon;
-
+		$mid = null;
 		$sql = 'SELECT `member_id` FROM `' . $roster->db->table('user_link', 'user') . '` WHERE `uid` = ' . $uid . ' AND `is_main` = 1';
 		$query = $roster->db->query($sql);
 		while($row = $roster->db->fetch($query))

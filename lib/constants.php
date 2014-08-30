@@ -18,7 +18,8 @@ if( !defined('IN_ROSTER') )
 	exit('Detected invalid access to this file!');
 }
 
-define('ROSTER_VERSION', '2.3.0');
+define('ROSTER_VERSION', '2.9.9.1111');
+define('ROSTER_BETA', true);
 
 /**
  * Roster Conf File
@@ -29,6 +30,11 @@ define('ROSTER_CONF_FILE', ROSTER_BASE . 'conf.php');
  * Base, absolute roster admin directory
  */
 define('ROSTER_ADMIN', ROSTER_BASE . 'admin' . DIR_SEP);
+
+/**
+ * Base, absolute roster ucp directory
+ */
+define('ROSTER_UCP', ROSTER_BASE . 'ucp' . DIR_SEP);
 
 /**
  * Base, absolute roster ajax directory

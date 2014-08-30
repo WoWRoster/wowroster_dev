@@ -9,7 +9,39 @@
  * @version    SVN: $Id: tabcontent.js 2222 2010-12-05 10:05:37Z c.treyce@gmail.com $
  * @link       http://www.dynamicdrive.com
  * @since      File available since Release 1.7.1
+ *
+ *
+ *	new jquery god damn im good
+*
+jQuery(document).ready( function($){
+
+	function tabcontent(tabinterfaceid)
+	{
+		
+	}
+		// this is the id of the ul to use
+	jQuery(".tab-navigation ul li").click(function(e)
+	{
+		e.preventDefault();
+		var menu = jQuery(this).parent().attr("id");
+		//alert(menu);
+		//jQuery("."+menu+"").css("display","none");
+		jQuery(".tab-navigation ul#"+menu+" li").removeClass("selected");
+
+		var tab_class = jQuery(this).attr("id");
+		jQuery(".tab-navigation ul#"+menu+" li").each(function() {
+			var v = jQuery(this).attr("id");
+			console.log( "hiding - "+v );
+			jQuery("div#"+v+"").hide();
+		});
+		//jQuery("."+menu+"#" + tab_class).siblings().hide();
+		jQuery("."+menu+"#" + tab_class).show();
+		jQuery(".tab-navigation ul#"+menu+" li#" + tab_class).addClass("selected");
+	});
+
+});
 */
+
 
 //** Tab Content script v2.0- © Dynamic Drive DHTML code library (http://www.dynamicdrive.com)
 //** Updated Oct 7th, 07 to version 2.0. Contains numerous improvements:
@@ -155,7 +187,7 @@ tabcontent.prototype={
 					return false
 				}
 				if (this.tabs[i].getAttribute("rev")){ //if "rev" attr defined, store each value within "rev" as an array element
-					this.revcontentids=this.revcontentids.concat(this.tabs[i].getAttribute("rev").split(/\s*,\s*/))
+					this.revcontentids=this.revcontentids.concat(this.tabs[i].getAttribute("rev").split(/\s*,\s*/)) //added space
 				}
 				if (selectedtabfromurl==i || this.enabletabpersistence && selectedtab==-1 && parseInt(persistedtab)==i || !this.enabletabpersistence && selectedtab==-1 && this.getselectedClassTarget(this.tabs[i]).className=="selected"){
 					selectedtab=i //Selected tab index, if found

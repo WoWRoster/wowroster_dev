@@ -1036,6 +1036,7 @@ $lang['GPver_err']='The version of WoWRoster-GuildProfiler used to capture data 
 $lang['menu_upprofile']='Update Profile|Update your profile on this site';
 $lang['menu_search']='Search|Search items and recipes in the database';
 $lang['menu_roster_cp']='RosterCP|Roster Configuration Panel';
+$lang['menu_user_cp']='UserCP|Roster Configuration Panel';
 $lang['menupanel_util']  = 'Utilities';
 $lang['menupanel_realm'] = 'Realm';
 $lang['menupanel_guild'] = 'Guild';
@@ -1341,3 +1342,23 @@ $lang['cgrank_tt'] 	='This is your guild rank in the guild';
 $lang['cgrank'] 	='Guild Rank';
 $lang['cemail_tt'] 	='Your Email address DO NOT USE your battle.net address';
 $lang['cemail'] 	='Email address';
+
+// ucp strings 
+$lang['pagebar_user_settings'] = 'Settings';
+$lang['pagebar_user_chars'] = 'Char Disp Settings';
+$lang['user_profile_edit'] = array(
+	'fname'			=> 'First name',
+	'lname'			=> 'Last name',
+	'age'			=> 'Age',
+	'city'			=> 'City',
+	'state'			=> 'State',
+	'country'		=> 'Country',
+	'homepage'		=> 'Homepage',
+	'other_guilds'	=> 'Other guilds',
+	'why'			=> 'Why you joined',
+	'about'			=> 'About you',
+	'notes'			=> 'Some notes',
+);
+$lang['changeyourpass'] = 'Change Your Password';
+$lang['roster_ucp'] = 'User Control Panel';
+$lang['roster_ucp_ab'] = 'UCP';

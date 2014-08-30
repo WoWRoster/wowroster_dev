@@ -30,50 +30,8 @@ class userPage extends user
 	function getPage($page)
 	{
 		$func = array('userPage', $page . 'Page');
+		print_r($func);
 		call_user_func($func);
-	}
-
-	function registerPage()
-	{
-		global $roster, $addon, $user;
-
-		$roster->output['show_menu']['acc_menu'] = 1;  // Display the button listing
-
-		if (isset($_POST['submit']))
-		{
-			$user->user->register('basic', $_POST['newUser'], $_POST['userPass'], $_POST['confirmPass'], $_POST['fname'], $_POST['lname'], $_POST['groupPass'], $_POST['email']); // the register method
-		}
- 
-		$error = $user->user->message; // error message
-
-		//Build the Form
-		$form = 'regForm';
-		$user->form->newForm('post', makelink('user-register'), $form, 'formClass');
-		$user->form->addFormText('regText', $roster->locale->act['user_int']['reg_txt'], 'membersHeader', 'center', $form);
-		$user->form->addTextBox('text', 'newUser', '', $roster->locale->act['user_int']['uname'], 'wowinput128', 1, $form);
-		$user->form->addTextBox('password', 'userPass', '', $roster->locale->act['new_pass'], 'wowinput128', 1, $form);
-		$user->form->addTextBox('password', 'passConfirm', '', $roster->locale->act['new_pass_confirm'], 'wowinput128', 1, $form);
-		$user->form->addTextBox('text', 'fname', '', $roster->locale->act['user_int']['fname'], 'wowinput128', 1, $form);
-		$user->form->addTextBox('text', 'lname', '', $roster->locale->act['user_int']['lname'], 'wowinput128', '', $form);
-		$user->form->addTextBox('text', 'email', '', $roster->locale->act['user_int']['email'], 'wowinput128', 1, $form);
-		$user->form->addTextBox('text', 'group', '', $roster->locale->act['user_int']['group'], 'wowinput128', 1, $form);
-		$trayID = $user->form->addTray('buttonTray',$form);
-			$user->form->addResetButton($trayID,'clear',$roster->locale->act['config_reset_button'],$form);
-			$user->form->addSubmitButton($trayID,'submit',$roster->locale->act['submit'],$form);
-
-		$roster->tpl->assign_block_vars('user_register', array(
-			'BORDER_START' => border('syellow','start', $roster->locale->act['user_page']['register']),
-			'FORM' => $user->form->getTableOfElements_1(1, $form,null,false),
-			'PASS_LEN' => $addon['config']['acc_pass_length'],
-			'BORDER_END' => border('syellow','end'),
-			'MESSAGE' => (isset($error)) ? $error : "&nbsp;",
-			)
-		);
-
-		$roster->tpl->set_filenames(array('user_register' => $addon['basename'] . '/register.html'));
-		$roster->tpl->display('user_register');
-
-		return;
 	}
 
 	function activatePage()

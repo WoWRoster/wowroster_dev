@@ -30,8 +30,8 @@ class Upgrade {
 		'2.0.1',
 		'2.0.2',
 		'2.1.0',
-		'2.2.0'//,
-		//'2.3.0'
+		'2.2.0',
+		'2.9.9.1111'
 	);
 	var $index = null;
 
@@ -53,7 +53,14 @@ class Upgrade {
 			$version_from = $_POST['version'];
 			foreach ($this->versions as $index => $version) {
 				$this->index = $index;
-				if (str_replace('.', '', $version) == $version_from) {
+				if (ROSTER_BETA)
+				{
+					if (str_replace('.', '', $version) == $version_from) {
+						$method = 'beta_' . $version_from;
+						$this->$method();
+					}
+				}
+				else if (str_replace('.', '', $version) == $version_from) {
 					$method = 'upgrade_' . $version_from;
 					$this->$method();
 				}
@@ -84,27 +91,22 @@ class Upgrade {
 	//--------------------------------------------------------------
 	/**
 	 * Upgrades the 2.2.9.x beta versions into the 2.3.0 release
-	 *
-	function upgrade_229() {
+	 */
+	function beta_2991111() {
 		global $roster, $installer;
 
-		if (version_compare($roster->config['version'], '2.2.9.2569', '<'))
+		if (version_compare($roster->config['version'], '2.9.9.1111', '<'))
 		{
-			$roster->set_message('Players table updates for mastery');
+			$roster->set_message('test for 2.9.9.1111 upgrade ');
 
-			$roster->db->query("ALTER TABLE  `" . $roster->db->table('players') . "`
-			ADD  `mastery` VARCHAR( 10 ) NULL DEFAULT NULL AFTER  `crit` ,
-			ADD  `mastery_tooltip` MEDIUMTEXT NULL DEFAULT NULL AFTER  `mastery`,
-			ADD  `ilevel` VARCHAR( 20 ) NULL DEFAULT NULL AFTER `mastery_tooltip` ,
-			ADD  `pvppower` VARCHAR( 20 ) NULL DEFAULT NULL AFTER `ilevel` ,
-			ADD  `pvppower_bonus` VARCHAR( 20 ) NULL DEFAULT NULL AFTER `pvppower`");
+			$this->beta_upgrade();
+			$this->finalize();
 		}
 				
 		// Standard Beta Update
-		$this->beta_upgrade();
-		$this->finalize();
+		
 	}
-	*
+	/*
 	*	this ends the beta upgrader
 	*/
 
@@ -175,7 +177,32 @@ class Upgrade {
 
 	function beta_upgrade() {
 		global $roster;
+		
+		$ver = str_replace('.', '', $this->versions[$this->index]);
+
+		$db_structure_file = ROSTER_LIB . 'dbal' . DIR_SEP . 'structure' . DIR_SEP . 'beta_' . $ver . '.sql';
+
+		if (file_exists($db_structure_file)) {
+			// Parse structure file and create database tables
+			$sql = @fread(@fopen($db_structure_file, 'r'), @filesize($db_structure_file));
+			$sql = preg_replace('#renprefix\_(\S+?)([\s\.,]|$)#', $roster->db->prefix . '\\1\\2', $sql);
+
+			$sql = remove_remarks($sql);
+			$sql = parse_sql($sql, ';');
+
+			$sql_count = count($sql);
+			for ($i = 0; $i < $sql_count; $i++) {
+				$roster->db->query($sql[$i]);
+			}
+			unset($sql);
+		}
+		else {
+			roster_die('Could not obtain SQL structure/data "'.$db_structure_file.'"', $roster->locale->act['upgrade_wowroster']);
+		}
+		
+		
 		$roster->db->query("UPDATE `" . $roster->db->table('config') . "` SET `config_value` = '" . ROSTER_VERSION . "' WHERE `id` = '4' LIMIT 1;");
+		$roster->db->query("ALTER TABLE `" . $roster->db->table('config') . "` ORDER BY `id`;");
 	}
 
 	/**

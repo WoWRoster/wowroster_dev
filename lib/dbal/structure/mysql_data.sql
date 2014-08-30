@@ -146,6 +146,7 @@ INSERT INTO `renprefix_menu` VALUES (5, 'user', '');
 ### Menu Button entries
 INSERT INTO `renprefix_menu_button` VALUES (1, 0, 'menu_search', 'util', 'search', 'inv_misc_spyglass_02');
 INSERT INTO `renprefix_menu_button` VALUES (2, 0, 'menu_roster_cp', 'util', 'rostercp', 'inv_misc_gear_02');
+INSERT INTO `renprefix_menu_button` VALUES (2, 0, 'menu_roster_ucp', 'util', 'ucp', 'inv_misc_gear_02');
 
 # --------------------------------------------------------
 ### Users

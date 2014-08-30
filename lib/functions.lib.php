@@ -957,6 +957,9 @@ function getaddon( $addonname )
 	// Get the addon's admin dir
 	$addon['admin_dir'] = $addon['dir'] . 'admin' . DIR_SEP;
 
+	// Get the addon's admin dir
+	$addon['ucp_dir'] = $addon['dir'] . 'ucp' . DIR_SEP;
+	
 	// Get the addon's trigger file
 	$addon['trigger_file'] = $addon['inc_dir'] . 'update_hook.php';
 

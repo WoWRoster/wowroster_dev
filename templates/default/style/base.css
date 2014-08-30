@@ -1502,6 +1502,7 @@ float: left;
 .t-netbar ul {
 margin: 0;
 padding: 0;
+list-style: none;
 }
 
 .t-netbar .bar-menu {

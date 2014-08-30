@@ -1036,6 +1036,7 @@ $lang['GPver_err']='Die zur Speicherung der Daten für diese Gilde verwendete Ver
 $lang['menu_upprofile']='Update Profile|Aktualisiere dein Profil auf dieser Seite';
 $lang['menu_search']='Suche|Suche Gegenstände oder Rezepte in der Datenbank';
 $lang['menu_roster_cp']='RosterCP|Roster Konfigurationsbereich';
+$lang['menu_user_cp'] = 'UserCP|Benutzer Konfigurationsbereich';
 $lang['menupanel_util']  = 'Einstellungen';
 $lang['menupanel_realm'] = 'Realm';
 $lang['menupanel_guild'] = 'Gilde';
@@ -1341,3 +1342,23 @@ $lang['cgrank_tt'] 	='Dies ist ein Rang in der Gilde';
 $lang['cgrank'] 	='Gildenrang';
 $lang['cemail_tt'] 	='Deine E-Mail Adresse. NIEMALS die gleiche E-Mail Adresse wie für das battle.net verwenden.';
 $lang['cemail'] 	='E-Mail Adresse';
+
+// ucp strings 
+$lang['pagebar_user_settings'] = 'Settings';
+$lang['pagebar_user_chars'] = 'Char Disp Settings';
+$lang['user_profile_edit'] = array(
+	'fname'			=> 'First name',
+	'lname'			=> 'Last name',
+	'age'			=> 'Age',
+	'city'			=> 'City',
+	'state'			=> 'State',
+	'country'		=> 'Country',
+	'homepage'		=> 'Homepage',
+	'other_guilds'	=> 'Other guilds',
+	'why'			=> 'Why you joined',
+	'about'			=> 'About you',
+	'notes'			=> 'Some notes',
+);
+$lang['changeyourpass'] = 'Change Your Password';
+$lang['roster_ucp'] = 'User Control Panel';
+$lang['roster_ucp_ab'] = 'UCP';

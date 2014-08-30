@@ -136,11 +136,11 @@ class roster_locale
 	 */
 	function get_string( $key , $addon='' , $locale='' )
 	{
+
 		if( $locale == '' )
 		{
 			$locale = $this->curlocale;
 		}
-
 		$lang = array();
 		if( $addon != '' )
 		{

@@ -129,3 +129,4 @@ ALTER TABLE  `renprefix_sessions ADD `guestid` varchar(10) DEFAULT NULL;
 # session settings
 # --------------------------------------------------------
 ### Menu Updates
+INSERT INTO `renprefix_menu_button` VALUES (3, 0, 'menu_roster_ucp', 'util', 'ucp', 'inv_misc_gear_07');
