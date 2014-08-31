@@ -17,7 +17,7 @@
 		<form action="{U_LOGIN_ACTION}" method="post" id="password-form" class=" username-required input-focus">
 		<div class="control-group">
 			<div class="controls">
-			<input aria-labelledby="accountName-label" id="accountName" value="" name="accountName" title="Username" maxlength="320" type="text" tabindex="1" class="input-block" placeholder="Username" autofocus="autofocus" />
+			<input aria-labelledby="username-label" id="username" value="" name="username" title="Username" maxlength="320" type="text" tabindex="1" class="input-block" placeholder="Username" autofocus="autofocus" />
 			</div>
 		</div>
 		<div class="control-group">
@@ -25,6 +25,15 @@
 			<input aria-labelledby="password-label" id="password" value="" name="password" title="Enter your Password" maxlength="32" type="password" tabindex="1" class="input-block" autocomplete="off" placeholder="Enter your Password" />
 			</div>
 		</div>
+		<!-- IF S_LOGIN_MESSAGE -->
+		<div class="control-group">
+			<div class="controls">
+				<div class="message">
+					{L_LOGIN_MESSAGE}
+				</div>
+			</div>
+		</div>
+		<!-- ENDIF -->
 		<div class="control-group">
 			<button type="submit" id="submit" class="btn btn-primary btn-block" data-loading-text="" tabindex="1">
 			Log In

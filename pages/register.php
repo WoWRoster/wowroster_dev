@@ -17,7 +17,7 @@ if(isset($_POST['op']) && $_POST['op']=='register')
 	
 	if (isset($_POST['email1']) && isset($_POST['email2']) && $_POST['email1'] == $_POST['email2'])
 	{
-		$emailx = md5($_POST['email1']);
+		$emailx = $_POST['email1'];
 	}
 	
 	//"SELECT COUNT(*) AS `check` FROM %s WHERE `email` = '%s' AND `active` = '1'";
@@ -100,7 +100,7 @@ if(isset($_POST['op']) && $_POST['op']=='register')
 	else
 	{
 		//echo $roster->locale->act['user_user']['msg16']
-		$roster->set_message($roster->locale->act['user_user']['msg16'],$roster->locale->act['user_page']['register'],'warning');
+		$roster->set_message('something wrong with email '.$email.'','','warning');
 	}
 	if(count($err))
 	{

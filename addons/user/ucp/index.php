@@ -299,7 +299,7 @@ function processpData()
 		else
 		{
 			$settings['uid'] = $roster->auth->uid;
-			$sql = "INSERT `" . $roster->db->table('profile', 'user') . "` SET " . $roster->db->build_query('INSERT', $settings) . ";";
+			$sql = "INSERT `" . $roster->db->table('profile', 'user') . "` " . $roster->db->build_query('INSERT', $settings) . ";";
 		}
 		$result = $roster->db->query($sql);
 		if( !$result )
