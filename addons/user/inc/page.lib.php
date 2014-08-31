@@ -30,7 +30,6 @@ class userPage extends user
 	function getPage($page)
 	{
 		$func = array('userPage', $page . 'Page');
-		print_r($func);
 		call_user_func($func);
 	}
 

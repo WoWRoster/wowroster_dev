@@ -54,10 +54,12 @@ if (isset($_GET['stage']) && $_GET['stage'] == 2)
 		$result1 = $roster->db->query($query1);
 		foreach ($chars['result']['characters'] as $id => $char)
 		{
+			$idww = array();
+			$idww = getcharid($char['name'],$char['realm']);
 			$data = array(
 				'uid'					=> $roster->auth->user['id'],
-				'member_id'				=> '',
-				'guild_id'				=> '',
+				'member_id'				=> (isset($idww['member_id']) ? $idww['member_id'] : '0'),
+				'guild_id'				=> (isset($idww['guild_id']) ? $idww['guild_id'] : '0'),
 				'group_id'				=> '',
 				'is_main'				=> '0',
 				'realm'					=> $char['realm'],
@@ -142,5 +144,23 @@ if ($stage == 2)
 
 $roster->tpl->set_filenames(array('alt' => $addon['basename'] . '/alt.html'));
 $roster->tpl->display('alt');
-			
+
+
+	function getcharid($name,$server)
+	{
+		global $roster, $addon;
+		$mid = array();
+		$sql = 'SELECT `member_id`,`name`,`server`,`guild_id` FROM `' . $roster->db->table('members') . '` WHERE `name` = "' . $name . '" AND `server` = "'.$server.'"';
+		$query = $roster->db->query($sql);
+		while( $row = $roster->db->fetch($query) )
+		{
+			$mid = array(
+			'member_id'	=> $row['member_id'],
+			'name'		=> $row['name'],
+			'server'	=> $row['server'],
+			'guild_id'	=> $row['guild_id']
+			);
+		}
+		return $mid;
+	}			
 ?>

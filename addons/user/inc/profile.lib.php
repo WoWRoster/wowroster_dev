@@ -363,7 +363,7 @@ class usersProfile extends user
 		}
 		else
 		{
-			$uid = $user->session->getVal('uid');
+			$uid = $roster->auth->uid;
 		}
 
 		$user = $user->user->getUser($uid);

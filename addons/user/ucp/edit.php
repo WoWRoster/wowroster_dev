@@ -84,16 +84,12 @@ else
 }
 
 $tab1 = explode('|',$roster->locale->act['user_settings']['set']);
-$tab2 = explode('|',$roster->locale->act['user_settings']['prof']);
 $tab3 = explode('|',$roster->locale->act['user_main_menu']['my_prof']);
-$tab4 = explode('|',$roster->locale->act['user_password']['settings_password']);
 
 $menu = '
 <ul class="tab_menu">
-	<li><span class="ui-icon ui-icon-help" style="float:left;cursor:help;" ' . makeOverlib($tab1[1],$tab1[0],'',2,'',',WRAP') . '></span><a href="' . makelink('user-user-settings') . '">' . $tab1[0] . '</a></li>
-	<li><span class="ui-icon ui-icon-help" style="float:left;cursor:help;" ' . makeOverlib($tab2[1],$tab2[0],'',2,'',',WRAP') . '></span><a href="' . makelink('user-user-settings-profile') . '">' . $tab2[0] . '</a></li>
-	<li class="selected"><span class="ui-icon ui-icon-help" style="float:left;cursor:help;" ' . makeOverlib($tab3[1],$tab3[0],'',2,'',',WRAP') . '></span><a href="' . makelink('user-user-settings-edit') . '">' . $tab3[0] . '</a></li>
-	<li><span class="ui-icon ui-icon-help" style="float:left;cursor:help;" ' . makeOverlib($tab4[1],$tab4[0],'',2,'',',WRAP') . '></span><a href="' . makelink('user-user-settings-pass') . '">' . $tab4[0] . '</a></li>
+	<li><span class="ui-icon ui-icon-help" style="float:left;cursor:help;" ' . makeOverlib($tab1[1],$tab1[0],'',2,'',',WRAP') . '></span><a href="' . makelink('ucp-addon-user') . '">' . $tab1[0] . '</a></li>
+	<li class="selected"><span class="ui-icon ui-icon-help" style="float:left;cursor:help;" ' . makeOverlib($tab3[1],$tab3[0],'',2,'',',WRAP') . '></span><a href="' . makelink('ucp-addon-user-edit') . '">' . $tab3[0] . '</a></li>
 </ul>';
 
 $roster->tpl->set_filenames(array(
@@ -103,16 +99,11 @@ $roster->tpl->set_filenames(array(
 
 $roster->tpl->assign_vars(array(
 	'ROSTERCP_TITLE' => (!empty($rostercp_title) ? $rostercp_title : $roster->locale->act['roster_cp_ab']),
-	'MENU'           => $menu,
-	'BODY'           => $roster->tpl->fetch('ucp3'),
 	'PAGE_INFO'      => $roster->locale->act['user_cp'],
 	)
 );
-$roster->tpl->set_filenames(array(
-	'ucp' => $addon['basename'] . '/ucp.html'
-	)
-);
-$roster->tpl->display('ucp');
+
+$body = $roster->tpl->fetch('ucp3');
 
 
 

@@ -25,7 +25,7 @@ class userInstall
 	var $active = true;
 	var $icon = 'inv_misc_bag_26_spellfire';
 
-	var $version = '0.3.1';
+	var $version = '0.3.2';
 	var $wrnet_id = '0';
 
 	var $fullname = 'User Pages';
@@ -104,6 +104,24 @@ class userInstall
 			  `guildRealm` varchar(32) NOT NULL DEFAULT '',
 			  PRIMARY KEY (`link_id`)
 			");
+		$installer->add_query("ALTER TABLE `" . $roster->db->table('user_members') . "`
+			CHANGE `email` `email` varchar(255) DEFAULT NULL,
+			CHANGE `regIP` `regIP` varchar(15) DEFAULT NULL,
+			CHANGE `access` `access` varchar(25) DEFAULT NULL,
+			CHANGE `fname` `fname` varchar(30) DEFAULT NULL,
+			CHANGE `lname` `lname` varchar(30) DEFAULT NULL,
+			CHANGE `age` `age` varchar(32) DEFAULT NULL,
+			CHANGE `city` `city` varchar(32) DEFAULT NULL,
+			CHANGE `state` `state` varchar(32) DEFAULT NULL,
+			CHANGE `country` `country` varchar(32) DEFAULT NULL,
+			CHANGE `zone` `zone` varchar(32) DEFAULT NULL,
+			CHANGE `homepage` `homepage` varchar(64) DEFAULT NULL,
+			CHANGE `other_guilds` `other_guilds` varchar(64) DEFAULT NULL,
+			CHANGE `why` `why` varchar(64) DEFAULT NULL,
+			CHANGE `about` `about` varchar(64) DEFAULT NULL,
+			CHANGE `notes` `notes` varchar(64) DEFAULT NULL,
+			CHANGE `last_login` `last_login` varchar(64) DEFAULT NULL,
+			CHANGE `date_joined` `date_joined` varchar(64) DEFAULT NULL");
 		/**
 		* admin section settings
 		**/
@@ -121,12 +139,12 @@ class userInstall
 		/**
 		* Master and menu entries
 		**/
-		$installer->add_menu_button('menu_register','user','register','inv_misc_bag_26_spellfire');
+		//$installer->add_menu_button('menu_register','user','register','inv_misc_bag_26_spellfire');
 		$installer->add_menu_button('user_menu_chars','user','chars','spell_holy_divinespirit');
 		$installer->add_menu_button('user_menu_guilds','user','guilds','inv_misc_tabardpvp_02');
 		$installer->add_menu_button('user_menu_realms','user','realms','spell_holy_lightsgrace');
 		$installer->add_menu_button('user_menu_mail','user','mail','achievement_guildperk_gmail');
-		$installer->add_menu_button('user_menu_settings','user','settings','inv_misc_wrench_02');
+		//$installer->add_menu_button('user_menu_settings','user','settings','inv_misc_wrench_02');
 		$installer->add_menu_button('user_alt','user','alt','spell_holy_holynova');
 		return true;
 	}
@@ -213,6 +231,10 @@ class userInstall
 		{
 			$installer->remove_menu_button('menu_register','user','register','inv_misc_bag_26_spellfire');
 		}
+		if( version_compare('0.3.2', $oldversion,'>') == true )
+		{
+			$installer->remove_menu_button('user_menu_settings','user','settings','inv_misc_wrench_02');
+		}
 		return true;
 	}
 
@@ -226,6 +248,9 @@ class userInstall
 		global $installer;
 		$installer->remove_all_config();
 		$installer->remove_all_menu_button();
+		$installer->drop_table('profile');
+		$installer->drop_table('messaging');
+		$installer->drop_table('user_link');
 		return true;
 	}
 }

@@ -120,6 +120,15 @@ else
 {
 	$formbody = 'No Data';
 }
+$tab1 = explode('|',$roster->locale->act['user_settings']['set']);
+$tab3 = explode('|',$roster->locale->act['user_main_menu']['my_prof']);
+
+$menu = '
+<ul class="tab_menu">
+	<li class="selected"><span class="ui-icon ui-icon-help" style="float:left;cursor:help;" ' . makeOverlib($tab1[1],$tab1[0],'',2,'',',WRAP') . '></span><a href="' . makelink('ucp-addon-user') . '">' . $tab1[0] . '</a></li>
+	<li><span class="ui-icon ui-icon-help" style="float:left;cursor:help;" ' . makeOverlib($tab3[1],$tab3[0],'',2,'',',WRAP') . '></span><a href="' . makelink('ucp-addon-user-edit') . '">' . $tab3[0] . '</a></li>
+</ul>';
+
 $roster->tpl->set_filenames(array(
 	'ucp2' => $addon['basename'] . '/ucp-profile.html'
 	)
@@ -137,7 +146,7 @@ $body =  $roster->tpl->fetch('ucp2');
  */
 	function selectMain($uid)
 	{
-		global $roster, $addon, $user;
+		global $roster, $addon, $user, $uid;
 
 		include_once( $addon['inc_dir'] . 'users.lib.php' );
 		$user = new user();
@@ -186,7 +195,7 @@ $body =  $roster->tpl->fetch('ucp2');
 	
 	function getMain($uid)
 	{
-		global $roster, $addon;
+		global $roster, $addon, $uid;
 
 		$sql = 'SELECT * FROM `' . $roster->db->table('user_link', 'user') . '` WHERE `uid` = ' . $uid . ' AND `is_main` = 1';
 		$query = $roster->db->query($sql);
@@ -199,7 +208,7 @@ $body =  $roster->tpl->fetch('ucp2');
  */
 function selectGen($uid)
 {
-	global $roster, $addon, $user;
+	global $roster, $addon, $user, $uid;
 
 	$query = "SELECT `avsig_src` FROM `".$roster->db->table('profile','user')."` WHERE `uid` = ".$uid.";";
 	$result = $roster->db->query($query);
@@ -246,7 +255,7 @@ function selectGen($uid)
  */
 function processpData()
 {
-	global $roster, $addon, $user;
+	global $roster, $addon, $user, $uid;
 
 	$update_sql = array();
 	$mid = 0;
@@ -258,19 +267,16 @@ function processpData()
 		{
 			list($type,$settingName) = explode(':',$sName);
 			
-			if( $type == 'select_' )
+			if( $type == 'select' )
 			{
-				if( $settingName == 'is_main' && $settingValue != 'none' )
+				if( $settingName == 'is_main')
 				{
 					$mid = $roster->db->escape( $settingValue );//$roster->db->escape( $settingValue );
+					setMain($roster->auth->user['id'], $mid);
 				}
-				if( $settingName == 'is_main' )
+				if( $settingName == 'avsig_src' )
 				{
-					$user->profile->setMain($uid, $mid);
-				}
-				elseif( $settingName == 'avsig_src' )
-				{
-					$user->profile->setAvSig($uid, $mid, $src);
+					//$user->profile->setAvSig($roster->auth->user['id'], $mid, $src);
 				}
 			}
 			if( $type == 'disp_' )
@@ -286,13 +292,14 @@ function processpData()
 		$querystr = "SELECT * FROM `" . $roster->db->table('profile', 'user') . "` WHERE `uid` = '".$roster->auth->uid."';";
 		$result = $roster->db->query($querystr) or die_quietly($roster->db->error(),'WowDB Error',__FILE__ . '<br />Function: ' . (__FUNCTION__),__LINE__,$querystr);
 
-		if( $roster->db->num_rows() > 0 )
+		if( $roster->db->num_rows() == 1 )
 		{
 			$sql = "UPDATE `" . $roster->db->table('profile', 'user') . "` SET " . $roster->db->build_query('UPDATE', $settings) . " WHERE `uid` = '".$roster->auth->uid."';";
 		}
 		else
 		{
-			$sql = "INSERT `" . $roster->db->table('profile', 'user') . "` SET " . $roster->db->build_query('INSERT', $settings) . " WHERE `uid` = '".$roster->auth->uid."';";
+			$settings['uid'] = $roster->auth->uid;
+			$sql = "INSERT `" . $roster->db->table('profile', 'user') . "` SET " . $roster->db->build_query('INSERT', $settings) . ";";
 		}
 		$result = $roster->db->query($sql);
 		if( !$result )
@@ -305,5 +312,17 @@ function processpData()
 	{
 		$roster->set_message('<span style="color:#0099FF;font-size:11px;">No changes have been made</span>');
 	}
+	return true;
+}
+function setMain($uid, $mid)
+{
+	global $roster, $addon, $user;
+		//Unset previous main(s)
+		$usql = 'UPDATE `' . $roster->db->table('user_link', 'user') . '` SET `is_main` = "0" WHERE `uid` = "' . $uid.'"';
+		$roster->db->query($usql);
+		
+		//Set New Main
+	$sql = 'UPDATE `' . $roster->db->table('user_link', 'user') . '` SET `is_main` = "1" WHERE `uid` = "' . $uid . '" AND `member_id` = "' . $mid.'"';
+	$roster->db->query($sql);
 	return true;
 }

@@ -151,7 +151,14 @@ class wonline
 				// Skip multiple sessions for one user
 				if ($row['id'] != $prev_user_id)
 				{
-					$user_online_link[] = $row['usr'];
+					if( active_addon('user'))
+					{
+						$user_online_link[] ='<a href="' . makelink('user-user-profile&amp;a=c:' . $row['id']) . '">' . $row['usr'] . '</a> ';
+					}
+					else
+					{
+						$user_online_link[] = $row['usr'];
+					}
 					$logged_visible_online++;
 				}
 				$prev_user_id = $row['id'];
