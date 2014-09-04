@@ -93,7 +93,7 @@ class Upgrade {
 	/**
 	 * Upgrades the 2.2.9.x beta versions into the 2.3.0 release
 	 */
-	function beta_230()
+	function beta_2991111()
 	{
 		global $roster, $installer;
 
