@@ -93,7 +93,7 @@ class Upgrade {
 	/**
 	 * Upgrades the 2.2.9.x beta versions into the 2.3.0 release
 	 */
-	function beta_2991111()
+	function beta_230()
 	{
 		global $roster, $installer;
 
@@ -104,11 +104,11 @@ class Upgrade {
 			$this->beta_upgrade();
 			$this->finalize();
 		}
+		return;
 	}
 	function beta_2991119()
 	{
 		global $roster, $installer;
-
 		if (version_compare($roster->config['version'], '2.9.9.1119', '<'))
 		{
 			$roster->set_message('2.9.9.1119 Upgrade');
@@ -132,6 +132,7 @@ class Upgrade {
 			$this->beta_upgrade();
 			$this->finalize();
 		}
+		return;
 	}
 	/*
 	*	this ends the beta upgrader
@@ -232,6 +233,7 @@ class Upgrade {
 		
 		$roster->db->query("UPDATE `" . $roster->db->table('config') . "` SET `config_value` = '" . ROSTER_VERSION . "' WHERE `id` = '4' LIMIT 1;");
 		$roster->db->query("ALTER TABLE `" . $roster->db->table('config') . "` ORDER BY `id`;");
+		return;
 	}
 
 	/**
