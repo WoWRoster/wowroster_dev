@@ -32,7 +32,8 @@ class Upgrade {
 		'2.1.0',
 		'2.2.0',
 		'2.9.9.1111',
-		'2.9.9.1119'
+		'2.9.9.1119'//,
+		//'2.9.9.1120'
 	);
 	var $index = null;
 
@@ -93,7 +94,7 @@ class Upgrade {
 	/**
 	 * Upgrades the 2.2.9.x beta versions into the 2.3.0 release
 	 */
-	function beta_2991111()
+	function beta_230()
 	{
 		global $roster, $installer;
 
@@ -106,10 +107,10 @@ class Upgrade {
 		}
 		return;
 	}
-	function beta_2991119()
+	function beta_2991111()
 	{
 		global $roster, $installer;
-		if (version_compare($roster->config['version'], '2.9.9.1119', '<'))
+		if (version_compare($roster->config['version'], '2.9.9.1119'))
 		{
 			$roster->set_message('2.9.9.1119 Upgrade');
 			$roster->db->query("INSERT INTO `" . $roster->db->table('menu_button') . "` VALUES (3, 0, 'menu_roster_ucp', 'util', 'ucp', 'inv_misc_gear_07')");
@@ -134,6 +135,27 @@ class Upgrade {
 		}
 		return;
 	}
+	function beta_2991119()
+	{
+		global $roster, $installer;
+		if (version_compare($roster->config['version'], '2.9.9.1120'))
+		{
+			$roster->db->query("
+			CREATE TABLE IF NOT EXISTS `" . $roster->db->table('guild_rank') . "` (
+			  `id` int(11) NOT NULL AUTO_INCREMENT,
+			  `rank` tinyint(4) NOT NULL DEFAULT '0',
+			  `title` varchar(255) NOT NULL DEFAULT '',
+			  `control` varchar(255) NOT NULL DEFAULT '0',
+			  `guild_id` int(11) unsigned NOT NULL DEFAULT '0',
+			  PRIMARY KEY (`id`)
+			) ENGINE=MyISAM  DEFAULT CHARSET=utf8;");
+
+		$this->beta_upgrade();
+		$this->finalize();
+		}
+		return;
+	}
+
 	/*
 	*	this ends the beta upgrader
 	*/
