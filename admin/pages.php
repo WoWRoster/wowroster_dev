@@ -49,6 +49,11 @@ $config_pages['armory_data'] = array(
 	'title'=>	'pagebar_armory_data',
 	'file'=>	'armory_data.php',
 	);
+$config_pages['apidata'] = array(
+	'href'=>	$roster->pages[0].'-apidata',
+	'title'=>	'pagebar_api_data',
+	'file'=>	'api_data.php',
+	);
 $config_pages['install'] = array(
 	'href'=>	$roster->pages[0].'-install',
 	'title'=>	'pagebar_addoninst',

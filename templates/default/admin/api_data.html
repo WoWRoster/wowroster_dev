@@ -1,0 +1,79 @@
+
+		<div id="apdtab1" class="tab-menu">
+			<ul id="api_data">
+				<!-- BEGIN sections -->
+				<li  id="ap_{sections.ID}">{sections.NAME}</li>
+				<!-- END sections -->
+			</ul>
+		</div>
+
+<!-- BEGIN sections -->
+	<!-- IF sections.TYPE eq 'usage' -->
+
+		<div class="tier-2-a api_data" id="ap_{sections.ID}">
+			<div class="tier-2-b">
+				<div class="tier-2-title">{sections.NAME}
+					<div class="right">
+						<form action="" method="post" id="update">
+							<input type="hidden" name="{sections.TYPE}" value="{sections.VALUE}" />
+							<input type="hidden" name="process" value="process" />
+							<button type="submit" class="input"><!-- TRANSLATE installer_purge --></button>
+						</form>
+					</div>
+				</div>
+							
+				<div id="apdtab2" class="tab-menu" >
+					<ul id="api_data2">
+						<!-- BEGIN usage -->
+						<li id="ap_{sections.usage.ID}">{sections.usage.NAME}</li>
+						<!-- END usage -->
+					</ul>
+				</div>
+
+				<!-- BEGIN usage -->
+				<div class="tier-2-a api_data2" id="ap_{sections.usage.ID}">
+					<div class="tier-2-b">
+						<div class="tier-2-title">{sections.usage.NAME}
+						</div>
+						<table class="border_frame" width="100%" cellspacing="0">
+						<!-- BEGIN lines -->
+							<tr>
+								<td class="membersRow{sections.usage.lines.ROW}">{sections.usage.lines.NAME}</td>
+								<td class="membersRow{sections.usage.lines.ROW}">{sections.usage.lines.ROWS}</td>
+							</tr>
+						<!-- END lines -->
+						</table>
+					</div>
+				</div>
+				<!-- END usage -->
+			</div>
+		</div>
+		
+	<!-- ELSEIF sections.TYPE neq 'usage' -->
+	
+		<div class="tier-2-a api_data" id="ap_{sections.ID}">
+			<div class="tier-2-b">
+				<div class="tier-2-title">{sections.NAME}
+					<div class="right">
+						<form action="" method="post" id="update">
+							<input type="hidden" name="{sections.TYPE}" value="{sections.VALUE}" />
+							<input type="hidden" name="process" value="process" />
+							<button type="submit" class="input"><!-- TRANSLATE installer_purge --></button>
+						</form>
+					</div>
+				</div>
+		<table class="border_frame" width="100%" cellspacing="0">
+						<!-- BEGIN lines -->
+							<tr>
+								<td class="membersRow{sections.lines.ROW}">{sections.lines.NAME}</td>
+								<td class="membersRow{sections.lines.ROW}">{sections.lines.ROWS}</td>
+							</tr>
+						<!-- END lines -->
+						</table>
+
+			</div>
+		</div>
+		
+	<!-- ENDIF -->
+
+<!-- END sections -->

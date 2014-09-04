@@ -24,12 +24,7 @@ $(function() {
   // Apply jQuery UI button styles on EVERYTHING
   $('button, input:submit, input:reset, input:button, .input').button();
 
-  // Style checkboxes not in a checkset
-  $('input:checkbox').each(function() {
-    if (! $(this).parent().hasClass('checkset')) {
-      $(this).checkbox();
-    };
-  });
+ 
 
   // Create button sets for radio and checkbox groups
   $('.radioset').buttonset();
@@ -75,5 +70,11 @@ $(function() {
   $('.mini-list-click').click(function(){
     $('.mini-list').fadeOut();
     $('#top_nav > a').removeClass('active');
+  });
+   // Style checkboxes not in a checkset
+  $('input:checkbox').each(function() {
+    if (! $(this).parent().hasClass('checkset')) {
+      $(this).checkbox();
+    };
   });
 });

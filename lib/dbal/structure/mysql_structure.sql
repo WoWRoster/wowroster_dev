@@ -185,8 +185,8 @@ CREATE TABLE `renprefix_api_enchant` (
  PRIMARY KEY  ( `id` )
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-DROP TABLE IF EXISTS `renprefix_api_error`;
-CREATE TABLE `renprefix_all_error` (
+DROP TABLE IF EXISTS `renprefix_all_gems`;
+CREATE TABLE `renprefix_all_gems` (
  `gem_id` int(11) NOT NULL,
  `gem_name` varchar(96) NOT NULL,
  `gem_color` varchar(16) NOT NULL,
@@ -244,6 +244,15 @@ CREATE TABLE `renprefix_api_items` (
   PRIMARY KEY  (`item_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `renprefix_api_cache`;
+CREATE TABLE `renprefix_api_cache` (
+   `id`				int(11) NOT NULL,
+   `type`			varchar(96) NOT NULL,
+   `lastmodified`	varchar(16) NOT NULL,
+   `name`			varchar(64) NOT NULL,
+   `locale`         varchar(16) DEFAULT NULL,
+   `json`           longtext DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 # --------------------------------------------------------
 ### Buffs
 

@@ -31,7 +31,8 @@ class Upgrade {
 		'2.0.2',
 		'2.1.0',
 		'2.2.0',
-		'2.9.9.1111'
+		'2.9.9.1111',
+		'2.9.9.1119'
 	);
 	var $index = null;
 
@@ -92,19 +93,45 @@ class Upgrade {
 	/**
 	 * Upgrades the 2.2.9.x beta versions into the 2.3.0 release
 	 */
-	function beta_2991111() {
+	function beta_2991111()
+	{
 		global $roster, $installer;
 
 		if (version_compare($roster->config['version'], '2.9.9.1111', '<'))
 		{
 			$roster->set_message('test for 2.9.9.1111 upgrade ');
+			$roster->db->query("INSERT INTO `" . $roster->db->table('menu_button') . "` VALUES (3, 0, 'menu_roster_ucp', 'util', 'ucp', 'inv_misc_gear_07')");
+			$this->beta_upgrade();
+			$this->finalize();
+		}
+	}
+	function beta_2991119()
+	{
+		global $roster, $installer;
+
+		if (version_compare($roster->config['version'], '2.9.9.1119', '<'))
+		{
+			$roster->set_message('2.9.9.1119 Upgrade');
+			$roster->db->query("INSERT INTO `" . $roster->db->table('menu_button') . "` VALUES (3, 0, 'menu_roster_ucp', 'util', 'ucp', 'inv_misc_gear_07')");
+			$roster->db->query("ALTER TABLE  `" . $roster->db->table('api_usage') . "` ADD  `url` MEDIUMTEXT NULL DEFAULT NULL AFTER  `type` ;
+			ALTER TABLE  `" . $roster->db->table('api_usage') . "` ADD  `responce_code` VARCHAR( 20 ) NULL DEFAULT NULL AFTER  `url` ;
+			ALTER TABLE  `" . $roster->db->table('api_usage') . "` ADD  `content_type` VARCHAR( 255 ) NULL DEFAULT NULL AFTER  `responce_code` ;
+
+			DROP TABLE IF EXISTS `" . $roster->db->table('api_cache') . "`;
+			CREATE TABLE `" . $roster->db->table('api_cache') . "` (
+				`cid` int(11) NOT NULL AUTO_INCREMENT,
+				`id`				int(11) NOT NULL,
+				`type`			varchar(96) NOT NULL,
+				`timestamp`		varchar(16) NOT NULL,
+				`name`			varchar(64) NOT NULL,
+				`locale`         varchar(16) DEFAULT NULL,
+				`json`           longtext DEFAULT NULL,
+				PRIMARY KEY (`cid`)
+			) ENGINE=MyISAM DEFAULT CHARSET=utf8;");
 
 			$this->beta_upgrade();
 			$this->finalize();
 		}
-				
-		// Standard Beta Update
-		
 	}
 	/*
 	*	this ends the beta upgrader
@@ -180,6 +207,7 @@ class Upgrade {
 		
 		$ver = str_replace('.', '', $this->versions[$this->index]);
 
+		/*
 		$db_structure_file = ROSTER_LIB . 'dbal' . DIR_SEP . 'structure' . DIR_SEP . 'beta_' . $ver . '.sql';
 
 		if (file_exists($db_structure_file)) {
@@ -199,6 +227,7 @@ class Upgrade {
 		else {
 			roster_die('Could not obtain SQL structure/data "'.$db_structure_file.'"', $roster->locale->act['upgrade_wowroster']);
 		}
+		*/
 		
 		
 		$roster->db->query("UPDATE `" . $roster->db->table('config') . "` SET `config_value` = '" . ROSTER_VERSION . "' WHERE `id` = '4' LIMIT 1;");

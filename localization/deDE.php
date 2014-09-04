@@ -566,8 +566,6 @@ $lang['class_to_id'] = array(
 	'Hexenmeister' => 9,
 	'Mönch' => 10,
 	'Druide' => 11,
-	'Pandaren'	=> 25,
-	'Pandaren'	=> 26,
 // Female variation
 	'Kriegerin' => 1,
 	// 'Paladin' => 2,
@@ -595,8 +593,6 @@ $lang['id_to_class'] = array(
 	9 => 'Hexenmeister',
 	10 => 'Mönch',
 	11 => 'Druide',
-	25 => 'Pandaren',
-	26 => 'Pandaren',
 );
 
 // Race to English Translation

@@ -48,7 +48,7 @@ if (isset($_GET['stage']) && $_GET['stage'] == 2)
 	$roster->api2->setAccessToken($response['result']['access_token']);
 	$chars = $roster->api2->fetch('wowprofile');
 	$update_sql = array();
-	if (is_array($chars['result']['characters']))
+	if (is_array($chars['characters']))
 	{
 		$query1 = 'DELETE FROM `' . $roster->db->table('user_link', 'user') . '` WHERE `uid` = '.$roster->auth->user['id'].'';
 		$result1 = $roster->db->query($query1);

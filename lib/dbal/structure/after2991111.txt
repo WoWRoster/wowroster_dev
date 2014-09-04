@@ -1,0 +1,16 @@
+ALTER TABLE  `roster_api_usage` ADD  `url` MEDIUMTEXT NULL DEFAULT NULL AFTER  `type` ;
+ALTER TABLE  `roster_api_usage` ADD  `responce_code` VARCHAR( 20 ) NULL DEFAULT NULL AFTER  `url` ;
+ALTER TABLE  `roster_api_usage` ADD  `content_type` VARCHAR( 255 ) NULL DEFAULT NULL AFTER  `responce_code` ;
+
+DROP TABLE IF EXISTS `renprefix_api_cache`;
+CREATE TABLE `renprefix_api_cache` (
+	`cid` int(11) NOT NULL AUTO_INCREMENT,
+	`id`				int(11) NOT NULL,
+	`type`			varchar(96) NOT NULL,
+	`timestamp`		varchar(16) NOT NULL,
+	`name`			varchar(64) NOT NULL,
+	`locale`         varchar(16) DEFAULT NULL,
+	`json`           longtext DEFAULT NULL,
+	PRIMARY KEY (`cid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+

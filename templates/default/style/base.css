@@ -1562,13 +1562,31 @@ background: transparent url(../images/shader.png) repeat;
 .ui-tooltip tbody {
 border: 0px !important;
 }
+.ui-tooltip h3 { font-size: 16px; font-weight: normal;margin: 0 0 3px 0;}
 .ui-tooltip th {
 border: 0px !important;
 }
-.iu-tooltip .whtt-sellprice {
+.ui-tooltip .whtt-sellprice {
 display: none;
 }
+/* utility */
+.clear { clear: both; display: block; margin: 0; padding: 0; }
+.ie6 .clear { height: 0; line-height: 100%; overflow: hidden; }
+.clear-after:after { content: ""; display: block; height: 0; clear: both; visibility: hidden; }
+.float-left { float: left; }
+.float-right { float: right; }
+.align-left { text-align: left; }
+.align-center { text-align: center; }
+.align-right { text-align: right; }
+.color-tooltip-yellow { color: #ffd100 !important; }
+.color-tooltip-red { color: #f00 !important; }
+.color-tooltip-green { color: #0f0 !important; }
+.color-tooltip-blue { color: #71D5FF !important; }
+.color-tooltip-beige { color: #FFFF98 !important; }
 
+/* faction */
+.color-tooltip-alliance { color: #247FAA; }
+.color-tooltip-horde { color: #b30000; }
 /*
 	character claim css
 */
@@ -1804,3 +1822,47 @@ input:-webkit-autofill {
   background: inherit;
   border: inherit;
 }
+
+.tab-menu { 
+font: 11px arial,helvetica,sans-serif;
+line-height: normal;
+padding: 4px 0 0 0;
+display: block;
+position: relative;
+margin: 1px;}
+.tab-menu ul { margin:0; padding:0; list-style:none; display: inline-block;}
+.tab-menu li {
+	background: #fece2f url(../images/jquery-ui/ui-bg_gloss-wave_45_8a5d00_500x100.png) 50% 50% repeat-x;
+	float:left;
+	margin:0 0 3px 3px;
+	cursor:pointer;
+	border: 1px solid #d19405;
+	padding: 5px;
+	color: #000;
+	border-radius: 6px;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+}
+.tab-menu li .selected{
+	background: #fece2f url(../images/jquery-ui/ui-bg_gloss-wave_80_fece2f_500x100.png) 50% 50% repeat-x;
+	float:left;
+	margin:0 0 3px 3px;
+	cursor:pointer;
+	border: 1px solid #d19405;
+	padding: 5px;
+	color: #000;
+	border-radius: 6px;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+}
+.tab-menu .text { display:block; text-decoration:none; font-weight:normal; color:#FFDD00; }
+.tab-menu .text:hover { color:#ffffff; font-weight:normal; }
+.tab-menu .selected { cursor:default; border-color:#FC0; background: #fece2f url(../images/jquery-ui/ui-bg_gloss-wave_80_fece2f_500x100.png) 50% 50% repeat-x;}
+.tab-menu .selected .text { color:#ffffff; }
+
+
+
+
+
+
+

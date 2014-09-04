@@ -657,7 +657,7 @@ function cleanTooltip( $tooltip , $caption_color='' , $inline_caption=1 )
  * @param string $item_id
  * @return unknown
  */
-function makeOverlib( $tooltip , $caption='' , $caption_color='' , $mode=0 , $locale='' , $extra_parameters='', $type='text',$member_id=null )
+function makeOverlib( $tooltip , $caption='' , $caption_color='' , $mode=0 , $locale='' , $extra_parameters='', $type='text',$member_id = null )
 {
 	global $roster, $tooltips;
 
@@ -715,6 +715,10 @@ function makeOverlib( $tooltip , $caption='' , $caption_color='' , $mode=0 , $lo
 	else if ($type == 'item')
 	{
 		return 'data-tooltip="item-'.$tooltip.(isset($member_id) ? '|'.$member_id : '').'"';
+	}
+	else if ($type == 'talent')
+	{
+		return 'data-tooltip="talent-'.$tooltip.'"';
 	}
 	else
 	{

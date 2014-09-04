@@ -239,7 +239,7 @@ if  (function_exists('curl_init'))
 	$roster->api = new WowAPI($roster->config['api_url_region']);
 	require_once(ROSTER_LIB . 'api2/Client.php');
 	//$client = new OAuth2\Client($client_id, $client_secret, $region, $locale, $redirect_uri);
-	$roster->api2 = new OAuth2\Client($roster->config['api_key_public'],$roster->config['api_key_private'],$roster->config['api_url_region'],$roster->config['api_url_locale'],ROSTER_URL.makelink('user-user-alt&stage=2'));
+	$roster->api2 = new Client($roster->config['api_key_public'],$roster->config['api_key_private'],$roster->config['api_url_region'],$roster->config['api_url_locale'],ROSTER_URL.makelink('user-user-alt&stage=2'));
 	
 }
 /**

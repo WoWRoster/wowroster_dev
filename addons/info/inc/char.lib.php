@@ -1275,7 +1275,7 @@ class char
 		{
 			$talents[$row['row']][$row['column']]['name'] = $row['name'];
 			$talents[$row['row']][$row['column']]['id'] = $row['talent_id'];
-			$talents[$row['row']][$row['column']]['tooltip'] = makeOverlib($row['tooltip'], $row['name'], '', 2);//$row['tooltip'];
+			$talents[$row['row']][$row['column']]['tooltip'] = makeOverlib($row['talent_id'], $row['name'], '', 2,'','','talent');//$row['tooltip'];
 			$talents[$row['row']][$row['column']]['icon'] = $row['texture'];
 			$talents[$row['row']][$row['column']]['isspell'] = $row['isspell'];
 			$talents[$row['row']][$row['column']]['rank'] = '';

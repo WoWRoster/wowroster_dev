@@ -892,6 +892,7 @@ class update
 		}
 
 		// str_replace added to get rid of non breaking spaces in cp.lua tooltips
+		$row_data = str_replace('\n\n','<br>',$row_data);
 		$row_data = str_replace(chr(194) . chr(160), ' ', $row_data);
 		$row_data = stripslashes($row_data);
 		$row_data = $roster->db->escape($row_data);

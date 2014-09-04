@@ -18,7 +18,7 @@ if( !defined('IN_ROSTER') )
 	exit('Detected invalid access to this file!');
 }
 
-define('ROSTER_VERSION', '2.9.9.1111');
+define('ROSTER_VERSION', '2.9.9.1119');
 define('ROSTER_BETA', true);
 
 /**

@@ -566,8 +566,6 @@ $lang['class_to_id'] = array(
 	'Warlock' => 9,
 	'Monk' => 10,
 	'Druid' => 11,
-	'Pandaren'	=> 25,
-	'Pandaren'	=> 26,
 // Space so locale files are line synced
 
 
@@ -595,8 +593,6 @@ $lang['id_to_class'] = array(
 	9 => 'Warlock',
 	10 => 'Monk',
 	11 => 'Druid',
-	25 => 'Pandaren',
-	26 => 'Pandaren',
 );
 
 // Race to English Translation

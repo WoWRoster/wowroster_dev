@@ -566,8 +566,6 @@ $lang['class_to_id'] = array(
 	'Brujo' => 9,
 	'Monk' => 10,
 	'Druida' => 11,
-	'Pandaren'	=> 25,
-	'Pandaren'	=> 26,
 // Female variation
 	'Guerrera' => 1,
 	// 'Paladín' => 2,

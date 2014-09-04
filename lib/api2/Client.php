@@ -27,10 +27,11 @@
  * @author      Joe Foster (Ulminia) <ulminia@gmail.com>
  * @version     1.0 (beta)
  */
-namespace OAuth2;
+//namespace OAuth2;
 
 require_once(ROSTER_LIB . 'api2/GrantType/IGrantType.php');
 require_once(ROSTER_LIB . 'api2/GrantType/AuthorizationCode.php');
+require_once(ROSTER_LIB . 'api2/api_cache.php');
 
 class Client
 {
@@ -195,6 +196,17 @@ class Client
 	 */
 	public $locale = '';
 	
+	/*
+	*	some tracking bits for people
+	*/
+	public $usage = array(
+				'type'				=> '',
+				'url'				=> '',
+				'responce_code'		=> '',
+				'content_type'		=> '',
+				'locale'			=> '',
+			);
+	public $cache;
     /**
      * Construct
      *
@@ -209,7 +221,7 @@ class Client
         if (!extension_loaded('curl')) {
             throw new Exception('The PHP exention curl must be installed to use this library.', Exception::CURL_NOT_FOUND);
         }
-		
+		$this->cache = new apicache();
 		$r = preg_replace('/http:/', 'https:', $redirect_uri);
 		$client_auth			= self::AUTH_TYPE_URI;
         $this->client_id		= $client_id;
@@ -378,8 +390,11 @@ class Client
 		$url = $this->baseurl[$this->region]['urlbase'];
 		//$url .= $path;
 		$url .= self::_buildtype($path,$params);
+		$this->usage['url'] = $url;
 		$url .= (count($params)) ? '?' . http_build_query($params) : '';
-		echo $url.'<br>';
+		$this->usage['type'] = $path;
+		
+		$this->usage['locale'] = $this->locale;
 		return $url;
     }
 	
@@ -393,19 +408,19 @@ class Client
 		switch ($class)
 		{
 			case 'achievement':
-						$q = 'wow/achievement/'.$fields['name'];
+						$q = 'wow/achievement/'.$fields['id'];
 					break;
 			case 'auction':
 						$q = 'wow/auction/data/'.$fields['server'];
 					break;
 			case 'abilities':
-						$q = 'wow/battlepet/ability/'.$fields['name'];
+						$q = 'wow/battlepet/ability/'.$fields['id'];
 					break;
 			case 'species':
-						$q = 'wow/battlepet/species/'.$fields['name'];
+						$q = 'wow/battlepet/species/'.$fields['id'];
 					break;
 			case 'stats':
-						$q = 'wow/battlepet/stats/'.$fields['name'];
+						$q = 'wow/battlepet/stats/'.$fields['id'];
 					break;
 			case 'realm_leaderboard':
 						$q = 'wow/challenge/'.$fields['server'];
@@ -420,10 +435,10 @@ class Client
 						$q = 'wow/character/'.$fields['server'].'/'.$fields['name'];
 					break;
 			case 'item':
-						$q = 'wow/item/'.$fields['name'];
+						$q = 'wow/item/'.$fields['id'];
 					break;
 			case 'item_set':
-						$q = 'wow/item/set/'.$fields['name'];
+						$q = 'wow/item/set/'.$fields['id'];
 					break;
 			case 'guild':
 						$q = 'wow/guild/'.$fields['server'].'/'.$fields['name'];
@@ -432,16 +447,16 @@ class Client
 						$q = 'wow/leaderboard/'.$fields['size'];
 					break;
 			case 'quest':
-						$q = 'wow/quest/'.$fields['name'];
+						$q = 'wow/quest/'.$fields['id'];
 					break;
 			case 'realmstatus':
 						$q = 'wow/realm/status';
 					break;
 			case 'recipe':
-						$q = 'wow/recipe/'.$fields['name'];
+						$q = 'wow/recipe/'.$fields['id'];
 					break;
 			case 'spell':
-						$q = 'wow/spell/'.$fields['name'];
+						$q = 'wow/spell/'.$fields['id'];
 					break;
 			case 'battlegroups':
 						$q = 'wow/data/battlegroups/';
@@ -525,7 +540,8 @@ class Client
      */
     public function fetch($protected_resource_url, $parameters = array(), $http_method = self::HTTP_METHOD_GET, array $http_headers = array(), $form_content_type = self::HTTP_FORM_CONTENT_TYPE_MULTIPART)
     {
-		//$parameters['client_id'] = $this->client_id;
+		
+		
 		$protected_resource_url = self::_buildUrl($protected_resource_url, $parameters);
 	
         if ($this->access_token) {
@@ -554,7 +570,22 @@ class Client
                     break;
             }
         }
-        return $this->executeRequest($protected_resource_url, $parameters, $http_method, $http_headers, $form_content_type);
+		// we are gona run cache checks
+		if (method_exists($this->cache, $this->usage['type']) && is_callable(array($this->cache, $this->usage['type'])))
+		{
+			$data = call_user_func(array($this->cache, $this->usage['type']),$parameters,$this->usage);
+			if (is_array($data))
+			{
+				return $data;
+			}
+		}
+
+		$result = $this->executeRequest($protected_resource_url, $parameters, $http_method, $http_headers, $form_content_type);
+		if (method_exists($this->cache, 'insert'.$this->usage['type']) && is_callable(array($this->cache, 'insert'.$this->usage['type'])))
+		{
+			call_user_func(array($this->cache, 'insert'.$this->usage['type']),$result,$this->usage,$parameters);
+		}
+		return $result;
     }
 
     /**
@@ -606,7 +637,6 @@ class Client
      */
     private function executeRequest($url, $parameters = array(), $http_method = self::HTTP_METHOD_GET, array $http_headers = null, $form_content_type = self::HTTP_FORM_CONTENT_TYPE_MULTIPART)
     {
-		//echo '<br><br>'.$url.'<br><br>';
         $curl_options = array(
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_SSL_VERIFYPEER => true,
@@ -680,11 +710,20 @@ class Client
         }
         curl_close($ch);
 
+		$this->usage['responce_code'] = $http_code;
+		$this->usage['content_type'] = $content_type;
+		if (isset($this->usage['type']) && isset($this->usage['url']))
+		{
+			$this->cache->api_track($this->usage['type'], $this->usage['url'], $this->usage['responce_code'], $this->usage['content_type']);
+		}
+		/*
         return array(
             'result' => (null === $json_decode) ? $result : $json_decode,
             'code' => $http_code,
             'content_type' => $content_type
         );
+		*/
+		return (null === $json_decode) ? $result : $json_decode;
     }
 
     /**
@@ -711,8 +750,8 @@ class Client
         return implode('', $parts);
     }
 }
-
-class Exception extends \Exception
+/*
+class Exception extends Exception
 {
     const CURL_NOT_FOUND                     = 0x01;
     const CURL_ERROR                         = 0x02;
@@ -721,10 +760,11 @@ class Exception extends \Exception
     const INVALID_ACCESS_TOKEN_TYPE          = 0x05;
 }
 
-class InvalidArgumentException extends \InvalidArgumentException
+class InvalidArgumentException extends InvalidArgumentException
 {
     const INVALID_GRANT_TYPE      = 0x01;
     const CERTIFICATE_NOT_FOUND   = 0x02;
     const REQUIRE_PARAMS_AS_ARRAY = 0x03;
     const MISSING_PARAMETER       = 0x04;
 }
+*/

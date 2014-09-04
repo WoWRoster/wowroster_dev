@@ -39,8 +39,8 @@ CREATE TABLE `renprefix_api_enchant` (
  PRIMARY KEY  ( `id` )
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-DROP TABLE IF EXISTS `renprefix_api_error`;
-CREATE TABLE `renprefix_api_error` (
+DROP TABLE IF EXISTS `renprefix_all_gems`;
+CREATE TABLE `renprefix_all_gems` (
  `gem_id` int(11) NOT NULL,
  `gem_name` varchar(96) NOT NULL,
  `gem_color` varchar(16) NOT NULL,

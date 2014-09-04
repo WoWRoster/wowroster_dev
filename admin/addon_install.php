@@ -184,14 +184,15 @@ $body = $roster->tpl->fetch('body');
 /**
 som new js
 **/
-$js = '
+	$js = '
 jQuery(document).ready( function($){
 
 	// this is the id of the ul to use
+	var menu;
 jQuery(".tab-navigation ul li").click(function(e)
 {
 	e.preventDefault();
-	var menu = jQuery(this).parent().attr("id");
+	menu = jQuery(this).parent().attr("id");
 	//alert(menu);
 	//jQuery("."+menu+"").css("display","none");
 	jQuery(".tab-navigation ul#"+menu+" li").removeClass("selected");
@@ -205,7 +206,24 @@ jQuery(".tab-navigation ul li").click(function(e)
 	//jQuery("."+menu+"#" + tab_class).siblings().hide();
 	jQuery("."+menu+"#" + tab_class).show();
 	jQuery(".tab-navigation ul#"+menu+" li#" + tab_class).addClass("selected");
-});});';
+});
+function first()
+{
+	var tab_class = jQuery(".tab-navigation ul li").first().attr("id");
+	console.log( "first - "+tab_class );
+	menu = jQuery(".tab-navigation ul").attr("id");
+	jQuery(".tab-navigation ul#"+menu+" li").each(function() {
+		var v = jQuery(this).attr("id");
+		console.log( "hiding - "+v );
+		jQuery("div#"+v+"").hide();
+	});
+	jQuery("."+menu+"#" + tab_class).show();
+	jQuery(".tab-navigation ul#"+menu+" li#" + tab_class).addClass("selected");
+	
+}
+var init = first();
+
+});';
 roster_add_js($js, 'inline', 'header', false, false);
 /**
  * Gets the list of currently installed roster addons

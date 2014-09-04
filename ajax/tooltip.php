@@ -53,8 +53,6 @@ else
 
 			list($id1,$member_id) = explode('|',$id);
 			list($item_id,$enchant,$gem0,$gem1,$gem2,$gem3,$suffixID,$uniqueID,$level,$reforgeId,$upgradeId) = explode(':',$id1);
-			//echo $id.'<br>'.$item_id.'-'.$enchant.'-'.$gem0.'-'.$gem1.'-'.$gem2.'-'.$gem3.'<br><br>';
-			// itemID:enchant:gem1:gem2:gem3:gem4:suffixID:uniqueID:level:reforgeId:upgradeId:
 			
 			$query12  = " SELECT *"
 			. " FROM `" . $roster->db->table('items') . "`"
@@ -64,16 +62,14 @@ else
 			$result12 = $roster->db->query($query12);
 			$da = $roster->db->fetch($result12);
 			$uitem = json_decode($da['json'],true);
-			//echo $da;
-			//echo '-<pre>';print_r($da);echo '</pre>-<br><hr><br>';
-			//echo '-<pre>';print_r($uitem);echo '</pre>-<br><hr><br>';
+
 			$gemx = array();
-			$item = $roster->api->Data->getItemInfo($item_id);
+			$item = $roster->api2->fetch('item',array('id'=>$item_id));//$roster->api->Data->getItemInfo($item_id);
 			if (isset( $item['id']))
 			{
 				if (isset($gem0) && !empty($gem0))
 				{
-					$g0 = $roster->api->Data->getItemInfo($gem0);
+					$g0 = $roster->api2->fetch('item',array('id'=>$gem0));//$roster->api->Data->getItemInfo($gem0);
 					$gemx['gem0'] = $g0;
 					$gemx['gem0']['Tooltip'] = api_escape($g0['name']."<br>".$g0['gemInfo']['bonus']['name']."<br>".$g0['description']);
 					$gemx['gem0']['gem_bonus'] = api_escape($g0['gemInfo']['bonus']['name']);
@@ -81,7 +77,7 @@ else
 				}
 				if (isset($gem1) && !empty($gem1))
 				{
-					$g1 = $roster->api->Data->getItemInfo($gem1);
+					$g1 = $roster->api2->fetch('item',array('id'=>$gem1));//$roster->api->Data->getItemInfo($gem1);
 					$gemx['gem1'] = $g1;
 					$gemx['gem1']['Tooltip'] = api_escape($g1['name']."<br>".$g1['gemInfo']['bonus']['name']."<br>".$g1['description']);
 					$gemx['gem1']['gem_bonus'] = api_escape($g1['gemInfo']['bonus']['name']);
@@ -89,7 +85,7 @@ else
 				}
 				if (isset($gem2) && !empty($gem2))
 				{
-					$g2 = $roster->api->Data->getItemInfo($gem2);
+					$g2 = $roster->api2->fetch('item',array('id'=>$gem2));//$roster->api->Data->getItemInfo($gem2);
 					$gemx['gem2'] = $g2;
 					$gemx['gem2']['Tooltip'] = api_escape($g2['name']."<br>".$g2['gemInfo']['bonus']['name']."<br>".$g2['description']);
 					$gemx['gem2']['gem_bonus'] = api_escape($g2['gemInfo']['bonus']['name']);
@@ -97,7 +93,7 @@ else
 				}
 				if (isset($gem3) && !empty($gem3))
 				{
-					$g3 = $roster->api->Data->getItemInfo($gem3);
+					$g3 = $roster->api2->fetch('item',array('id'=>$gem3));//$roster->api->Data->getItemInfo($gem3);
 					$gemx['gem3'] = $g3;
 					$gemx['gem3']['Tooltip'] = api_escape($g2['name']."<br>".$g3['gemInfo']['bonus']['name']."<br>".$g3['description']);
 					$gemx['gem3']['gem_bonus'] = api_escape($g3['gemInfo']['bonus']['name']);
@@ -146,44 +142,46 @@ else
 		break;
 		
 		case 'spell':
-			$spell = $roster->api->Data->getSpellInfo($id);
-			if (isset($spell['name']))
-			{
-			$tooltip = ''.$spell['name'].'<br>';
-			$tooltip .= (isset($spell['powerCost']) ? $spell['powerCost'] : '');
-			$tooltip .=	(isset($spell['range']) ? '<span style="float:right;">'.$spell['range'].'</span>' : '');
-			$tooltip .=	(isset($spell['castTime']) ? '<br>'.$spell['castTime'] : '');
-			$tooltip .=	(isset($spell['cooldown']) ? '<span style="float:right;">'.$spell['cooldown'].'</span>' : '');
-			$tooltip .= '<br><div class="color-tooltip-yellow">'.$spell['description'].'</div>';
-			$x = colorTooltip( $tooltip, $caption_color='', $locale='', true );
-			$output	= $x;//$tooltip;
-			}
-			else
-			{
-				$output = 'No data?!';
-			}
+
+			$a = $roster->api2->fetch('spell',array('id'=>$id));
+
+			$roster->tpl->assign_vars(array(
+					'TYPE'			=> 'spell',
+					'NAME'			=> $a['name'],
+					'DESCRIPTION'	=> str_replace('\n\n','<br>',$a['description']),//$a['description'],
+					'RANGE'			=> $a['range'],
+					'POWERCOST'		=> $a['powerCost'],
+					'CASTTIME'		=> $a['castTime'],
+					'COOLDOWN'		=> $a['cooldown'],
+				)
+			);
+			$roster->tpl->set_filenames(array('tooltip' => 'api.html'));
+			$output = $roster->tpl->fetch('tooltip');
 		break;
 		
 		case 'talent':
 		
-			$sqlg = "SELECT * FROM `api_talents_data` WHERE `talent_id` = '".$id."' ";
+			$a = $roster->api2->fetch('spell',array('id'=>$id));
 
-			$resultg = db_query($sqlg);
-			$rowg = $resultg->fetchAssoc();
-			$tooltip = '';
-			$tooltip .= (isset($talent['spell']['cost']) ? $talent['spell']['cost'] : '');
-			$tooltip .=	(isset($talent['spell']['range']) ? '<span style="float:right;">'.$talent['spell']['range'].'</span>' : '');
-			$tooltip .=	(isset($talent['spell']['castTime']) ? '<br>'.$talent['spell']['castTime'] : '');
-			$tooltip .=	(isset($talent['spell']['cooldown']) ? '<span style="float:right;">'.$talent['spell']['cooldown'].'</span>' : '');
-			$tooltip .= '<br>'.$talent['spell']['htmlDescription'];
-			$output	= $rowg['tooltip'];//$tooltip;
+			$roster->tpl->assign_vars(array(
+					'TYPE'			=> 'talent',
+					'NAME'			=> $a['name'],
+					'DESCRIPTION'	=> str_replace('\n\n','<br>',$a['description']),//$a['description'],
+					'RANGE'			=> $a['range'],
+					'POWERCOST'		=> $a['powerCost'],
+					'CASTTIME'		=> $a['castTime'],
+					'COOLDOWN'		=> $a['cooldown'],
+				)
+			);
+			$roster->tpl->set_filenames(array('tooltip' => 'api.html'));
+			$output = $roster->tpl->fetch('tooltip');
 		break;
 		
 		case 'glyph':
 		
 			$sqlg = "SELECT * FROM `api_data_glyphs` WHERE `id` = '".$id."' ";
-			$resultg = db_query($sqlg);
-			$rowg = $resultg->fetchAssoc();
+			$resultg = $roster->db->query($sqlg);
+			$rowg = $roster->db->fetch($resultg);
 			$tooltip = '';
 			$tooltip .= $rowg['name'].'<br>';
 			$tooltip .=	(isset($rowg['subtext']) ? ''.$rowg['subtext'].'<br>' : '');
@@ -209,7 +207,8 @@ else
 			
 			$server = str_replace('+','-',$server);
 			//$api = new WowAPI(swregion($region));
-			$char = $roster->api->Char->getCharInfo($server,$name,'1:3');
+			$char = $roster->api2->fetch('character',array('name'=>$name,'server'=>$server,'fields'=>'guild,talents'));//$roster->api->Char->getCharInfo($server,$name,'1:3');
+			
 		
 			$class=$race='';
 		
