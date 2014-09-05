@@ -363,7 +363,8 @@ class rsyncBase {
 	{
 		global $roster, $addon;
 		
-		$content = $roster->api->Guild->getGuildInfo($server,$name,'1:2:3');
+		$content = $roster->api2->fetch('guild',array('name'=>$name,'server'=>$server,'fields'=>$this->_guild_fields('1:2:3')));
+		//$roster->api->Guild->getGuildInfo($server,$name,'1:2:3');
 		$this->datas = $content;
 		//echo '+++<pre>';
 		//print_r($content);
@@ -484,7 +485,9 @@ class rsyncBase {
 	{
 			global $roster, $addon;
 
-			$char = $roster->api->Char->getCharInfo($this->server,$this->memberName,'1:2:3:4:5:7:11:14');
+			$char = $roster->api2->fetch('character',array('name'=>$this->memberName,'server'=>$this->server,'fields'=>$this->_char_fields('1:2:3:4:5:7:11:14')));
+			//$roster->api->Char->getCharInfo($this->server,$this->memberName,'1:2:3:4:5:7:11:14');
+			//$this->_guild_fields('1:2:3')
 
 			$this->apidata = $char;
 
@@ -810,7 +813,7 @@ class rsyncBase {
 				if (isset($item['tooltipParams']['gem0']))
 				{
 					$gem0 = $item['tooltipParams']['gem0'];
-					$g0 = $roster->api->Data->getItemInfo($item['tooltipParams']['gem0']);
+					$g0 = $roster->api2->fetch('item',array('id'=>$item['tooltipParams']['gem0']));
 					$this->gemx['gem0'] = $g0;
 					$this->gemx['gem0']['Tooltip'] = $roster->db->escape($g0['name']."<br>".$g0['gemInfo']['bonus']['name']."<br>".$g0['description']);
 					$this->gemx['gem0']['gem_bonus'] = $roster->db->escape($g0['gemInfo']['bonus']['name']);
@@ -819,7 +822,7 @@ class rsyncBase {
 				if (isset($item['tooltipParams']['gem1']))
 				{
 					$gem1 = $item['tooltipParams']['gem1'];
-					$g1 = $roster->api->Data->getItemInfo($item['tooltipParams']['gem1']);
+					$g1 = $roster->api2->fetch('item',array('id'=>$item['tooltipParams']['gem1']));
 					$this->gemx['gem1'] = $g1;
 					$this->gemx['gem1']['Tooltip'] = $roster->db->escape($g1['name']."<br>".$g1['gemInfo']['bonus']['name']."<br>".$g1['description']);
 					$this->gemx['gem1']['gem_bonus'] = $roster->db->escape($g1['gemInfo']['bonus']['name']);
@@ -828,7 +831,7 @@ class rsyncBase {
 				if (isset($item['tooltipParams']['gem2']))
 				{
 					$gem2 = $item['tooltipParams']['gem2'];
-					$g2 = $roster->api->Data->getItemInfo($item['tooltipParams']['gem2']);
+					$g2 = $roster->api2->fetch('item',array('id'=>$item['tooltipParams']['gem2']));
 					$this->gemx['gem2'] = $g2;
 					$this->gemx['gem2']['Tooltip'] = $roster->db->escape($g2['name']."<br>".$g2['gemInfo']['bonus']['name']."<br>".$g2['description']);
 					$this->gemx['gem2']['gem_bonus'] = $roster->db->escape($g2['gemInfo']['bonus']['name']);
@@ -865,7 +868,7 @@ class rsyncBase {
 					$slot = 'SecondaryHand';
 				}
 				$enchant = 0;
-				$item_api = $roster->api->Data->getItemInfo($item['id']);
+				$item_api = $roster->api2->fetch('item',array('id'=>$item['id']));
 				$this->data["Equipment"][$slot] = array();
 				$this->data["Equipment"][$slot]['Item'] = $item['id'];
 				$this->data["Equipment"][$slot]['Type'] = $roster->api->Item->itemclass[$item_api['itemClass']];
@@ -1153,7 +1156,7 @@ class rsyncBase {
 				{
 				//echo '<pre>'; print_r($glyph); echo $glyph['name'].'</pre>';
 				$item_api = $tx = $tt = null;
-					$item_api = $roster->api->Data->getItemInfo($glyph['item']);
+					$item_api = $roster->api2->fetch('item',array('id'=>$glyph['item']));
 					$tx =  $roster->api->Item->item($item_api);
 					$tt = $this->processtooltips($tx);
 				
@@ -1494,4 +1497,109 @@ class rsyncBase {
 		}
 		$this->_debug( 2, true, 'Deleted old jobs from DB', true ? 'OK' : 'Failed');
 	}
+	
+	function _guild_fields($data)
+	{
+		$fds = explode(":",$data);
+		
+		$x=array();
+		foreach ($fds as $fd => $s)
+		{
+			switch($s)
+			{
+				case '1':		$x[] = 'members';
+								#list of guild members
+				break;
+				case '2':		$x[] = 'achievements';
+								#achievements for the guild
+				break;
+				case '3':		$x[] = 'news';
+								#news items found on the battle.net website
+				break;
+				default:
+								$this->x.= '';
+				break;
+			}
+		
+		}
+		return implode(',',$x);
+	}
+	function _char_fields($data)
+	{
+		$fds = explode(":",$data);
+		
+		$x=array();
+		foreach ($fds as $fd => $s)
+		{
+			switch($s)
+			{
+				case '1':	$x[] = 'guild';
+							#A summary of the guild that the character belongs to. If the character does not belong to a guild and this field is requested, this field will not be exposed.
+				break;
+				case '2':	$x[] = 'stats';
+							#A map of character attributes and stats.
+				break;
+				case '3':	$x[] = 'talents';
+							#A list of talent structures.
+				break;
+				case '4':	$x[] = 'items';
+							# list of items equipted by the character. Use of this field will also include the average item level and average item level equipped for the character.
+				break;
+				case '5':	$x[] = 'reputation';
+							#A list of the factions that the character has an associated reputation with.
+				break;
+				case '6':	$x[] = 'titles';
+							#A list of the titles obtained by the character.
+				break;
+				case '7':	$x[] = 'professions';
+							#A list of the character's professions. It is important to note that when this information is retrieved, it will also include the known recipes of each of the listed professions.
+				break;
+				case '8':	$x[] = 'appearance';
+							#A map of values that describes the face, features and helm/cloak display preferences and attributes.
+				break;
+				case '9':	$x[] = 'companions';
+							#A list of all of the non-combat pets obtained by the character.
+				break;
+				case '10':	$x[] = 'mounts';
+							#A list of all of the mounts obtained by the character.
+				break;
+				case '11':	$x[] = 'hunterPets';
+							#A list of all of the combat pets obtained by the character.
+				break;
+				case '12':	$x[] = 'achievements';
+							#A map of achievement data including completion timestamps and criteria information.
+				break;
+				case '13':	$x[] = 'progression';
+							#A list of raids and bosses indicating raid progression and completedness.
+				break;
+				case '14':	$x[] = 'pvp';
+							#A list of battleground vistories and teams.
+				break;
+				case '15':	$x[] = 'quests';
+							#A list of battleground vistories and teams.
+				break;
+				case '16':	$x[] = 'feed';
+							#A list of battleground vistories and teams.
+				break;
+				case '17':	$x[] = 'pets';
+							#A list of battleground vistories and teams.
+				break;
+				case '18':	$x[] = 'petSlots';
+							#A list of battleground vistories and teams.
+				break;
+				case '19':  $x[] = 'statistics';
+							#A list of all the statics for a player
+				break;
+				case 'ALL':	$x[] = 'guild,stats,talents,items,reputation,titles,professions,appearance,companions,mounts,pets,achievements,progression,pvp,quests,feed,hunterPets,petSlots,statistics';
+							#A list of battleground vistories and teams.
+				break;
+				default:
+							$x[] = '';
+				break;
+			}
+		
+		}
+		return implode(',',$x);
+	}
+	
 }

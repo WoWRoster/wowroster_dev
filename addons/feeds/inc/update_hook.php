@@ -87,8 +87,10 @@ class feedsUpdate
 
 		$this->guild_id = $guild['guild_id'];
 
-		
-		$feed = $roster->api->Guild->getGuildInfo($guild['Server'],$guild['GuildName'],'3');
+		require_once (ROSTER_LIB . 'update.lib.php');
+		$update = new update();
+		$feed = $roster->api2->fetch('guild',array('name'=>$guild['GuildName'],'server'=>$guild['Server'],'fields'=>'news'));
+		//$roster->api->Guild->getGuildInfo($guild['Server'],$guild['GuildName'],'3');
 		$tooltip_text = '';
 		foreach ($feed['news'] as $e => $a)
 		{
@@ -212,7 +214,8 @@ class feedsUpdate
 		}
 		else
 		{
-			$feed = $roster->api->Char->getCharInfo($char['Server'],$char['Name'],'16');
+			$feed = $roster->api2->fetch('character',array('name'=>$char['Name'],'server'=>$char['Server'],'fields'=>'feed'));
+			//$roster->api->Char->getCharInfo($char['Server'],$char['Name'],'16');
 		}
 		
 		foreach ($feed['feed'] as $e => $a)
@@ -317,5 +320,6 @@ class feedsUpdate
 		return true;
 		
 	}
+
 
 }

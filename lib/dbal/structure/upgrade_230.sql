@@ -22,9 +22,10 @@ CREATE TABLE `renprefix_guild_rank` (
   `rank` tinyint(4) NOT NULL DEFAULT '0',
   `title` varchar(255) NOT NULL DEFAULT '',
   `control` varchar(255) NOT NULL DEFAULT '0',
-  `guild_id` int(11) unsigned NOT NULL default '0',
+  `guild_id` int(11) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+
 
 DROP TABLE IF EXISTS `renprefix_api_enchant`;
 CREATE TABLE `renprefix_api_enchant` (

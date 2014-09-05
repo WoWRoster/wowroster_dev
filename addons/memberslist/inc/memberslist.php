@@ -350,7 +350,10 @@ class memberslist
 
 		// --[ Query done, add to class vars ]--
 		$this->query = $query;
-		$num_pages = ceil($num_rows/$this->addon['config']['page_size']);
+		if ($this->addon['config']['page_size'] > 0)
+		{
+			$num_pages = ceil($num_rows/$this->addon['config']['page_size']);
+		}
 		// --[ Page list ]--
 		if( $this->pageanat && $num_pages > 1)
 		{
@@ -911,35 +914,40 @@ class memberslist
 		$cell_value = '';
 
 		// Don't proceed for characters without data
-		if( !isset($row['talents']) || $row['talents'] == '' )
+		if( !isset($row['talents']) || $row['talents'] == null )
 		{
 			return '<img class="middle" width="24" height="24" src="' . $roster->config['img_url'] . 'pixel.gif" alt="" />';
 		}
 
 		$talents = explode(',',$row['talents']);
 		$talent2 = explode(',',$row['talents2']);
-
+		if (!is_array($talents) && !is_array($talent2))
+		{
+			return '';
+		}
 		$_d = array();
-		foreach( $talent2 as $tal )
+		$notalent = true;
+		foreach( $talent2 as $s => $tal )
 		{
 			list($name, $role, $icon) = explode('|', $tal);
-				$_d[$name]['role'] = $role;
-				$_d[$name]['name'] = $name;
-				$_d[$name]['icon'] = $icon;
+				$_d[$s]['role'] = $role;
+				$_d[$s]['name'] = $name;
+				$_d[$s]['icon'] = $icon;
+				$_d[$s]['tip'] = $name.' - '.$role;
 		}
 		
 		$_t = array();
 		$specicon = '';
-		$notalent = true;
+		
 		foreach( $talents as $talent )
 		{
 			list($_s, $name, $points, $icon, $_b) = explode('|', $talent);
-			$_t[$_b]['tip'][] = $name.' - '.$points;
+			$_t[$_b]['tip'][] = $name.' - '.$_d[$_b]['role'];
 			if( !isset($_t[$_b]['point']) || $points > $_t[$_b]['point'] )
 			{
 				$_t[$_b]['point'] = $points;
 				$_t[$_b]['name'] = $name;
-				$_t[$_b]['icon'] = strtolower($_d[$name]['icon']);
+				$_t[$_b]['icon'] = strtolower($_d[$_b]['icon']);
 				$notalent = false;
 			}
 		}

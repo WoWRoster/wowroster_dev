@@ -242,7 +242,8 @@ class rsync extends rsyncBase {
 		$guild_name = (isset($roster->data['guild_name']) ? $roster->data['guild_name'] : $this->guild_name);
 		$content = $this->datas;
 
-		$this->data['Ranks'] = $this->_getGuildRanks( $this->guildId );
+		$ranks = $this->_getGuildRanks( $this->guildId );
+		//$this->data['Ranks'] = $this->_getGuildRanks( $this->guildId );
 		$this->data['timestamp']['init']['datakey'] = $roster->data['region'];
 		$this->data['timestamp']['init']['TimeStamp'] = time();
 		$this->data['timestamp']['init']['Date'] = date('Y-m-d H:i:s');
@@ -277,9 +278,9 @@ class rsync extends rsyncBase {
 			$player['Realm'] = $member['character']['realm'];
 			$player['Level'] = $member['character']['level'];
 			$player['Mobile'] = false;
-			$player['Title'] = $this->data['Ranks'][$member['rank']]['Title'];
+			$player['Title'] = $ranks[$member['rank']]['Title'];
 			$player['AchPoints'] = $member['character']['achievementPoints'];
-			$player['RankEn'] = $this->data['Ranks'][$member['rank']]['Title'];
+			$player['RankEn'] = $ranks[$member['rank']]['Title'];
 			$player['LastOnline'] = "0:0:0:0";
 			$player['Rank'] = $member['rank'];
 			$player['Online'] ='0';
@@ -304,14 +305,14 @@ class rsync extends rsyncBase {
 
 		$array = array();
 		$ranks = array();
-		if ( $addon['config']['rsync_rank_set_order'] >= 1 ) {
-			$query =	"SELECT rank, title FROM ". $roster->db->table('guild_rank'). " WHERE guild_id=". $guild_id. " ORDER BY guild_rank;";
+		if ( $addon['config']['rsync_rank_set_order'] == 1 ) {
+			$query =	"SELECT rank, title FROM ". $roster->db->table('guild_rank'). " WHERE guild_id=". $roster->data['guild_id']. " ORDER BY rank;";
 			$result = $roster->db->query($query);
 			if( $roster->db->num_rows($result) > 0 ) {
 
-				$tmp = $roster->db->fetch_all();
-				foreach ( $tmp as $rank ) {
-					$ranks[$rank['rank']] = $rank['title'];
+				while ($rank = $roster->db->fetch($result))
+				{
+					$array[$rank['rank']]['Title'] = $rank['title'];
 				}
 			}
 		}
@@ -340,17 +341,6 @@ class rsync extends rsyncBase {
 				( $i == 0 ?
 				$roster->locale->act['guildleader'] :
 				$roster->locale->act['rank']. $i ) );
-			}
-		}
-		elseif ( $addon['config']['rsync_rank_set_order'] == 1 ) 
-			{
-  				for ( $i = 0; $i <= 9; $i++ ) 
-  				{
-				$array[$i]['Title'] = isset($ranks[$i]) && $ranks[$i] != '' ?
-						$ranks[$i] :
-						( $i == 0 ?
-						$roster->locale->act['guildleader'] :
-						$roster->locale->act['rank']. $i );
 			}
 		}
 		elseif ( $addon['config']['rsync_rank_set_order'] == 0 ) 

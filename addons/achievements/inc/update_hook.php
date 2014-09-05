@@ -50,7 +50,8 @@ class achievementsUpdate
 	{
 		global $roster, $update, $addon;
 
-		$char = $roster->api->Char->getCharInfo($char['Server'],$char['Name'],'12');
+		$char = $roster->api2->fetch('character',array('name'=>$char['Name'],'server'=>$char['Server'],'fields'=>'achievements'));
+		//$roster->api->Char->getCharInfo($char['Server'],$char['Name'],'12');
 			$rx = 0;
 		$achi = $char['achievements'];
 		$a = true;
@@ -103,7 +104,8 @@ class achievementsUpdate
 		include_once(ROSTER_LIB . 'update.lib.php');
 		$update = new update;
 		
-		$char = $roster->api->Guild->getGuildInfo($guild['Server'],$guild['GuildName'],'2');
+		$char = $roster->api2->fetch('guild',array('name'=>$guild['GuildName'],'server'=>$guild['Server'],'fields'=>'achievements'))
+		//$roster->api->Guild->getGuildInfo($guild['Server'],$guild['GuildName'],'2');
 		$rx = 0;
 		$achi = $char['achievements'];
 		$a = true;

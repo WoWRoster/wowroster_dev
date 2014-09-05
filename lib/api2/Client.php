@@ -391,7 +391,9 @@ class Client
 		//$url .= $path;
 		$url .= self::_buildtype($path,$params);
 		$this->usage['url'] = $url;
-		$url .= (count($params)) ? '?' . http_build_query($params) : '';
+		unset($params['name']);
+		unset($params['server']);
+		$url .= (count($params)) ? '?' . http_build_query($params,null, '&',PHP_QUERY_RFC3986) : '';
 		$this->usage['type'] = $path;
 		
 		$this->usage['locale'] = $this->locale;
@@ -524,7 +526,7 @@ class Client
 			default:
 			break;
 		}
-		//$q = str_replace('+' , '%20' , urlencode($q));
+		$q = str_replace(' ' , '%20' , $q);
 		return $q;
 	}
 	
@@ -543,7 +545,7 @@ class Client
 		
 		
 		$protected_resource_url = self::_buildUrl($protected_resource_url, $parameters);
-	
+	//echo $protected_resource_url.'<br>';
         if ($this->access_token) {
             switch ($this->access_token_type) {
                 case self::ACCESS_TOKEN_URI:

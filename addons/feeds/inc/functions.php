@@ -92,7 +92,7 @@ class feeds{
 	{
 		global $roster, $tooltips;
 		
-		$item = $roster->api->Data->getItemInfo($data['item_id']);
+		$item =  $roster->api2->fetch('item',array('id'=>$data['item_id']));
 		$ts = ($data['timestamp'] / 1000);
 
 		return '<div class="line">
@@ -111,7 +111,7 @@ class feeds{
 	{
 		global $roster, $tooltips;
 		
-		$item = $roster->api->Data->getItemInfo($data['item_id']);
+		$item =  $roster->api2->fetch('item',array('id'=>$data['item_id']));
 		$ts = ($data['timestamp'] / 1000);
 
 		return '<div class="line">
@@ -132,7 +132,7 @@ class feeds{
 	{
 		global $roster, $tooltips;
 		
-		$item = $roster->api->Data->getItemInfo($data['item_id']);
+		$item =  $roster->api2->fetch('item',array('id'=>$data['item_id']));
 		$ts = ($data['timestamp'] / 1000);
 
 		return '<div class="line">
@@ -159,7 +159,7 @@ class feeds{
 		require_once (ROSTER_LIB . 'item.php');
 		//$x = new item();
 		// lets be fancy now...
-		$item = $roster->api->Data->getItemInfo($data['item_id']);
+		$item =  $roster->api2->fetch('item',array('id'=>$data['item_id']));
 		$ts = ($data['timestamp'] / 1000);
 
 		return '<div class="line">
