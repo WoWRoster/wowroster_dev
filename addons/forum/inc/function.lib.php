@@ -276,7 +276,12 @@ class forum
 	*/
 	function post_delete($id)
 	{
-		global $roster, $addon, $installer;
+		global $roster, $addon;
+
+		$msg = '';
+		$query1 = 'DELETE FROM `' . $roster->db->table('posts',$addon['basename']) . "` WHERE `post_id` = '" . $id . "';";
+		$result1 = $roster->db->query($query1);
+
 	}
 	/*
 		report post
@@ -317,7 +322,7 @@ class forum
 		$querya = "SELECT * FROM `" . $roster->db->table('posts') . "` WHERE `topic_id` = '".$topic_id."';";
 		$resulta = $roster->db->query($querya);
 		$rowa = $roster->db->fetch($resulta);
-		
+		$q = "INSERT INTO `" . $roster->db->table('posts',$addon['basename']) . "` ";
 		$inst = array(
 			'topic_id'			=> $topic_id,
 			'forum_id'			=> $forum_id,
@@ -328,9 +333,9 @@ class forum
 			'post_edit_time'	=> 0,
 			'post_edit_count'	=> 0,
 			'post_subject'		=> 'RE:'.$rowa['post_subject'].'',
-			'post_text'			=> $data['text'],
+			'post_text'			=> $data['comment'],
 		);
-		$q = $roster->db->build_query( 'INSERT' , $inst );
+		$q .= $roster->db->build_query( 'INSERT' , $inst );
 		$r = $roster->db->query($q);
 		
 		if ($r)

@@ -36,7 +36,7 @@ function processLock( $id , $mode )
 	{
 		global $roster, $addon, $installer;
 
-		$query = "UPDATE `" . $roster->db->table('topics') . "` SET `locked` = '$mode' WHERE `topic_id` = '".$id."';";
+		$query = "UPDATE `" . $roster->db->table('topics',$addon['basename']) . "` SET `locked` = '$mode' WHERE `topic_id` = '".$id."';";
 		$result = $roster->db->query($query);
 		if( !$result )
 		{
@@ -171,17 +171,17 @@ $roster->tpl->assign_vars(array(
 		{
 			$html = 0;
 		}
-		$querya = "SELECT * FROM `" . $roster->db->table('posts') . "` WHERE `topic_id` = '".$_GET['tid']."';";
+		$querya = "SELECT * FROM `" . $roster->db->table('posts',$addon['basename']) . "` WHERE `topic_id` = '".$_GET['tid']."';";
 		$resulta = $roster->db->query($querya);
 		$rowa = $roster->db->fetch($resulta);
-		$q = "INSERT INTO `" . $roster->db->table('posts') . "` 
+		$q = "INSERT INTO `" . $roster->db->table('posts',$addon['basename']) . "` 
 		(`topic_id`, `forum_id`, `user_id`, `post_time`, `user`, `enable_html`, `post_edit_time`, `post_edit_count`, `post_subject`, `post_text`)
 		VALUES
-		('".$rowa['topic_id']."', '".$rowa['forum_id']."', '".$_POST['author_id']."', '".time()."', '".$_POST['author']."', '".$html."', 0, 0, 'RE:".$rowa['post_subject']."', '".$_POST['text']."');";
+		('".$rowa['topic_id']."', '".$rowa['forum_id']."', '".$_POST['author_id']."', '".time()."', '".$_POST['author']."', '".$html."', 0, 0, 'RE:".$rowa['post_subject']."', '".$_POST['comment']."');";
 		$r = $roster->db->query($q);
 		if ($r)
 		{
-			$query = "UPDATE `" . $roster->db->table('topics') . "` SET `last_user` = '".$_POST['author']."',`date_update`='".time()."' WHERE `topic_id` = '".$rowa['topic_id']."';";
+			$query = "UPDATE `" . $roster->db->table('topics',$addon['basename']) . "` SET `last_user` = '".$_POST['author']."',`date_update`='".time()."' WHERE `topic_id` = '".$rowa['topic_id']."';";
 			$result = $roster->db->query($query);
 		}
 
