@@ -167,10 +167,13 @@ DROP TABLE IF EXISTS `renprefix_api_usage`;
 CREATE TABLE IF NOT EXISTS `renprefix_api_usage` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `type` varchar(50) DEFAULT NULL,
+  `url` mediumtext,
+  `responce_code` varchar(20) DEFAULT NULL,
+  `content_type` varchar(255) DEFAULT NULL,
   `date` date DEFAULT NULL,
   `total` int(10) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
 
 DROP TABLE IF EXISTS `renprefix_api_enchant`;
 CREATE TABLE `renprefix_api_enchant` (

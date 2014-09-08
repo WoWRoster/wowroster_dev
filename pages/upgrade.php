@@ -32,8 +32,8 @@ class Upgrade {
 		'2.1.0',
 		'2.2.0',
 		'2.9.9.1111',
-		'2.9.9.1119'//,
-		//'2.9.9.1120'
+		'2.9.9.1119',
+		'2.9.9.1120'
 	);
 	var $index = null;
 
@@ -149,6 +149,29 @@ class Upgrade {
 			  `guild_id` int(11) unsigned NOT NULL DEFAULT '0',
 			  PRIMARY KEY (`id`)
 			) ENGINE=MyISAM  DEFAULT CHARSET=utf8;");
+
+		$this->beta_upgrade();
+		$this->finalize();
+		}
+		return;
+	}
+	
+	function beta_2991120()
+	{
+		global $roster, $installer;
+		if (version_compare($roster->config['version'], '2.9.9.1121'))
+		{
+			$roster->db->query("DROP TABLE IF EXISTS `" . $roster->db->table('api_usage') . "`;");
+			$roster->db->query("CREATE TABLE IF NOT EXISTS `" . $roster->db->table('api_usage') . "` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `type` varchar(50) DEFAULT NULL,
+  `url` mediumtext,
+  `responce_code` varchar(20) DEFAULT NULL,
+  `content_type` varchar(255) DEFAULT NULL,
+  `date` date DEFAULT NULL,
+  `total` int(10) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;");
 
 		$this->beta_upgrade();
 		$this->finalize();
