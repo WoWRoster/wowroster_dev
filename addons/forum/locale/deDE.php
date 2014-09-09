@@ -28,10 +28,10 @@ $lang['reply_topic']			= 'Antworte auf Nachricht';
 /*
 $lang['description'] = 'Description';
 */
-$lang['admin']['forum_conf'] = 'Forum Konfig.|Haupteinstellung f¸r das Forum';
+$lang['admin']['forum_conf'] = 'Forum Konfig.|Haupteinstellung f√ºr das Forum';
 $lang['admin']['forum_edit'] = 'Manage Foren';
 $lang['admin']['topic_edit'] = 'Manage Themen';
 $lang['admin']['forum_start_topic'] = 'Start Themen|Einstellen welche Gruppe neue Themen starten kann';
-$lang['admin']['forum_reply_post'] = 'Antworten|Gruppe ausw‰hlen, welche Antworten erstellen kann';
-$lang['admin']['forum_html_posts'] = 'HTML Antworten|Ausw‰hlen, ob HTML in Beitr‰gen benutzt werden kann';
-$lang['admin']['forum_nicedit'] = 'NicEdit|Benutze Nicedit f¸r HTML Beitr‰ge';
+$lang['admin']['forum_reply_post'] = 'Antworten|Gruppe ausw√§hlen, welche Antworten erstellen kann';
+$lang['admin']['forum_html_posts'] = 'HTML Antworten|Ausw√§hlen, ob HTML in Beitr√§gen benutzt werden kann';
+$lang['admin']['forum_nicedit'] = 'NicEdit|Benutze Nicedit f√ºr HTML Beitr√§ge';

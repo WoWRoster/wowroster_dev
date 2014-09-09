@@ -13,7 +13,7 @@
 
 $lang['pvplog_desc'] = 'Zeigt mit dem PvPLog WoW Addon gesammelte Daten an';
 
-$lang['button_pvplog']='PvP Statistiken|Zeigt PvP Log Statistiken für diese Gilde';
+$lang['button_pvplog']='PvP Statistiken|Zeigt PvP Log Statistiken fÃ¼r diese Gilde';
 $lang['button_bg']='Schlachtfeld Log|Schlachtfeld Statistiken von PvP Log';
 $lang['button_pvp']='PvP Log|Welt PvP Statistiken von PvP Log';
 $lang['button_duel']='Duell Log|Duell Statistiken von PvP Log';
@@ -65,7 +65,7 @@ $lang['pvplist2']='Gilde, die uns am meisten zu schaffen macht';
 $lang['pvplist3']='Spieler, der am meisten unter uns zu leiden hat';
 $lang['pvplist4']='Spieler, der uns am meisten zu schaffen macht';
 $lang['pvplist5']='Mitglied mit den meisten Kills';
-$lang['pvplist6']='Mitglied, das am häufigsten gestorben ist';
+$lang['pvplist6']='Mitglied, das am hÃ¤ufigsten gestorben ist';
 $lang['pvplist7']='Besten Kills-Level-Durchschnitt';
 $lang['pvplist8']='Besten Tod-Level-Durchschnitt';
 
@@ -80,12 +80,12 @@ $lang['purgeavewins'] = 'Beste Sieg/Level-Diff Durchschnitt';
 $lang['purgeavelosses'] = 'Best Niederlage/Level-Diff Durchschnitt';
 $lang['pvpratio'] = 'Solo Sieg/Niederlage Verh.';
 $lang['playerinfo'] = 'Spielerinfo';
-$lang['kill_lost_hist']='Kill/Niederlage Verlauf für %1$s (%2$s %3$s) von %4$s';
-$lang['kill_lost_hist_guild'] = 'Kill/Niederlage Verlauf für Gilde &quot;%1$s&quot;';
-$lang['solo_win_loss'] = 'Solo Sieg/Niederlage Verh. (Level Differenz -7 bis +7 gezählt)';
+$lang['kill_lost_hist']='Kill/Niederlage Verlauf fÃ¼r %1$s (%2$s %3$s) von %4$s';
+$lang['kill_lost_hist_guild'] = 'Kill/Niederlage Verlauf fÃ¼r Gilde &quot;%1$s&quot;';
+$lang['solo_win_loss'] = 'Solo Sieg/Niederlage Verh. (Level Differenz -7 bis +7 gezÃ¤hlt)';
 $lang['guildinfo'] = 'Gildeninfo';
 
-$lang['PvPLogver_err']='Die verwendete Version von PvPLog, zur Speicherung der Daten für diesen Charakter ist älter als die für den Upload minimale zugelassene Version.<br />Bitte stelle sicher, daß Du mindestens v%1$s verwendest. Falls Du gerade dein PvPLog aktualisiert hast, stelle sicher daß Du deine alte PvPLog.lua Datei gelöscht hast, bevor Du aktualisierst.';
+$lang['PvPLogver_err']='Die verwendete Version von PvPLog, zur Speicherung der Daten fÃ¼r diesen Charakter ist Ã¤lter als die fÃ¼r den Upload minimale zugelassene Version.<br />Bitte stelle sicher, daÃŸ Du mindestens v%1$s verwendest. Falls Du gerade dein PvPLog aktualisiert hast, stelle sicher daÃŸ Du deine alte PvPLog.lua Datei gelÃ¶scht hast, bevor Du aktualisierst.';
 
 $lang['admin']['pvpconfig'] = "PvPLog Konfiguration|Konfiguriere PvPLog Optionen";
 $lang['admin']['minPvPLogver'] = "Min. PvPLog Version|Minimum PvPLog Version zum Upload";

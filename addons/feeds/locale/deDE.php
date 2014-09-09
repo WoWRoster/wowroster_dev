@@ -12,30 +12,30 @@
  * @subpackage Locale
  */
 
-$lang['feeds'] = 'Guild Feeds';
-$lang['feeds_desc'] = 'Shows guild memeber feeds';
-$lang['ginfobutton'] = 'Feeds|Shows Feed text from WoW';
+$lang['feeds'] = 'Gilden Feeds';
+$lang['feeds_desc'] = 'Zeigt Gildenmitglieder Feeds';
+$lang['ginfobutton'] = 'Feeds|Zeigt den Feed Text aus WoW';
 
 
 $lang['weekday'] = array(
-	'1' => 'SUN',
-	'2' => 'MON',
-	'3' => 'TUE',
-	'4' => 'WED',
-	'5' => 'THU',
-	'6' => 'FRI',
-	'7' => 'SAT'
+	'1' => 'SO',
+	'2' => 'MO',
+	'3' => 'DI',
+	'4' => 'MI',
+	'5' => 'DO',
+	'6' => 'FR',
+	'7' => 'SA'
 );
 
-$lang['itemCrafted'] 		= '<span class="brownB">%1$s</span> crafted %2$s';
-$lang['itemCraft'] 		= '<span class="brownB">%1$s</span> crafted %2$s';
-$lang['itemPurchase'] 		= '<span class="brownB">%1$s</span> purchased %2$s';
-$lang['itemLoot'] 			= '<span class="brownB">%1$s</span> looted %2$s';
-$lang['guildCreated'] 		= '%1$s has been founded.';
-$lang['guildLevel'] 		= '%1$s has reached level %2$s!';
-$lang['guildAchievement'] 	= 'Guild achievement earned: %2$s';
-$lang['playerAchievement'] 	= '<span class="brownB">%1$s</span> earned the achievement %2$s';
+$lang['itemCrafted'] 		= '<span class="brownB">%1$s</span> stellte %2$s her';
+$lang['itemCraft'] 		= '<span class="brownB">%1$s</span> stellte %2$s her';
+$lang['itemPurchase'] 		= '<span class="brownB">%1$s</span> erwarb Gegenstand: %2$s';
+$lang['itemLoot'] 			= '<span class="brownB">%1$s</span> erhielt %2$s';
+$lang['guildCreated'] 		= '%1$s wurde gegründet.';
+$lang['guildLevel'] 		= '%1$s erreichte Level %2$s!';
+$lang['guildAchievement'] 	= 'Gildenerfolgt erhalten: %2$s';
+$lang['playerAchievement'] 	= '<span class="brownB">%1$s</span> hat den Erfolg %2$s';
 
-$lang['admin']['page_size'] = 'Page Size|Num of items to show on a page';
-$lang['admin']['icon_size'] = 'Icon Size|Size of the icon of the item/achievement to display';
-$lang['admin']['display'] = "Feeds config";
+$lang['admin']['page_size'] = 'Seitegröße|Anzahl der Items pro Seite';
+$lang['admin']['icon_size'] = 'Icon Größe|Anzeigegröße des Icons des Items / Erfolgs';
+$lang['admin']['display'] = "Feeds Konfiguration";

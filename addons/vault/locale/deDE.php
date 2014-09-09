@@ -16,15 +16,15 @@
 $lang['vault']='Gildentresor';
 $lang['vault_desc']='Zeigt den Inhalt des Gildentresors';
 $lang['vault_menu']='Gildentresor|Zeigt den Inhalt des Gildentresors';
-$lang['available_amount']='Verfügbare Summe';
-$lang['vault_log']='Gegenstände Log';
+$lang['available_amount']='VerfÃ¼gbare Summe';
+$lang['vault_log']='GegenstÃ¤nde Log';
 $lang['vault_money_log']='Geld Log';
 
 $lang['vault_log_deposit'] = '%1$s <span class="deposit">zahlte / lagerte</span> %2$s';
 $lang['vault_log_withdraw'] = '%1$s <span class="withdraw">entnahm</span> %2$s';
 $lang['vault_log_move'] = '%1$s <span class="move">verschob</span> %2$s';
-$lang['vault_log_repair'] = '%1$s hat  %2$s für Reperaturen <span class="repair">ausgegeben</span>';
-$lang['vault_log_withdrawForTab'] = '%1$s <span class="withdrawtab">entnahm</span> %2$s für ein neues Bankfach';
+$lang['vault_log_repair'] = '%1$s hat  %2$s fÃ¼r Reperaturen <span class="repair">ausgegeben</span>';
+$lang['vault_log_withdrawForTab'] = '%1$s <span class="withdrawtab">entnahm</span> %2$s fÃ¼r ein neues Bankfach';
 $lang['vault_log_depositSummary'] = '<span class="withdrawtab">This week\'s cash flow contribution</span> %2$s';
 $lang['vault_log_buyTab'] = '%1$s <span class="purchasetab">kaufte</span> %2$s Fach.';
 

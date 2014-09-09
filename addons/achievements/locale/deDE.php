@@ -9,7 +9,7 @@ if ( !defined('ROSTER_INSTALLED') )
 }
 
 // common loc
-$lang['achive'] = 'Achievements';
+$lang['achive'] = 'Erfolge';
 
 $lang['General'] = 'Allgemein';
 $lang['Quests'] = 'Quests';
@@ -23,9 +23,9 @@ $lang['FeatsofStrength'] = 'Heldentaten';
 $lang['Recent'] = 'Neueste Erfolge';
 $lang['Summary'] = 'Zusammenfassung';
 
-$lang['bars'] = array('Loot','Collect','Obtain','Equip','Complete','Receive','Catch','Find','Create','Raise');
+$lang['bars'] = array('Gelootet','Gesammelt','Erhalten','Angelegt','Komplett','Empfangen','Gefangen','Gefunden','Erstellt','Aufgewertet');
 
-$lang['admin']['achi_conf'] = 'Achievement Config|Config for achievements';
-$lang['admin']['show_icons'] = 'Icons|Show or hide icons from displaying.';
-$lang['admin']['achi_data'] = 'Data Player';
-$lang['admin']['achi_data_g'] = 'Data Guild';
+$lang['admin']['achi_conf'] = 'Konfiguration|Konfiguration für Erfolge';
+$lang['admin']['show_icons'] = 'Icons|Zeige oder verstecke Icons.';
+$lang['admin']['achi_data'] = 'Daten Spieler';
+$lang['admin']['achi_data_g'] = 'Daten Gilde';
