@@ -10,7 +10,10 @@ $functions = new forum;
 	//$view->extend('forum/forum_template', 'content', array('title' => $view->lang->get('forum')->get('forums'))); 
 	//
 	$forums = $functions->getForums();
-
+$x = $functions->getCrumbsa('');
+$roster->tpl->assign_vars(array(
+			'CRUMB'			=> $x
+		));
 	/*
 	echo '<pre>';
 	print_r($forums);

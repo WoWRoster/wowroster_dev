@@ -1,44 +1,55 @@
-<div id="middle">
+<!-- <div id="middle">
 	<div class="middleBox">
 		<div class="large-rightBox-title">{CRUMB}</a>
 		</div>
 	</div>
+-->
+<div class="forum_wrap">
 
+	<div class="nav_bar">
+		{CRUMB}
+	</div>
+	<ul class="f_options">
+		<li>
+			<!-- IF LOCKED -->
+				{IMAGE}<!-- TRANSLATE t_lock -->
+			<!-- ELSE -->
+				<!-- IF CANPOST -->
+					<a class="input" href="{M_REPLYPOST}"><!-- TRANSLATE post_reply --></a>
+				<!-- ENDIF -->
+			<!-- ENDIF -->
+		</li>
+		<li>
+		<!-- IF CANLOCK -->
+			<form name="lock" method="post" enctype="multipart/form-data" action="">
+				<input type="hidden" name="op" value="process" />
+				<input type="hidden" name="type" value="{L_ACTIVEOP}" />
+				<input type="hidden" name="id" value="{TOPIC_ID}" />
+				<button type="submit" class="input" ><span class="ui-icon ui-icon-{L_ACTIVEU}"></span>{L_ACTIVET}</button>
+			</form>
+		<!-- ENDIF -->
+		</li>
+	</ul>
 	<div class="middleBox">
 		<div class="forum_header">
 			
 			<div class="head">
 				<div class="icon"></div>
 				<div class="title">{TOPIC_TITLE}</div>
-				<div  class="lastpost">
-					<!-- IF LOCKED -->
-						{IMAGE}<!-- TRANSLATE t_lock -->
-					<!-- ELSE -->
-						<!-- IF CANPOST -->
-							<a class="input" href="{M_REPLYPOST}"><!-- TRANSLATE post_reply --></a>
-						<!-- ENDIF -->
-					<!-- ENDIF -->
-				</div>
-				<div class="button">
-					<!-- IF CANLOCK -->
-						<form name="lock" method="post" enctype="multipart/form-data" action="">
-							<input type="hidden" name="op" value="process" />
-							<input type="hidden" name="type" value="{L_ACTIVEOP}" />
-							<input type="hidden" name="id" value="{TOPIC_ID}" />
-							<button type="submit" class="input" ><span class="ui-icon ui-icon-{L_ACTIVEU}"></span>{L_ACTIVET}</button>
-						</form>
-					<!-- ENDIF -->
-				</div>
 			</div>
 			<!-- BEGIN forums -->
 			<div id="{forums.POST_ID}" class="post bg{forums.POST_BG}">
-				<div class="inner"><span class="corners-top"><span></span></span>
-
 				<div class="postbody">
-					
+
 					<ul class="profile-icons">
-						{forums.POST_MOD}
+						<li id="post_delete">
+							<a class="input" href="{M_REPLYPOST}">delete</a>
+						</li>
+						<li id="post_report">
+							<a class="input" href="{M_REPLYPOST}">report</a>
+						</li>
 					</ul>
+	
 					<p class="author">by <strong>{forums.POST_USERNAME}</strong> >> {forums.POST_TIME}</p>
 					
 
@@ -51,8 +62,6 @@
 						{forums.POST_USERNAME}
 					</dt>
 				</dl>
-				<span class="corners-bottom"><span></span></span>
-				</div>
 			</div>
 	
 	

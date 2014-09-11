@@ -101,7 +101,11 @@ $config_pages['rosterdiag'] = array(
 	'href'=>	'rosterdiag',
 	'title'=>	'pagebar_rosterdiag',
 	);
-
+$config_pages['rosterdiag2'] = array(
+	'href'=>	'rosterdiag2',
+	'title'=>	'pagebar_rosterdiag2',
+	);
+	
 $config_pages['addon'] = array(
 	'special'=>	'hidden',
 	'file'=>	'addon_conf.php',

@@ -502,6 +502,13 @@ span.corners-bottom span {
 .search .postbody {
 	width: 68%
 }
+.f_options {
+	list-style: none;
+	padding: 2px 5px 5px 0px;
+}
+.f_options li {
+	float: left;
+}
 /* Poster profile icons
 ----------------------------------------*/
 ul.profile-icons {

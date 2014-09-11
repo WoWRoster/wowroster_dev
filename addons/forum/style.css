@@ -1,12 +1,18 @@
-
+.forum_wrap {
+background-color: #F6F5F1;
+background-image: url("images/gradient.gif");
+padding:5px;
+}
 /*
 	Main forum Index page
 */
 .forum_header {
-	background-color: #051A53;
-	background-image: url(../images/forum/bg_list.gif);
-	background-repeat: repeat-x;
-	padding: 2px;
+	background: #051A53 url("images/bg_list.gif") repeat-x;
+	overflow: auto;
+display: block;
+	padding: 2px 5px;
+	border-radius: 4px;
+	-moz-border-radius: 4px;
 }
 .forum_header .head{
 	word-wrap: normal|break-word;
@@ -386,10 +392,21 @@
 }
 
 .post {
+/*
 	padding: 0 10px;
 	margin-bottom: 4px;
 	background-repeat: no-repeat;
 	background-position: 100% 0;
+	*/
+	/* padding: 0 10px; */
+/* margin-bottom: 4px; */
+padding: 4px;
+position: relative;
+/* background-repeat: no-repeat; */
+display: block;
+overflow: auto;
+margin: 1px 1px 5px 1px;
+/* background-position: 100% 0; */
 }
 
 .post:target .content {
@@ -505,6 +522,27 @@ span.corners-bottom span {
 .search .postbody {
 	width: 68%
 }
+.nav_bar {
+text-align: left;
+color: #000;
+font-size: 14px;
+line-height: 20px;
+height: 20px;
+ 
+}
+.f_options {
+	list-style: none;
+	padding: 2px 8px 5px 0px;
+	display: inline-block;
+	margin: 0px;
+}
+.f_options li {
+	float: left;
+	display: inline-block;
+	margin-right: 5px;
+}
+
+
 /* Poster profile icons
 ----------------------------------------*/
 ul.profile-icons {
@@ -517,8 +555,12 @@ ul.profile-icons li {
 	float: left;
 	margin: 0 6px 3px 0;
 	background-position: 0 100%;
-}
 
+}
+span.ui-button-text {
+font-family: Verdana,Helvetica,Arial,sans-serif;
+font-size: 8px !important;
+}
 /* Rolloff state */
 ul.profile-icons li a {
 	display: block;
@@ -610,6 +652,7 @@ p.author {
 	width: 22%;
 	float: right;
 	display: inline;
+	border-left: 1px solid #DDDDDD;
 }
 .pm .postprofile {
 	border-left: 1px solid #DDDDDD;

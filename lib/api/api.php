@@ -20,6 +20,7 @@ require_once ROSTER_API . 'resource/Guild.php';
 require_once ROSTER_API . 'resource/BattlePet.php';
 require_once ROSTER_API . 'resource/Team.php';
 require_once ROSTER_API . 'resource/Data.php';
+require_once ROSTER_API . 'resource/Git.php';
 require_once ROSTER_API . 'apiitem.php';
 //require_once ROSTER_API . 'colorapiitem.php';
 
@@ -32,6 +33,7 @@ class WowAPI {
 	public $Guild; // guild Object
 	public $Team; // team Object
 	public $Data; // Blizzard Data Objects..
+	public $Git; // GitHub!..
 	public $BattlePet; // char name nyi
 	public $Aitem;
 	public $cItem;
@@ -74,6 +76,7 @@ class WowAPI {
 		$this->Char = new character($region);
 		$this->Guild = new guild($region);
 		$this->Data = new Data(strtoupper($region));
+		$this->Git = new Git();
 		$this->Item = new ApiItem();
 		$this->Team = new team($region);
 		$this->BattlePet = new battlepet($region);

@@ -36,6 +36,22 @@ $ignored_files = array('conf.php', '.htaccess', 'roster_addons_go_here.txt');
 // Do we want to check the SubDirs ?? I think we do :)
 $subdirectories = 1;
 
+// get repo sha to pull
+$r = $roster->api->Git->GetRepo();//json_decode(file_get_contents('https://api.github.com/repos/ulminia/wowroster/git/refs'),true);
+//echo '<pre>';
+//print_r($r);
+$r_sha = $r[0]['object']['sha'];
+$re = $roster->api->Git->GetFiles($r_sha);//json_decode(file_get_contents('https://api.github.com/repos/ulminia/wowroster/git/trees/'.$r_sha.'?recursive=1'),true);
+//print_r($re);
+//echo '</pre>';
+//build a better recersive tree
+$remote = array();
+foreach ($re['tree'] as $e => $d)
+{
+	$remote[$d['path']] = $d;
+}
+//echo '<pre>';print_r($remote);echo '</pre>';
+
 // Set the severity information
 $problemsev['description'] = 9;
 $problemsev['revisiongreater'] = 4;
@@ -86,7 +102,7 @@ if ($subdirectories)
 {
 	GrabAllLocalDirectories('.');
 }
-echo '<pre>';print_r($directories);echo '</pre>';
+//echo '<pre>';print_r($directories);echo '</pre>';
 // Get the $files / versioning info for each $directories and fill the array $files
 foreach ($directories as $directory => $filecount)
 {
@@ -96,7 +112,6 @@ foreach ($directories as $directory => $filecount)
 
 // Get the REMOTE $files / versioning info for each REMOTE $directories and fill the array $files
 //GrabRemoteVersions();
-
 
 foreach ($files as $directory => $filedata)
 {
@@ -218,96 +233,95 @@ function CheckDirectory($dirname)
  */
 function GetFileVersionInfo($directory, $file)
 {
-	global $files;
+	global $files, $remote;
 
 	$filefullpath = $directory . '/' . $file;
 	// Read the first 2k of the file, which should be enough to grab the $fileheader
-	$fp = @fopen($directory . '/' . $file, 'rb');
-	if($fp) {
-		$fileheader = fread($fp, 2048);
-		fclose($fp);
-	}
-
+	//echo $filefullpath.'<br>';
+	//$d = file_get_contents_utf8($filefullpath);
+	$d = file_get_contents($filefullpath);
+	$s = strlen($d);
+	$x = sha1("blob " .$s. "\0" .$d);
+	$files[$directory][$file]['update'] = '';
 	$files[$directory][$file]['local']['versionFile'] = $file;
-	if (!$files[$directory][$file]['local']['versionMD5'] = md5_file($filefullpath)) {
-		$files[$directory][$file]['local']['versionMD5'] = 0;
-	}
-	// Example of the SVN $Id string:
-	//   * $Id: rosterdiag.lib.php 2312 2011-03-26 21:41:38Z c.treyce@gmail.com $
-	//         ~|Descr            |Ver |Date                |Author|~
-	if (check_if_image($file))
+	$files[$directory][$file]['local']['versionMD5'] = $x.' - '.$s;//sha1_file($filefullpath);
+	$files[$directory][$file]['local']['versionDesc'] = '';
+	$files[$directory][$file]['local']['versionRev'] = '';
+	$files[$directory][$file]['local']['versionDate'] = '';
+	$files[$directory][$file]['local']['versionAuthor'] = '';
+	$files[$directory][$file]['local']['update'] = '';
+
+	$f = substr($filefullpath, 2);
+	$files[$directory][$file]['remote']['versionFile'] = $file;
+	$files[$directory][$file]['remote']['versionMD5'] = (isset($remote[$f]['sha']) ? $remote[$f]['sha'] : '');
+	$files[$directory][$file]['remote']['versionDesc'] = '';
+	$files[$directory][$file]['remote']['versionRev'] = '';
+	$files[$directory][$file]['remote']['versionDate'] = '';
+	$files[$directory][$file]['remote']['versionAuthor'] = '';
+
+}
+function file_get_contents_utf8($fn) { 
+     $content = file_get_contents($fn); 
+      return mb_convert_encoding($content, 'UTF-8', 
+          mb_detect_encoding($content, 'UTF-8, ISO-8859-1', true)); 
+} 
+
+function GrabRemoteVersions($directory)
+{
+	global $directories;
+
+	if ($handle = @opendir($directory))
 	{
-		$files[$directory][$file]['local']['versionDesc'] = 'N/A';
-		$files[$directory][$file]['local']['versionRev'] = 'N/A';
-		$files[$directory][$file]['local']['versionAuthor'] = 'N/A';
-		if (!$files[$directory][$file]['local']['versionDate'] = filemtime($filefullpath)) {
-			$files[$directory][$file]['local']['versionDate'] = 0;
-		}
-	}
-	else
-	{
-		// String to match in SVN: $Id: rosterdiag.lib.php 2312 2011-03-26 21:41:38Z c.treyce@gmail.com $
-		if ((preg_match('~\s\$Id\:\s(.+?)\s(.+?)\s(.+?)\s(.+?)\s(.+?)\s\$~', $fileheader, $local_version) > 0) || (preg_match('~\s\$Id\:\s(.+?)\,v\s(.+?)\s(.+?)\s(.+?)\s(.+?)\sExp\s\$~', $fileheader, $local_version) > 0) )
+		while ($filename = readdir($handle))
 		{
-			$files[$directory][$file]['local']['versionDesc'] = $local_version[1];
-			$files[$directory][$file]['local']['versionRev'] = $local_version[2];
-
-			$files[$directory][$file]['local']['versionDate'] = check_date_time($local_version[3], $local_version[4]);
-
-			$tmpdate = explode("/", $local_version[3]);
-			$tmptime = explode(":", $local_version[4]);
-
-//			$files[$directory][$file]['local']['versionDate'] = gmmktime($tmptime[0], $tmptime[1], $tmptime[2], $tmpdate[1], $tmpdate[2], $tmpdate[0]);
-			$files[$directory][$file]['local']['versionAuthor'] = $local_version[5];
-		} else {
-			// Check if we have a version entry for the Date string and also capture the brief indication of which addon this is
-			if (preg_match('~\$versions\[\'versionDate\'\]\[\'(.+?)\'\]\s\=\s\'\$Date\:\s(.+?)\s\$\'\;~', $fileheader, $local_version) == 1) {
-				$files[$directory][$file]['local']['versionDesc'] = $local_version[1];
-
-
-				$tmpdatetime = explode(" ", $local_version[2]);
-				$tmpdate = explode("/", $tmpdatetime[0]);
-				if (isset($tmpdatetime[1]))
-				{
-					$tmptime = explode(":", $tmpdatetime[1]);
-					if (is_int($tmptime[0]))
-					{
-						$files[$directory][$file]['local']['versionDate'] = gmmktime($tmptime[0], $tmptime[1], $tmptime[2], $tmpdate[1], $tmpdate[2], $tmpdate[0]);
-					}
-				}
-
-			} else {
-				$files[$directory][$file]['local']['versionDesc'] = 0;
-				$files[$directory][$file]['local']['versionDate'] = 0;
-			}
-
-			// Check if we have a version entry for the Revision string
-			if (preg_match('~\$versions\[\'versionRev\'\]\[\'(.+?)\'\]\s\=\s\'\$Revision\:\s(.+?)\s\$\'\;~', $fileheader, $local_version) == 1)	{
-				$files[$directory][$file]['local']['versionRev'] = $local_version[2];
-			} else {
-				$files[$directory][$file]['local']['versionRev'] = 0;
-			}
-
-			// Check if we have a version entry for the Author string
-			if (preg_match('~\$versions\[\'versionAuthor\'\]\[\'(.+?)\'\]\s\=\s\'\$Author\:\s(.+?)\$\'\;~', $fileheader, $local_version) == 1) {
-				$files[$directory][$file]['local']['versionAuthor'] = $local_version[2];
-			} else {
-				$files[$directory][$file]['local']['versionAuthor'] = 0;
+			if(isset($filename) && !is_dir($directory . '/' . $filename) && CheckExtension($filename))
+			{
+				// Increase the filecounter for this directory
+				$directories[$directory]['localfiles']++;
+				// Get the file versioning info and store it into the array
+				GetRemoteVersionInfo($directory, $filename);
 			}
 		}
+		closedir($handle);
 	}
 }
+function GetRemoteVersionInfo($directory, $file)
+{
+	global $files, $remote;
 
+	$filefullpath = $directory . '/' . $file;
+	$f = substr($filefullpath, 2);
+	$files[$directory][$file]['remote']['versionFile'] = $file;
+	$files[$directory][$file]['remote']['versionMD5'] = $remote[$f]['sha'];
+	$files[$directory][$file]['remote']['versionDesc'] = '';
+	$files[$directory][$file]['remote']['versionRev'] = '';
+	$files[$directory][$file]['remote']['versionDate'] = '';
+	$files[$directory][$file]['remote']['versionAuthor'] = '';
+}
 /**
  * Grab all the remote versioning data
  *
  * @return bool False on failure
- */
+ *
 function GrabRemoteVersions()
 {
 	global $directories, $files, $break, $explode;
 
 	// Execute the addon_versioncheck.php script in the SVN remote site
+
+
+	$filefullpath = $directory . '/' . $file;
+	$c = '';
+	$c = json_decode(file_get_contents('https://api.github.com/repos/ulminia/wowroster/contents/'.$filefullpath),true);
+	$files[$directory][$file]['remote']['versionFile'] = $file;
+	$files[$directory][$file]['remote']['versionMD5'] = $c['sha'];
+	$files[$directory][$file]['remote']['versionDesc'] = '';
+	$files[$directory][$file]['remote']['versionRev'] = '';
+	$files[$directory][$file]['remote']['versionDate'] = '';
+	$files[$directory][$file]['remote']['versionAuthor'] = '';
+	
+	
+	*
 	$contents = urlgrabber(ROSTER_SVNREMOTE);
 
 	if( $contents !== false )
@@ -342,8 +356,9 @@ function GrabRemoteVersions()
 	{
 		return false;
 	}
+	*
 }
-
+*/
 /**
  * Verify version info
  *

@@ -104,6 +104,9 @@ abstract class Resource {
 				echo '--[ '.$url.' ]--<br>';
 			}
 			$data = $this->Curl->makeRequest($url,null, $params,$url,$method);
+			
+			//echo '<pre>';print_r($data);echo '</pre>';
+			
 			if ($this->Curl->errno !== CURLE_OK) 
 			{
 				//throw new ResourceException($this->Curl->error, $this->Curl->errno);
