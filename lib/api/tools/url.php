@@ -126,6 +126,10 @@ class url {
 				$q = 'https://api.github.com/repos/ulminia/wowroster/git/trees/'.$fields['name'].'?recursive=1';
 			break;
 			
+			case 'file':
+				$q = $fields['name'];
+			break;
+			
 			default:
 			break;
 		}

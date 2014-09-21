@@ -60,20 +60,25 @@ if(isset($_POST['filename']) && isset($_POST['downloadsvn']))
 		$filename = $_POST['filename'];
 		if (is_file($filename))
 		{
-			$md5local = md5_file($filename);
+			$path_parts = pathinfo($filename);
+			$file = $path_parts['basename'];
+			$md5local = _getsha($file,$filename);
 		}
 		else
 		{
 			$md5local = "Local File does not exist yet";
 		}
-
-		$md5remote = urlgrabber(ROSTER_SVNREMOTE.'?getfile='.$filename.'&mode=md5');
+		$filefullpath = 'https://api.github.com/repos/ulminia/wowroster/contents/'.$filename;
+		$d = $roster->api->Git->GetFile($filefullpath);
+		$s = mb_convert_encoding($d['content'], 'UTF-8', mb_detect_encoding($d['content'], 'UTF-8, ISO-8859-1', true));
+		$md5remote = $d['sha'];
 		if ($md5remote===false)
 		{
-			roster_die("[ERROR] Cannot Read MD5 Remote File\n");
+			roster_die("[ERROR] Cannot Read Sha Remote File\n");
 		}
 
-		$filesvnsource = urlgrabber(ROSTER_SVNREMOTE.'?getfile='.$filename.'&mode=diff');
+		$data = explode('\n', $s);
+		$filesvnsource = base64_decode($s);//mb_convert_encoding($d['content'], 'UTF-8', mb_detect_encoding($d['content'], 'UTF-8, ISO-8859-1', true));//urlgrabber(ROSTER_SVNREMOTE.'?getfile='.$filename.'&mode=diff');
 		if ($filesvnsource===false)
 		{
 			roster_die("[ERROR] Cannot Read Remote File\n");
@@ -408,13 +413,13 @@ echo $sql_tables;
 echo "</td></tr></table>\n";
 
 // File Versioning Information
-if( GrabRemoteVersions() !== false )
+if( true )
 {
 	//GrabRemoteVersions();
-	//VerifyVersions();
+	VerifyVersions();
 
 	$zippackage_files = '';
-
+/*
 	// Make a post form for the download of a Zip Package
 	foreach ($directories as $directory => $filecount)
 	{
@@ -422,7 +427,7 @@ if( GrabRemoteVersions() !== false )
 		{
 			foreach ($files[$directory] as $file => $filedata)
 			{
-				if($filedata['update'])
+				if(isset($filedata['update']) && $filedata['update'])
 				{
 					if (isset($file) && $file != 'newer' && $file != 'severity' && $file != 'tooltip' && $file != 'rollup' && $file != 'rev' && $file != 'date' && $file != 'author' && $file != 'md5' && $file != 'update' && $file != 'missing')
 					{
@@ -485,6 +490,7 @@ if( GrabRemoteVersions() !== false )
 ';
 		}
 	}
+	*/
 
 	// Open the main FileVersion table in total color
 	echo '
@@ -525,6 +531,9 @@ if( GrabRemoteVersions() !== false )
 	<th class="membersHeader">Filename</th>
 	<th class="membersHeader">Local Sha</th>
 	<th class="membersHeader">Repo Sha</th>
+	<th class="membersHeader">Local Size</th>
+	<th class="membersHeader">Repo Size</th>
+	<th class="membersHeader">Misc</th>
 </tr>';
 			$row=0;
 			foreach ($files[$directory] as $file => $filedata)
@@ -560,7 +569,7 @@ if( GrabRemoteVersions() !== false )
 					}
 					else
 					{
-						echo 'Unknown Rha';
+						echo 'Unknown Sha';
 					}
 					echo "</td>\n";
 					
@@ -568,6 +577,28 @@ if( GrabRemoteVersions() !== false )
 					if (isset($filedata['remote']['versionMD5']))
 					{
 						echo $filedata['remote']['versionMD5'];
+					}
+					else
+					{
+						echo 'Unknown Sha';
+					}
+					echo "</td>\n";
+					
+					echo '<td class="membersRow' . $row . '">';
+					if (isset($filedata['local']['versionSize']))
+					{
+						echo $filedata['local']['versionSize'];
+					}
+					else
+					{
+						echo 'Unknown Sha';
+					}
+					echo "</td>\n";
+					
+					echo '<td class="membersRow' . $row . '">';
+					if (isset($filedata['remote']['versionSize']))
+					{
+						echo $filedata['remote']['versionSize'];
 					}
 					else
 					{
@@ -595,6 +626,7 @@ if( GrabRemoteVersions() !== false )
 						echo 'Unknown';
 					}
 					echo "</td>\n";
+					*/
 					echo '<td class="membersRow' . $row . '">' . "\n";
 					if($filedata['diff'] || $filedata['missing'])
 					{
@@ -619,7 +651,6 @@ if( GrabRemoteVersions() !== false )
 						echo '&nbsp;';
 					}
 					echo "</td>\n";
-					*/
 					echo "</tr>\n";
 				}
 			}

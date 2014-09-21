@@ -36,22 +36,46 @@ $ignored_files = array('conf.php', '.htaccess', 'roster_addons_go_here.txt');
 // Do we want to check the SubDirs ?? I think we do :)
 $subdirectories = 1;
 
-// get repo sha to pull
-$r = $roster->api->Git->GetRepo();//json_decode(file_get_contents('https://api.github.com/repos/ulminia/wowroster/git/refs'),true);
-//echo '<pre>';
-//print_r($r);
-$r_sha = $r[0]['object']['sha'];
-$re = $roster->api->Git->GetFiles($r_sha);//json_decode(file_get_contents('https://api.github.com/repos/ulminia/wowroster/git/trees/'.$r_sha.'?recursive=1'),true);
-//print_r($re);
-//echo '</pre>';
-//build a better recersive tree
-$remote = array();
-foreach ($re['tree'] as $e => $d)
-{
-	$remote[$d['path']] = $d;
-}
-//echo '<pre>';print_r($remote);echo '</pre>';
+$local_file = ROSTER_CACHEDIR.'local.json';
+$remote_file = ROSTER_CACHEDIR.'remote.json';
 
+if( !file_exists($remote_file) )
+{
+	// get repo sha to pull
+	$r = $roster->api->Git->GetRepo();
+	$r_sha = $r[0]['object']['sha'];
+	$re = $roster->api->Git->GetFiles($r_sha);
+	//build a better recersive tree
+	$remote = array();
+	foreach ($re['tree'] as $e => $d)
+	{
+		$p = $n = '';
+		if ($d['type'] == 'tree')
+		{
+			$p = $d['path'];
+		}
+		if ($d['type'] == 'blob')
+		{
+			$p = './'.$d['path'];
+			$path_parts = pathinfo($p);
+			
+			if(CheckExtension($path_parts['basename']))
+			{
+				$remote[$path_parts['dirname']][$path_parts['basename']]['remote']['versionFile'] = $path_parts['basename'];
+				$remote[$path_parts['dirname']][$path_parts['basename']]['remote']['versionMD5'] = $d['sha'];
+				$remote[$path_parts['dirname']][$path_parts['basename']]['remote']['versionSize'] = $d['size'];
+				$remote[$path_parts['dirname']][$path_parts['basename']]['remote']['versionDesc'] = '';
+				$remote[$path_parts['dirname']][$path_parts['basename']]['remote']['versionDate'] = '';
+				$remote[$path_parts['dirname']][$path_parts['basename']]['remote']['versionAuthor'] = '';
+			}
+		}
+	}
+	file_writer( $remote_file , json_encode($remote) , $mode='wb' );
+}
+else
+{
+	$remote = json_decode(file_get_contents($remote_file), true);
+}
 // Set the severity information
 $problemsev['description'] = 9;
 $problemsev['revisiongreater'] = 4;
@@ -59,7 +83,7 @@ $problemsev['revisionsmaller'] = 9;
 $problemsev['dateolder'] = 9;
 $problemsev['dateyounger'] = 4;
 $problemsev['author'] = 8;
-$problemsev['MD5'] = 0;
+$problemsev['MD5'] = 7;
 $problemsev['MD5binary'] = 7;
 $problemsev['nosvn'] = 2;
 $problemsev['nolocal'] = 3;
@@ -67,7 +91,7 @@ $problemsev['unknown'] = 1;
 
 $severity[0] = array('style' => 'sgreen',  'color' => '#12C312', 'weight' => 0,  'severityname' => 'No Issues');
 $severity[1] = array('style' => 'sgray',   'color' => '#AFAFAF', 'weight' => 0,  'severityname' => 'Unknown');
-$severity[2] = array('style' => 'sgray',   'color' => '#AFAFAF', 'weight' => 0,  'severityname' => 'Not in SVN');
+$severity[2] = array('style' => 'sgray',   'color' => '#AFAFAF', 'weight' => 0,  'severityname' => 'Not in Repo');
 $severity[3] = array('style' => 'sgray',   'color' => '#AFAFAF', 'weight' => 0,  'severityname' => 'Not in Local');
 $severity[4] = array('style' => 'sblue',   'color' => '#312CF8', 'weight' => 0,  'severityname' => 'Newer Files');
 $severity[5] = array('style' => 'sblue',   'color' => '#312CF8', 'weight' => 1,  'severityname' => 'Initial');
@@ -97,28 +121,33 @@ $directories = array('.' => array('localfiles' => 0, 'remotefiles' => 0, 'severi
 // Make an array to hold the local and, if applicable, remote file versioning information
 $files = array();
 
-// Get the $directories and fill the array $directories
-if ($subdirectories)
+if( !file_exists($local_file) )
 {
-	GrabAllLocalDirectories('.');
+	// Get the $directories and fill the array $directories
+	if ($subdirectories)
+	{
+		GrabAllLocalDirectories('.');
+	}
+	// Get the $files / versioning info for each $directories and fill the array $files
+	foreach ($directories as $directory => $filecount)
+	{
+		// Grab all local $files and store the information into the array $files
+		GrabLocalVersions($directory);
+	}
+	file_writer( $local_file , json_encode($files) , $mode='wb' );
 }
-//echo '<pre>';print_r($directories);echo '</pre>';
-// Get the $files / versioning info for each $directories and fill the array $files
-foreach ($directories as $directory => $filecount)
+else
 {
-	// Grab all local $files and store the information into the array $files
-	GrabLocalVersions($directory);
+	$files = json_decode(file_get_contents($local_file), true);
 }
 
-// Get the REMOTE $files / versioning info for each REMOTE $directories and fill the array $files
-//GrabRemoteVersions();
+// now we build our full file array
+$files = array_overlay( $remote, $files );
 
 foreach ($files as $directory => $filedata)
 {
 	$directories[$directory] = count($filedata);
 }
-
-//DisplayTheStuffTemp();
 
 /**
  * Grab all directories and subdirectories for directory $dir and shove them into the global array $directories
@@ -236,129 +265,37 @@ function GetFileVersionInfo($directory, $file)
 	global $files, $remote;
 
 	$filefullpath = $directory . '/' . $file;
-	// Read the first 2k of the file, which should be enough to grab the $fileheader
-	//echo $filefullpath.'<br>';
-	//$d = file_get_contents_utf8($filefullpath);
-	$d = file_get_contents($filefullpath);
-	$s = strlen($d);
-	$x = sha1("blob " .$s. "\0" .$d);
+	
+	/*
+	if (check_if_image($file))
+	{
+		$d=file_get_contents($filefullpath);
+		$s = filesize($filefullpath);//strlen( $encoded_image );
+		$x = sha1("blob ".$s."\0" .$d);
+	}
+	else
+	{
+		$d = str_replace("\r\n","\n",file_get_contents_utf8($filefullpath));
+		$s = strlen( $d );
+		$x = sha1("blob " .$s. "\0" .$d);
+	}
+	*/
 	$files[$directory][$file]['update'] = '';
 	$files[$directory][$file]['local']['versionFile'] = $file;
-	$files[$directory][$file]['local']['versionMD5'] = $x.' - '.$s;//sha1_file($filefullpath);
+	$files[$directory][$file]['local']['versionMD5'] = _getsha($file,$filefullpath);//sha1_file($filefullpath);
+	$files[$directory][$file]['local']['versionSize'] = $s;
 	$files[$directory][$file]['local']['versionDesc'] = '';
-	$files[$directory][$file]['local']['versionRev'] = '';
 	$files[$directory][$file]['local']['versionDate'] = '';
 	$files[$directory][$file]['local']['versionAuthor'] = '';
 	$files[$directory][$file]['local']['update'] = '';
-
-	$f = substr($filefullpath, 2);
-	$files[$directory][$file]['remote']['versionFile'] = $file;
-	$files[$directory][$file]['remote']['versionMD5'] = (isset($remote[$f]['sha']) ? $remote[$f]['sha'] : '');
-	$files[$directory][$file]['remote']['versionDesc'] = '';
-	$files[$directory][$file]['remote']['versionRev'] = '';
-	$files[$directory][$file]['remote']['versionDate'] = '';
-	$files[$directory][$file]['remote']['versionAuthor'] = '';
-
 }
+
 function file_get_contents_utf8($fn) { 
      $content = file_get_contents($fn); 
       return mb_convert_encoding($content, 'UTF-8', 
           mb_detect_encoding($content, 'UTF-8, ISO-8859-1', true)); 
 } 
 
-function GrabRemoteVersions($directory)
-{
-	global $directories;
-
-	if ($handle = @opendir($directory))
-	{
-		while ($filename = readdir($handle))
-		{
-			if(isset($filename) && !is_dir($directory . '/' . $filename) && CheckExtension($filename))
-			{
-				// Increase the filecounter for this directory
-				$directories[$directory]['localfiles']++;
-				// Get the file versioning info and store it into the array
-				GetRemoteVersionInfo($directory, $filename);
-			}
-		}
-		closedir($handle);
-	}
-}
-function GetRemoteVersionInfo($directory, $file)
-{
-	global $files, $remote;
-
-	$filefullpath = $directory . '/' . $file;
-	$f = substr($filefullpath, 2);
-	$files[$directory][$file]['remote']['versionFile'] = $file;
-	$files[$directory][$file]['remote']['versionMD5'] = $remote[$f]['sha'];
-	$files[$directory][$file]['remote']['versionDesc'] = '';
-	$files[$directory][$file]['remote']['versionRev'] = '';
-	$files[$directory][$file]['remote']['versionDate'] = '';
-	$files[$directory][$file]['remote']['versionAuthor'] = '';
-}
-/**
- * Grab all the remote versioning data
- *
- * @return bool False on failure
- *
-function GrabRemoteVersions()
-{
-	global $directories, $files, $break, $explode;
-
-	// Execute the addon_versioncheck.php script in the SVN remote site
-
-
-	$filefullpath = $directory . '/' . $file;
-	$c = '';
-	$c = json_decode(file_get_contents('https://api.github.com/repos/ulminia/wowroster/contents/'.$filefullpath),true);
-	$files[$directory][$file]['remote']['versionFile'] = $file;
-	$files[$directory][$file]['remote']['versionMD5'] = $c['sha'];
-	$files[$directory][$file]['remote']['versionDesc'] = '';
-	$files[$directory][$file]['remote']['versionRev'] = '';
-	$files[$directory][$file]['remote']['versionDate'] = '';
-	$files[$directory][$file]['remote']['versionAuthor'] = '';
-	
-	
-	*
-	$contents = urlgrabber(ROSTER_SVNREMOTE);
-
-	if( $contents !== false )
-	{
-		// Break the header into lines
-		$remoteversions = explode($break, $contents);
-		foreach ($remoteversions as $remoteversion)
-		{
-			// Break the line into strings
-			$remoteversion = explode($explode, $remoteversion);
-
-			// Insert the file info into the $files array
-			if (isset($remoteversion[1]))
-			{
-				$directory = $remoteversion[0];
-				// Check if the directory existed on the local system. If not, declare the directory inside the $directories array.
-				if (!isset($directories[$directory]))
-				{
-					$directories[$directory] = array('localfiles' => 0, 'remotefiles' => 0, 'severity' => 0);
-				}
-				$filename = $remoteversion[1];
-				$files[$directory][$filename]['remote']['versionFile'] = $filename;
-				$files[$directory][$filename]['remote']['versionDesc'] = $remoteversion[2];
-				$files[$directory][$filename]['remote']['versionRev'] = $remoteversion[3];
-				$files[$directory][$filename]['remote']['versionDate'] = $remoteversion[4];
-				$files[$directory][$filename]['remote']['versionAuthor'] = $remoteversion[5];
-				$files[$directory][$filename]['remote']['versionMD5'] = $remoteversion[6];
-			}
-		}
-	}
-	else
-	{
-		return false;
-	}
-	*
-}
-*/
 /**
  * Verify version info
  *
@@ -393,71 +330,32 @@ function VerifyVersions()
 			$files[$directory][$filename]['newer'] = 0;
 
 			// Check if Both Local and SVN files are present
-			if (isset($file['local']) && isset($file['remote']))
+			if (!empty($file['local']['versionMD5']) && !empty($file['remote']['versionMD5']))
 			{
-				// Check if the local description matches the SVN description
-				if (strcmp($file['local']['versionDesc'], $file['remote']['versionDesc']))
-				{
-					$files[$directory][$filename]['severity'] += $severity[$problemsev['description']]['weight'];
-					$files[$directory][$filename]['tooltip'] .= 'Local Description does NOT match with SVN<br />';
-				}
 				// Check if the local version matches the SVN version
-				if (version_compare($file['local']['versionRev'], $file['remote']['versionRev']) < 0)
+				if (version_compare($file['local']['versionSize'], $file['remote']['versionSize']) < 0)
 				{
 					$files[$directory][$filename]['severity'] += $severity[$problemsev['revisiongreater']]['weight'];
 					$files[$directory][$filename]['newer'] = 1;
-					$files[$directory][$filename]['tooltip'] .= 'Local Version: ' . $file['local']['versionRev'] . ' is HIGHER than SVN Version: ' . $file['remote']['versionRev'] . '<br />';
-					$files[$directory][$filename]['rev'] = $file['local']['versionRev'] . ' < ' . $file['remote']['versionRev'];
+					$files[$directory][$filename]['tooltip'] .= 'Local Version: ' . $file['local']['versionSize'] . ' is HIGHER than SVN Version: ' . $file['remote']['versionSize'] . '<br />';
+					$files[$directory][$filename]['rev'] = $file['local']['versionSize'] . ' < ' . $file['remote']['versionSize'];
 					$files[$directory][$filename]['update'] = 1;
 					$files[$directory][$filename]['diff'] = 1;
 				}
-				elseif (version_compare($file['local']['versionRev'], $file['remote']['versionRev']) > 0)
+				elseif (version_compare($file['local']['versionSize'], $file['remote']['versionSize']) > 0)
 				{
 					$files[$directory][$filename]['severity'] += $severity[$problemsev['revisiongreater']]['weight'];
-					$files[$directory][$filename]['tooltip'] .= 'Local Version: ' . $file['local']['versionRev'] . ' is HIGHER than SVN Version: ' . $file['remote']['versionRev'] . '<br />';
-					$files[$directory][$filename]['rev'] = $file['local']['versionRev'] . ' > ' . $file['remote']['versionRev'];
+					$files[$directory][$filename]['tooltip'] .= 'Local Version: ' . $file['local']['versionSize'] . ' is HIGHER than SVN Version: ' . $file['remote']['versionSize'] . '<br />';
+					$files[$directory][$filename]['rev'] = $file['local']['versionSize'] . ' > ' . $file['remote']['versionSize'];
 					$files[$directory][$filename]['diff'] = 1;
 				}
-				elseif (version_compare($file['local']['versionRev'], $file['remote']['versionRev']) == 0)
+				elseif (version_compare($file['local']['versionSize'], $file['remote']['versionSize']) == 0)
 				{
-					$files[$directory][$filename]['rev'] = $file['local']['versionRev'];
+					$files[$directory][$filename]['rev'] = $file['local']['versionSize'];
 				}
 
-				// Check if the local date matches the SVN date
-				if (($file['local']['versionDate'] < $file['remote']['versionDate']) && !check_if_image($filename))
-				{
-					$files[$directory][$filename]['severity'] += $severity[$problemsev['dateolder']]['weight'];
-					$files[$directory][$filename]['tooltip'] .= 'Local Date: ' . gmdate('Y/m/d H:i', $file['local']['versionDate']) . ' is OLDER than SVN Date: ' . gmdate('Y/m/d H:i', $file['remote']['versionDate']) . '<br />';
-					$files[$directory][$filename]['date'] = gmdate('Y/m/d H:i', $file['local']['versionDate']) . ' < ' . gmdate('Y/m/d H:i', $file['remote']['versionDate']);
-					$files[$directory][$filename]['update'] = 1;
-					$files[$directory][$filename]['diff'] = 1;
-				}
-				elseif (($file['local']['versionDate'] > $file['remote']['versionDate']) && !check_if_image($filename))
-				{
-					$files[$directory][$filename]['severity'] += $severity[$problemsev['dateyounger']]['weight'];
-					$files[$directory][$filename]['newer'] = 1;
-					$files[$directory][$filename]['tooltip'] .= 'Local Date: ' . gmdate('Y/m/d H:i', $file['local']['versionDate']) . ' is NEWER than SVN Date: ' . gmdate('Y/m/d H:i', $file['remote']['versionDate']) . '<br />';
-					$files[$directory][$filename]['date'] = gmdate('Y/m/d H:i', $file['local']['versionDate']) . ' > ' . gmdate('Y/m/d H:i', $file['remote']['versionDate']);
-					$files[$directory][$filename]['diff'] = 1;
-				}
-				elseif (($file['local']['versionDate'] == $file['remote']['versionDate']) || check_if_image($filename))
-				{
-					$files[$directory][$filename]['date'] = gmdate('Y/m/d H:i', $file['local']['versionDate']);
-				}
-				// Check if the local author matches the SVN author
-				if (strcmp($file['local']['versionAuthor'], $file['remote']['versionAuthor']))
-				{
-					$files[$directory][$filename]['severity'] += $severity[$problemsev['author']]['weight'];
-					$files[$directory][$filename]['tooltip'] .= 'Local Author does NOT match with SVN<br />';
-					$files[$directory][$filename]['author'] = preg_replace('/@(.+)/i', '', $file['local']['versionAuthor']) . ' != ' . preg_replace('/@(.+)/i', '', $file['remote']['versionAuthor']);
-					$files[$directory][$filename]['diff'] = 1;
-				}
-				else
-				{
-					$files[$directory][$filename]['author'] = preg_replace('/@(.+)/i', '', $file['local']['versionAuthor']);
-				}
 				// Check if the local MD5 matches the SVN MD5
-				if (strcmp($file['local']['versionMD5'], $file['remote']['versionMD5']))
+				if ($file['local']['versionMD5'] !=  $file['remote']['versionMD5'] && !empty($file['local']['versionMD5']) && !empty($file['remote']['versionMD5']))
 				{
 					if (check_if_image($filename))
 					{
@@ -478,16 +376,14 @@ function VerifyVersions()
 					$files[$directory][$filename]['md5'] = 'MD5 String Matches';
 				}
 			}
-			elseif (isset($file['local']) && !isset($file['remote']))
+			elseif (!empty($file['local']['versionMD5']) && empty($file['remote']['versionMD5']))
 			{
 				$files[$directory][$filename]['severity'] += $severity[$problemsev['nosvn']]['weight'];
 				$files[$directory][$filename]['tooltip'] .= 'Local file does not exist in SVN<br />';
 				$files[$directory][$filename]['rogue'] = 1;
-				$files[$directory][$filename]['rev'] = $file['local']['versionRev'];
-				$files[$directory][$filename]['date'] = gmdate('Y/m/d H:i', $file['local']['versionDate']);
-				$files[$directory][$filename]['author'] = preg_replace('/@(.+)/i', '', $file['local']['versionAuthor']);
+				//$files[$directory][$filename]['rev'] = $file['local']['versionSize'];
 			}
-			elseif (!isset($file['local']) && isset($file['remote']))
+			elseif (empty($file['local']['versionMD5']) && !empty($file['remote']['versionMD5']))
 			{
 				$files[$directory][$filename]['severity'] += $severity[$problemsev['nolocal']]['weight'];
 				$files[$directory][$filename]['tooltip'] .= 'Local file is missing but is present in SVN<br />';
@@ -654,22 +550,30 @@ function ConfigErrors()
 	{
 		if( !function_exists('gd_info') )
 		{
-			$errors .= "Realm Status GD image mode enabled (RosterCP-&gt;Main Settings-&gt;Realmstatus-&gt;Display Mode = Image) in RosterCP but GD library was not found.<br />Either load the GD extension in PHP or set (RosterCP-&gt;Main Settings-&gt;Realmstatus-&gt;Display Mode = text) in RosterCP<br />\n";
+			$errors .= "Realm Status GD image mode enabled (RosterCP-&gt;Main Settings-&gt;Realmstatus-&gt;Display Mode = Image) in RosterCP
+			but GD library was not found.<br />Either load the GD extension in PHP or set 
+			(RosterCP-&gt;Main Settings-&gt;Realmstatus-&gt;Display Mode = text) in RosterCP<br />\n";
 		}
 		if ($FreeType == 0)
 		{
-			$errors .= "Realm Status GD image mode enabled (RosterCP-&gt;Main Settings-&gt;Realmstatus-&gt;Display Mode = Image) in RosterCP but FreeType support was not found.<br />Either load the Freetype extension in PHP or set (RosterCP-&gt;Main Settings-&gt;Realmstatus-&gt;Display Mode = text) in RosterCP<br />\n";
+			$errors .= "Realm Status GD image mode enabled (RosterCP-&gt;Main Settings-&gt;Realmstatus-&gt;Display Mode = Image) in RosterCP
+			but FreeType support was not found.<br />Either load the Freetype extension in PHP or set 
+			(RosterCP-&gt;Main Settings-&gt;Realmstatus-&gt;Display Mode = text) in RosterCP<br />\n";
 		}
 	}
 	if ($roster->config['motd_display_mode'] == 1)
 	{
 		if( !function_exists('gd_info') )
 		{
-			$errors .= "MOTD GD image mode enabled (RosterCP-&gt;Main Settings-&gt;Realmstatus-&gt;MOTD Display Mode = on) in RosterCP but GD library was not found.<br />Either load the GD extension in PHP or set (RosterCP-&gt;Main Settings-&gt;Realmstatus-&gt;MOTD Display Mode = text) in RosterCP<br />\n";
+			$errors .= "MOTD GD image mode enabled (RosterCP-&gt;Main Settings-&gt;Realmstatus-&gt;MOTD Display Mode = on) in RosterCP
+			but GD library was not found.<br />Either load the GD extension in PHP or set 
+			(RosterCP-&gt;Main Settings-&gt;Realmstatus-&gt;MOTD Display Mode = text) in RosterCP<br />\n";
 		}
 		if ($FreeType == 0)
 		{
-			$errors .= "MOTD GD image mode enabled (RosterCP-&gt;Main Settings-&gt;Realmstatus-&gt;MOTD Display Mode = on) in RosterCP but FreeType support was not found.<br />Either load the Freetype extension in PHP or set (RosterCP-&gt;Main Settings-&gt;Realmstatus-&gt;MOTD Display Mode = text) in RosterCP<br />\n";
+			$errors .= "MOTD GD image mode enabled (RosterCP-&gt;Main Settings-&gt;Realmstatus-&gt;MOTD Display Mode = on) in RosterCP
+			but FreeType support was not found.<br />Either load the Freetype extension in PHP or set 
+			(RosterCP-&gt;Main Settings-&gt;Realmstatus-&gt;MOTD Display Mode = text) in RosterCP<br />\n";
 		}
 	}
 
@@ -1038,4 +942,22 @@ function check_date_time($date, $time)
 	$returnunixdate = gmmktime($returntime[1], $returntime[2], $returntime[3], $returndate[2], $returndate[3], $returndate[1]);
 
 	return $returnunixdate;
+}
+
+function _getsha($file,$filefullpath)
+{
+	if (check_if_image($file))
+	{
+		$d=file_get_contents($filefullpath);
+		$s = filesize($filefullpath);//strlen( $encoded_image );
+		$x = sha1("blob ".$s."\0" .$d);
+	}
+	else
+	{
+		$d = str_replace("\r\n","\n",file_get_contents_utf8($filefullpath));
+		$s = strlen( $d );
+		$x = sha1("blob " .$s. "\0" .$d);
+	}
+	
+	return $x;
 }

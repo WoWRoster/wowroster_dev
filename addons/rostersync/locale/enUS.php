@@ -115,8 +115,6 @@ $lang['start_message_this_gprofile']	= "the guild characters";
 $lang['start_message_this_memberlist']	= "the guild members";
 $lang['start_message_this_addguild']	= "Guild data for this guild";
 
-
-
 $lang['rep'] = array(
     "Wildhammer Clan"				=> array ("parent" => "Cataclysm"),
 	"Baradin's Wardens"				=> array ("parent" => "Cataclysm"),
@@ -218,14 +216,4 @@ $lang['rep'] = array(
 	"Tina Mudclaw"					=> array ("parent" => "Mists of Pandaria","faction" => "The Tillers"),
 	"Jogu the Drunk" 				=> array ("parent" => "Mists of Pandaria","faction" => "The Tillers"),
 	"Ella" 							=> array ("parent" => "Mists of Pandaria","faction" => "The Tillers"),
-	"".$this->guild_name."" 		=> array ("parent" => "Guild"),);
-
-
-
-
-
-
-
-
-
-
+	"Guild" 		=> array ("parent" => "Guild"),);

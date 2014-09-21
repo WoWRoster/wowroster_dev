@@ -22,7 +22,8 @@ class Git extends Resource {
 	
 	protected $methods_allowed = array(
 		'repo',
-		'files'
+		'files',
+		'file'
 	);
 
 	public function GetRepo()
@@ -43,6 +44,16 @@ class Git extends Resource {
 			'dataa' => 'talent',
 			'server' => '',
 			'name' => $sha
+			));
+		return $data;
+	}
+	public function GetFile($path)
+	{
+		$data = $this->consume('file', array(
+			'data' => '',
+			'dataa' => 'talent',
+			'server' => '',
+			'name' => $path
 			));
 		return $data;
 	}

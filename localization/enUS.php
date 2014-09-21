@@ -1698,4 +1698,3 @@ $lang['apiitem']['skills'] = array(
 	"165" => "Leatherworking",
 	"164" => "Blacksmithing"
 );
-
