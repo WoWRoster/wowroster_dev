@@ -419,11 +419,11 @@ if( true )
 	VerifyVersions();
 
 	$zippackage_files = '';
-/*
+
 	// Make a post form for the download of a Zip Package
 	foreach ($directories as $directory => $filecount)
 	{
-		if (isset($files[$directory]))
+		if (isset($files[$directory]) && CheckDirectory($directory) =='1')
 		{
 			foreach ($files[$directory] as $file => $filedata)
 			{
@@ -435,7 +435,7 @@ if( true )
 						{
 							$zippackage_files .= ';';
 						}
-						$zippackage_files .= $directory . '/' . $file;
+						$zippackage_files .= $directory . '/' . $file."\r\n";
 					}
 				}
 			}
@@ -483,14 +483,16 @@ if( true )
 					<input type="submit" value="' . $roster->locale->act['download_update'] . '" />
 				</div>
 			</form>
-		</div>
+		
+		<br>
+		'.$zippackage_files.'</div>
 	</div>
 </div>
 <br />
 ';
 		}
 	}
-	*/
+
 
 	// Open the main FileVersion table in total color
 	echo '

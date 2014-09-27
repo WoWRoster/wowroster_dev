@@ -191,7 +191,8 @@ unset($db_config);
  */
 require_once (ROSTER_LIB . 'cache.php');
 $roster->cache = new RosterCache();
-
+require_once (ROSTER_LIB . 'cache.sql.php');
+$roster->cache->sql = new sql_cache();
 /**
  * Load the config
  */

@@ -25,7 +25,7 @@ if( !defined('IN_ROSTER') )
 // As a NON-Developer, please do not modify any content of this file, or the version check might fail!!!
 
 // Ignored Directories
-$ignored_dirs = array('.', '..', 'SVN', '.svn', 'Interface', 'cache','.git');
+$ignored_dirs = array('.', '..', 'SVN', '.svn', '/img/Interface', './img/Interface/', 'TalentFrame', './img/Interface/Icons', './img/Interface/TalentFrame', 'cache','.git');
 
 // Files to check with extension:
 $extensions = array('php', 'inc', 'css', 'js', 'tpl', 'htm', 'html', 'jpg', 'gif', 'png', 'sql', 'txt');
@@ -266,20 +266,18 @@ function GetFileVersionInfo($directory, $file)
 
 	$filefullpath = $directory . '/' . $file;
 	
-	/*
+
 	if (check_if_image($file))
 	{
 		$d=file_get_contents($filefullpath);
 		$s = filesize($filefullpath);//strlen( $encoded_image );
-		$x = sha1("blob ".$s."\0" .$d);
 	}
 	else
 	{
 		$d = str_replace("\r\n","\n",file_get_contents_utf8($filefullpath));
 		$s = strlen( $d );
-		$x = sha1("blob " .$s. "\0" .$d);
 	}
-	*/
+
 	$files[$directory][$file]['update'] = '';
 	$files[$directory][$file]['local']['versionFile'] = $file;
 	$files[$directory][$file]['local']['versionMD5'] = _getsha($file,$filefullpath);//sha1_file($filefullpath);

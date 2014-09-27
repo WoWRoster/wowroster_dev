@@ -46,7 +46,13 @@ abstract class Resource {
 	protected $Curl;
 	var $querytime;
 	var $query_count = 0;
-
+	public $usage = array(
+				'type'				=> '',
+				'url'				=> '',
+				'responce_code'		=> '',
+				'content_type'		=> '',
+				'locale'			=> '',
+			);
 	/**
 	 * @throws ResourceException If no methods are allowed
 	 * @param string $region Server region(`us` or `eu`)
@@ -97,71 +103,19 @@ abstract class Resource {
 				}
 					$auction = json_decode($data['response'], true);
 				$url = $auction['files'][0]['url'];
-				//echo $url.'<br>';
 			}
-			if (isset($_GET['debug']))
-			{
-				echo '--[ '.$url.' ]--<br>';
-			}
+
 			$data = $this->Curl->makeRequest($url,null, $params,$url,$method);
-			
-			//echo '<pre>';print_r($data);echo '</pre>';
-			
+
 			if ($this->Curl->errno !== CURLE_OK) 
 			{
 				//throw new ResourceException($this->Curl->error, $this->Curl->errno);
 				$roster->set_message( "The selected api action is not allowed <br/>\n\r [".$this->Curl->errno.'] : '.$this->Curl->error.'', 'Curl has Failed!', 'error' );
 			}
-			$errornum = empty($data['response_headers']['http_code']) ? $data['response_headers']['http_code'] : '_911_';
-			$roster->db->queries['api-'.$method][$roster->db->query_count]['query'] = $url;
-			$roster->db->queries['api-'.$method][$roster->db->query_count]['time'] = round((format_microtime()), 4);
-			$roster->db->queries['api-'.$method][$roster->db->query_count]['line'] = '94';
-			$roster->db->queries['api-'.$method][$roster->db->query_count]['error'] = $errornum;
-			
-			// update the tracker...
-			
-			$q = "SELECT * FROM `" . $roster->db->table('api_usage') . "` WHERE `date`='".date("Y-m-d")."' AND `type` = '".$method."'";
-			$y = $roster->db->query($q);
-			$row = $roster->db->fetch($y);
-			if (!isset($row['total']))
-			{
-				$query = 'INSERT INTO `' . $roster->db->table('api_usage') . '` VALUES ';
-				$query .= "('','".$method."','".date("Y-m-d")."','+1'); ";
-			}
-			else
-			{
-				$query = "Update `" . $roster->db->table('api_usage') . "` SET `total`='".($row['total']+1)."' WHERE `type` = '".$method."' AND `date` = '".date("Y-m-d")."'";
-			}
-			$ret = $roster->db->query($query);
-						
+			$errornum = empty($data['response_headers']['http_code']) ? $data['response_headers']['http_code'] : '_911_';			
 			//Battle.net returned a HTTP error code
 			$x = json_decode($data['response'], true);
-			if (isset($data['response_headers']) && $data['response_headers']['http_code'] != '200') 
-			{
-				$msg = $this->transhttpciode($data['response_headers']['http_code']);
-				$roster->set_message( ' '.$method.': '.$msg.' : '.$x['reason'].'<br>'.$url.' ', 'Api call fail!', 'error' );
-				// update the tracker...
-				///* this is not in the main roster install as of yet
-				$errornum = empty($data['response_headers']['http_code']) ? $data['response_headers']['http_code'] : '';
-				$q = "SELECT * FROM `" . $roster->db->table('api_error') . "` WHERE `error_info` = '".$params['name']."' AND `type` = '".$method."'";
-				$y = $roster->db->query($q);
-				$row = $roster->db->fetch($y);
-				if (!isset($row['total']))
-				{
-					$query = 'INSERT INTO `' . $roster->db->table('api_error') . '` VALUES ';
-					$query .= "('','".$method."','".$msg."','".$params['name']."','+1'); ";
-				}
-				else
-				{
-					$query = "Update `" . $roster->db->table('api_error') . "` SET `total`='".($row['total']+1)."' WHERE `type` = '".$method."' AND `error_info` = '".$params['name']."'";
-				}
-				$ret = $roster->db->query($query);
-				//*/
-				//throw new HttpException(json_decode($data['response'], true), $data['response_headers']['http_code']);
-				//$this->seterrors(array('type'=>$method,'msg'=>''.$msg.'<br>'.$url.''));
-				//$this->query['result'] = false; // over ride cache and set to false no data or no url no file lol
-			}
-		
+
 			//$makecache
 			if (isset($x['reason']))
 			{
@@ -171,6 +125,20 @@ abstract class Resource {
 				//$roster->set_message( ' '.$method.': '.$x['reason'].' ', 'Api call fail!', 'error' );
 				$this->query['result'] = false; // over ride cache and set to false no data or no url no file lol
 			}
+			$roster->api2->cache->api_track($method, $url, $this->Curl->http_code, $this->Curl->content_type);
+			$this->usage = array(
+				'type'				=> $method,
+				'url'				=> $url,
+				'responce_code'		=> $this->Curl->http_code,
+				'content_type'		=> $this->Curl->content_type,
+				'locale'			=> $this->region,
+			);
+			if (method_exists($roster->api2->cache, 'insert'.$method) && is_callable(array($roster->api2->cache, 'insert'.$method)))
+			{
+				call_user_func(array($roster->api2->cache, 'insert'.$method),$result,$this->usage,$params);
+			}
+		
+		
 			//print_r($data['response_headers']);
 			$data = json_decode($data['response'], true);
 			$info = $data;//$this->utf8_array_decode($data);

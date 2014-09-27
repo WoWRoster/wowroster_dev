@@ -13,6 +13,9 @@
 class Curl {
 	public $errno = CURLE_OK;
 	public $error = '';
+	
+	public $http_code = '';
+	public $content_type = '';
 
 	/**
 	 * Executes a curl request.
@@ -207,7 +210,8 @@ class Curl {
 		//Deal with HTTP errors
 		$this->errno	= curl_errno($ch);
 		$this->error	= curl_error($ch);
-
+		$this->http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        $this->content_type = curl_getinfo($ch, CURLINFO_CONTENT_TYPE);
 		curl_close($ch);
 		if ($this->errno) {
 			print_r($this->errno);

@@ -125,7 +125,9 @@ $current_time = time();
 
 if( $current_time >= ($realmData['timestamp'] + ($roster->config['rs_timer'] * 600)) )
 {
-	$xmlsource = $roster->api->Realm->getRealmStatus($realmname);
+	//updating to the new api
+	//$xmlsource = $roster->api->Realm->getRealmStatus($realmname);
+	$xmlsource = $roster->api2->fetch('realmstatus',array('realm'=>$realmname));
 	$r = $xmlsource;
 
 	$d = $r['realms']['0'];

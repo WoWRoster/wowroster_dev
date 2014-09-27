@@ -184,6 +184,7 @@ class Client
 			),
 	);
 	
+	public $ignore_cache = false;
 	/**
 	 *	region setting
 	 *
@@ -398,6 +399,7 @@ class Client
 		
 		$this->usage['locale'] = $this->locale;
 		return $url;
+		
     }
 	
 	/**
@@ -453,6 +455,9 @@ class Client
 					break;
 			case 'realmstatus':
 						$q = 'wow/realm/status';
+					break;
+			case '_realmstatus':
+						$q = 'wow/realm/status/'.$fields['name'];
 					break;
 			case 'recipe':
 						$q = 'wow/recipe/'.$fields['id'];
@@ -542,10 +547,9 @@ class Client
      */
     public function fetch($protected_resource_url, $parameters = array(), $http_method = self::HTTP_METHOD_GET, array $http_headers = array(), $form_content_type = self::HTTP_FORM_CONTENT_TYPE_MULTIPART)
     {
-		
-		
+
 		$protected_resource_url = self::_buildUrl($protected_resource_url, $parameters);
-	//echo $protected_resource_url.'<br>';
+
         if ($this->access_token) {
             switch ($this->access_token_type) {
                 case self::ACCESS_TOKEN_URI:
@@ -573,7 +577,7 @@ class Client
             }
         }
 		// we are gona run cache checks
-		if (method_exists($this->cache, $this->usage['type']) && is_callable(array($this->cache, $this->usage['type'])))
+		if (!$this->ignore_cache && method_exists($this->cache, $this->usage['type']) && is_callable(array($this->cache, $this->usage['type'])))
 		{
 			$data = call_user_func(array($this->cache, $this->usage['type']),$parameters,$this->usage);
 			if (is_array($data))
@@ -668,15 +672,14 @@ class Client
             case self::HTTP_METHOD_DELETE:
             case self::HTTP_METHOD_GET:
                 if (is_array($parameters)) {
-                    $url .= '?' . http_build_query($parameters, null, '&');
+                    //$url .= '?' . http_build_query($parameters, null, '&');
                 } elseif ($parameters) {
-                    $url .= '?' . $parameters;
+                    //$url .= '?' . $parameters;
                 }
                 break;
             default:
                 break;
         }
-
         $curl_options[CURLOPT_URL] = $url;
 
         if (is_array($http_headers)) {

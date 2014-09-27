@@ -24,6 +24,7 @@ if( !defined('IN_ROSTER') )
  * @package    WoWRoster
  * @subpackage RosterCache
  */
+
 class RosterCache
 {
 	var $cache_suffix;
@@ -35,6 +36,7 @@ class RosterCache
 //	var $sql_query;
 //	var $sql_cache_data;
 //	var $sql_cache_rows=-1;
+	Public $sql;
 
 	/**
 	 * Constructor
@@ -43,10 +45,13 @@ class RosterCache
 	 */
 	function RosterCache()
 	{
+		global $roster;
 		$this->cache_suffix = '.inc';
 		$this->object_ttl = '10800'; //3 hours
 		$this->sql_ttl = '60';
 		$this->cache_dir = ROSTER_CACHEDIR;
+		//$this->sql = new sql_cache();
+		
 	}
 
 	/**

@@ -161,14 +161,8 @@ class RosterArmory
 	{
 		global $roster;
 
-		$this->base_url				   	= ROSTER_URL;//see if this works..$roster->config['website_address'].'/'; // gotta have a trailing slash here..... allways....
-		$this->url_prefix_armory		= $this->url_prefix_armory;//isset($roster->data['armoryurl']) ? $roster->data['armoryurl'] : $this->url_prefix_armory;
-		$this->url_prefix_char			= $this->url_prefix_armory . $this->url_prefix_char;
-		$this->url_prefix_itemtooltip	= $this->url_prefix_armory . $this->url_prefix_itemtooltip;
-		$this->url_prefix_talents		= $this->url_prefix_armory . $this->url_prefix_talents;
-		$this->url_prefix_rep			= $this->url_prefix_armory . $this->url_prefix_rep;
-
-		$this->region = ( $region !== false ? strtoupper($region) : 'US' );
+		echo 'depricated do not use';
+		return;
 	}
 
 	// DEFINE THE ARMORY VARIABLES
