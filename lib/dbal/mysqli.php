@@ -48,6 +48,10 @@ class roster_db
 	var $file;
 	var $line;
 	var $num_queries = array('cached'=> 0,'normal'=>0,'total'=>0);
+	
+	var $return_on_error = false;
+	var $sql_layer = '';
+	var $transaction = false;
 
 	/**
 	 * Log the query
@@ -602,4 +606,103 @@ class roster_db
 		$this->num_queries['normal'] += ($cached !== false) ? 0 : 1;
 		$this->num_queries['total'] += 1;
 	}
+	
+	function _sql_error()
+	{
+		if ($this->link_id)
+		{
+			$error = array(
+				'message'	=> @mysqli_error($this->link_id),
+				'code'		=> @mysqli_errno($this->link_id)
+			);
+		}
+		else if (function_exists('mysqli_connect_error'))
+		{
+			$error = array(
+				'message'	=> @mysqli_connect_error(),
+				'code'		=> @mysqli_connect_errno(),
+			);
+		}
+		else
+		{
+			$error = array(
+				'message'	=> $this->connect_error,
+				'code'		=> '',
+			);
+		}
+
+		return $error;
+	}
+	function sql_error($sql = '')
+	{
+		global $auth, $user, $config;
+
+		// Set var to retrieve errored status
+		$this->sql_error_triggered = true;
+		$this->sql_error_sql = $sql;
+
+		$this->sql_error_returned = $this->_sql_error();
+
+		if (!$this->return_on_error)
+		{
+			$message = 'SQL ERROR [ ' . $this->sql_layer . ' ]<br /><br />' . $this->sql_error_returned['message'] . ' [' . $this->sql_error_returned['code'] . ']';
+
+			// Show complete SQL error and path to administrators only
+			// Additionally show complete error on installation or if extended debug mode is enabled
+			// The DEBUG_EXTRA constant is for development only!
+			if ((isset($auth) && $auth->acl_get('a_')) || defined('IN_INSTALL') || defined('DEBUG_EXTRA'))
+			{
+				$message .= ($sql) ? '<br /><br />SQL<br /><br />' . htmlspecialchars($sql) : '';
+			}
+			else
+			{
+				// If error occurs in initiating the session we need to use a pre-defined language string
+				// This could happen if the connection could not be established for example (then we are not able to grab the default language)
+				if (!isset($user->lang['SQL_ERROR_OCCURRED']))
+				{
+					$message .= '<br /><br />An sql error occurred while fetching this page. Please contact an administrator if this problem persists.';
+				}
+				else
+				{
+					if (!empty($config['board_contact']))
+					{
+						$message .= '<br /><br />' . sprintf($user->lang['SQL_ERROR_OCCURRED'], '<a href="mailto:' . htmlspecialchars($config['board_contact']) . '">', '</a>');
+					}
+					else
+					{
+						$message .= '<br /><br />' . sprintf($user->lang['SQL_ERROR_OCCURRED'], '', '');
+					}
+				}
+			}
+
+			if ($this->transaction)
+			{
+				$this->sql_transaction('rollback');
+			}
+
+			if (strlen($message) > 1024)
+			{
+				// We need to define $msg_long_text here to circumvent text stripping.
+				global $msg_long_text;
+				$msg_long_text = $message;
+
+				trigger_error(false, E_USER_ERROR);
+			}
+
+			trigger_error($message, E_USER_ERROR);
+		}
+
+		if ($this->transaction)
+		{
+			$this->sql_transaction('rollback');
+		}
+
+		return $this->sql_error_returned;
+	}
+	
+	
+	
+	
+	
+	
 }

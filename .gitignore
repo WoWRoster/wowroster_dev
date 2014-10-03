@@ -16,6 +16,8 @@ $RECYCLE.BIN/
 /img/Interface/Icons
 /cache/
 /images/
+/stats/
+/error/
 config.php
 # =========================
 # Operating System Files
@@ -39,3 +41,6 @@ Icon
 .Spotlight-V100
 .Trashes
 conf.php
+templates/default/diag_file.html
+templates/default/diag_folder.html
+templates/default/diag_folders.html

@@ -208,6 +208,9 @@ class Client
 				'locale'			=> '',
 			);
 	public $cache;
+	
+	public $errno = CURLE_OK;
+	public $error = '';
     /**
      * Construct
      *
@@ -705,11 +708,16 @@ class Client
         if (!empty($this->curl_options)) {
             curl_setopt_array($ch, $this->curl_options);
         }
+		curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_0);
         $result = curl_exec($ch);
         $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         $content_type = curl_getinfo($ch, CURLINFO_CONTENT_TYPE);
-        if ($curl_error = curl_error($ch)) {
-            throw new Exception($curl_error, Exception::CURL_ERROR);
+		$this->errno	= curl_errno($ch);
+		$this->error	= curl_error($ch);
+        if ($this->errno) {
+			print_r($this->errno);
+			print_r($this->error);
+			return false;
         } else {
             $json_decode = json_decode($result, true);
         }

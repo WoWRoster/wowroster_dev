@@ -1664,7 +1664,7 @@ function makeRealmStatus( )
 	{
 		if( $roster->config['rs_display'] == 'image' )
 		{
-			$realmStatus .= '<img alt="Realm Status" src="' . ROSTER_URL . 'realmstatus.php?r=' . urlencode($realmname) . '" />' . "\n";
+			$realmStatus .= '<img alt="Realm Status" src="' . ROSTER_URL . 'realmstatus2.php?r=' . urlencode($realmname) . '" />' . "\n";
 		}
 		elseif( $roster->config['rs_display'] == 'text' && file_exists(ROSTER_BASE . 'realmstatus.php') )
 		{
