@@ -48,6 +48,7 @@ if (isset($_POST['process']) && $_POST['process'] == 'process')
 				$update->add_value('achie_icon',		$achi['icon']);
 				$update->add_value('achie_tooltip',		$tooltip);
 				$update->add_value('achie_isAccount',	$achi['accountWide']);
+				$update->add_value('factionId',			$achi['factionId']);
 				$update->add_value('c_id',				$cat['id']);
 				$update->add_value('p_id',				'-1');
 				$update->add_value('achi_cate',			$cat['name']);
@@ -94,6 +95,7 @@ if (isset($_POST['process']) && $_POST['process'] == 'process')
 					$update->add_value('achie_icon',		$achi['icon']);
 					$update->add_value('achie_tooltip',		$tooltip);
 					$update->add_value('achie_isAccount',	$achi['accountWide']);
+					$update->add_value('factionId',			$achi['factionId']);
 					$update->add_value('c_id',				$sub['id']);
 					$update->add_value('p_id',				$cat['id']);
 					$update->add_value('achi_cate',			$sub['name']);

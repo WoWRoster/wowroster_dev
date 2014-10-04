@@ -43,7 +43,7 @@ class userInstall
 	 */
 	function install()
 	{
-		global $installer;
+		global $installer, $roster;
 
 		//begin the magic of user settings
 

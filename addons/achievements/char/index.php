@@ -33,7 +33,7 @@ class achiv
 		$cat = $this->list_all();
 		$e = 0;
 		$achi = $this->achi;
-		$interface='http://www.wowroster.net/Interface/Icons/';//Interface/Icons/';
+		$interface= $roster->config['interface_url'].'Interface/Icons/';//Interface/Icons/';
 		$imgpath = '/templates/default/achievements/images/';
 		
 		$achData = array();
@@ -47,6 +47,31 @@ class achiv
 			$achDate[$row['achie_id']] = $row['achie_date'];
 			$e++;
 		}
+		$cats = $cat;
+		$this->sksort($cats,'id',true);
+		foreach ($cats as $id => $title)
+		{
+			$roster->tpl->assign_block_vars('amenue',array(
+						'ID'		=> 's'.$title['id'],
+						'NAME'		=> $title['name'],
+						'SUB'		=> (isset($title['sub']) ? true : false)
+						)
+					);
+				
+			if (isset($title['sub']) && is_array($title['sub']))
+			{
+				foreach ($title['sub'] as $ids => $r)
+				{
+					$roster->tpl->assign_block_vars('amenue.sub',array(
+						'ID'       => 's'.$r['id'],
+						'NAME'     => $r['name']
+						)
+					);
+				}
+			}	
+		}
+		
+		
 		foreach ($cat as $id => $title)
 		{
 			$roster->tpl->assign_block_vars('info',array(
@@ -54,8 +79,9 @@ class achiv
 							'NAME' => $title['name'],
 							'TOGGLER' => ' sub'.$id.''
 						)
-					);	
-				$ach = '';	
+					);
+
+			$ach = '';	
 			if( $ach != 'Name')
 			{
 				$k = array();
@@ -150,12 +176,6 @@ class achiv
 			{
 				foreach ($title['sub'] as $ids => $r)
 				{
-					$roster->tpl->assign_block_vars('sub'.$id.'',array(
-						'ID'       => 's'.$r['id'],
-						'NAME'     => $r['name']
-						)
-					);
-					
 					if ($id == $ids)
 					{
 						$idd = $id;
@@ -416,7 +436,7 @@ class achiv
 
 		$catss = array();
 		$catss = $catss + $this->getcatsubs();
-		$dlidd = "SELECT DISTINCT `achi_cate`, c_id,p_id FROM `" . $roster->db->table('achie', $addon['basename']) . "` order by `c_id` asc";
+		$dlidd = "SELECT DISTINCT `achi_cate`, `c_id`, `p_id` FROM `" . $roster->db->table('achie', $addon['basename']) . "` ORDER BY `c_id` ASC";
 		$resultdl = $roster->db->query($dlidd);
 		while($row = $roster->db->fetch($resultdl))
 		{
@@ -550,10 +570,107 @@ class achiv
 		$roster->tpl->assign_var('S_TALENT_TAB',false);
 		$roster->tpl->assign_var('S_ACHIV',true);
 		$roster->tpl->assign_var('S_ACHIV_ICON',$addon['config']['show_icons']);
+		$this->summary();
 		
 		
 		$roster->tpl->set_filenames(array('char' => $addon['basename'] . '/achiv.html'));
 		return $roster->tpl->fetch('char');
+	}
+	
+	function summary()
+	{
+		global $roster;
+	
+		$catss = array();
+		$cats = array();
+		$ach = array();		
+		$query =	"SELECT * FROM `" . $roster->db->table('achie', 'achievements') . "` WHERE (`factionId` = '0' OR `factionId` = '2') ORDER BY `c_id` DESC ";
+		$ret = $roster->db->query($query);
+		
+		while( $row = $roster->db->fetch($ret) )
+		{
+			if ($row['p_id'] =='-1')
+			{
+				$catss[$row['c_id']][$row['achie_id']] = array(
+															'name' => $row['achie_name'],
+															'id' => $row['c_id'],
+															'comp' => 0,
+															);
+				$cats[$row['achie_id']] = array(
+													'name' => $row['achie_name'],
+													'cid' => $row['c_id'],
+													'comp' => 0,
+													);
+				$ach[$row['c_id']]['total'] = isset($ach[$row['c_id']]['total']) ? ($ach[$row['c_id']]['total']+1) : 1; 
+				$ach[$row['c_id']]['name'] = $row['achi_cate'];
+			}
+			else
+			{
+				$ach[$row['p_id']]['total'] = isset($ach[$row['p_id']]['total']) ? ($ach[$row['p_id']]['total']+1) : 1; 
+				
+				$catss[$row['p_id']][$row['achie_id']] = array(
+															'name' => $row['achie_name'],
+															'id' => $row['c_id'],
+															'comp' => 0,
+															);
+				$cats[$row['achie_id']] = array(
+													'name' => $row['achie_name'],
+													'cid' => $row['p_id'],
+													'comp' => 0,
+													);
+			}
+
+		}
+		$sqlquery2 = "SELECT * FROM `" . $roster->db->table('achievements', 'achievements') . "` WHERE `member_id` = '".$roster->data['member_id']."' ORDER BY `achie_date` DESC";
+		$result2 = $roster->db->query($sqlquery2);
+		$e = 0;
+		while($rowx = $roster->db->fetch($result2))
+		{
+			$cats[$rowx['achie_id']]['comp'] = 1;
+		}
+
+
+		foreach ($cats as $achID => $data)
+		{
+			$ach[$data['cid']]['comp'] = isset($ach[$data['cid']]['comp']) ? ($ach[$data['cid']]['comp']+$data['comp']) : $data['comp']; 
+		}
+
+
+		$achcat = array(
+			'15088' => 'General',
+			'15077' => 'Quests',
+			'15078' => 'Player vs. Player',
+			'15079' => 'Dungeons &amp; Raids',
+			'15080' => 'Professions',
+			'15089' => 'Reputation',
+			'15093' => 'Guild Feats of Strength',
+		);
+
+		$output = '';
+		$et = 0;
+		$ct = 0;
+		foreach($ach as $cat => $t)
+		{
+			$text = $t['comp'].' / '.$t['total'];
+			$per = $t['comp']/$t['total']*100;
+			$et = ($et+$t['total']);
+			$ct = ($ct+$t['comp']);
+			$roster->tpl->assign_block_vars('cat', array(
+				'TITLE'		=> $t['name'],
+				'BAR'		=> $text,
+				'PERCENT'	=> (100-$per),
+				'PERCENT1'	=> $per
+			));
+		}
+		$xper = $ct/$et*100;
+		
+		$roster->tpl->assign_block_vars('cat', array(
+				'TITLE'		=> 'Total Completed',
+				'BAR'		=> $ct.' / '.$et,
+				'PERCENT'	=> (100-$xper),
+				'PERCENT1'	=> $xper
+			));
+	
 	}
 	
 }
@@ -568,88 +685,11 @@ $row = $roster->db->fetch($result2);
 $char = array();
 foreach($row as $var => $value)
 {
-$char[$var] = $value;
+	$char[$var] = $value;
 }
 
-//print_r($char);
 $body =  $achiv->out($char);
 $images = implode(",",$achiv->icons);
 
-$js = '
-$(document).ready(function () {
-	$(\'#menu li\').children(\'ul\').slideUp(\'fast\');
-	$(\'#amain > div#s81\').show();
-	var parent;
-	$(\'#menu li\').click(function(e) {
-		if ($(this).parents(\'li\').size() > 0 ) 
-		{
-			//Has parent LI, so this is a child comment
-			$(this).siblings().removeClass("selected2"); //Remove any "active" class
-			$(this).addClass("selected2"); //Add "active" class to selected tab
-			$(\'div#amain > div\').hide();
-			$("#amain > div#"+this.id).show();
-			parent = true;
-			return true;
-		}
-		else
-		{
-			if (!parent)
-			{
-				//Has no parent LI, top level comment
-				$(\'div#amain > div\').hide();
-				$("li.menu_head").removeClass(" selected"); //Remove any "active" class
-				$(this).addClass(" selected");
-				//$(\'#menu li\').children(\'ul\').slideUp(\'fast\');
-				$(\'li.menu_head#\'+this.id+\' > ul#\'+this.id+\'_sub\').siblings("ul.sub_menu").slideUp("slow");
-				$("#amain > div#"+this.id).show();
-				$(\'li.menu_head#\'+this.id+\' > ul#\'+this.id+\'_sub\').slideToggle(\'400\').siblings("ul.sub_menu").slideUp("slow");//.show();
-			}
-			parent=false;
-		}
-	});
-	
-	var achi = "'.implode(",",$achiv->pcrit).'";
-    var arr = achi.split(\',\');
-	jQuery.each(arr, function(index, value) {
-
-		$("#crt" + value).addClass("ctunlocked");
-		$("#lcrt" + value).addClass("unlocked");
-		
-	});
-	
-
-});
-
-';
-$jsx = '$("#firstpane p.menu_head").click(function(){    $(this).css({backgroundImage:"url(down.png)"}).next("div.menu_body").slideToggle(300).siblings("div.menu_body").slideUp("slow");    $(this).siblings().css({backgroundImage:"url(left.png)"});});';
-roster_add_js($js, 'inline', 'footer', false, false);
-
-
-
-
-/*
-$jjs = "
-$.fn.preload = function() {
-this.each(function(){
-$('<img/>')[0].src = this;
-});
-}
-// Usage:
-$([".$images."]).preload();";
-*
-$jjs = "
-function preload(arrayOfImages) {
-	$(arrayOfImages).each(function(){
-		$('<img/>')[0].src = this;
-		// Alternatively you could use:
-		// (new Image()).src = this;
-
-	}); 
-}
-preload([
-".$images."
-]);
-";
-roster_add_js($jjs, 'inline');
-*/
+roster_add_js('addons/' . $addon['basename'] . '/js/achievements.js');
 echo $body;

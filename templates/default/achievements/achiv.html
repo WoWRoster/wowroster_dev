@@ -1,89 +1,60 @@
 
 <div class="container">
-
 	<div style="float: left;">
-
 		<div class="achievements">
-
-			<div class="achv_bdr_top"><img src="{THEME_PATH}/achievements/images/achv_lnav_top.jpg" /></a></div>
-				
-				<div id="ach_menu">
-				
-					<ul id="menu" style="display:block">
-						<li id="s81" class="menu_head selected"><a href="javascript:void(0)" ><!-- TRANSLATE FeatsofStrength --></a></li>
-						<li id="s92" class="menu_head"><a href="javascript:void(0)" ><!-- TRANSLATE General --></a></li>
-						<li id="s95" class="menu_head"><a href="javascript:void(0)" ><!-- TRANSLATE PlayervsPlayer --></a>
-							<ul id="s95_sub" class="sub_menu">
-							<!-- BEGIN sub95 -->
-								<li id="{sub95.ID}" class="menu_sub"><a href="javascript:void(0)">{sub95.NAME}</a></li>
-							<!-- END sub95 -->
-							</ul>
-						</li>
-							
-						<li id="s96" class="menu_head"><a href="javascript:void(0)"><!-- TRANSLATE Quests --></a>
-							<ul id="s96_sub" class="sub_menu">
-								<!-- BEGIN sub96 -->
-								<li id="{sub96.ID}" ><a href="javascript:void(0)">{sub96.NAME}</a></li>
-								<!-- END sub96 -->
-							</ul>
-						</li>
-							
-						<li id="s97" class="menu_head"><a href="javascript:void(0)"><!-- TRANSLATE Exploration --></a>
-							<ul id="s97_sub" class="sub_menu">
-								<!-- BEGIN sub97 -->
-								<li id="{sub97.ID}" ><a href="javascript:void(0)">{sub97.NAME}</a></li>
-								<!-- END sub97 -->
-							</ul>
-						</li>
-							
-						<li id="s155" class="menu_head"><a href="javascript:void(0)"><!-- TRANSLATE WorldEvents --></a>
-							<ul id="s155_sub" class="sub_menu">
-								<!-- BEGIN sub155 -->
-								<li id="{sub155.ID}" ><a href="javascript:void(0)">{sub155.NAME}</a></li>
-								<!-- END sub155 -->
-							</ul>
-						</li>
-							
-						<li id="s168" class="menu_head"><a href="javascript:void(0)"><!-- TRANSLATE DungeonsRaids --></a>
-							<ul id="s168_sub" class="sub_menu">
-								<!-- BEGIN sub168 -->
-								<li id="{sub168.ID}" ><a href="javascript:void(0)">{sub168.NAME}</a></li>
-								<!-- END sub168 -->
-							</ul>
-						</li>
-							
-						<li id="s169" class="menu_head"><a href="javascript:void(0)"><!-- TRANSLATE Professions --></a>
-							<ul id="s169_sub" class="sub_menu">
-								<!-- BEGIN sub169 -->
-								<li id="{sub169.ID}" ><a href="javascript:void(0)">{sub169.NAME}</a></li>
-								<!-- END sub169 -->
-							</ul>
-						</li>
-							
-						<li id="s201" class="menu_head"><a href="javascript:void(0)"><!-- TRANSLATE Reputation --></a>
-							<ul id="s201_sub" class="sub_menu">
-								<!-- BEGIN sub201 -->
-								<li id="{sub201.ID}" ><a href="javascript:void(0)">{sub201.NAME}</a></li>
-								<!-- END sub201 -->
-							</ul>
-						</li>	
-					</ul>
-				</div>
+			<div id="achi_menu">
+				<ul id="a_menu" style="display:block">
+					
+					<!-- BEGIN amenue -->
+					<li id="{amenue.ID}" class="menu_head">{amenue.NAME}</li>
+						<!-- IF amenue.SUB -->
+						<ul id="{amenue.ID}_sub" class="sub_menu" style="display:none;">
+							<!-- BEGIN sub -->
+							<li id="{amenue.sub.ID}" class="membersRow1">{amenue.sub.NAME}</li>
+							<!-- END sub -->
+						</ul>
+						<!-- ENDIF -->
+					
+					<!-- END amenue -->
+				</ul>
+			</div>
 		</div>
 		
+		<div class="tier-1-a">
+			<div class="tier-1-b">
+				<div class="tier-1-c">
+					<div class="tier-1-title"><!-- TRANSLATE Summary --></div>
+					
+					<!-- BEGIN cat -->
+					<div >{cat.TITLE}</div>
+					<div  style="cursor:default;">
+						<div class="levelbarParent" style="width:200px;">
+							<div class="levelbarChild">{cat.BAR}</div>
+						</div>
+						<table class="expOutline" border="0" cellpadding="0" cellspacing="0" width="200">
+							<tr>
+								<td style="background-image: url('img/honored.gif');" width="{cat.PERCENT1}%">
+									<img src="img/pixel.gif" height="16" width="1" alt="" />
+								</td>
+								<td width="{cat.PERCENT}%"></td>
+							</tr>
+						</table>
+					</div>
+					<!-- END cat -->
+			
+				</div>
+			</div>
+		</div>
 	</div>
 
 
-	<div id="amain" style="float: right; width: 720px;">
+	<div id="amain" style="float: right; width: 760px;">
 
 <!-- BEGIN info -->
 	<div style="display:none;" id="{info.ID}">
-		<div class="achievements">
-			<div class="achieve_rcol">
+
 				
-				<div class="achievements-container">
-					<div id="achievements-content">
-				<div class="achv_r_top"><img src="{THEME_PATH}/achievements/images/achv_rcol_top.jpg" /></a></div>								
+						
 
 
 						<div class="tier-1-a">
@@ -130,13 +101,8 @@
 								</div>
 							</div>
 						</div>
-					</div>
-				</div>
-				<div class="achv_r_btm"><img src="{THEME_PATH}/achievements/images/achv_rcol_btm.jpg" /></a></div>
 
-			</div>
 
-		</div>
 		</div>
 		<!-- END info -->
 	</div>

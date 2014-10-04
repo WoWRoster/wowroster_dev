@@ -29,37 +29,17 @@
 .achievement-info .date { font-size: 12px; font-weight: bold; color: #030; }
 
 .unlocked {	BACKGROUND: url(images/arrow-unlocked.gif) no-repeat 0px 3px; COLOR: #1eff00;}
-.achievements { background:url(images/achv_bg.jpg) 18px 0 repeat-y; padding-left:19px; font-family:Calibri, Trebuchet MS, Arial; clear:both;}
+.achievements { padding-left:19px; padding-top:20px;}
 .achievements .selected {  }
 .achievements .criteria { display:none; text-align:left; padding:0; }
 
-#ach_menu ul{margin:0;display:block;padding:0 0 0 10px;background:url(images/achv_lnav_bg.jpg) repeat-y;list-style-type:none;list-style-position:outside;width:165px;position:relative;line-height:22px;}
-#ach_menu ul li.selected { background:url(images/achv_lnav_sel.png);text-indent:5px;width:158px;color:#C79C6E;}
-#ach_menu ul li.selected a { color:#C79C6E;}
-#ach_menu ul li.menu_head:hover { color:white; background:url(images/achv_cat_hover.png) no-repeat right top;text-indent:5px;width:158px;}
-
-#ach_menu ul li ul li a{ color:#ABD473;}
-#ach_menu ul li ul li.selected2 { background:url(images/achv_lnav_sel.png);text-indent:5px;width:148px;color:#ABD473;}
-#ach_menu ul li ul li.selected2 a{ color:#ABD473;}
-#ach_menu ul li ul.sub_menu li:hover {background:url(images/achv_sub_hover.png)repeat-y; color:#AA5303;width:148px;}
-#ach_menu ul li ul {background:url(images/achv_sel_sub_bg.png) bottom left no-repeat;width:152px;}
-/*
-.achv_lnav .selected { background:url(images/achv_sel_sub.jpg) right repeat-y;  }
-.achv_lnav .selected .cat_list { background:url(images/achv_sel_sub_btm.jpg) bottom right no-repeat; padding:5px 0 7px 0; }
-.achv_lnav .selected .cat_list div { padding:1px 0; }
-.achv_lnav .selected div a { background:none; color:#e7d6b8; zoom:1; }
-.achv_lnav .selected div a:hover { color:white; }
-.achv_lnav  ul { display:block; float:left; list-style-type:none; position:relative;left:-10px;}
-.achv_lnav ul li:hover { color:white; background:url(images/achv_cat_hover.png) right repeat-y;text-indent:5px;width:158px; height: 22px;}
-.achv_lnav .selected ul li a { background:none; color:#e7d6b8; zoom:1; }
-.achv_lnav .selected ul li a:hover { color:white; background:url(images/h_sel_bg.jpg) right repeat-y;}
-.achv_lnav .selected ul li .selected  a { color:white; background:url(images/achv_sub_selected.gif) right repeat-y;}
-.achv_lnav .selected .selected { background:url(images/achv_sub_selected_bdr.gif) right repeat-y;  }
-.achv_lnav .selected .selected a { background:url(images/achv_sub_selected.gif) right repeat-y;  }
-.achv_lnav .cat_list { padding:0; margin:0; padding-left:8px; }
-.achv_lnav .nav-subcat { display:none }
-.achv_lnav .selected .nav-subcat { display:block }
-*/
+#achi_menu ul { margin:0;display:block;padding:0 0 0 10px;list-style-type:none;list-style-position:outside;width:180px;position:relative;line-height:22px;}
+#achi_menu ul li.selected2 { background: url('../images/bg-dark-menu.png') repeat-x left bottom !important; color:#3351C9;}
+#achi_menu ul li.selected2 a { color:#3351C9;}
+#achi_menu ul li.menu_head { background: url('../images/bg-dark-menu.png') repeat-x left top; height: 20px; padding: 4px; border: 1px solid #b6803d; color:#000000;font-weight: bold;}
+#achi_menu ul li.menu_head:hover { background: url('../images/bg-dark-menu.png') repeat-x left bottom; height: 20px; padding: 4px; border: 1px solid #b6803d;}
+#achi_menu .sub_menu{padding:0 0 3px 0;}
+#achi_menu .sub_menu li { background: url('../images/bg-dark-menu.png') repeat-x left bottom; height: 15px; padding: 4px; border: 1px solid #ffffd6; margin-left:7px;}
 
 .nav-subcat { background:url(images/achv_sel_sub.jpg) right repeat-y;  }
 
