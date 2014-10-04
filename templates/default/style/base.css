@@ -16,7 +16,7 @@ a:visited,
 a:active { color:#4C3000; text-decoration:none; font-weight:bold; }
 a:hover { color:#069; text-decoration:none; font-weight:bold; }
 
-.roster-wrap { font:12px arial,helvetica,sans-serif; color:#FFFFFF; min-width: 940px; margin: auto 175px; margin-top: 50px; position: relative; padding-top: 1px; }
+.roster-wrap { font:12px arial,helvetica,sans-serif; color:#FFFFFF; min-width: 940px; max-width: 1100px; margin: auto auto; margin-top: 50px; position: relative; padding-top: 1px; }
 
 .roster-wrap h1 { color:#000000; text-decoration:none; display:block; position:relative; font: normal 22px Georgia, "Times New Roman", Times, serif; text-transform: capitalize; }
 .roster-wrap h2 { color:#000000; display:block; text-align:left; padding:0; margin-bottom: 5px; font: normal 18px Georgia, "Times New Roman", Times, serif; text-transform: capitalize; }
