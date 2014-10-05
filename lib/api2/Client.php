@@ -397,13 +397,25 @@ class Client
 		$this->usage['url'] = $url;
 		unset($params['name']);
 		unset($params['server']);
-		$url .= (count($params)) ? '?' . http_build_query($params,null, '&',PHP_QUERY_RFC3986) : '';
+		$url .= (count($params)) ? '?' . $this->_build_strings($params, '&') : '';
 		$this->usage['type'] = $path;
 		
 		$this->usage['locale'] = $this->locale;
 		return $url;
 		
     }
+	
+	function _build_strings($params, $sep)
+	{
+		$e = '';
+		$r = array();
+		foreach($params as $key=>$val)
+		{
+			$r[] = $key.'='.$val;
+		}
+		$e = implode($sep, $r);
+		return $e;
+	}
 	
 	/**
 	*	Type of call uri build
