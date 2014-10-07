@@ -50,6 +50,7 @@ class achievementsInstall
 
 		# Master data for the config file
 		$installer->add_menu_button('achive','char');
+		$installer->add_menu_button('achive','guild');
 
 		$installer->create_table($installer->table('achie'),"
 			  `id` int(10) NOT NULL AUTO_INCREMENT,

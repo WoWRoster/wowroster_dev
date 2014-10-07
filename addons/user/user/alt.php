@@ -136,6 +136,7 @@ if ($stage == 2)
 				'GUILD'		=> $row['guild'],
 				'IS_MAIN'	=> (bool)$row['is_main'],
 				'CLASS'		=> $roster->locale->act['id_to_class'][$row['class']],
+				'PROFILE'	=> (( active_addon('info') && $row['server'] && $row['member_id'] != 0 ) ? makelink('char-info&amp;a=c:' . $row['member_id']) : '' )
 			)
 		);
 	}

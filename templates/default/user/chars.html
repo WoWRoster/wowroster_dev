@@ -1,13 +1,13 @@
 <!-- BEGIN chars -->
 <div class="my-chars">
 	<div class="avatar">
-		<img src="{chars.THUMB}?alt=wow/static/images/2d/avatar/{chars.RACE}-{chars.GENDER}.jpg">
+		<!-- IF chars.PROFILE --><a href="{chars.PROFILE}" ><!-- ENDIF --><img src="{chars.THUMB}?alt=wow/static/images/2d/avatar/{chars.RACE}-{chars.GENDER}.jpg"></a>
+		<!-- IF chars.IS_MAIN -->
+		<div class="ismain"><img style="float:center;" src="img/pvp-win.gif" alt="" /></div>
+		<!-- ENDIF -->
 	</div>
 	<div class="title">
-		{chars.NAME}<br>Level {chars.LEVEL} {chars.CLASS}
-		<!-- IF chars.IS_MAIN -->
-		<img style="float:center;" src="img/pvp-win.gif" alt="" />
-		<!-- ENDIF -->
+		<!-- IF chars.PROFILE --><a href="{chars.PROFILE}" >{chars.NAME} <span class="ui-icon ui-icon-extlink"></span></a><!-- ELSE -->{chars.NAME}<!-- ENDIF --><br>Level {chars.LEVEL} {chars.CLASS}
 	</div>
 	<div class="info">{chars.GUILD} @ {chars.SERVER}</div>
 	<div class="main"></div>

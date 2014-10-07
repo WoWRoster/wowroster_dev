@@ -146,7 +146,10 @@ padding-right: 10px;
 .info-header .guild { font: bold normal 18px Georgia, "Times New Roman", Times, serif; text-transform: none; position: relative; }
 .info-header .info { font: bold normal 10px Verdana, Arial, Helvetica, sans-serif; text-transform: uppercase; position: relative; }
 
-.menu-select { position: absolute; top: 45px; right: 5px; width:300px;}
+.menu-select { position: absolute;
+top: 46px;
+left: 185px;
+width: 300px;}
 .menu-select .locale-select { float: right; margin: 0 0 3px 5px; }
 .menu-select .list-select { float: right; margin: 0 0 3px 5px; }
 
@@ -1647,20 +1650,22 @@ background-image: linear-gradient(to bottom,#37c0ff,#0097dd);
 }
 
 .my-chars {
-	word-wrap: normal | break-word;
-	height: 55px;
-	position: relative;
-	overflow: hidden;
-	margin: 1px 5px 7px 5px;
-	padding: 1px 5px 5px 5px;
-	background: url(../images/filter-tabs.gif)repeat right top;
-	border: 1px solid #02c0f8;
-	border-radius: 4px;
-	-moz-border-radius: 4px;
-	-webkit-border-radius: 4px; ;
-	-moz-box-shadow: 0 0 5px #02c0f8;
-	-webkit-box-shadow: 0 0 5px #02c0f8;
-	box-shadow: 0 0 5px #02c0f8;
+word-wrap: normal | break-word;
+height: 55px;
+width: 48%;
+/* position: relative; */
+display: inline-block;
+overflow: hidden;
+margin: 5px 0px 0px 5px;
+padding: 1px 5px 5px 5px;
+background: url(../images/filter-tabs.gif)repeat right top;
+border: 1px solid #02c0f8;
+border-radius: 4px;
+-moz-border-radius: 4px;
+-webkit-border-radius: 4px;
+-moz-box-shadow: 0 0 5px #02c0f8;
+-webkit-box-shadow: 0 0 5px #02c0f8;
+box-shadow: 0 0 5px #02c0f8;
 }
 .my-chars:hover {
 	border: 1px solid #FFF;
@@ -1678,44 +1683,60 @@ background-image: linear-gradient(to bottom,#37c0ff,#0097dd);
 	-moz-border-radius: 4px;
 	-webkit-border-radius: 4px;
 }
+.ismain {
+position: relative;
+width: 20px;
+height: 20px;
+bottom: 18px;
+left: 34px;
+z-index: 555555;
+}
+.ismain img {
+	height: 16px !important;
+	width: 16px !important;
+}
 .my-chars .avatar img {
 	height: 50px;
 	width: 50px;
 }
 .my-chars .title {
-	font-size: 1.1em;height:50px;
-	padding: 15px 10px 15px 10px;
-	float: left;
-	height:50px;
-	width: 210px;
-	margin: 1px;
-	color:  #000000;
-	display: block;
-	position: relative;
+font-size: 1.1em;
+/* height: 50px; */
+padding: 15px 10px 13px 10px;
+float: left;
+/* height: 50px; */
+width: 170px;
+margin: 1px;
+color: #000000;
+display: block;
+position: relative;
 vertical-align: middle;
 }
 
 .my-chars .info {
-	font-size: 1.1em;height:50px;
-	padding: 15px 10px 15px 10px;
-	float: left;
-	height:50px;
-	width: 310px;
-	margin: 1px;
-	color:  #000000;
-	display: block;
-	position: relative;
+font-size: 1.1em;
+/* height: 50px; */
+padding: 15px 10px 15px 10px;
+float: left;
+/* height: 50px; */
+/* width: 310px; */
+margin: 1px;
+color: #000000;
+display: block;
+position: relative;
 vertical-align: middle;
 }
 .my-chars .main {
-	font-size: 1.1em;height:50px;
-	padding: 15px 10px 15px 10px;
-	float: left;
-	height:50px;
-	margin: 1px;
-	color:  #000000;
-	display: block;
-	position: relative;
+font-size: 1.1em;
+/* height: 50px; */
+padding: 15px 10px 15px 10px;
+float: left;
+/* height: 50px; */
+/* width: 310px; */
+margin: 1px;
+color: #000000;
+display: block;
+position: relative;
 vertical-align: middle;
 }
 /*

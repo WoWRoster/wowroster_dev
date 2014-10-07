@@ -47,10 +47,10 @@ Begin
 
 						<div class="my-chars">
 							<div class="avatar">
-								<img src="{chars.THUMB}?alt=wow/static/images/2d/avatar/{chars.RACE}-{chars.GENDER}.jpg">
+								<!-- IF chars.PROFILE --><a href="{chars.PROFILE}" ><!-- ENDIF --><img src="{chars.THUMB}?alt=wow/static/images/2d/avatar/{chars.RACE}-{chars.GENDER}.jpg"></a>
 							</div>
 							<div class="title">
-								{chars.NAME}<br>Level {chars.LEVEL} {chars.CLASS}
+								<!-- IF chars.PROFILE --><a href="{chars.PROFILE}" >{chars.NAME}</a><!-- ELSE -->{chars.NAME}<!-- ENDIF --><br>Level {chars.LEVEL} {chars.CLASS}
 								<!-- IF chars.IS_MAIN -->
 								<img style="float:center;" src="img/pvp-win.gif" alt="" />
 								<!-- ENDIF -->

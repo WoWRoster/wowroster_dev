@@ -280,7 +280,7 @@ function img_output( $realmData , $err , $image_path )
 	$arrow_img = ROSTER_BASE . 'img' . DIR_SEP . 'realmstatus' . DIR_SEP . strtolower($realmData['serverstatus']) . '-icon.png';
 
 	$bkg_img_info = getimagesize($bkg_img);
-	$roster_gd->make_image($bkg_img_info[0]+60, 67);//$bkg_img_info[1]);
+	$roster_gd->make_image($bkg_img_info[0]+40, 67);//$bkg_img_info[1]);
 	$roster_gd->combine_image($bkg_img, 40, 17);
 
 	// If there is no data, then we want to output blank text

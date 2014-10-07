@@ -229,6 +229,7 @@ class userPage extends user
 						'GUILD'		=> $row['guild'],
 						'IS_MAIN'	=> (bool)$row['is_main'],
 						'CLASS'		=> $roster->locale->act['id_to_class'][$row['class']],
+						'PROFILE'	=> (( active_addon('info') && $row['realm'] && $row['member_id'] != 0 ) ? makelink('char-info&amp;a=c:' . $row['member_id']) : '' ),
 					)
 				);
 			}

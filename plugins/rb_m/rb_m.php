@@ -13,7 +13,7 @@ class rb_m
 	*/
 	var $active = true;
 	var $name = 'rb_m';
-	var $filename = 'main-guild-feed.php';
+	var $filename = 'main-guild-rb_m.php';
 	var $parent = 'main';
 	var $icon = 'inv_misc_note_05';
 	var $version = '1.0';
@@ -77,6 +77,8 @@ class rb_m
 		);
 
 		$addon = getaddon('raidbox');
+		//echo '<prE>';
+		//print_r($addon);
 
 		$down = 0;
 		$bosses = '';	
