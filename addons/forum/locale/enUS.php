@@ -21,6 +21,10 @@ $lang['f_unlock'] 		= 'Forum Unlocked';
 $lang['description'] = 'Description';
 */
 $lang['admin']['forum_conf'] = 'Forum Config|Main Settings for the forum';
+$lang['admin']['forum_topic'] = 'Topic Config|Main Settings for the forum';
+$lang['admin']['forum_post'] = 'Post Config|Main Settings for the forum';
+$lang['admin']['forum_mod_t'] = 'Mod Topic|Main Settings for the forum';
+$lang['admin']['forum_mod_p'] = 'Mod Post|Main Settings for the forum';
 $lang['admin']['forum_edit'] = 'Manage Forums';
 $lang['admin']['topic_edit'] = 'Manage Topics';
 $lang['admin']['forum_start_topic'] = 'Start topic|Set which groups can start topics';

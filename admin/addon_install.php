@@ -113,7 +113,7 @@ if( !empty($addons) )
 			'VERSION'     => $addon['version'],
 			'OLD_VERSION' => ( isset($addon['oldversion']) ? $addon['oldversion'] : '' ),
 			'DESCRIPTION' => $addon['description'],
-			'DEPENDENCY'  => $addon['dependency'],
+			'DEPENDENCY'  => $addon['requires'],
 			'AUTHOR'      => $addon['author'],
 			'ACTIVE'      => ( isset($addon['active']) ? $addon['active'] : '' ),
 			'INSTALL'     => $addon['install'],
@@ -313,7 +313,7 @@ function getAddonList()
 				$output[$addon]['version'] = $addonstuff->version;
 				$output[$addon]['icon'] = $addonstuff->icon;
 				$output[$addon]['description'] = ( isset($roster->locale->act[$addonstuff->description]) ? $roster->locale->act[$addonstuff->description] : $addonstuff->description );
-				$output[$addon]['dependency'] = (isset($addonstuff->requires) ? $roster->locale->act['tooltip_reg_requires'].' '.$addonstuff->requires : '');
+				$output[$addon]['requires'] = (isset($addonstuff->requires) ? $roster->locale->act['tooltip_reg_requires'].' '.$addonstuff->requires : '');
 
 				unset($addonstuff);
 
@@ -448,6 +448,7 @@ function processAddon()
 				{
 					$installer->addata['active'] = false;
 					$installer->setmessages('Addon Dependency "'.$installer->addata['requires'].'" not active or installed, "'.$installer->addata['fullname'].'" has been disabled');
+					break;
 				}
 			}
 	

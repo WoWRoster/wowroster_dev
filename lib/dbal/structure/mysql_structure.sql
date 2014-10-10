@@ -68,6 +68,16 @@ CREATE TABLE IF NOT EXISTS `renprefix_user_groups` (
   PRIMARY KEY (`group_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
+CREATE TABLE IF NOT EXISTS `renprefix_permissions` (
+  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+  `type` varchar(255) NOT NULL DEFAULT '',
+  `type_id` int(5) DEFAULT NULL,
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
+  `info` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `cfg_name` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+
 DROP TABLE IF EXISTS `renprefix_sessions`;
 CREATE TABLE IF NOT EXISTS `renprefix_sessions` (
   `sess_id` varchar(35) DEFAULT NULL,

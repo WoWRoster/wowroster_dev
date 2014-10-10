@@ -47,25 +47,46 @@ class forumInstall
 
 		// Master and menu entries
 		$installer->add_config("'100','startpage','forun_conf','display','master'");
-		$installer->add_config("'110','forum_conf',NULL,'blockframe','menu'");
-		$installer->add_config("'120','forum_mod_t',NULL,'blockframe','menu'"); // topic
-		$installer->add_config("'130','forum_mod_p',NULL,'blockframe','menu'"); // posts
-		$installer->add_config("'140','forum_edit','rostercp-addon-forum-forum','makelink','menu'");
-		$installer->add_config("'150','topic_edit','rostercp-addon-forum-topic','makelink','menu'");
+		$installer->add_config("'110','forum_conf',NULL,'blockframe','menu'");	// forum
+		$installer->add_config("'120','forum_topic',NULL,'blockframe','menu'");	// topic
+		$installer->add_config("'130','forum_post',NULL,'blockframe','menu'");	// post
+		$installer->add_config("'140','forum_mod_t',NULL,'blockframe','menu'"); // topic
+		$installer->add_config("'150','forum_mod_p',NULL,'blockframe','menu'"); // posts
+		$installer->add_config("'160','forum_edit','rostercp-addon-forum-forum','makelink','menu'");
+		$installer->add_config("'170','topic_edit','rostercp-addon-forum-topic','makelink','menu'");
 		
 		//forum_conf
 		$installer->add_config("'111','forum_start_topic','11','access','forum_conf'");
 		$installer->add_config("'112','forum_reply_post','11','access','forum_conf'");
 		$installer->add_config("'113','forum_lock','11','access','forum_conf'");
-		//$installer->add_config("'10020','forum_','0','access','forum_conf'");
-		//$installer->add_config("'10030','forum_','2','access','forum_conf'");
-		//$installer->add_config("'10040','forum_','1','radio{enabled^1|disabled^0|forbidden^-1','forum_conf'");
 		$installer->add_config("'114','forum_html_posts','-1','radio{enabled^1|disabled^0|forbidden^-1','forum_conf'");
-		$installer->add_config("'115','forum_nicedit','1','radio{enabled^1|disabled^0', 'forum_conf'");
+		$installer->add_config("'115','forum_cke','1','radio{enabled^1|disabled^0', 'forum_conf'");
 		
-		//forum_mod_t
-		//forum_mod_p
+		//forum_topic
+		$installer->add_config("'121','topic_start','11','access','forum_topic'");
+		$installer->add_config("'122','topic_reply','11','access','forum_topic'");
+		$installer->add_config("'123','topic_lock','11','access','forum_ctopic'");
+		$installer->add_config("'124','topic_html','-1','radio{enabled^1|disabled^0|forbidden^-1','forum_topic'");
+		$installer->add_config("'125','topic_cke','1','radio{enabled^1|disabled^0', 'forum_topic'");
+		
+		//forum_post
+		$installer->add_config("'131','post_start','11','access','forum_post'");
+		$installer->add_config("'132','post_reply','11','access','forum_post'");
+		$installer->add_config("'133','post_lock','11','access','forum_post'");
+		$installer->add_config("'134','post_html','-1','radio{enabled^1|disabled^0|forbidden^-1','forum_post'");
+		$installer->add_config("'135','post_cke','1','radio{enabled^1|disabled^0', 'forum_post'");
 
+		// mod topic
+		$installer->add_config("'410','mod_t_lock',NULL,'blockframe','forum_mod_t'"); // topic
+		$installer->add_config("'420','mod_t_delete',NULL,'blockframe','forum_mod_t'"); // posts
+		$installer->add_config("'430','mod_t_move',NULL,'blockframe','forum_mod_t'"); // posts
+		
+		// mod post
+		$installer->add_config("'510','mod_p_lock',NULL,'blockframe','forum_mod_p'"); // topic
+		$installer->add_config("'520','mod_p_delete',NULL,'blockframe','forum_mod_p'"); // posts
+		$installer->add_config("'530','mod_p_move',NULL,'blockframe','forum_mod_p'"); // posts
+
+		
 		$installer->create_table($installer->table('forums'),"
 			`forum_id` int(10) NOT NULL AUTO_INCREMENT,
 			`parent_id` int(5) DEFAULT NULL,

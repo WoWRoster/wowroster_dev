@@ -5,6 +5,10 @@ jQuery(document).ready( function($){
 	var contentCell = null;
 	var cache = {};
 	var browser = null;
+	var screenH = $(window).height();
+	var screenW = $(window).width();
+	
+	var theight = 0;
 	var UserAgent = {
 
 			/**
@@ -147,7 +151,10 @@ jQuery(document).ready( function($){
 		var t = jQuery(this).data('tooltip');
 		var cap = jQuery(this).data('caption');
 		content = _get_content(t, cap);
-			jQuery('.ui-tooltip').show();
+		
+		position(e,this.offsetLeft,this.offsetTop);
+		
+		jQuery('.ui-tooltip').show();
 
 	}, function(){ // Hover off event
 		jQuery('.ui-tooltip').empty();
@@ -155,12 +162,45 @@ jQuery(document).ready( function($){
 
 	}).mousemove(function(e){ // Mouse move event
 
-		wrapper
+		/*wrapper
 		.css('top', (e.pageY - 10) + 'px')
 		.css('left', (e.pageX + 20) + 'px');
+		*/
+		position(e,this.offsetLeft,this.offsetTop);
 
 	});
 	
+	function position(e,offsetLeft,offsetTop)
+	{
+		var top;
+		var left;
+
+		theight = jQuery('.ui-tooltip').outerHeight( true );
+		windowHeight = $(window).height()+$(window).scrollTop();
+		postW = ( e.pageX+310)
+		postH = ( e.pageY+theight)
+		if (postW > screenW)
+		{
+			left = ( e.pageX - 300 )-5;
+		}
+		else
+		{
+			left = e.pageX + 20;
+		}
+		if (postH > windowHeight)
+		{
+			top = (windowHeight - theight)-20;
+		}
+		else
+		{
+			top = e.pageY - 10;
+		}
+
+		jQuery('.ui-tooltip')
+			.css('top', top + 'px')
+			.css('left', left + 'px');
+			
+	}
 	function _get_content(content, cap)
 	{
 		typeid = content.split('-');
@@ -168,12 +208,10 @@ jQuery(document).ready( function($){
 		
 		if (typeid[0] == 'text')
 		{			
-			url = location.hostname+roster_js.roster_path+'index.php?p=ajax-'+typeid[0]+'&id=plain';//'http://pvp-live.com/'+cont;
+			url = roster_js.roster_path+'index.php?p=ajax-'+typeid[0]+'&id=plain';//'http://pvp-live.com/'+cont;
 		}
 		else
 		{
-			//alert(location.hostname);
-			
 			url = 'index.php?p=ajax-'+typeid[0]+'&id='+ typeid[1] +'';//'http://pvp-live.com/'+cont;
 		}
 		//url = 'http://localhost/item.php?itemid='+typeid[1];
@@ -202,6 +240,7 @@ jQuery(document).ready( function($){
 				{
 					cache[content] = data;
 					jQuery('.ui-tooltip').empty().append(data);
+					theight = jQuery('.ui-tooltip').outerHeight( true );
 				},
 				error: function(xhr) {
 					if (xhr.status != 200){
@@ -211,6 +250,5 @@ jQuery(document).ready( function($){
 			});
 		}
 	}
-
 
 });

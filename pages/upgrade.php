@@ -163,16 +163,38 @@ class Upgrade {
 		{
 			$roster->db->query("DROP TABLE IF EXISTS `" . $roster->db->table('api_usage') . "`;");
 			$roster->db->query("CREATE TABLE IF NOT EXISTS `" . $roster->db->table('api_usage') . "` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `type` varchar(50) DEFAULT NULL,
-  `url` mediumtext,
-  `responce_code` varchar(20) DEFAULT NULL,
-  `content_type` varchar(255) DEFAULT NULL,
-  `date` date DEFAULT NULL,
-  `total` int(10) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8;");
+				  `id` int(11) NOT NULL AUTO_INCREMENT,
+				  `type` varchar(50) DEFAULT NULL,
+				  `url` mediumtext,
+				  `responce_code` varchar(20) DEFAULT NULL,
+				  `content_type` varchar(255) DEFAULT NULL,
+				  `date` date DEFAULT NULL,
+				  `total` int(10) NOT NULL DEFAULT '0',
+				  PRIMARY KEY (`id`)
+				) ENGINE=MyISAM  DEFAULT CHARSET=utf8;");
 
+			$this->beta_upgrade();
+			$this->finalize();
+		}
+		return;
+	}
+	
+	function beta_2991121()
+	{
+		global $roster, $installer;
+		if (version_compare($roster->config['version'], '2.9.9.1122'))
+		{
+			$roster->db->query("DROP TABLE IF EXISTS `" . $roster->db->table('api_usage') . "`;");
+			$roster->db->query("CREATE TABLE IF NOT EXISTS `" . $roster->db->table('permissions') . "` (
+			  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+			  `type` varchar(255) NOT NULL DEFAULT '',
+			  `type_id` int(5) DEFAULT NULL,
+			  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
+			  `info` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+			  `cfg_name` varchar(255) NOT NULL,
+			  PRIMARY KEY (`id`)
+			) ENGINE=MyISAM  DEFAULT CHARSET=utf8;");
+			
 		$this->beta_upgrade();
 		$this->finalize();
 		}

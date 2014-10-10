@@ -118,6 +118,7 @@ function getPluginlist()
 				$output[$addon]['version'] = $addonstuff->version;
 				$output[$addon]['icon'] = $addonstuff->icon;
 				$output[$addon]['description'] = $addonstuff->description;
+				$output[$addon]['requires'] = (isset($addonstuff->requires) ? $roster->locale->act['tooltip_reg_requires'].' '.$addonstuff->requires : '');
 
 				unset($addonstuff);
 			}
@@ -216,6 +217,16 @@ function getPluginlist()
 				{
 					$installer->seterrors(sprintf($roster->locale->act['installer_addon_exist'],$installer->addata['basename'],$previous['fullname']));
 					break;
+				}
+				// check to see if any requred addons if so and not enabled disable addon after install and give a message
+				if (isset($installer->addata['requires']))
+				{	
+					if (!active_addon($installer->addata['requires']))
+					{
+						$installer->addata['active'] = false;
+						$installer->setmessages('Addon Dependency "'.$installer->addata['requires'].'" not active or installed, "'.$installer->addata['fullname'].'" has been disabled');
+						break;
+					}
 				}
 
 				$query = 'INSERT INTO `' . $roster->db->table('plugin') . '` VALUES 
@@ -425,6 +436,7 @@ if( !empty($plugins) )
 			'VERSION'     => $addon['version'],
 			'OLD_VERSION' => ( isset($addon['oldversion']) ? $addon['oldversion'] : '' ),
 			'DESCRIPTION' => $addon['description'],
+			'DEPENDENCY'  => $addon['requires'],
 			'AUTHOR'      => $addon['author'],
 			'ACTIVE'      => ( isset($addon['active']) ? $addon['active'] : '' ),
 			'INSTALL'     => $addon['install'],
