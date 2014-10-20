@@ -184,16 +184,24 @@ class Upgrade {
 		global $roster, $installer;
 		if (version_compare($roster->config['version'], '2.9.9.1122'))
 		{
-			$roster->db->query("DROP TABLE IF EXISTS `" . $roster->db->table('api_usage') . "`;");
+			$roster->db->query("DROP TABLE IF EXISTS `" . $roster->db->table('permissions') . "`;");
 			$roster->db->query("CREATE TABLE IF NOT EXISTS `" . $roster->db->table('permissions') . "` (
-			  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
-			  `type` varchar(255) NOT NULL DEFAULT '',
-			  `type_id` int(5) DEFAULT NULL,
-			  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
-			  `info` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-			  `cfg_name` varchar(255) NOT NULL,
+				`id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+				`type` varchar(255) NOT NULL DEFAULT '',
+				`type_id` int(5) DEFAULT NULL,
+				`catagory` varchar(30) DEFAULT NULL,
+				`name` varchar(255) NOT NULL DEFAULT '',
+				`info` varchar(255) NOT NULL DEFAULT '',
+				`cfg_name` varchar(255) NOT NULL,
 			  PRIMARY KEY (`id`)
 			) ENGINE=MyISAM  DEFAULT CHARSET=utf8;");
+			$roster->db->query("ALTER TABLE  `" . $roster->db->table('user_groups') . "` ADD  `group_permissions` TEXT NULL AFTER  `group_desc`;");
+			$roster->db->query("ALTER TABLE  `" . $roster->db->table('user_members') . "` ADD  `user_permissions` TEXT NULL AFTER  `access`;");
+			$roster->db->query("INSERT INTO `" . $roster->db->table('permissions') . "` VALUES ('', 'roster', '00', 'core', 'roster_cp', 'roster_cp_desc' , 'roster_cp');");
+			$roster->db->query("INSERT INTO `" . $roster->db->table('permissions') . "` VALUES ('', 'roster', '00', 'core', 'gp_update', 'gp_update_desc' , 'gp_update');");
+			$roster->db->query("INSERT INTO `" . $roster->db->table('permissions') . "` VALUES ('', 'roster', '00', 'core', 'cp_update', 'cp_update_desc' , 'cp_update');");
+			$roster->db->query("INSERT INTO `" . $roster->db->table('permissions') . "` VALUES ('', 'roster', '00', 'core', 'lua_update', 'lua_update_desc' , 'lua_update');");
+			$roster->db->query("UPDATE `" . $db->table('user_members') . "` SET `user_permissions` = '{\"id\":\"1\",\"roster_cp\":\"1\",\"gp_update\":\"1\",\"cp_update\":\"1\",\"lua_update\":\"1\"}' WHERE `usr` = 'Admin';"
 			
 		$this->beta_upgrade();
 		$this->finalize();

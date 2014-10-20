@@ -830,12 +830,6 @@ $lang['questlinks'][] = array(
  *
  */
 
-/*
-$lang['questlinks'][] = array(
-	'name'=>'WoW-Handwerk',
-	'url'=>'http://wowhandwerk.onlinewelten.com/quest.php?id=%1$s'
-);
-*/
 
 $lang['questlinks'][] = array(
 	'name'=>'Buffed DE',
@@ -1191,11 +1185,12 @@ $lang['pagebar_menuconf'] = 'Menü Konfiguration';
 $lang['pagebar_configreset'] = 'Einstellungen zurücksetzen';
 $lang['pagebar_usergroups'] = 'Gruppen';
 $lang['pagebar_addonconf'] = 'Addon Konfiguration';
-
+$lang['pagebar_api_data'] = 'Api Usage';
 $lang['roster_config_menu'] = 'Einstellungsmenü';
 $lang['menu_config_help'] = 'Menü Button hinzufügen Hilfe';
 $lang['menu_config_help_text'] = 'Benutzen um einen neuen Button hinzuzufügen. Der neue Button wird in der aktuellen Sektion hinzugefügt.<ul><li>Titel - Der Name des Buttons.</li><li>URL - Der Link für den Button. Das kann eine interne URL sein oder eine komplette URL (dann bitte http:// voranstellen).</li><li>Icon - Das Icon für den Button. Dieses muss ein Icon aus dem Interface Image Pack sein, ohne den Pfad und ohne Dateiendung (Bsp. inv_misc_gear_01)</ul>';
 
+$lang['permissions'] = 'Permissions';
 // Submit/Reset confirm questions
 $lang['config_submit_button'] = 'Speichere Einstellungen';
 $lang['config_reset_button'] = 'Zurücksetzen';
@@ -1323,11 +1318,21 @@ $lang['admin']['acc_session'] = 'Session Konfig.|Konfiguration der Einstellung f
 $lang['admin']['per_character_display'] = 'Charakterspezifische Anzeige-Einstellungen';
 
 // user admin
-$lang['admin']['user_desc'] = 'CP Admin - Diese Option gibt dem gewählten Benutzer Adminzugriff auf den WoWRoster<br/>Öffentlich - Der öffentliche Zugang ist Standard für alle Benutzer. 
-Dieser erlaubt alle öffentlichen Seiten im Roster anzuschauen. 
-Das entfernen erlaubt nur noch die Anzeige von Seiten die den anderen Rängen entsprechen<br/>
-** Die anderen Ränge werden von der aktuell gewählten Gilde angezeigt und können den Benutzern zugewiesen werden.';
+$lang['admin']['user_desc'] = 'CP Admin - Diese Option gibt dem gewählten Benutzer Adminzugriff auf den WoWRoster<br/>Öffentlich - Der öffentliche Zugang ist Standard für alle Benutzer. <br>Dieser erlaubt alle öffentlichen Seiten im Roster anzuschauen.<br>Das entfernen erlaubt nur noch die Anzeige von Seiten die den anderen Rängen entsprechen<br/>** Die anderen Ränge werden von der aktuell gewählten Gilde angezeigt und können den Benutzern zugewiesen werden.';
 $lang['admin']['user_groups_desc'] = 'Benutzergruppen';
+
+//core permission settings
+$lang['admin']['core']				= 'Roster Core';
+$lang['admin']['addon']				= 'Addons';
+$lang['admin']['addon_access_desc']	= 'Allow access to this addon?';
+$lang['admin']['roster_cp']			= 'Roster CP';
+$lang['admin']['roster_cp_desc']	= 'Gives access to Roster CP pages';
+$lang['admin']['gp_update']			= 'Guild Update';
+$lang['admin']['gp_update_desc']	= 'Gives access to update guilds';
+$lang['admin']['cp_update']			= 'CP Update';
+$lang['admin']['cp_update_desc']	= 'gives access to update characters';
+$lang['admin']['lua_update']		= 'Lua Update';
+$lang['admin']['lua_update_desc']	= 'this gives access to update with other lua files besids rosterprofiler';
 
 //Overlib for Allow/Disallow rules
 $lang['guildname'] = 'Gildenname';

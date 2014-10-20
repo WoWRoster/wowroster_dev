@@ -89,6 +89,11 @@ $config_pages['usergroups'] = array(
 	'title'=>	'pagebar_usergroups',
 	'file'=>	'user_groups.php',
 	);
+$config_pages['permissions'] = array(
+	'href'=>	$roster->pages[0].'-permissions',
+	'title'=>	'pagebar_permissions',
+	'file'=>	'permissions.php',
+	);
 $config_pages['config_reset'] = array(
 	'href'=>	$roster->pages[0].'-config_reset',
 	'title'=>	'pagebar_configreset',
@@ -96,14 +101,15 @@ $config_pages['config_reset'] = array(
 	);
 $config_pages['hr'] = array(
 	'special'=>	'divider',
-	);
+	);/*
 $config_pages['rosterdiag'] = array(
 	'href'=>	'rosterdiag',
 	'title'=>	'pagebar_rosterdiag',
 	);
+	*/
 $config_pages['rosterdiag2'] = array(
 	'href'=>	'rosterdiag2',
-	'title'=>	'pagebar_rosterdiag2',
+	'title'=>	'pagebar_rosterdiag',
 	);
 	
 $config_pages['addon'] = array(

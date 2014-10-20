@@ -37,7 +37,7 @@ $roster->tpl->assign_vars(array(
 	)
 );
 // ----[ Check log-in ]-------------------------------------
-if( ! $roster->auth->getAuthorized( ROSTERLOGIN_ADMIN ) )
+if( ! $roster->auth->getAuthorized( 'roster_cp' ) )
 {
 	echo $roster->auth->getLoginForm();
 	return;

@@ -33,3 +33,25 @@ $lang['admin']['forum_html_posts'] = 'Html Posts|Select which groups can use htm
 $lang['admin']['forum_nicedit'] = 'NicEdit|Use Nicedit for the html posts';
 $lang['admin']['forum_lock'] = 'Lock Access|the ranks able to lock and unloack topics';
 $lang['parent'] = 'Parent Forum';
+
+$lang['admin']['forum_topics']					= 'Topics';
+$lang['admin']['forum_topics_start']			= 'Start Topic';
+$lang['admin']['forum_topics_start_desc']		= 'gives the bility to start topics in the forum';
+$lang['admin']['forum_topics_lock']				= 'Lock Topic';
+$lang['admin']['forum_topics_lock_desc']		= 'Able to lock topics';
+$lang['admin']['forum_topics_delete']			= 'Delete Topics';
+$lang['admin']['forum_topics_delete_desc']		= 'Able to delete topics';
+$lang['admin']['forum_topics_move']				= 'Move Topcs';
+$lang['admin']['forum_topics_move_desc']		= 'Able to move topcs';
+
+$lang['admin']['forum_posts']					= 'Posts';
+$lang['admin']['forum_posts_start']				= 'Post Reply';
+$lang['admin']['forum_posts_start_desc']		= 'Reply to a active open topic';
+$lang['admin']['forum_posts_editany']			= 'Edit Any';
+$lang['admin']['forum_posts_editany_desc']		= 'Edit Any active post';
+$lang['admin']['forum_posts_editown']			= 'Edit Own posts';
+$lang['admin']['forum_posts_editown_desc']		= 'Able to edit their own posts';
+$lang['admin']['forum_posts_deleteany']			= 'Delete Any';
+$lang['admin']['forum_posts_deleteany_desc']	= 'Able to delete any post';
+$lang['admin']['forum_posts_deleteown']			= 'Delete Own';
+$lang['admin']['forum_posts_deleteown_desc']	= 'Able to delete there posts';

@@ -19,7 +19,7 @@ class feeds{
 */
 	function convert_date($date)
 	{
-		global $roster;
+		global $roster, $addon;
 		//phptimeformat
 		$date = date($roster->locale->act['phptimeformat'],$date);
 		return $date;
@@ -29,7 +29,7 @@ class feeds{
 	*/
 	function playerAchievement($data)
 	{
-		global $roster, $tooltips;
+		global $roster, $addon;
 				
 		$tooltip_text = $data['Achievement'];
 		//return 'Earned the achievement "'.$data['achievement']['title'].'"<br>';
@@ -49,7 +49,7 @@ class feeds{
 	}
 	function guildAchievement($data)
 	{
-		global $roster, $tooltips;
+		global $roster, $addon;
 		$tooltip_text = $data['Achievement'];
 		//return 'Earned the achievement "'.$data['achievement']['title'].'"<br>';
 		$tooltip = makeOverlib($tooltip_text, '', '' , 0, '', ', WIDTH, 325');
@@ -68,14 +68,14 @@ class feeds{
 	
 	function guildLevel($data)
 	{
-		global $roster, $tooltips;
+		global $roster, $addon;
 		
 		return sprintf($roster->locale->act[$data['type']], $roster->data['guild_name'], $data['levelUp'] );
 	}
 	
 	function guildCreated($data)
 	{
-		global $roster, $tooltips;
+		global $roster, $addon;
 
 		return '<div class="line">
 			<span  class="icon-frame frame-24" >
@@ -90,7 +90,7 @@ class feeds{
 
 	function itemCraft($data)
 	{
-		global $roster, $tooltips;
+		global $roster, $addon;;
 		
 		$item =  $roster->api2->fetch('item',array('id'=>$data['item_id']));
 		$ts = ($data['timestamp'] / 1000);
@@ -109,7 +109,7 @@ class feeds{
 	}
 	function itemPurchase($data)
 	{
-		global $roster, $tooltips;
+		global $roster, $addon;
 		
 		$item =  $roster->api2->fetch('item',array('id'=>$data['item_id']));
 		$ts = ($data['timestamp'] / 1000);
@@ -130,7 +130,7 @@ class feeds{
 	
 	function itemLoot( $data )
 	{
-		global $roster, $tooltips;
+		global $roster, $addon;
 		
 		$item =  $roster->api2->fetch('item',array('id'=>$data['item_id']));
 		$ts = ($data['timestamp'] / 1000);
@@ -154,7 +154,7 @@ class feeds{
 	*/
 	function LOOT( $data )
 	{
-		global $roster, $tooltips;
+		global $roster, $addon;
 		
 		require_once (ROSTER_LIB . 'item.php');
 		//$x = new item();
@@ -178,6 +178,7 @@ class feeds{
 	
 	function ACHIEVEMENT( $data )
 	{
+		global $roster, $addon;
 		$tooltip_text = $data['Achievement'];
 		
 		//return 'Earned the achievement "'.$data['achievement']['title'].'"<br>';
@@ -197,7 +198,7 @@ class feeds{
 	}
 	function CRITERIA( $data )
 	{
-		global $addon;
+		global $roster, $addon;
 		$tooltip_text = $data['Achievement'];
 		$tooltip = makeOverlib($tooltip_text, '', '' , 0, '', ', WIDTH, 325');
 		$ts = ($data['timestamp'] / 1000);
@@ -217,6 +218,7 @@ class feeds{
 	
 	function BOSSKILL( $data )
 	{
+		global $roster, $addon;
 		//return 'has killed '.$data['name'].' ('.$data['quantity'].')<br>';
 		$ts = ($data['timestamp'] / 1000);
 
@@ -241,24 +243,7 @@ class feeds{
 		if (isset( $item['id']))
 		{
 			$item_color = $roster->api->Data->_setQualityc($item['quality']);
-			/*
-			$html_tooltip = $roster->api->Item->item($item,null,null);
-			$i = array();
-			$i['item_id'] 			= $item['id'].':0:0:0:0:0';
-			$i['item_name'] 		= $item['name'];
-			$i['item_level'] 		= $item['itemLevel'];
-			$i['level'] 			= $item['requiredLevel'];
-			$i['item_texture'] 		= $item['icon'];
-			$i['item_tooltip']		= $html_tooltip;
-			$i['item_color'] 		= $item_color;
-			$i['item_quantity'] 	= $item['quality'];
-			$i['item_slot'] 				= '';
-			$i['item_parent'] 			= '';
-			$i['member_id'] 		= '';
-			$x = new item($i,'full');
-			
-			$it = $x->html_tooltip;
-			*/
+
 			$item_id = $item['id'];
 			
 			$tooltip = 'data-tooltip="item-'.$item_id.'"';//makeOverlib($it, '', '' , 2, '', ', WIDTH, 325');

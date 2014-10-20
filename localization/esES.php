@@ -838,10 +838,8 @@ $lang['questlinks'][] = array(
 	'url'=>'http://www.wow-lista.com/verquest.php?num=%1$s'
 );
 
-/*$lang['questlinks'][] = array(
-	'name'=>'Allakhazam',
-	'url'=>'http://wow.allakhazam.com/db/quest.html?source=live;wquest=%1$s;locale=esES'
-);*/
+
+
 
 // Items external link
 // Add as manu item links as you need
@@ -1188,11 +1186,12 @@ $lang['pagebar_menuconf'] = 'Configuración de paneles';
 $lang['pagebar_configreset'] = 'Restaurar configuración';
 $lang['pagebar_usergroups'] = 'Groups';
 $lang['pagebar_addonconf'] = 'Configurar addon';
-
+$lang['pagebar_api_data'] = 'Api Usage';
 $lang['roster_config_menu'] = 'Menú de configuración';
 $lang['menu_config_help'] = 'Add Menu Button Help';
 $lang['menu_config_help_text'] = 'Use this to add a new menu button. Adding a new menu button here will add it to the current section.<ul><li>Title - The name of the new button.</li><li>URL - The button\'s link. This can be a WoWRoster path or a full URL (add http:// in the link)</li><li>Icon - The button\'s image. This must be an image from the Interface Image Pack without the path or extension (ex. inv_misc_gear_01)</ul>';
 
+$lang['permissions'] = 'Permissions';
 // Submit/Reset confirm questions
 $lang['config_submit_button'] = 'Guardar opciones';
 $lang['config_reset_button'] = 'Restaurar';
@@ -1322,6 +1321,19 @@ $lang['admin']['per_character_display'] = 'Pantalla Per-Character';
 // user admin
 $lang['admin']['user_desc'] = 'CP Admin - This option gives the selected user admin access to WoWRoster<br/>Public - The default access given to all users. Allows the user to see any and all public pages in Roster. Removing this option only lets them see the content their other ranks allow<br/>** Other ranks are scaned from the currently selected guilds\' rank names and you can assign user access accordingly to users.';
 $lang['admin']['user_groups_desc'] = 'User Groups';
+
+//core permission settings
+$lang['admin']['core']				= 'Roster Core';
+$lang['admin']['addon']				= 'Addons';
+$lang['admin']['addon_access_desc']	= 'Allow access to this addon?';
+$lang['admin']['roster_cp']			= 'Roster CP';
+$lang['admin']['roster_cp_desc']	= 'Gives access to Roster CP pages';
+$lang['admin']['gp_update']			= 'Guild Update';
+$lang['admin']['gp_update_desc']	= 'Gives access to update guilds';
+$lang['admin']['cp_update']			= 'CP Update';
+$lang['admin']['cp_update_desc']	= 'gives access to update characters';
+$lang['admin']['lua_update']		= 'Lua Update';
+$lang['admin']['lua_update_desc']	= 'this gives access to update with other lua files besids rosterprofiler';
 
 //Overlib for Allow/Disallow rules
 $lang['guildname'] = 'Nombre de Hermandad';

@@ -25,7 +25,7 @@ class forumInstall
 	var $active = true;
 	var $icon = 'inv_misc_note_02';
 
-	var $version = '0.3.0';
+	var $version = '0.3.2';
 	var $wrnet_id = '0';
 
 	var $fullname = 'WoWRoster Forum';
@@ -149,8 +149,19 @@ class forumInstall
 			KEY `forum_id` (`forum_id`),
 			KEY `topic_id` (`topic_id`)");
 
-		//$installer->add_menu_button('news_button','util');
-		//*/
+		$permissions = array(
+			array('catagory'=> 'forum_topics', 'name'=> 'forum_topics_start', 'info'=> 'forum_topics_start_desc','cfg_name'=> 'topic_start'),
+			array('catagory'=> 'forum_topics','name'=> 'forum_topics_lock','info'=> 'forum_topics_lock_desc','cfg_name'=> 'topic_lock'),
+			array('catagory'=> 'forum_topics','name'=> 'forum_topics_delete','info'=> 'forum_topics_delete_desc','cfg_name'=> 'topic_delete'),
+			array('catagory'=> 'forum_topics','name'=> 'forum_topics_move','info'=> 'forum_topics_move_desc','cfg_name'=> 'topic_move'),
+			array('catagory'=> 'forum_posts','name'=> 'forum_posts_start','info'=> 'forum_posts_start_desc','cfg_name'=> 'post_start'),
+			array('catagory'=> 'forum_posts','name'=> 'forum_posts_editany','info'=> 'forum_posts_editany_desc','cfg_name'=> 'post_editany'),
+			array('catagory'=> 'forum_posts','name'=> 'forum_posts_editown','info'=> 'forum_posts_editown_desc','cfg_name'=> 'post_editown'),
+			array('catagory'=> 'forum_posts','name'=> 'forum_posts_deleteany','info'=> 'forum_posts_deleteany_desc','cfg_name'=> 'post_deleteany'),
+			array('catagory'=> 'forum_posts','name'=> 'forum_posts_deleteown','info'=> 'forum_posts_deleteown_desc','cfg_name'=> 'post_deleteown'),
+		);
+		$installer->add_permissions($permissions);
+		
 		$installer->add_menu_button('forum_button','guild');
 		return true;
 	}
@@ -165,6 +176,22 @@ class forumInstall
 	{
 		global $installer;
 
+		if( version_compare('0.3.2', $oldversion, '>') == true )
+		{
+			$permissions = array(
+				array('catagory'=> 'forum_topics', 'name'=> 'forum_topics_start', 'info'=> 'forum_topics_start_desc','cfg_name'=> 'topic_start'),
+				array('catagory'=> 'forum_topics','name'=> 'forum_topics_lock','info'=> 'forum_topics_lock_desc','cfg_name'=> 'topic_lock'),
+				array('catagory'=> 'forum_topics','name'=> 'forum_topics_delete','info'=> 'forum_topics_delete_desc','cfg_name'=> 'topic_delete'),
+				array('catagory'=> 'forum_topics','name'=> 'forum_topics_move','info'=> 'forum_topics_move_desc','cfg_name'=> 'topic_move'),
+				array('catagory'=> 'forum_posts','name'=> 'forum_posts_start','info'=> 'forum_posts_start_desc','cfg_name'=> 'post_start'),
+				array('catagory'=> 'forum_posts','name'=> 'forum_posts_editany','info'=> 'forum_posts_editany_desc','cfg_name'=> 'post_editany'),
+				array('catagory'=> 'forum_posts','name'=> 'forum_posts_editown','info'=> 'forum_posts_editown_desc','cfg_name'=> 'post_editown'),
+				array('catagory'=> 'forum_posts','name'=> 'forum_posts_deleteany','info'=> 'forum_posts_deleteany_desc','cfg_name'=> 'post_deleteany'),
+				array('catagory'=> 'forum_posts','name'=> 'forum_posts_deleteown','info'=> 'forum_posts_deleteown_desc','cfg_name'=> 'post_deleteown'),
+			);
+			$installer->add_permissions($permissions);
+		}
+		
 		if( version_compare('0.2.1', $oldversion, '>') == true )
 		{
 			$installer->drop_table($installer->table('forums'));
@@ -250,6 +277,7 @@ class forumInstall
 		$installer->drop_table($installer->table('posts'));
 		$installer->remove_all_config();
 		$installer->remove_all_menu_button();
+		$installer->remove_all_permissions();
 		
 		return true;
 	}

@@ -19,7 +19,7 @@ if( !defined('IN_ROSTER') || !defined('IN_ROSTER_ADMIN') )
 	exit('Detected invalid access to this file!');
 }
 // ----[ Check log-in ]-------------------------------------
-if( ! $roster->auth->getAuthorized( ROSTERLOGIN_ADMIN ) )
+if( ! $roster->auth->getAuthorized( 'roster_cp' ) )
 {
 	echo $roster->auth->getLoginForm();
 	return;

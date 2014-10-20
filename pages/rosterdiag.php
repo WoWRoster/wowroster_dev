@@ -440,7 +440,7 @@ if( GrabRemoteVersions() !== false )
 	if( $zippackage_files != '' )
 	{
 		// Display Password Box
-		if( !$roster->auth->getAuthorized( ROSTERLOGIN_ADMIN ) )
+		if( !$roster->auth->getAuthorized( 'roster_cp' ) )
 		{
 			echo '
 <div class="tier-2-a diag-download-box">

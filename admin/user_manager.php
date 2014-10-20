@@ -114,7 +114,8 @@ while( $row = $roster->db->fetch($dm_result) )
 		'NAME'      => $row['usr'],
 		'TOOLTIP'   => makeOverlib(implode("\n", $tooltip), $row['usr'], '', 1, '', ''),
 		'EMAIL'     => $row['email'],
-		'ACCESS'    => $roster->auth->rosterAccess(array('guild_id' => ''.$row['group_id'].'','name' => ''.$row['id'].'[access]', 'value' => $row['access']))
+		'ACCESS'    => $roster->auth->rosterAccess(array('guild_id' => ''.$row['group_id'].'','name' => ''.$row['id'].'[access]', 'value' => $row['access'])),
+		'PERMISS'	=> makelink('rostercp-permissions&amp;id='.$row['id'].'&amp;type=userman')
 		)
 	);
 }

@@ -23,6 +23,7 @@ CREATE TABLE IF NOT EXISTS `renprefix_user_members` (
   `regIP` varchar(15) DEFAULT NULL,
   `dt` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `access` varchar(25) DEFAULT NULL,
+  `user_permissions` text,
   `fname` varchar(30) DEFAULT NULL,
   `lname` varchar(30) DEFAULT NULL,
   `age` varchar(32) DEFAULT NULL,
@@ -64,6 +65,7 @@ CREATE TABLE IF NOT EXISTS `renprefix_user_groups` (
   `group_type` tinyint(4) NOT NULL DEFAULT '1',
   `group_name` varchar(255) COLLATE utf8_bin NOT NULL DEFAULT '',
   `group_desc` text COLLATE utf8_bin NOT NULL,
+  `group_permissions` text,
   `group_rank` mediumint(8) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`group_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
@@ -72,8 +74,9 @@ CREATE TABLE IF NOT EXISTS `renprefix_permissions` (
   `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `type` varchar(255) NOT NULL DEFAULT '',
   `type_id` int(5) DEFAULT NULL,
-  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
-  `info` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `catagory` varchar(30) DEFAULT NULL,
+  `name` varchar(255) NOT NULL DEFAULT '',
+  `info` varchar(255) NOT NULL DEFAULT '',
   `cfg_name` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
@@ -1102,7 +1105,7 @@ CREATE TABLE `renprefix_talents_data` (
   `tooltip` mediumtext NOT NULL,
   `texture` varchar(64) NOT NULL DEFAULT '',
   `isspell` int(1) DEFAULT '0',
-  PRIMARY KEY (`rank`,`tree`,`row`,`column`,`class_id`)
+  PRIMARY KEY (`rank`,`tree`,`tree_order`,`row`,`column`,`class_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `renprefix_talenttree`;

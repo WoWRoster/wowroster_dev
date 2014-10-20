@@ -59,8 +59,7 @@ if($addon['config']['news_html'] >= 0)
 
 	if($addon['config']['news_nicedit'] > 0)
 	{
-		roster_add_js('js/nicEdit.js');
-		roster_add_js('bkLib.onDomLoaded(function() { nicEditors.allTextAreas({xhtml : true, fullPanel : true, iconsPath : \'' . $roster->config['img_url'] . 'nicEditorIcons.gif\'}) });', 'inline');
+		roster_add_js('js/ckeditor/ckeditor.js');
 	}
 }
 

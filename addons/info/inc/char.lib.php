@@ -1145,13 +1145,14 @@ class char
 			$spec[$t['build']]=array();
 			$spec[$t['build']]['build'] = $t['tree'];
 			$spec[$t['build']]['spec'] = $t['spec'];
-			$spec[$t['build']]['order'] = $t['order'];
+			$spec[$t['build']]['order'] = ($t['order']-1);
 			$spec[$t['build']]['spent'] = $t['pointsspent'];
 		}
 		//echo '<pre>';print_r($spec);echo '</pre>';
 		$tree_rows = $roster->db->num_rows($result);
-		$talents = $this->build_talent_data($this->data['classid']);// build the list of talents
+		
 		$specs = $this->build_spec_data($this->data['classid']);// build the possable spec trees
+		$talents = $this->build_talent_data($this->data['classid']);// build the list of talents
 		
 		// time to build some damn talents
 		// Talent data and build spec data
@@ -1166,6 +1167,7 @@ class char
 
 			$order = $build_data['order'];
 			$treeindex = $build.'t';
+			//echo $build_data['spec'].'<br>';
 			$specdata[$build]['order'] = $build;
 			$specdata[$build]['name'] = $build_data['spec'];
 			$specdata[$build]['role'] = $specs[$build_data['spec']]['roles'];
@@ -1210,12 +1212,26 @@ class char
 				$unl = 15;
 				foreach( $talents as $row )
 				{
+					if ($unl == 105 )
+					{
+						$unl = 100;
+					}
 					$roster->tpl->assign_block_vars('talent.tree.tier', array(
 							'UNLOCK'      => $unl,
 							)
 						);
-					foreach( $row as $cell )
+					foreach( $row as $cel )
 					{
+						//echo '<pre>';print_r($cell);echo '</pre>';
+						if (isset($cel[$specs[$build_data['spec']]['tree_num']]))
+						{
+							$cell= $cel[$specs[$build_data['spec']]['tree_num']];
+							//echo $specs[$build_data['spec']]['tree_num'].' <pre>';print_r($cel[$specs[$build_data['spec']]['tree_num']]);echo '</pre><br>';
+						}
+						else
+						{
+							$cell = $cel[0];
+						}
 						$abil = (isset($cell['isspell']) ? $cell['isspell'] : false);
 						$roster->tpl->assign_block_vars('talent.tree.tier.cell', array(
 							'NAME'      => $cell['name'],
@@ -1254,6 +1270,7 @@ class char
 			$talents[$row['tree']]['icon'] = strtolower($row['icon']);
 			$talents[$row['tree']]['roles'] = $row['roles'];
 			$talents[$row['tree']]['desc'] = $row['desc'];
+			$talents[$row['tree']]['tree_num'] = $row['tree_num'];
 		}
 
 		return $talents;
@@ -1273,12 +1290,12 @@ class char
 
 		while( $row = $roster->db->fetch($results) )
 		{
-			$talents[$row['row']][$row['column']]['name'] = $row['name'];
-			$talents[$row['row']][$row['column']]['id'] = $row['talent_id'];
-			$talents[$row['row']][$row['column']]['tooltip'] = makeOverlib($row['talent_id'], $row['name'], '', 2,'','','talent');//$row['tooltip'];
-			$talents[$row['row']][$row['column']]['icon'] = $row['texture'];
-			$talents[$row['row']][$row['column']]['isspell'] = $row['isspell'];
-			$talents[$row['row']][$row['column']]['rank'] = '';
+			$talents[$row['row']][$row['column']][$row['tree_order']]['name'] = $row['name'];
+			$talents[$row['row']][$row['column']][$row['tree_order']]['id'] = $row['talent_id'];
+			$talents[$row['row']][$row['column']][$row['tree_order']]['tooltip'] = makeOverlib($row['talent_id'], $row['name'], '', 2,'','','talent');//$row['tooltip'];
+			$talents[$row['row']][$row['column']][$row['tree_order']]['icon'] = $row['texture'];
+			$talents[$row['row']][$row['column']][$row['tree_order']]['isspell'] = $row['isspell'];
+			$talents[$row['row']][$row['column']][$row['tree_order']]['spec'] = $row['tree_order'];
 		}
 
 		return $talents;

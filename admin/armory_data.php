@@ -160,8 +160,12 @@ if (isset($_POST['process']) && $_POST['process'] == 'process')
 	{
 
 		$classes = array('1','2','3','4','5','6','7','8','9','11','0');
-		$talent = $roster->api->Data->getTalents();
+		$talent = $roster->api2->fetch('talents');//$roster->api->Data->getTalents();
+		echo '<prE>';
+		//print_r($talent);
+		echo '</pre>';
 		$messages = '';
+		$t=0;
 		foreach ($talent as $class_id => $info)
 		{
 			$tid = $class_id;
@@ -186,6 +190,53 @@ if (isset($_POST['process']) && $_POST['process'] == 'process')
 			$count = 1;
 			$treenum = 1;
 		//$i=$tid;
+		
+			//old method we leave this just incase
+			foreach ($info['talents'] as $tier => $colum)
+			{
+				$lvl = 15;
+				foreach ($colum as $s => $tal)
+				{
+					foreach ($tal as $spec => $talent)
+					{
+					
+						//echo '<prE>';
+						//print_r($talent);
+						//echo '</pre>';
+						$tooltip = '';
+						$tooltip .= (isset($talent['spell']['powerCost']) 	? $talent['spell']['powerCost'].'<br />' 	: '');
+						$tooltip .=	(isset($talent['spell']['range']) 		? $talent['spell']['range'].'<br />' 	: '');
+						$tooltip .=	(isset($talent['spell']['castTime']) 	? $talent['spell']['castTime'].'<br />' 	: '');
+						$tooltip .=	(isset($talent['spell']['cooldown']) 	? $talent['spell']['cooldown'].'<br />' 	: '');
+						$tooltip .= '<br><span style="color:#00bbff;">'.$talent['spell']['description'].'</span>';
+						$values = array(
+							'talent_id'  => $talent['spell']['id'],
+							'talent_num' => $t,
+							'tree_order' => $spec,
+							'class_id'   => $class_id,
+							'name'       => $talent['spell']['name'],
+							'tree'       => '',//$treedata['name'],
+							'tooltip'    => tooltip($tooltip),
+							'texture'    => $talent['spell']['icon'],
+							//'isspell'	 => ( !$talent['spell']['keyAbility'] ? false : true ),
+							'row'        => ($talent['tier'] + 1),
+							'column'     => ($talent['column'] + 1),
+							'rank'       => $lvl
+						);
+
+						
+						$querystr = "INSERT INTO `" . $roster->db->table('talents_data') . "` "
+							. $roster->db->build_query('INSERT', $values) . ";";
+						$result = $roster->db->query($querystr);
+						$count++;
+					}
+					$t++;
+				}
+				$lvl = ($lvl+15);
+			}
+		
+			/*
+			
 			foreach ($info['talents'] as $a => $treedata)
 			{
 
@@ -226,12 +277,13 @@ if (isset($_POST['process']) && $_POST['process'] == 'process')
 				$count++;
 				$treenum++;
 			}
+			*/
 			foreach ($info['specs'] as $a => $treedata)
 			{
 			
 				$values = array(
 					'tree'       => $treedata['name'],
-					'order'      => $treedata['order'],
+					'order'      => $a,
 					'class_id'   => $class_id,
 					'background' => strtolower($treedata['backgroundImage']),
 					'icon'       => $treedata['icon'],

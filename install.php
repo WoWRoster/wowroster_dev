@@ -862,7 +862,7 @@ function process_step4( )
 		$pass_word = md5('admin');
 	}
 	$db->query("INSERT INTO `" . $db->table('user_members') . "` (`usr`) VALUES	('Admin');");
-	$db->query("UPDATE `" . $db->table('user_members') . "` SET `pass` = '" . $pass_word . "',`access` = '11:0',`active`='1' WHERE `usr` = 'Admin';");
+	$db->query("UPDATE `" . $db->table('user_members') . "` SET `pass` = '" . $pass_word . "',`access` = '11:0',`active`='1',`user_permissions` = '{\"id\":\"1\",\"roster_cp\":\"1\",\"gp_update\":\"1\",\"cp_update\":\"1\",\"lua_update\":\"1\"}' WHERE `usr` = 'Admin';");
 
 	$tpl->message_append('The WoWRoster Admin account has created<br />Please do not forget your password');
 

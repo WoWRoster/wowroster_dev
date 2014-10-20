@@ -269,7 +269,7 @@ class update
 		if( in_array('wowrcp',$gotfiles) )
 		{
 
-			if( $roster->auth->getAuthorized($roster->config['gp_user_level']) )
+			if( $roster->auth->getAuthorized('gp_update') )
 			{
 				$output .= 'Guild Update access Granted';
 				$output .= $this->processGuildRoster();
@@ -285,7 +285,7 @@ class update
 				$output .= 'Guild Update access not Granted';
 			}
 
-			if( $roster->auth->getAuthorized($roster->config['cp_user_level']) )
+			if( $roster->auth->getAuthorized('cp_update') )
 			{
 				$output .= $this->processMyProfile();
 
@@ -297,7 +297,7 @@ class update
 
 		}
 
-		if( $roster->auth->getAuthorized($roster->config['lua_user_level']) )
+		if( $roster->auth->getAuthorized('lua_update') )
 		{
 			if( is_array($this->addons) && count($this->addons) > 0 )
 			{

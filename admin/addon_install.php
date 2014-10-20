@@ -118,7 +118,7 @@ if( !empty($addons) )
 			'ACTIVE'      => ( isset($addon['active']) ? $addon['active'] : '' ),
 			'INSTALL'     => $addon['install'],
 			'L_TIP_UPGRADE' => ( isset($addon['active']) ? makeOverlib(sprintf($roster->locale->act['installer_click_upgrade'],$addon['oldversion'],$addon['version']),$roster->locale->act['installer_upgrade_avail']) : '' ),
-			'ACCESS'      => ( isset($addon['access']) ? $roster->auth->rosterAccess(array('name' => 'access', 'value' => $addon['access'])) : false )
+			'ACCESS'      => false //( isset($addon['access']) ? $roster->auth->rosterAccess(array('name' => 'access', 'value' => $addon['access'])) : false )
 			)
 		);
 
@@ -475,6 +475,7 @@ function processAddon()
 			else
 			{
 				$installer->sql[] = 'UPDATE `' . $roster->db->table('addon') . '` SET `active` = ' . (int)$installer->addata['active'] . " WHERE `addon_id` = '" . $installer->addata['addon_id'] . "';";
+				$installer->sql[] = "INSERT INTO `" . $roster->db->table('permissions') . "` VALUES ('', 'roster', '" . $installer->addata['addon_id'] . "', 'addon', '".$installer->addata['fullname']."', 'addon_access_desc' , '".$installer->addata['basename']."_access');";
 			}
 			break;
 
@@ -531,6 +532,10 @@ function processAddon()
 			$installer->add_backup($roster->db->table('addon_config'));
 
 			$success = $addon->uninstall();
+			if ($success)
+			{
+				$installer->remove_permissions($previous['addon_id']);
+			}
 			break;
 
 		case 'purge':

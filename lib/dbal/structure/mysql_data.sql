@@ -16,6 +16,18 @@ INSERT INTO `renprefix_config` VALUES (6, 'versioncache', '', 'hidden', 'master'
 INSERT INTO `renprefix_config` VALUES (99, 'css_js_query_string', 'lod68q', 'hidden', 'master');
 
 # --------------------------------------------------------
+### Permission settings
+INSERT INTO `renprefix_permissions` VALUES ('', 'roster', '00', 'core', 'roster_cp', 'roster_cp_desc' , 'roster_cp');
+INSERT INTO `renprefix_permissions` VALUES ('', 'roster', '00', 'core', 'gp_update', 'gp_update_desc' , 'gp_update');
+INSERT INTO `renprefix_permissions` VALUES ('', 'roster', '00', 'core', 'cp_update', 'cp_update_desc' , 'cp_update');
+INSERT INTO `renprefix_permissions` VALUES ('', 'roster', '00', 'core', 'lua_update', 'lua_update_desc' , 'lua_update');
+
+# --------------------------------------------------------
+### User groups
+INSERT INTO `renprefix_user_groups` VALUES ('0', '1', 'Public', 'general public access group auth use only', NULL, '0');
+INSERT INTO `renprefix_user_groups` VALUES ('1', '1', 'Admin', 'Admin user group', NULL, '0');
+
+# --------------------------------------------------------
 ### Menu Entries
 INSERT INTO `renprefix_config` VALUES (110, 'main_conf', NULL, 'blockframe', 'menu');
 INSERT INTO `renprefix_config` VALUES (120, 'defaults_conf', NULL, 'blockframe', 'menu');

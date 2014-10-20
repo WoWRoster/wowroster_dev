@@ -1,0 +1,45 @@
+<form action="" method="post" id="update">
+	<input type="hidden" id="action" name="action" value="{TYPE}" />
+	<input type="hidden" name="process" value="process" />
+	<input type="hidden" name="id" value="{ID}" />
+	<div class="config-submit">
+		<button type="submit" class="input" onclick="return confirm('update settings');"><!-- TRANSLATE update --></button>
+	</div>
+	<a class="input" href="{RETURN}"><span class="ui-icon ui-icon-circle-arrow-w"></span> Return</a>
+	
+	<!-- BEGIN type -->
+	<div class="tier-1-a">
+		<div class="tier-1-b">
+			<div class="tier-1-title">{type.TYPE}</div>
+
+		<!-- BEGIN catagory -->
+			<div class="tier-2-a">
+				<div class="tier-2-b">
+					<div class="tier-2-title">{type.catagory.NAME}</div>
+					<!-- BEGIN info -->
+					<div class="tier-3-a">
+						<div class="tier-3-b">
+							<div class="config">
+								<div class="config-name">
+									{type.catagory.info.NAME} - {type.catagory.info.INFO}
+								</div>
+								<div class="config-input">
+									<div class="radioset">
+										<input type="radio" id="rad_config_{type.catagory.info.CFG}0" name="{type.catagory.info.CFG}" value="0" <!-- IF type.catagory.info.CFGVALUE eq 0 -->checked="checked" <!-- ENDIF -->/>
+										<label for="rad_config_{type.catagory.info.CFG}0"><!-- TRANSLATE no --></label>
+										<input type="radio" id="rad_config_{type.catagory.info.CFG}1" name="{type.catagory.info.CFG}" value="1" <!-- IF type.catagory.info.CFGVALUE eq 1 -->checked="checked" <!-- ENDIF -->/>
+										<label for="rad_config_{type.catagory.info.CFG}1"><!-- TRANSLATE yes --></label>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- END info -->
+				</div>
+			</div>
+		<!-- END catagory -->
+		
+		</div>
+	</div>
+	<!-- END type -->
+</form>

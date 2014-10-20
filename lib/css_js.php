@@ -40,7 +40,7 @@ function roster_add_js( $data = NULL , $type = 'module' , $scope = 'header' , $d
 						'defer' => FALSE,
 						'preprocess' => TRUE,
 					),
-					'js/jquery.multiselect.min.js' => array(
+					'js/jquery.sumoselect.js' => array(
 						'cache' => TRUE,
 						'defer' => FALSE,
 						'preprocess' => TRUE,

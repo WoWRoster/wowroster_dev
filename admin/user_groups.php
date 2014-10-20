@@ -68,6 +68,7 @@ if ($type == '')
 			'NAME'		=> $row['group_name'],
 			'MEM'		=> $c['count'],
 			'DELURL'	=> makelink('&amp;type=delete&amp;id='.$row['group_id']),
+			'PERMISS'	=> makelink('rostercp-permissions&amp;id='.$row['group_id'].'&amp;type=usergroups')
 			)
 		);
 	}

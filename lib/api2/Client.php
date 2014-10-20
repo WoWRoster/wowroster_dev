@@ -663,7 +663,7 @@ class Client
             CURLOPT_SSL_VERIFYPEER => true,
             CURLOPT_CUSTOMREQUEST  => $http_method
         );
-
+echo $url.'<br>';
         switch($http_method) {
             case self::HTTP_METHOD_POST:
                 $curl_options[CURLOPT_POST] = true;

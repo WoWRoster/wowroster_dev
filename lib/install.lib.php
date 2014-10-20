@@ -264,6 +264,70 @@ class Install
 	}
 
 	/**
+	*	New permissions functions
+	*
+	*/
+	
+	/**
+	 * Add a permissions setting
+	 *
+	 * @param array $sql
+	 *		an array of permishion setting to be inserted
+	 */
+	function add_permissions($sql)
+	{
+		global $roster;
+
+		//$this->sql[] = "INSERT INTO `" . $roster->db->table('permissions') . "` VALUES ('" . $this->addata['addon_id'] . "',$sql);";
+		foreach ($sql as $i => $data)
+		{
+			$data['type_id'] = $this->addata['addon_id'];
+			$data['type'] = $this->addata['basename'];
+			$this->sql[] = "INSERT INTO `" . $roster->db->table('permissions') . "` ".$roster->db->build_query('INSERT', $data);
+		}
+	}
+
+	/**
+	 * Update a permissions setting
+	 *
+	 * @param int $id
+	 *		permissions ID to update
+	 * @param string $sql
+	 *		Set string
+	 */
+	function update_permissions($id, $sql)
+	{
+		global $roster;
+
+		$this->sql[] = "UPDATE `" . $roster->db->table('permissions') . "` SET " . $sql . " WHERE `type_id` = '" . $this->addata['addon_id'] . "' AND `cfg_name` = '" . $id . "';";
+	}
+
+	/**
+	 * Delete a permissions setting
+	 *
+	 * @param int $id
+	 *		permissions ID to delete
+	 */
+	function remove_permissions($id)
+	{
+		global $roster;
+
+		$this->sql[] = "DELETE FROM `" . $roster->db->table('permissions') . "` WHERE `type_id` = '" . $this->addata['addon_id'] . "' AND `cfg_name` = '" . $id . "';";
+	}
+
+	/**
+	 * Removes the all the permissions settings for an addon
+	 */
+	function remove_all_permissions()
+	{
+		global $roster;
+
+		$this->sql[] = "DELETE FROM `" . $roster->db->table('permissions') . "` WHERE `type_id` = '" . $this->addata['addon_id'] . "';";
+	}
+	
+	
+	
+	/**
 	 * Do the actual installation.
 	 *
 	 * @return int

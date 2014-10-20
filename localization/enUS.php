@@ -1164,8 +1164,7 @@ $lang['config_reset_help'] = 'This will completely reset your Roster configurati
 All data in the Roster configuration table will be permanently removed, and the default values will be restored.<br />
 Guild data, Character data, Addon config, Addon data, menu buttons, and upload rules will be saved.<br />
 The guild, officer, and admin passwords will also be saved.<br />
-<br />
-To continue, check the box and click on \'Proceed\'.';
+<br />To continue, check the box and click on \'Proceed\'.';
 
 /******************************
  * Roster Admin Strings
@@ -1186,11 +1185,12 @@ $lang['pagebar_menuconf'] = 'Menu';
 $lang['pagebar_configreset'] = 'Reset';
 $lang['pagebar_usergroups'] = 'Groups';
 $lang['pagebar_addonconf'] = 'Addon Config';
-
+$lang['pagebar_api_data'] = 'Api Usage';
 $lang['roster_config_menu'] = 'Config Menu';
 $lang['menu_config_help'] = 'Add Menu Button Help';
 $lang['menu_config_help_text'] = 'Use this to add a new menu button. Adding a new menu button here will add it to the current section.<ul class="ul-no-m"><li>Title - The name of the new button.</li><li>URL - The button\'s link. This can be a WoWRoster path or a full URL (add http:// in the link)</li><li>Icon - The button\'s image. This must be an image from the Interface Image Pack without the path or extension (ex. inv_misc_gear_01)</ul>';
 
+$lang['permissions'] = 'Permissions';
 // Submit/Reset confirm questions
 $lang['config_submit_button'] = 'Save Settings';
 $lang['config_reset_button'] = 'Reset';
@@ -1320,6 +1320,19 @@ $lang['admin']['per_character_display'] = 'Per-Character Display';
 // user admin
 $lang['admin']['user_desc'] = 'CP Admin - This option gives the selected user admin access to WoWRoster<br/>Public - The default access given to all users. Allows the user to see any and all public pages in Roster. Removing this option only lets them see the content their other ranks allow<br/>** Other ranks are scaned from the currently selected guilds\' rank names and you can assign user access accordingly to users.';
 $lang['admin']['user_groups_desc'] = 'User Groups';
+
+//core permission settings
+$lang['admin']['core']				= 'Roster Core';
+$lang['admin']['addon']				= 'Addons';
+$lang['admin']['addon_access_desc']	= 'Allow access to this addon?';
+$lang['admin']['roster_cp']			= 'Roster CP';
+$lang['admin']['roster_cp_desc']	= 'Gives access to Roster CP pages';
+$lang['admin']['gp_update']			= 'Guild Update';
+$lang['admin']['gp_update_desc']	= 'Gives access to update guilds';
+$lang['admin']['cp_update']			= 'CP Update';
+$lang['admin']['cp_update_desc']	= 'gives access to update characters';
+$lang['admin']['lua_update']		= 'Lua Update';
+$lang['admin']['lua_update_desc']	= 'this gives access to update with other lua files besids rosterprofiler';
 
 //Overlib for Allow/Disallow rules
 $lang['guildname'] = 'Guild name';

@@ -21,7 +21,7 @@ if( !defined('IN_ROSTER') || !defined('IN_ROSTER_ADMIN') )
 
 $roster->output['title'] .= $roster->locale->act['pagebar_changepass'];
 
-if( array_key_exists('mode',$_POST) && $roster->auth->getAuthorized(ROSTERLOGIN_ADMIN) )
+if( array_key_exists('mode',$_POST) && $roster->auth->getAuthorized( 'roster_cp' ) )
 {
 	$mode = $_POST['mode'];
 
@@ -39,7 +39,7 @@ if( array_key_exists('mode',$_POST) && $roster->auth->getAuthorized(ROSTERLOGIN_
 	}
 
 
-	if( $roster->auth->getAuthorized(ROSTERLOGIN_ADMIN) )
+	if( $roster->auth->getAuthorized( 'roster_cp' ) )
 	{
 		$oldpass  = ( isset($_POST['old_pass']) ? $_POST['old_pass'] : '' );
 		$newpass = ( isset($_POST['new_pass']) ? $_POST['new_pass'] : '' );

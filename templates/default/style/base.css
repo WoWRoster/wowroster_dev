@@ -1325,7 +1325,8 @@ select:focus { outline: none; }
 /**
  * CSS Weirdness
  */
-.exp-content { overflow: auto; }
+.exp-content { /*overflow: auto;*/ }
+.exp-content2 { overflow: auto; }
 
 
 .guild-stats-container { padding:20px 20px 10px; }

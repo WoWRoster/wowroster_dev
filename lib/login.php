@@ -40,6 +40,7 @@ class RosterLogin
 	var $approved;
 	var $access = 0;
 	var $user = array();
+	var $groups = array();
 
 	/**
 	 * Constructor for Roster Login class
@@ -52,7 +53,9 @@ class RosterLogin
 	function RosterLogin( $script_filename='' )
 	{
 		global $roster;
-
+		
+		$this->getgroups();
+		
 		$this->setAction($script_filename);
 		if( isset( $_POST['logout'] ) && $_POST['logout'] == '1' )
 		{
@@ -170,7 +173,7 @@ class RosterLogin
 		return;
 	}
 
-	function getAuthorized( $access )
+	function _getAuthorized( $access )
 	{
 		global $roster;
 
@@ -193,6 +196,48 @@ class RosterLogin
 		return false;
 	}
 
+	function getAuthorized( $access )
+	{
+		$a = explode(":",$access);
+		if($access == '0' OR count($a) > 1 )
+		{
+			return $this->_getAuthorized( $access );
+		}
+		$pass = false;
+		$up = json_decode($this->user['user_permissions'],true);
+		$groups = explode(':',$this->access);
+		// check user groups if opne matches it passes fails are not held
+		// retuens on true
+		foreach ($groups as $id)
+		{
+			if(isset($this->groups[$access]) && $this->groups[$access] == 1)
+			{
+				return true;
+			}
+		}
+		if(isset($up[$access]) && $up[$access] == 1)
+		{
+			return true;
+		}
+		
+		return false;
+	}
+	
+	function getgroups()
+	{
+		global $roster;
+		
+		$dm_query = "SELECT * FROM `" . $roster->db->table('user_groups') . "` ORDER BY `group_id` ASC";
+
+		$dm_result = $roster->db->query($dm_query);
+		$g = array();
+		while( $row = $roster->db->fetch($dm_result) )
+		{
+			$g[$row['group_id']] = $row;
+		}
+		$this->groups = $g;
+	}
+	
 	function getMessage()
 	{
 		return $this->message;
@@ -261,38 +306,20 @@ class RosterLogin
 		if( count($this->levels) == 0 )
 		{
 			// Add built-in levels
-			$this->levels[11] = 'CP Admin';
+			//$this->levels[11] = 'CP Admin';
 			$this->levels[0] = 'Public';
 
-			if ( isset($roster->data['guild_id']) && !isset($vales['guild_id']) )
+			$query = "SELECT * FROM `" . $roster->db->table('user_groups') . "` ORDER BY `group_id` ASC";
+			$result = $roster->db->query($query);
+
+			if( !$result )
 			{
-				$query = "SELECT DISTINCT (`guild_rank`), `guild_title` FROM `". $roster->db->table('members') ."` WHERE `guild_id` = '". $roster->data['guild_id'] ."' ORDER BY `guild_rank` ASC;";
-				$result = $roster->db->query($query);
-
-				if( !$result )
-				{
-					die_quietly($roster->db->error, 'Roster Auth', __FILE__,__LINE__,$query);
-				}
-
-				while( $row = $roster->db->fetch($result) )
-				{
-					$this->levels[($row['guild_rank'] + 1)] = $row['guild_title'];
-				}
+				die_quietly($roster->db->error, 'Roster Auth', __FILE__,__LINE__,$query);
 			}
-			else
+
+			while( $row = $roster->db->fetch($result) )
 			{
-				$query = "SELECT DISTINCT (`guild_rank`), `guild_title` FROM `". $roster->db->table('members') ."` WHERE `guild_id` = '". $values['guild_id'] ."' ORDER BY `guild_rank` ASC;";
-				$result = $roster->db->query($query);
-
-				if( !$result )
-				{
-					die_quietly($roster->db->error, 'Roster Auth', __FILE__,__LINE__,$query);
-				}
-
-				while( $row = $roster->db->fetch($result) )
-				{
-					$this->levels[($row['guild_rank'] + 1)] = $row['guild_title'];
-				}
+				$this->levels[$row['group_id']] = $row['group_name'];
 			}
 		}
 
@@ -311,7 +338,8 @@ class RosterLogin
 
 		return $output;
 	}
-function GetUserInfo($uid)
+
+	function GetUserInfo($uid)
 	{
 		global $roster;
 		
@@ -321,6 +349,7 @@ function GetUserInfo($uid)
 		$row = $roster->db->fetch($result);
 		return $row;
 	}
+	
 	function _ingroup( $groups, $user_group )
 	{
 		
@@ -341,6 +370,7 @@ function GetUserInfo($uid)
 		}
 		return false;
 	}
+	
 	function getUID($user, $pass)
 	{
 		global $roster;

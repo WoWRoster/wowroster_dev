@@ -22,7 +22,7 @@ if( !defined('IN_ROSTER') )
 switch ($method)
 {
 	case 'menu_button_add':
-		if( ! $roster->auth->getAuthorized( ROSTERLOGIN_ADMIN ) )
+		if( ! $roster->auth->getAuthorized( 'roster_cp' ) )
 		{
 			$status = 103;
 			$errmsg = 'Not authorized';
@@ -101,7 +101,7 @@ switch ($method)
 		break;
 
 	case 'menu_button_del':
-		if( ! $roster->auth->getAuthorized( ROSTERLOGIN_ADMIN ) )
+		if( ! $roster->auth->getAuthorized( 'roster_cp' ) )
 		{
 			$status = 103;
 			$errmsg = 'Not authorized';

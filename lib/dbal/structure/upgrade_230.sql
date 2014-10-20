@@ -126,6 +126,7 @@ CREATE TABLE `api_class_spells` (
 ALTER TABLE  `renprefix_items` ADD `json` longtext DEFAULT NULL;
 ALTER TABLE  `renprefix_user_members` ADD `hash` varchar(32) NOT NULL DEFAULT '0';
 ALTER TABLE  `renprefix_sessions ADD `guestid` varchar(10) DEFAULT NULL;
+ALTER TABLE  `renprefix_talents_data` ADD INDEX (  `tree_order` ) ;
 # --------------------------------------------------------
 ### Add to Tables
 
@@ -141,3 +142,15 @@ ALTER TABLE  `renprefix_sessions ADD `guestid` varchar(10) DEFAULT NULL;
 # --------------------------------------------------------
 ### Menu Updates
 INSERT INTO `renprefix_menu_button` VALUES (3, 0, 'menu_roster_ucp', 'util', 'ucp', 'inv_misc_gear_07');
+
+# --------------------------------------------------------
+### Permissions settings
+INSERT INTO `renprefix_permissions` VALUES ('', 'roster', '00', 'core', 'roster_cp', 'roster_cp_desc' , 'roster_cp');
+INSERT INTO `renprefix_permissions` VALUES ('', 'roster', '00', 'core', 'gp_update', 'gp_update_desc' , 'gp_update');
+INSERT INTO `renprefix_permissions` VALUES ('', 'roster', '00', 'core', 'cp_update', 'cp_update_desc' , 'cp_update');
+INSERT INTO `renprefix_permissions` VALUES ('', 'roster', '00', 'core', 'lua_update', 'lua_update_desc' , 'lua_update');
+
+# --------------------------------------------------------
+### User groups
+INSERT INTO `renprefix_user_groups` VALUES ('0', '1', 'Public', 'general public access group auth use only', NULL, '0');
+INSERT INTO `renprefix_user_groups` VALUES ('1', '1', 'Admin', 'Admin user group', NULL, '0');

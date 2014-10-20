@@ -37,10 +37,12 @@ $(function() {
   $('select:not([multiple],[class="no-style"])').selectmenu();
 
   // Apply the multiselect dropdown style
-  $('select.multiselect').multiselect({
+  $('select.multiselect').SumoSelect();//.chosen();
+  /*multiselect({
     selectedList: 4,
     selectedText: '# of # selected'
   });
+  */
 
   // Slide down the notification box
   $('#notify .close').hover(

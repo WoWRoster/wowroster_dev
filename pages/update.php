@@ -103,7 +103,7 @@ else
 	// No data uploaded, so return upload form
 	$update->makeFileFields();
 
-	if( $roster->auth->getAuthorized($roster->config['gp_user_level']) && $roster->auth->getAuthorized($roster->config['cp_user_level']) && $roster->auth->getAuthorized($roster->config['lua_user_level']) )
+	if( $roster->auth->getAuthorized( 'gp_update' ) && $roster->auth->getAuthorized( 'cp_update' ) && $roster->auth->getAuthorized( 'lua_update' ) )
 	{
 		$roster->tpl->assign_var('S_PASS', false);
 	}
