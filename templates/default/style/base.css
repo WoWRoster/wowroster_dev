@@ -946,6 +946,11 @@ img.middle,
 .iconblue { border-color:#0070dd; }
 .iconpurple { border-color:#aa00dd; }
 
+.icon-32 {
+float:left;width:32px;height:32px;
+border-radius: 3px;
+-moz-border-radius: 3px;
+}
 /**
  * END Random color defines
  */

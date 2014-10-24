@@ -134,6 +134,7 @@ ALTER TABLE  `renprefix_talents_data` ADD INDEX (  `tree_order` ) ;
 ### Update Tables
 # --------------------------------------------------------
 ### Config Table Updates
+INSERT INTO `renprefix_config` VALUES (1056, 'default_group', '0', 'function{defaultgroup', 'main_conf');
 
 # javascript/css aggregation
 

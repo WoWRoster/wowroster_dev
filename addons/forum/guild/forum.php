@@ -64,8 +64,8 @@ $roster->tpl->assign_vars(array(
 			'M_STARTTOPIC'	=> makelink('guild-'.$addon['basename'].'-addtopic&amp;id=' . $_GET['id']),
 			'LOCKED'		=> ($info['locked'] == 1 ? true : false),
 			'IMAGE'    		=> '<div class="icon"><img src="'.$addon['url_path'] .'images/topic_unread_locked.gif"></a></div>',
-			'CANLOCK'		=> $roster->auth->getAuthorized( $roster->config['forum_lock'] ),
-			'CANPOST'		=> $roster->auth->getAuthorized( $roster->config['forum_start_topic'] ),
+			'CANLOCK'		=> $roster->auth->getAuthorized( 'topic_lock' ),
+			'CANPOST'		=> $roster->auth->getAuthorized( 'topic_start' ),
 			'CAN_POST'		=> $roster->auth->getAuthorized( $info['access_post'] ),
 			'L_ACTIVEU' 	=> ( $info['locked'] == 1 ? 'locked' : 'unlocked'),
 			'L_ACTIVET'		=> ( $info['locked'] == 1 ? $roster->locale->act['lock'] : $roster->locale->act['unlock']),
@@ -121,8 +121,9 @@ $roster->tpl->assign_vars(array(
 		}
 		if (empty($access))
 		{
-			$access = '0';
+			$access = $roster->config['default_group'];
 		}
+		$values['access'] = $access;
 		if( isset($_POST['html']) && $_POST['html'] == 1 && $roster->config['forum_html_posts'] >= 0 )
 		{
 			$html = 1;

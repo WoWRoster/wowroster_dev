@@ -61,5 +61,9 @@ ul { margin:0; padding:0; list-style:none; color:#000000;}
 .icon-frame.frame-50 { height: 50px; width: 50px; }
 .icon-frame-gloss { display: block; height: 76px; width: 76px; background-position: 50% 50%; background-repeat: no-repeat; }
 .icon-frame-gloss .frame { display: block; background: url("../images/icons/frames/frame-icon.png") no-repeat; height: 76px; width: 76px; }
-	
+.final img {
+width: 32px;
+height: 32px;
+border-right: 3px;
+}	
 	

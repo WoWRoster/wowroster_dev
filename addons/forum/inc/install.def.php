@@ -25,7 +25,7 @@ class forumInstall
 	var $active = true;
 	var $icon = 'inv_misc_note_02';
 
-	var $version = '0.3.2';
+	var $version = '0.3.3';
 	var $wrnet_id = '0';
 
 	var $fullname = 'WoWRoster Forum';
@@ -56,35 +56,16 @@ class forumInstall
 		$installer->add_config("'170','topic_edit','rostercp-addon-forum-topic','makelink','menu'");
 		
 		//forum_conf
-		$installer->add_config("'111','forum_start_topic','11','access','forum_conf'");
-		$installer->add_config("'112','forum_reply_post','11','access','forum_conf'");
-		$installer->add_config("'113','forum_lock','11','access','forum_conf'");
 		$installer->add_config("'114','forum_html_posts','-1','radio{enabled^1|disabled^0|forbidden^-1','forum_conf'");
 		$installer->add_config("'115','forum_cke','1','radio{enabled^1|disabled^0', 'forum_conf'");
 		
 		//forum_topic
-		$installer->add_config("'121','topic_start','11','access','forum_topic'");
-		$installer->add_config("'122','topic_reply','11','access','forum_topic'");
-		$installer->add_config("'123','topic_lock','11','access','forum_ctopic'");
 		$installer->add_config("'124','topic_html','-1','radio{enabled^1|disabled^0|forbidden^-1','forum_topic'");
 		$installer->add_config("'125','topic_cke','1','radio{enabled^1|disabled^0', 'forum_topic'");
 		
 		//forum_post
-		$installer->add_config("'131','post_start','11','access','forum_post'");
-		$installer->add_config("'132','post_reply','11','access','forum_post'");
-		$installer->add_config("'133','post_lock','11','access','forum_post'");
 		$installer->add_config("'134','post_html','-1','radio{enabled^1|disabled^0|forbidden^-1','forum_post'");
 		$installer->add_config("'135','post_cke','1','radio{enabled^1|disabled^0', 'forum_post'");
-
-		// mod topic
-		$installer->add_config("'410','mod_t_lock',NULL,'blockframe','forum_mod_t'"); // topic
-		$installer->add_config("'420','mod_t_delete',NULL,'blockframe','forum_mod_t'"); // posts
-		$installer->add_config("'430','mod_t_move',NULL,'blockframe','forum_mod_t'"); // posts
-		
-		// mod post
-		$installer->add_config("'510','mod_p_lock',NULL,'blockframe','forum_mod_p'"); // topic
-		$installer->add_config("'520','mod_p_delete',NULL,'blockframe','forum_mod_p'"); // posts
-		$installer->add_config("'530','mod_p_move',NULL,'blockframe','forum_mod_p'"); // posts
 
 		
 		$installer->create_table($installer->table('forums'),"
@@ -150,6 +131,7 @@ class forumInstall
 			KEY `topic_id` (`topic_id`)");
 
 		$permissions = array(
+			array('catagory'=> 'forum_forum','name'=> 'forum_lock','info'=> 'forum_lock_desc','cfg_name'=> 'forum_lock'),
 			array('catagory'=> 'forum_topics', 'name'=> 'forum_topics_start', 'info'=> 'forum_topics_start_desc','cfg_name'=> 'topic_start'),
 			array('catagory'=> 'forum_topics','name'=> 'forum_topics_lock','info'=> 'forum_topics_lock_desc','cfg_name'=> 'topic_lock'),
 			array('catagory'=> 'forum_topics','name'=> 'forum_topics_delete','info'=> 'forum_topics_delete_desc','cfg_name'=> 'topic_delete'),
@@ -191,7 +173,13 @@ class forumInstall
 			);
 			$installer->add_permissions($permissions);
 		}
-		
+		if( version_compare('0.3.3', $oldversion, '>') == true )
+		{
+			$permissions = array(
+				array('catagory'=> 'forum_forum','name'=> 'forum_lock','info'=> 'forum_lock_desc','cfg_name'=> 'forum_lock'),
+			);
+			$installer->add_permissions($permissions);
+		}
 		if( version_compare('0.2.1', $oldversion, '>') == true )
 		{
 			$installer->drop_table($installer->table('forums'));

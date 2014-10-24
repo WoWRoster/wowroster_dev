@@ -11,7 +11,7 @@ class raidboxInstall
 	var $active = true;
 	var $icon = 'inv_misc_note_05';
 
-	var $version = '1.5.4';
+	var $version = '1.5.5';
 	var $wrnet_id = '0';
 
 	var $fullname = 'raidbox';
@@ -88,6 +88,27 @@ class raidboxInstall
 		$installer->add_config("31063,'soo_boss_13','0','radio{Down^1|Up^0','soo'");
 		$installer->add_config("31064,'soo_boss_14','0','radio{Down^1|Up^0','soo'");
 
+		$installer->add_config("31070,'brf',NULL,'blockframe','menu'");
+		$installer->add_config("31071,'brf_boss_1','0','radio{Down^1|Up^0','brf'");
+		$installer->add_config("31072,'brf_boss_2','0','radio{Down^1|Up^0','brf'");
+		$installer->add_config("31073,'brf_boss_3','0','radio{Down^1|Up^0','brf'");
+		$installer->add_config("31074,'brf_boss_4','0','radio{Down^1|Up^0','brf'");
+		$installer->add_config("31075,'brf_boss_5','0','radio{Down^1|Up^0','brf'");
+		$installer->add_config("31076,'brf_boss_6','0','radio{Down^1|Up^0','brf'");
+		$installer->add_config("31077,'brf_boss_7','0','radio{Down^1|Up^0','brf'");
+		$installer->add_config("31078,'brf_boss_8','0','radio{Down^1|Up^0','brf'");
+		$installer->add_config("31079,'brf_boss_9','0','radio{Down^1|Up^0','brf'");
+		$installer->add_config("31080,'brf_boss_10','0','radio{Down^1|Up^0','brf'");
+
+		$installer->add_config("31081,'hml',NULL,'blockframe','menu'");
+		$installer->add_config("31082,'hml_boss_1','0','radio{Down^1|Up^0','hml'");
+		$installer->add_config("31083,'hml_boss_2','0','radio{Down^1|Up^0','hml'");
+		$installer->add_config("31084,'hml_boss_3','0','radio{Down^1|Up^0','hml'");
+		$installer->add_config("31085,'hml_boss_4','0','radio{Down^1|Up^0','hml'");
+		$installer->add_config("31086,'hml_boss_5','0','radio{Down^1|Up^0','hml'");
+		$installer->add_config("31087,'hml_boss_6','0','radio{Down^1|Up^0','hml'");
+		$installer->add_config("31088,'hml_boss_7','0','radio{Down^1|Up^0','hml'");
+
 		$installer->create_table($installer->table('bosses'),"
 			`id` int(11) NOT NULL AUTO_INCREMENT,
 			`member_id` int(11) unsigned NOT NULL default '0',
@@ -144,6 +165,31 @@ class raidboxInstall
 				$installer->add_config("31062,'soo_boss_12','0','radio{Down^1|Up^0','soo'");
 				$installer->add_config("31063,'soo_boss_13','0','radio{Down^1|Up^0','soo'");
 				$installer->add_config("31064,'soo_boss_14','0','radio{Down^1|Up^0','soo'");
+			}
+			
+			if( version_compare('1.5.5', $oldversion,'>') == true )
+			{
+				$installer->add_config("31070,'brf',NULL,'blockframe','menu'");
+				$installer->add_config("31071,'brf_boss_1','0','radio{Down^1|Up^0','brf'");
+				$installer->add_config("31072,'brf_boss_2','0','radio{Down^1|Up^0','brf'");
+				$installer->add_config("31073,'brf_boss_3','0','radio{Down^1|Up^0','brf'");
+				$installer->add_config("31074,'brf_boss_4','0','radio{Down^1|Up^0','brf'");
+				$installer->add_config("31075,'brf_boss_5','0','radio{Down^1|Up^0','brf'");
+				$installer->add_config("31076,'brf_boss_6','0','radio{Down^1|Up^0','brf'");
+				$installer->add_config("31077,'brf_boss_7','0','radio{Down^1|Up^0','brf'");
+				$installer->add_config("31078,'brf_boss_8','0','radio{Down^1|Up^0','brf'");
+				$installer->add_config("31079,'brf_boss_9','0','radio{Down^1|Up^0','brf'");
+				$installer->add_config("31080,'brf_boss_10','0','radio{Down^1|Up^0','brf'");
+				
+				$installer->add_config("31081,'hml',NULL,'blockframe','menu'");
+				$installer->add_config("31082,'hml_boss_1','0','radio{Down^1|Up^0','hml'");
+				$installer->add_config("31083,'hml_boss_2','0','radio{Down^1|Up^0','hml'");
+				$installer->add_config("31084,'hml_boss_3','0','radio{Down^1|Up^0','hml'");
+				$installer->add_config("31085,'hml_boss_4','0','radio{Down^1|Up^0','hml'");
+				$installer->add_config("31086,'hml_boss_5','0','radio{Down^1|Up^0','hml'");
+				$installer->add_config("31087,'hml_boss_6','0','radio{Down^1|Up^0','hml'");
+				$installer->add_config("31088,'hml_boss_7','0','radio{Down^1|Up^0','hml'");
+				
 			}
 		
 		return true;

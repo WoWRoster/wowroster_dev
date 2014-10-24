@@ -28,8 +28,21 @@ roster_add_css($addon['dir'] . 'style.css','module');
 				'boss_count'	=> '14',
 				'image' 		=> 'soo',
 				'cfg'	 		=> 'soo',
-			)
+			),
+			// begin dranor
+			
+			'Blackrock Foundry' => array(
+				'boss_count'	=> '10',
+				'image' 		=> 'brf',
+				'cfg'	 		=> 'brf',
+			),
+			'Highmaul' => array(
+				'boss_count'	=> '7',
+				'image' 		=> 'hml',
+				'cfg'	 		=> 'hml',
+			),
 		);
+		
 	foreach($raids as $name => $det)
 		{
 			$down = 0;

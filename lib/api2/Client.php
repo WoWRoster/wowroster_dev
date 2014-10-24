@@ -658,12 +658,13 @@ class Client
      */
     private function executeRequest($url, $parameters = array(), $http_method = self::HTTP_METHOD_GET, array $http_headers = null, $form_content_type = self::HTTP_FORM_CONTENT_TYPE_MULTIPART)
     {
+		global $roster;
         $curl_options = array(
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_SSL_VERIFYPEER => true,
             CURLOPT_CUSTOMREQUEST  => $http_method
         );
-echo $url.'<br>';
+//echo $url.'<br>';
         switch($http_method) {
             case self::HTTP_METHOD_POST:
                 $curl_options[CURLOPT_POST] = true;
@@ -727,8 +728,9 @@ echo $url.'<br>';
 		$this->errno	= curl_errno($ch);
 		$this->error	= curl_error($ch);
         if ($this->errno) {
-			print_r($this->errno);
-			print_r($this->error);
+			//print_r($this->errno);
+			//print_r($this->error);
+			$roster->set_message( "".print_r($this->errno)."<br/>\n\r [".print_r($this->error).']', 'API Error', 'error' );
 			return false;
         } else {
             $json_decode = json_decode($result, true);
@@ -748,6 +750,11 @@ echo $url.'<br>';
             'content_type' => $content_type
         );
 		*/
+		if ($json_decode['status'] = 'nok')
+		{
+			$roster->set_message( "".$json_decode['reason']."<br/>\n\r [".$this->usage['url'].'] : '.$this->usage['responce_code'].'', 'API Error', 'error' );
+			return;
+		}
 		return (null === $json_decode) ? $result : $json_decode;
     }
 

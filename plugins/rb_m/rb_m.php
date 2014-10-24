@@ -73,7 +73,19 @@ class rb_m
 				'boss_count'	=> '14',
 				'image' 		=> 'soo',
 				'cfg'	 		=> 'soo',
-			)
+			),
+			// begin dranor
+			
+			'Blackrock Foundry' => array(
+				'boss_count'	=> '10',
+				'image' 		=> 'achievement_boss_blackhand',
+				'cfg'	 		=> 'brf',
+			),
+			'Highmaul' => array(
+				'boss_count'	=> '7',
+				'image' 		=> 'achievement_boss_highmaul_king',
+				'cfg'	 		=> 'hml',
+			),
 		);
 
 		$addon = getaddon('raidbox');

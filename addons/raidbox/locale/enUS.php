@@ -66,6 +66,27 @@ $lang['soo_boss_12'] = 'Paragons of the Klaxxi';
 $lang['soo_boss_13'] = 'Siegecrafter Blackfuse';
 $lang['soo_boss_14'] = 'Garrosh Hellscream';
 
+$lang['brf'] = "Blackrock Foundry Guild Run";
+$lang['brf_boss_1'] = "Gruul";
+$lang['brf_boss_2'] = "Oregorger";
+$lang['brf_boss_3'] = "Hans\'gar and Franzok";
+$lang['brf_boss_4'] = "Flamebender Ka\'graz";
+$lang['brf_boss_5'] = "Beastlord Darmac";
+$lang['brf_boss_6'] = "Operator Thogar";
+$lang['brf_boss_7'] = "Blast Furnace";
+$lang['brf_boss_8'] = "Kromog";
+$lang['brf_boss_9'] = "Iron Maidens";
+$lang['brf_boss_10'] = "Warlord Blackhand";
+
+$lang['hml'] = "Highmaul Guild Run";
+$lang['hml_boss_1'] = "Kargath Bladefist";
+$lang['hml_boss_2'] = "The Butcher";
+$lang['hml_boss_3'] = "Tectus";
+$lang['hml_boss_4'] = "Brackenspore";
+$lang['hml_boss_5'] = "Twin Ogron";
+$lang['hml_boss_6'] = "Ko'ragh";
+$lang['hml_boss_7'] = "Imperator Mar'gok";
+
 $lang['admin']['mv'] = 'Mogu\'shan Vaults';
 $lang['admin']['mv_boss_1'] = 'The Stone Guard';
 $lang['admin']['mv_boss_2'] = 'Feng the Accursed';
@@ -119,3 +140,25 @@ $lang['admin']['soo_boss_11'] = 'Malkorok';
 $lang['admin']['soo_boss_12'] = 'Paragons of the Klaxxi';
 $lang['admin']['soo_boss_13'] = 'Siegecrafter Blackfuse';
 $lang['admin']['soo_boss_14'] = 'Garrosh Hellscream';
+
+
+$lang['admin']['brf'] = "Blackrock Foundry Guild Run";
+$lang['admin']['brf_boss_1'] = "Gruul";
+$lang['admin']['brf_boss_2'] = "Oregorger";
+$lang['admin']['brf_boss_3'] = "Hans\'gar and Franzok";
+$lang['admin']['brf_boss_4'] = "Flamebender Ka\'graz";
+$lang['admin']['brf_boss_5'] = "Beastlord Darmac";
+$lang['admin']['brf_boss_6'] = "Operator Thogar";
+$lang['admin']['brf_boss_7'] = "Blast Furnace";
+$lang['admin']['brf_boss_8'] = "Kromog";
+$lang['admin']['brf_boss_9'] = "Iron Maidens";
+$lang['admin']['brf_boss_10'] = "Warlord Blackhand";
+
+$lang['admin']['hml'] = "Highmaul Guild Run";
+$lang['admin']['hml_boss_1'] = "Kargath Bladefist";
+$lang['admin']['hml_boss_2'] = "The Butcher";
+$lang['admin']['hml_boss_3'] = "Tectus";
+$lang['admin']['hml_boss_4'] = "Brackenspore";
+$lang['admin']['hml_boss_5'] = "Twin Ogron";
+$lang['admin']['hml_boss_6'] = "Ko'ragh";
+$lang['admin']['hml_boss_7'] = "Imperator Mar'gok";

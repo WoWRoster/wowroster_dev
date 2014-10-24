@@ -48,6 +48,7 @@ INSERT INTO `renprefix_config` VALUES (1020, 'minGPver', '1.0.0', 'text{10|10', 
 INSERT INTO `renprefix_config` VALUES (1040, 'locale', 'enUS', 'function{rosterLangValue', 'main_conf');
 INSERT INTO `renprefix_config` VALUES (1050, 'default_page', 'rostercp', 'function{pageNames', 'main_conf');
 INSERT INTO `renprefix_config` VALUES (1055, 'external_auth', 'roster', 'function{externalAuth', 'main_conf');
+INSERT INTO `renprefix_config` VALUES (1056, 'default_group', '0', 'function{defaultgroup', 'main_conf');
 INSERT INTO `renprefix_config` VALUES (1060, 'website_address', '', 'text{128|60', 'main_conf');
 INSERT INTO `renprefix_config` VALUES (1085, 'interface_url', 'http://www.wowroster.net/', 'text{128|60', 'main_conf');
 INSERT INTO `renprefix_config` VALUES (1090, 'img_suffix', 'png', 'select{jpg^jpg|png^png|gif^gif', 'main_conf');

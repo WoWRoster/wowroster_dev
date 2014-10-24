@@ -306,8 +306,6 @@ class RosterLogin
 		if( count($this->levels) == 0 )
 		{
 			// Add built-in levels
-			//$this->levels[11] = 'CP Admin';
-			$this->levels[0] = 'Public';
 
 			$query = "SELECT * FROM `" . $roster->db->table('user_groups') . "` ORDER BY `group_id` ASC";
 			$result = $roster->db->query($query);

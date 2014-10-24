@@ -26,107 +26,143 @@ class raidboxUpdate
 	var $assignstr = array();
 	var $guild_id = '';
 	var $raids = array(
-	'mv' => Array
-		(
-			'id' => "6668",
-			'title' => "Mogu'shan Vaults Guild Run",
-			'points' => "10",
-			'description' => "Defeat the bosses in Mogu'shan Vaults while in a guild group.",
-			'icon' => "achievement_raid_secondhalfmogu",
-			'criteria' => Array
-				(
-					'0' => Array ('id' => "22384",'description' => "Stone Guard"),
-					'1' => Array ('id' => "19485",'description' => "Feng the Accursed"),
-					'2' => Array ('id' => "19486",'description' => "Gara'jal the Spiritbinder"),
-					'3' => Array ('id' => "19487",'description' => "Four Kings"),
-					'4' => Array ('id' => "19114",'description' => "Elegon"),
-					'5' => Array ('id' => "19488",'description' => "Will of the Emperor"),
-				),
-		),
+		'mv' => Array
+			(
+				'id' => "6668",
+				'title' => "Mogu'shan Vaults Guild Run",
+				'points' => "10",
+				'description' => "Defeat the bosses in Mogu'shan Vaults while in a guild group.",
+				'icon' => "achievement_raid_secondhalfmogu",
+				'criteria' => Array
+					(
+						'0' => Array ('id' => "22384",'description' => "Stone Guard"),
+						'1' => Array ('id' => "19485",'description' => "Feng the Accursed"),
+						'2' => Array ('id' => "19486",'description' => "Gara'jal the Spiritbinder"),
+						'3' => Array ('id' => "19487",'description' => "Four Kings"),
+						'4' => Array ('id' => "19114",'description' => "Elegon"),
+						'5' => Array ('id' => "19488",'description' => "Will of the Emperor"),
+					),
+			),
 
-	'hof' => Array
-		(
-			'id' => "6669",
-			'title' => "Heart of Fear Guild Run",
-			'points' => "10",
-			'description' => "Defeat the bosses in Heart of Fear while in a guild group.",
-			'icon' => "achievement_raid_mantidraid01",
-			'criteria' => Array
-				(
-					'0' => Array ('id' => "19489",'description' => "Imperial Vizier Zor'lok"),
-					'1' => Array ('id' => "19490",'description' => "Blade Lord Ta'yak"),
-					'2' => Array ('id' => "19491",'description' => "Garalon"),
-					'3' => Array ('id' => "19630",'description' => "Wind Lord Mel'jarak"),
-					'4' => Array ('id' => "19492",'description' => "Amber-Shaper Un'sok"),
-					'5' => Array ('id' => "19493",'description' => "Grand Empress Shek'zeer"),
-				),
-		),
+		'hof' => Array
+			(
+				'id' => "6669",
+				'title' => "Heart of Fear Guild Run",
+				'points' => "10",
+				'description' => "Defeat the bosses in Heart of Fear while in a guild group.",
+				'icon' => "achievement_raid_mantidraid01",
+				'criteria' => Array
+					(
+						'0' => Array ('id' => "19489",'description' => "Imperial Vizier Zor'lok"),
+						'1' => Array ('id' => "19490",'description' => "Blade Lord Ta'yak"),
+						'2' => Array ('id' => "19491",'description' => "Garalon"),
+						'3' => Array ('id' => "19630",'description' => "Wind Lord Mel'jarak"),
+						'4' => Array ('id' => "19492",'description' => "Amber-Shaper Un'sok"),
+						'5' => Array ('id' => "19493",'description' => "Grand Empress Shek'zeer"),
+					),
+			),
 
-	'toes' => Array
+		'toes' => Array
+			(
+				'id' => "6670",
+				'title' => "Terrace of Endless Spring Guild Run",
+				'points' => "10",
+				'description' => "Defeat the bosses in Terrace of Endless Spring while in a guild group.",
+				'icon' => "achievement_raid_terraceofendlessspring01",
+				'criteria' => Array
+					(
+						'0' => Array ('id' => "19651",'description' => "Protectors of the Endless"),
+						'1' => Array ('id' => "19652",'description' => "Tsulong"),
+						'2' => Array ('id' => "19494",'description' => "Lei Shi"),
+						'3' => Array ('id' => "19495",'description' => "Sha of Fear"),
+					),
+			),
+												   
+		'tot' => Array
+			(
+				'id' => "8140",
+				'title' => "Throne of Thunder Guild Run",
+				'points' => "10",
+				'description' => "Defeat the bosses in the Throne of Thunder while in a guild group.",
+				'icon' => "archaeology_5_0_thunderkinginsignia",
+				'criteria' => Array
+					(
+						'0' => Array ('id' => "23072",'description' => "Jin'rokh the Breaker"),
+						'1' => Array ('id' => "23073",'description' => "Horridon"),
+						'2' => Array ('id' => "23074",'description' => "Council of Elders"),
+						'3' => Array ('id' => "23075",'description' => "Tortos"),
+						'4' => Array ('id' => "23076",'description' => "Megaera"),
+						'5' => Array ('id' => "23077",'description' => "Ji-Kun"),
+						'6' => Array ('id' => "23078",'description' => "Durumu the Forgotten"),
+						'7' => Array ('id' => "23079",'description' => "Primordius"),
+						'8' => Array ('id' => "23080",'description' => "Dark Animus"),
+						'9' => Array ('id' => "23081",'description' => "Iron Qon"),
+						'10' => Array ('id' => "23082",'description' => "Twin Consorts"),
+						'11' => Array ('id' => "23083",'description' => "Lei Shen"),
+					),
+			),
+		'soo' => Array
 		(
-			'id' => "6670",
-			'title' => "Terrace of Endless Spring Guild Run",
-			'points' => "10",
-			'description' => "Defeat the bosses in Terrace of Endless Spring while in a guild group.",
-			'icon' => "achievement_raid_terraceofendlessspring01",
-			'criteria' => Array
-				(
-					'0' => Array ('id' => "19651",'description' => "Protectors of the Endless"),
-					'1' => Array ('id' => "19652",'description' => "Tsulong"),
-					'2' => Array ('id' => "19494",'description' => "Lei Shi"),
-					'3' => Array ('id' => "19495",'description' => "Sha of Fear"),
-				),
-		),
-											   
-	'tot' => Array
-		(
-			'id' => "8140",
-			'title' => "Throne of Thunder Guild Run",
-			'points' => "10",
-			'description' => "Defeat the bosses in the Throne of Thunder while in a guild group.",
-			'icon' => "archaeology_5_0_thunderkinginsignia",
-			'criteria' => Array
-				(
-					'0' => Array ('id' => "23072",'description' => "Jin'rokh the Breaker"),
-					'1' => Array ('id' => "23073",'description' => "Horridon"),
-					'2' => Array ('id' => "23074",'description' => "Council of Elders"),
-					'3' => Array ('id' => "23075",'description' => "Tortos"),
-					'4' => Array ('id' => "23076",'description' => "Megaera"),
-					'5' => Array ('id' => "23077",'description' => "Ji-Kun"),
-					'6' => Array ('id' => "23078",'description' => "Durumu the Forgotten"),
-					'7' => Array ('id' => "23079",'description' => "Primordius"),
-					'8' => Array ('id' => "23080",'description' => "Dark Animus"),
-					'9' => Array ('id' => "23081",'description' => "Iron Qon"),
-					'10' => Array ('id' => "23082",'description' => "Twin Consorts"),
-					'11' => Array ('id' => "23083",'description' => "Lei Shen"),
-				),
-		),
-	'soo' => Array
-	(
-		"id" 			=> "8510",
-		"title" 		=> "Siege of Orgrimmar Guild Run",
-		"points" 		=> "10",
-		"description" 	=> "Defeat the bosses in the Siege of Orgrimmar while in a guild group.",
-		"icon" 			=> "ability_garrosh_touch_of_yshaarj",
+			"id" 			=> "8510",
+			"title" 		=> "Siege of Orgrimmar Guild Run",
+			"points" 		=> "10",
+			"description" 	=> "Defeat the bosses in the Siege of Orgrimmar while in a guild group.",
+			"icon" 			=> "ability_garrosh_touch_of_yshaarj",
 
-		'criteria' => Array
-		(
-			'0' => Array ( "id" => '23692', "description" => "Immerseus"),
-			'1' => Array ( "id" => '23693', "description" => "Fallen Protectors"),
-			'2' => Array ( "id" => '23694', "description" => "Norushen"),
-			'3' => Array ( "id" => '23695', "description" => "Sha of Pride"),
-			'4' => Array ( "id" => '23696', "description" => "Galakras"),
-			'5' => Array ( "id" => '23697', "description" => "Iron Juggernaut"),
-			'6' => Array ( "id" => '23698', "description" => "Kor'kron Dark Shaman"),
-			'7' => Array ( "id" => '23699', "description" => "General Nazgrim"),
-			'8' => Array ( "id" => '23700', "description" => "Malkorok"),
-			'9' => Array ( "id" => '23702', "description" => "Spoils of Pandaria"),
-			'10' => Array ( "id" => '23703', "description" => "Thok the Bloodthirsty"),
-			'11' => Array ( "id" => '23701', "description" => "Siegecrafter Blackfuse"),
-			'12' => Array ( "id" => '23704', "description" => "Paragons of the Klaxxi"),
-			'13' => Array ( "id" => '23705', "description" => "Garrosh Hellscream"),
+			'criteria' => Array
+			(
+				'0' => Array ( "id" => '23692', "description" => "Immerseus"),
+				'1' => Array ( "id" => '23693', "description" => "Fallen Protectors"),
+				'2' => Array ( "id" => '23694', "description" => "Norushen"),
+				'3' => Array ( "id" => '23695', "description" => "Sha of Pride"),
+				'4' => Array ( "id" => '23696', "description" => "Galakras"),
+				'5' => Array ( "id" => '23697', "description" => "Iron Juggernaut"),
+				'6' => Array ( "id" => '23698', "description" => "Kor'kron Dark Shaman"),
+				'7' => Array ( "id" => '23699', "description" => "General Nazgrim"),
+				'8' => Array ( "id" => '23700', "description" => "Malkorok"),
+				'9' => Array ( "id" => '23702', "description" => "Spoils of Pandaria"),
+				'10' => Array ( "id" => '23703', "description" => "Thok the Bloodthirsty"),
+				'11' => Array ( "id" => '23701', "description" => "Siegecrafter Blackfuse"),
+				'12' => Array ( "id" => '23704', "description" => "Paragons of the Klaxxi"),
+				'13' => Array ( "id" => '23705', "description" => "Garrosh Hellscream"),
+			),
 		),
-	),
+		'brf' => array
+		(
+			"id" 			=> "9417",
+			"title" 		=> "Blackrock Foundry Guild Run",
+			"points" 		=> "10",
+			"description" 	=> "Defeat the bosses of Blackrock Foundry on Normal difficulty or higher, while in a guild group.",
+			"icon" 			=> "achievement_boss_blackhand",
+
+			'criteria' => Array (
+				'0' => Array ( "id" => '25720', "description" => 'Gruul'),
+				'1' => Array ( "id" => '25721', "description" => 'Oregorger'),
+				'2' => Array ( "id" => '25722', "description" => 'Hans\'gar and Franzok'),
+				'3' => Array ( "id" => '25723', "description" => 'Flamebender Ka\'graz'),
+				'4' => Array ( "id" => '25724', "description" => 'Beastlord Darmac'),
+				'5' => Array ( "id" => '25725', "description" => 'Operator Thogar'),
+				'6' => Array ( "id" => '25726', "description" => 'Blast Furnace'),
+				'7' => Array ( "id" => '25727', "description" => 'Kromog'),
+				'8' => Array ( "id" => '25728', "description" => 'Iron Maidens'),
+				'9' => Array ( "id" => '25729', "description" => 'Warlord Blackhand'),
+			),
+		),
+		'hml' => array(
+			"id" 			=> "9416",
+			"title" 		=> "Highmaul Guild Run",
+			"description" 	=> "Defeat the bosses of Highmaul on Normal difficulty or higher, while in a guild group.",
+			"points" 		=> "10",
+			"icon" 			=> "achievement_boss_highmaul_king",
+
+			'0' => Array ( "id" => '25713', "description" => "Kargath Bladefist"),
+			'1' => Array ( "id" => '25714', "description" => "The Butcher"),
+			'2' => Array ( "id" => '25715', "description" => "Tectus"),
+			'3' => Array ( "id" => '25716', "description" => "Brackenspore"),
+			'4' => Array ( "id" => '25717', "description" => "Twin Ogron"),
+			'5' => Array ( "id" => '25718', "description" => "Ko'ragh"),
+			'6' => Array ( "id" => '25719', "description" => "Imperator Mar'gok"),
+		),
 	);
 	/**
 	 * Constructor

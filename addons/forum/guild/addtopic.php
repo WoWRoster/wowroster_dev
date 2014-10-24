@@ -15,9 +15,10 @@ if( !defined('IN_ROSTER') )
 }
 //$addon = getaddon('forum');
 
-if( !$roster->auth->getAuthorized( $roster->config['forum_start_topic'] ) )
+if( !$roster->auth->getAuthorized( 'topic_start' ) )
 {
-	echo $roster->auth->getLoginForm($roster->config['forum_start_topic']);
+	echo $roster->auth->getLoginForm('topic_start');
+	ECHO 'CRAP';
 	return; //To the addon framework
 }
  
@@ -56,7 +57,7 @@ if($roster->config['forum_html_posts'] >= 0)
 {
 	$roster->tpl->assign_var('S_HTML_ENABLE', true);
 }
-
+roster_add_js('js/ckeditor/ckeditor.js');
 
 $roster->tpl->set_filenames(array(
 	'topic' => $addon['basename'] . '/forum_topic_new.html'

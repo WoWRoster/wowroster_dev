@@ -260,3 +260,24 @@ function externalAuth( $values )
 
 	return $input_field;
 }
+
+/**
+ * Get a list of addon based auth files
+ *
+ * @return array | $file => $name
+ */
+function defaultgroup( $values )
+{
+	global $roster;
+
+	$input_field = '<select name="config_' . $values['name'] . '">' . "\n";
+
+	foreach ($roster->auth->groups as $id => $data)
+	{
+		$input_field .= '<option value="'. $id .'" '. ($values['value']==$id ? 'selected' : '') .'>'. $data['name'] ."</option>\n";
+	}
+	$input_field .= '</select>';
+
+	return $input_field;
+}
+
