@@ -287,7 +287,7 @@ class ApiItem {
 			}
 			$this->isSocketable = $data['hasSockets'];
 			
-			$tt['Attributes']['ItemNote'] = $data['description'];
+			$tt['Attributes']['ItemNote'] = '"'.$data['description'].'"';
 			//$tt['Attributes']['Unique'] = $line;
 			if ($data['itemClass'] == '4')
 			{
@@ -336,11 +336,11 @@ class ApiItem {
 					$tt['Attributes']['Upgrade']['Base'] = $this->user['tooltipParams']['upgrade']['current'];
 					$tt['Attributes']['Upgrade']['Max'] = $this->user['tooltipParams']['upgrade']['total'];
 				}
-				else
-				{
-					$tt['Attributes']['Upgrade']['Base'] = 0;
-					$tt['Attributes']['Upgrade']['Max'] = 2;
-				}
+				//else
+				//{
+				//	$tt['Attributes']['Upgrade']['Base'] = 0;
+				//	$tt['Attributes']['Upgrade']['Max'] = 2;
+				//}
 				
 			}
 			//$this->isWeapon = true;
@@ -603,6 +603,7 @@ function _getCaption()
 	
 	function _getUpgrade()
 	{
+		global $roster;
 		$html = sprintf( $roster->locale->act['tooltip_upgrade'], $this->attributes['Upgrade']['Base'], $this->attributes['Upgrade']['Max']). "<br />";
 		return $html;
 	}
@@ -685,6 +686,7 @@ function _getCaption()
 
 	function _getSkillRequired()
 	{
+		global $roster;
 		$html = $roster->locale->act['tooltip_requires'].' ' . $this->attributes['SkillRequired'] . "<br />";
 		return $html;
 	}

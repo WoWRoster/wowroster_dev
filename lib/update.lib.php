@@ -664,8 +664,11 @@ class update
 								// Update the guild
 								$guildId = $this->update_guild($realm_name, $guild_name, $currentTimestamp, $guild, $region);
 								$guild['guild_id'] = $guildId;
-																// update and upload guild ranks
-								$this->update_guild_ranks($guild, $guildId);
+								// update and upload guild ranks
+								if (isset($guild['Ranks']))
+								{
+									$this->update_guild_ranks($guild, $guildId);
+								}
 								$guildMembers = $guild['Members'];
 
 								$guild_output = '';
@@ -3687,6 +3690,10 @@ CREATE TABLE `renprefix_quest_task_data` (
 		if( isset($char['Rank']) && isset($guilddata['Ranks'][$char['Rank']]['Title']) )
 		{
 			$this->add_value('guild_title', $guilddata['Ranks'][$char['Rank']]['Title']);
+		}
+		else if( isset($char['RankEn']) )
+		{
+			$this->add_value('guild_title', $char['RankEn']);
 		}
 
 		if( isset($guilddata['ScanInfo']) && $guilddata['ScanInfo']['HasOfficerNote'] )

@@ -709,8 +709,8 @@ function makeOverlib( $tooltip , $caption='' , $caption_color='' , $mode=0 , $lo
 				$tooltip = colorTooltip($tooltip,$caption_color,$locale,$caption_mode);
 				break;
 		}
-	
-		return 'data-tooltip="text-' .htmlspecialchars(htmlentities($tooltip)).'" data-caption="'.htmlspecialchars(htmlentities($caption)).'"';
+		//$t = 
+		return 'data-tooltip="text-' . base64_encode( $tooltip ) . '" data-caption="'.base64_encode($caption).'"';
 	}
 	else if ($type == 'item')
 	{

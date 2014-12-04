@@ -62,9 +62,20 @@ else
 			$result12 = $roster->db->query($query12);
 			$da = $roster->db->fetch($result12);
 			$uitem = json_decode($da['json'],true);
-
+			
+			$params = array();
+			$params['id'] = $item_id;
+			if (isset($uitem['bonusLists']) && !empty($uitem['bonusLists']))
+			{
+				$params['bl'] = implode(',',$uitem['bonusLists']);
+			}
+			//if (isset($uitem['context']) && !empty($uitem['context']) && $uitem['context'] != 'quest-reward')
+			//{
+			//	$params['context'] = $uitem['context'];
+			//}
+				
 			$gemx = array();
-			$item = $roster->api2->fetch('item',array('id'=>$item_id));//$roster->api->Data->getItemInfo($item_id);
+			$item = $roster->api2->fetch('item',$params);//$roster->api->Data->getItemInfo($item_id);
 			if (isset( $item['id']))
 			{
 				if (isset($gem0) && !empty($gem0))
@@ -195,9 +206,9 @@ else
 			$v = '';
 			if (isset($_POST['caption']))
 			{
-				$v = htmlspecialchars_decode( html_entity_decode( stripslashes( $_POST['caption'] ) ) );
+				$v = base64_decode( $_POST['caption'] );
 			}
-			$output = $v.htmlspecialchars_decode( html_entity_decode( stripslashes( $body ) ) );
+			$output = $v.base64_decode( $body );
 		break;
 		
 		case 'char':
@@ -258,7 +269,7 @@ else
 	}
 	
 	echo $output;
-	//include_once (ROSTER_BASE . 'footer.php');
+	//       include_once (ROSTER_BASE . 'footer.php');
 	exit();
 	
 	

@@ -919,6 +919,7 @@ $lang['tooltip_preg_chance_hit']='/Chance ^(to|on) hit: (.+)/';
 $lang['tooltip_preg_heroic']='/Heroisch/';
 $lang['tooltip_preg_timeless']='/Zeitlose/';
 $lang['tooltip_preg_warforged']='/^(Flexibel|Kriegsgeschmiedet)/';
+$lang['tooltip_preg_crafted'] = '/Stage (\d+) of (\d+)/';
 $lang['tooltip_preg_lfr']='/Raid Finder/';
 $lang['tooltip_garbage1']='/\<Zum Sockeln Shift-Rechtsklick\>/';
 $lang['tooltip_garbage2']='/\<Zum Lesen rechtsklicken\>/';

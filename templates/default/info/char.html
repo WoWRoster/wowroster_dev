@@ -540,37 +540,29 @@
 							</div>
 	
 							<div class="frames">
-<!-- BEGIN tree -->
-								<div class="spec<!-- IF talent.tree.HSELECT --> tselected<!-- ELSE --> tnselected<!-- ENDIF -->">
-									<img class="tbackground" src="{INTERFACE_URL}Interface/TalentFrame/{talent.tree.ICON}.{IMG_SUFFIX}" alt="" />
-									<div class="content">
-
-<!-- BEGIN tier -->
-									<ul class="tier tier-0">
-										<li class="unlocks">{talent.tree.tier.UNLOCK}</li>
-<!-- BEGIN cell -->
-										<li class="talent">
-										<div class="cell cell-<!-- IF talent.tree.tier.cell.RANK eq 1 -->selected<!-- ELSE -->disabled<!-- ENDIF -->" {talent.tree.tier.cell.TOOLTIP}>
-											<span class="icon-frame frame">
+							<!-- BEGIN tree -->	
+							<div class="spec<!-- IF talent.tree.HSELECT --> tselected<!-- ELSE --> tnselected<!-- ENDIF -->">
+								<img class="tbackground" src="{INTERFACE_URL}Interface/TalentFrame/{talent.tree.ICON}.{IMG_SUFFIX}" alt="" />
+								<div class="talentcalc-core">
+							<!-- BEGIN tier -->
+									<div data-row="0" class="talentcalc-row" data-available="yes">
+										<div class="outer" data-selected="no"><div class="inner">{talent.tree.tier.UNLOCK}</div></div>
+							<!-- BEGIN cell -->
+										<div class="outer" data-row="0" data-col="0" cursor="pointer" data-selected="<!-- IF talent.tree.tier.cell.RANK eq 1 -->yes<!-- ELSE -->no<!-- ENDIF -->" {talent.tree.tier.cell.TOOLTIP}>
+											<div class="iconmedium">
 												<img src="{INTERFACE_URL}Interface/Icons/{talent.tree.tier.cell.ICON}" alt="" />
-											</span>
-											<span class="name">{talent.tree.tier.cell.NAME}</span>
-											<span class="clear"></span>
+											</div>
+											<table><tbody><tr><td>{talent.tree.tier.cell.NAME}</td></tr></tbody></table>
+											
 										</div>
-										</li>
-<!-- END cell -->
-									</ul>
-<!-- END tier -->
+							<!-- END cell -->
 									</div>
-									<div class="spec-name">
-										<span class="text">{talent.tree.NAME}</span> : {talent.tree.POINTS}
-										<span class="icon-{talent.tree.ROLE}"></span>
-						
-									</div>
+							<!-- END tier -->
 								</div>
-<!-- END tree -->
-<!-- # bm tree -->
 							</div>
+							<!-- END tree -->
+							</div>
+
 						</div>
 					</div>
 				</div>

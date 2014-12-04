@@ -363,7 +363,7 @@ class rsyncBase {
 	{
 		global $roster, $addon;
 		
-		$content = $roster->api2->fetch('guild',array('name'=>$name,'server'=>$server,'fields'=>$this->_guild_fields('1:2:3')));
+		$content = $roster->api2->fetch('guild',array('name'=>$name,'server'=>$server,'fields'=>$this->_guild_fields()));
 		//$roster->api->Guild->getGuildInfo($server,$name,'1:2:3');
 		$this->datas = $content;
 		//echo '+++<pre>';
@@ -485,7 +485,7 @@ class rsyncBase {
 	{
 			global $roster, $addon;
 
-			$char = $roster->api2->fetch('character',array('name'=>$this->memberName,'server'=>$this->server,'fields'=>$this->_char_fields('1:2:3:4:5:7:11:14')));
+			$char = $roster->api2->fetch('character',array('name'=>$this->memberName,'server'=>$this->server,'fields'=>$this->_char_fields()));
 			//$roster->api->Char->getCharInfo($this->server,$this->memberName,'1:2:3:4:5:7:11:14');
 			//$this->_guild_fields('1:2:3')
 
@@ -767,7 +767,17 @@ class rsyncBase {
 		
 			if ($slot != 'averageItemLevel' && $slot != 'averageItemLevelEquipped')
 			{
-
+				$params = array();
+				$params['id'] = $item['id'];
+				if (isset($item['bonusLists']) && !empty($item['bonusLists']))
+				{
+					$params['bl'] = implode(',',$item['bonusLists']);
+				}
+				if (isset($item['context']) && !empty($item['context']) && $item['context'] != 'quest-reward')
+				{
+					$params['context'] = $item['context'];
+				}
+				
 				$enchant =  $gem0 =  $gem1 =  $gem2 = $es = $set = $reforge = $suffex = $seed = $upgrade = null;
 				$gam['enchant']=$gam['enchant']=$gam['reforge']=$gam['suffix']=$gam['seed']=$gam['set']=null;
 				$gam['gem0']=$gam['gem1']=$gam['gem2']=$gam['extraSocket']=null;
@@ -868,7 +878,7 @@ class rsyncBase {
 					$slot = 'SecondaryHand';
 				}
 				$enchant = 0;
-				$item_api = $roster->api2->fetch('item',array('id'=>$item['id']));
+				$item_api = $roster->api2->fetch('item',$params);
 				$this->data["Equipment"][$slot] = array();
 				$this->data["Equipment"][$slot]['Item'] = $item['id'];
 				$this->data["Equipment"][$slot]['Type'] = $roster->api->Item->itemclass[$item_api['itemClass']];
@@ -1498,107 +1508,44 @@ class rsyncBase {
 		$this->_debug( 2, true, 'Deleted old jobs from DB', true ? 'OK' : 'Failed');
 	}
 	
-	function _guild_fields($data)
+	function _guild_fields()
 	{
-		$fds = explode(":",$data);
+		global $addon;
 		
 		$x=array();
-		foreach ($fds as $fd => $s)
-		{
-			switch($s)
-			{
-				case '1':		$x[] = 'members';
-								#list of guild members
-				break;
-				case '2':		$x[] = 'achievements';
-								#achievements for the guild
-				break;
-				case '3':		$x[] = 'news';
-								#news items found on the battle.net website
-				break;
-				default:
-								$this->x.= '';
-				break;
-			}
-		
-		}
+		if ($addon['config']['rsync_guild_members']) { 		$x[] = 'members';}
+		if ($addon['config']['rsync_guild_achievements']) { $x[] = 'achievements';}
+		if ($addon['config']['rsync_guild_news']) { 		$x[] = 'news';}
+		if ($addon['config']['rsync_guild_challenge']) { 	$x[] = 'challenge';}
 		return implode(',',$x);
 	}
-	function _char_fields($data)
+	function _char_fields()
 	{
-		$fds = explode(":",$data);
+		global $addon;
 		
 		$x=array();
-		foreach ($fds as $fd => $s)
-		{
-			switch($s)
-			{
-				case '1':	$x[] = 'guild';
-							#A summary of the guild that the character belongs to. If the character does not belong to a guild and this field is requested, this field will not be exposed.
-				break;
-				case '2':	$x[] = 'stats';
-							#A map of character attributes and stats.
-				break;
-				case '3':	$x[] = 'talents';
-							#A list of talent structures.
-				break;
-				case '4':	$x[] = 'items';
-							# list of items equipted by the character. Use of this field will also include the average item level and average item level equipped for the character.
-				break;
-				case '5':	$x[] = 'reputation';
-							#A list of the factions that the character has an associated reputation with.
-				break;
-				case '6':	$x[] = 'titles';
-							#A list of the titles obtained by the character.
-				break;
-				case '7':	$x[] = 'professions';
-							#A list of the character's professions. It is important to note that when this information is retrieved, it will also include the known recipes of each of the listed professions.
-				break;
-				case '8':	$x[] = 'appearance';
-							#A map of values that describes the face, features and helm/cloak display preferences and attributes.
-				break;
-				case '9':	$x[] = 'companions';
-							#A list of all of the non-combat pets obtained by the character.
-				break;
-				case '10':	$x[] = 'mounts';
-							#A list of all of the mounts obtained by the character.
-				break;
-				case '11':	$x[] = 'hunterPets';
-							#A list of all of the combat pets obtained by the character.
-				break;
-				case '12':	$x[] = 'achievements';
-							#A map of achievement data including completion timestamps and criteria information.
-				break;
-				case '13':	$x[] = 'progression';
-							#A list of raids and bosses indicating raid progression and completedness.
-				break;
-				case '14':	$x[] = 'pvp';
-							#A list of battleground vistories and teams.
-				break;
-				case '15':	$x[] = 'quests';
-							#A list of battleground vistories and teams.
-				break;
-				case '16':	$x[] = 'feed';
-							#A list of battleground vistories and teams.
-				break;
-				case '17':	$x[] = 'pets';
-							#A list of battleground vistories and teams.
-				break;
-				case '18':	$x[] = 'petSlots';
-							#A list of battleground vistories and teams.
-				break;
-				case '19':  $x[] = 'statistics';
-							#A list of all the statics for a player
-				break;
-				case 'ALL':	$x[] = 'guild,stats,talents,items,reputation,titles,professions,appearance,companions,mounts,pets,achievements,progression,pvp,quests,feed,hunterPets,petSlots,statistics';
-							#A list of battleground vistories and teams.
-				break;
-				default:
-							$x[] = '';
-				break;
-			}
+		if ($addon['config']['rsync_char_achievements']) {	$x[] = 'achievements';		}
+		if ($addon['config']['rsync_char_appearance']) {	$x[] = 'appearance';		}
+		if ($addon['config']['rsync_char_feed']) {			$x[] = 'feed';		}
+		if ($addon['config']['rsync_char_guild']) {			$x[] = 'guild';		}
+		if ($addon['config']['rsync_char_hunterPets']) {	$x[] = 'hunterPets';		}
+		if ($addon['config']['rsync_char_items']) {			$x[] = 'items';		}
+		if ($addon['config']['rsync_char_mounts']) {		$x[] = 'mounts';		}
+		if ($addon['config']['rsync_char_pets']) {			$x[] = 'pets';		}
+		if ($addon['config']['rsync_char_petSlots']) { 		$x[] = 'petSlots';		}
+		if ($addon['config']['rsync_char_professions']) { 	$x[] = 'professions';		}
+		if ($addon['config']['rsync_char_progression']) { 	$x[] = 'progression';		}
+		if ($addon['config']['rsync_char_pvp']) { 			$x[] = 'pvp';		}
+		if ($addon['config']['rsync_char_quests']) { 		$x[] = 'quests';		}
+		if ($addon['config']['rsync_char_reputation']) { 	$x[] = 'reputation';		}
+		if ($addon['config']['rsync_char_stats']) {			$x[] = 'stats';		}
+		if ($addon['config']['rsync_char_talents']) { 		$x[] = 'talents';		}
+		if ($addon['config']['rsync_char_titles']) { 		$x[] = 'titles';		}
+		if ($addon['config']['rsync_char_audit']) { 		$x[] = 'audit';		}
+		if ($addon['config']['rsync_char_companions']) { 	$x[] = 'companions';		}
+		if ($addon['config']['rsync_char_statistics']) { 	$x[] = 'statistics';		}
+		if ($addon['config']['rsync_char_hunterPets']) { 	$x[] = 'hunterPets';		}
 		
-		}
 		return implode(',',$x);
 	}
 	

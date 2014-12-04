@@ -297,9 +297,10 @@ class mainFunctions
 					$roster->locale->add_locale_file($xplugin['locale_dir'] . $lang . '.php', $lang);
 				}
 				$plugin['scope'] = explode('|',$plugins[$name]['scope']);
-
+				
 				if (in_array( $roster->scope, $plugin['scope'] ) )
 				{
+
 					$classfile = ROSTER_PLUGINS . $name . DIR_SEP . $name . '.php';
 					require($classfile);
 					$pluginstuff = new $name($xplugin);

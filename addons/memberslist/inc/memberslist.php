@@ -69,7 +69,13 @@ class memberslist
 
 		// Set the js in the roster header
 		roster_add_js('addons/' . $basename . '/js/alts.js');
-
+		roster_add_js('addons/' . $basename . '/js/jquery.tablesorter.js');
+		$js = 'jQuery(document).ready( function($)
+					{ 
+						jQuery("#memberslist").tablesorter(); 
+					} 
+				);';
+roster_add_js($js, 'inline', 'header', false, false);
 		// Merge in the override options from the calling file
 		if( !empty($options) )
 		{
@@ -426,7 +432,7 @@ class memberslist
 			}
 
 			$roster->tpl->assign_block_vars('header_cell',array(
-				'LINK' => makelink($get),
+				'LINK' => '',//makelink($get),
 				'TEXT' => $th_text,
 				'ID' => false,
 				'B_FILTER' => ( !isset($DATA['filter']) || $DATA['filter'] !== false ),

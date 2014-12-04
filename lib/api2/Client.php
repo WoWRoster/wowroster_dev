@@ -454,7 +454,12 @@ class Client
 						$q = 'wow/character/'.$fields['server'].'/'.$fields['name'];
 					break;
 			case 'item':
-						$q = 'wow/item/'.$fields['id'];
+						$c='';
+						if (isset($fields['context']))
+						{
+							$c = '/'.$fields['context'];
+						}
+						$q = 'wow/item/'.$fields['id'].$c;
 					break;
 			case 'item_set':
 						$q = 'wow/item/set/'.$fields['id'];
@@ -564,7 +569,7 @@ class Client
     {
 
 		$protected_resource_url = self::_buildUrl($protected_resource_url, $parameters);
-
+//echo $protected_resource_url.'<br>';
         if ($this->access_token) {
             switch ($this->access_token_type) {
                 case self::ACCESS_TOKEN_URI:
@@ -728,8 +733,8 @@ class Client
 		$this->errno	= curl_errno($ch);
 		$this->error	= curl_error($ch);
         if ($this->errno) {
-			//print_r($this->errno);
-			//print_r($this->error);
+			print_r($this->errno);
+			print_r($this->error);
 			$roster->set_message( "".print_r($this->errno)."<br/>\n\r [".print_r($this->error).']', 'API Error', 'error' );
 			return false;
         } else {
@@ -743,16 +748,11 @@ class Client
 		{
 			$this->cache->api_track($this->usage['type'], $this->usage['url'], $this->usage['responce_code'], $this->usage['content_type']);
 		}
-		/*
-        return array(
-            'result' => (null === $json_decode) ? $result : $json_decode,
-            'code' => $http_code,
-            'content_type' => $content_type
-        );
-		*/
-		if ($json_decode['status'] = 'nok')
+
+		if ($json_decode['status'] == 'nok')
 		{
 			$roster->set_message( "".$json_decode['reason']."<br/>\n\r [".$this->usage['url'].'] : '.$this->usage['responce_code'].'', 'API Error', 'error' );
+			//print_r($json_decode);
 			return;
 		}
 		return (null === $json_decode) ? $result : $json_decode;

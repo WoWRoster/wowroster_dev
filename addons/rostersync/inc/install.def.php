@@ -137,6 +137,9 @@ class rostersyncInstall
 		$installer->add_config("'516', 'rsync_char_talents', '0', 'radio{yes^1|no^0', 'rsync_scan_char'");
 		$installer->add_config("'517', 'rsync_char_titles', '0', 'radio{yes^1|no^0', 'rsync_scan_char'");
 		$installer->add_config("'518', 'rsync_char_audit', '0', 'radio{yes^1|no^0', 'rsync_scan_char'");
+		$installer->add_config("'519', 'rsync_char_companions', '0', 'radio{yes^1|no^0', 'rsync_scan_char'");
+		$installer->add_config("'520', 'rsync_char_statistics', '0', 'radio{yes^1|no^0', 'rsync_scan_char'");
+		$installer->add_config("'521', 'rsync_char_hunterPets', '0', 'radio{yes^1|no^0', 'rsync_scan_char'");
 		/*
 			rsync_access
 		*/
@@ -205,6 +208,12 @@ class rostersyncInstall
 	{
 		global $installer;
 
+		/*
+		$installer->add_config("'519', 'rsync_char_companions', '0', 'radio{yes^1|no^0', 'rsync_scan_char'");
+		$installer->add_config("'520', 'rsync_char_statistics', '0', 'radio{yes^1|no^0', 'rsync_scan_char'");
+		$installer->add_config("'521', 'rsync_char_hunterPets', '0', 'radio{yes^1|no^0', 'rsync_scan_char'");
+		
+		*/
 		return true;
 	}
 

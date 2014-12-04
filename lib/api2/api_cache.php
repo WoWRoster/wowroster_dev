@@ -9,7 +9,7 @@ class apicache {
 	
 	public function item($parameters,$usage)
 	{
-		return $this->CacheCheck($parameters['id']);
+		return $this->CacheCheck($parameters['id'],$parameters);
 	}
 	
 	public function insertitem($data,$vars,$parameters)
@@ -20,7 +20,7 @@ class apicache {
 		}
 		else
 		{
-			$this->InsertICache($data);
+			$this->InsertICache($data,$parameters);
 		}
 	}
 	
@@ -58,7 +58,7 @@ class apicache {
 		$ret = $roster->db->query($query);
 	}
 
-	public function InsertICache($data)
+	public function InsertICache($data,$par)
 	{
 		global $roster, $update;
 		$tooltip = $roster->api->Item->item($data,null,null);
@@ -77,6 +77,8 @@ class apicache {
 		$update->add_value('item_level' , $data['itemLevel']);
 		$update->add_value('locale' , $roster->config['api_url_locale']);
 		$update->add_value('timestamp' , time() );
+		$update->add_value('context' , $par['context'] );
+		$update->add_value('bonus' , $par['bl'] );
 		$update->add_value('json' ,json_encode($data, true));
 		$querystr = "INSERT INTO `" .$roster->db->table('api_items') . "` SET " . $update->assignstr;
 		$result = $roster->db->query($querystr);
@@ -103,11 +105,21 @@ class apicache {
 		$querystr = "INSERT INTO `" .$roster->db->table('api_gems') . "` SET " . $update->assignstr;
 		$result = $roster->db->query($querystr);
 	}
-	public function CacheCheck($id)
+	public function CacheCheck($id,$parameters)
 	{
 		global $roster;
 		
-		$sql = "SELECT * FROM `" .$roster->db->table('api_items') . "` WHERE `item_id` = '".$id."' ";
+		$p = '';
+		if (isset($parameters['context']))
+		{
+			$p .= ' AND `context` = "'.$parameters['context'].'" ';
+		}
+		if (isset($parameters['bl']))
+		{
+			$p .= ' AND `bonus` = "'.$parameters['bl'].'" ';
+		}
+				
+		$sql = "SELECT * FROM `" .$roster->db->table('api_items') . "` WHERE `item_id` = '".$id."' ".$p."";
 		$result = $roster->db->query($sql);
 		if ($roster->db->num_rows($result) == 0)
 		{
@@ -133,7 +145,7 @@ class apicache {
 		else
 		{
 			$row = $roster->db->fetch($result);
-			if ($this->cachetime($row['timestamp']))
+			if ($this->cachetime($row['timestamp']) && isset($row['name']))
 			{
 				return json_decode($row['json'], true);
 			}

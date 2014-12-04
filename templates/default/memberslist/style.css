@@ -17,3 +17,35 @@
 	padding-left:14px;
 	background-repeat:no-repeat;
 }
+/* This css is already contained within each theme file */
+/* tables */
+table #memberslist {
+	font-family:arial;
+	font-size: 8pt;
+	width: 100%;
+	text-align: left;
+}
+table #memberslist thead tr th, table #memberslist tfoot tr th {
+	border: 1px solid #FFF;
+	font-size: 8pt;
+}
+table #memberslist thead tr {
+background: url(../images/th_bg.png) repeat-x center top;
+}
+
+table #memberslist thead tr .header {
+	background-image: url(bg.gif);
+	background-repeat: no-repeat;
+	background-position: center right;
+	cursor: pointer;
+}
+
+table #memberslist thead tr .headerSortUp {
+	background-image: url(asc.gif);
+}
+table #memberslist thead tr .headerSortDown {
+	background-image: url(desc.gif);
+}
+table #memberslist thead tr .headerSortDown, table #memberslist thead tr .headerSortUp {
+
+}

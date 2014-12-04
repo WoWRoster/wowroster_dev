@@ -335,7 +335,7 @@
 /*********** Talent Page ***********/
 .main-panel .talents .frames { /*margin: auto; *//* height: 473px; *//* width: auto; *//* float: center; */margin: 1px;padding: 1px;}
 
-.main-panel .talents .spec { position: relative;/* float: left; */width: 740px;/* height: 454px; *//* margin: 3px; *//* padding: 1px; */display: block;/* overflow: visible; */ }
+.main-panel .talents .spec { position: relative;/* float: left; */width: 740px; height: 450px; /* margin: 3px; *//* padding: 1px; */display: block;/* overflow: visible; */ }
 .tselected { border: 2px solid #008000;}
 .tnselected { border: 2px solid #000000;}
 .main-panel .talents .spec-name { /*position: absolute; *//* background: url(../images/shader.png) repeat; *//* width: 730px; *//* padding: 5px; *//* left: 0; *//* bottom: 1px; *//* font-size: 10px; *//* font-weight: bold; */ }
@@ -345,7 +345,7 @@
 .main-panel .talents .mastery.name { color:#ffdd00; }
 .main-panel .talents .mastery.desc { color:#ffdd00; }
 
-.main-panel .talents .tbackground { position: absolute;width: 740px;top: 1px;/* height: 430px; *//* z-index: 10; */ }
+.main-panel .talents .tbackground { position: absolute;width: 740px;top: 1px; height: 450px; /* z-index: 10; */ }
 .main-panel .talents .content { position: relative;width: 740px;/* height: 410px; */padding: 8px;display: block;z-index: 3333333;}
 
 .main-panel .talents .talent-cell { position: relative; float:left; width:75px; height:54px; }
@@ -414,7 +414,6 @@
 .main-panel .talents .glyph-3 img { float: left; background: url(images/glyphs/glyph_bg_prime.png); height: 30px; width: 30px; padding: 5px; }
 .main-panel .talents .glyph-3 .text { background: url(images/glyphs/glyph_bg_text.png) no-repeat right center; font-size: 14px; font-weight: bold; text-transform: capitalize; color: #FFF; float: left; line-height: 30px; height: 30px; width: 250px; margin-top: 5px; margin-bottom: 5px; padding-right: 5px; padding-left: 5px; }
 
-
 /***********  Spellbook Page ***********/
 
 .main-panel .spellbook .container .spell-tree { margin: 10px;  background: url(../images/char_info_bg.jpg) repeat-y center top; }
@@ -435,14 +434,37 @@
 
 
 /***********  Talent tab Arrows ***********/
-.requiredArrow { z-index: 100; position: absolute; display: block; }
-.vArrow { background: url(images/talents/arrow-down.gif) no-repeat 0 100%; }
-.hArrow { background: url(images/talents/arrow-vertical.gif) no-repeat 0 100%; }
-.plain { background-image: url(images/talents/arrow-plain.gif); }
-.arrowLeft { background-position: 0 0; }
-.arrowRight { background-position: 100% 0; }
-/*.disabledArrow { background-position: 100% 100%; }
-.disabledArrowL { background-position: 0 100%; }*/
-
-
 .skill-icon { float:left; margin-right: 2px; width: 18px; height: 18px; }
+
+.talentcalc-row{background:url(images/talents/mop-talents.png);height:50px;line-height:50px;margin:0 0 16px;text-align:center;}
+.talentcalc-row .outer{cursor:pointer;float:left;height: 42px;
+position: relative;
+margin: 2px;
+width:215px;border: 1px solid #fff;
+-moz-border-radius: 2px;
+-webkit-border-radius: 2px;
+border-radius: 2px;}
+.talentcalc-row .outer.last-child{width:183px;}
+.talentcalc-row .outer:first-child{cursor:default;font-size:22px;width:61px; border: 0px;}
+.talentcalc-row[data-available="yes"] .outer:first-child{color:#ffd100;}
+.talentcalc-row .outer:hover{background-position:0 -100px;}
+.talentcalc-row .outer[data-selected="yes"]{background-position:0 -150px;}
+.talentcalc-row .outer[data-selected="yes"]:hover{background-position:0 -250px;}
+.talentcalc-row .inner{bottom:0;display:block;float:left;left:0;right:0;top:0;}
+.talentcalc-row .inner>div{float:left;}
+.talentcalc-row .screen{bottom:0;display:block;left:0;position:absolute;right:0;top:0;z-index:1;}
+.talentcalc-row .iconmedium{left:5px;position:absolute;top:3px;}
+.talentcalc-row[data-available="yes"] .outer:hover .iconmedium a{background-position:0 0;}
+.talentcalc-row table{border-collapse:collapse;border-spacing:0;bottom:0;font-size:12px;font-weight:500;left:59px;line-height:normal;margin:0;position:absolute;text-align:left;top:0;display: inline-block;}
+.talentcalc-row td{height:50px;padding:0;}
+.talentcalc-row .outer[data-selected="yes"] td{color:#eee;}
+.talentcalc-row .outer[data-selected="yes"] .inner{background-position:right -200px;box-shadow:0 0 8px rgba(255,209,0,.4);-moz-box-shadow:0 0 8px rgba(255,209,0,.4);-webkit-box-shadow:0 0 8px rgba(255,209,0,.4);z-index:1;}
+
+.talentcalc-row .outer[data-selected="yes"] { color: #fff; background: #5b2200; border-color: #ce5209; -moz-box-shadow: 0 0 8px #ce5209 inset; -webkit-box-shadow: 0 0 8px #ce5209 inset; box-shadow: 0 0 8px #ce5209 inset; }
+.talentcalc-row .outer[data-selected="yes"]:hover { background: #732b00; border-color: #f2752c; -moz-box-shadow: 0 0 8px #f2752c inset; -webkit-box-shadow: 0 0 8px #f2752c inset; box-shadow: 0 0 8px #f2752c inset; }
+.talentcalc-row .outer[data-selected="no"] { color: #FFB100; opacity: .8; }
+.talentcalc-row .outer[data-selected="no"]:hover { background: #141414; border-color: #b6b6b6; -moz-box-shadow: 0 0 8px #b6b6b6 inset; -webkit-box-shadow: 0 0 8px #b6b6b6 inset; box-shadow: 0 0 8px #b6b6b6 inset; }
+
+.iconmedium {width: 44px;height: 44px;}
+.iconmedium img {width: 36px;height: 36px;left: 4px;top: 4px;border-radius: 4px;-moz-border-radius: 4px;-webkit-border-radius: 4px;}
+.iconsmall ins, .iconmedium ins, .iconlarge ins, .iconblizzard ins {display: block;position: absolute;z-index: 5;background-repeat: no-repeat;}

@@ -245,6 +245,8 @@ CREATE TABLE `renprefix_api_gems` (
 DROP TABLE IF EXISTS `renprefix_api_items`;
 CREATE TABLE `renprefix_api_items` (
    `item_id`        int(11) NOT NULL,
+   `context` VARCHAR( 100 ) NULL DEFAULT NULL,
+   `bonus` INT( 10 ) NULL DEFAULT NULL ;
    `item_name`      varchar(96) NOT NULL,
    `item_color`     varchar(16) NOT NULL,
    `item_texture`   varchar(64) NOT NULL,
@@ -256,7 +258,7 @@ CREATE TABLE `renprefix_api_items` (
    `item_rarity`    int(4) NOT NULL DEFAULT '-1',
    `locale`         varchar(16) DEFAULT NULL,
    `timestamp`      int(10) NOT NULL,
-   `json`           longtext DEFAULT NULL
+   `json`           longtext DEFAULT NULL,
   PRIMARY KEY  (`item_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 

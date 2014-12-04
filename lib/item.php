@@ -219,6 +219,28 @@ class item
 
 		return $html;
 	}
+	
+	function _getStage()
+	{
+		global $roster;
+
+		$heroic = $this->attributes['Stage'];
+
+		if( preg_match( $roster->locale->act['tooltip_preg_crafted'], $heroic) )
+		{
+			$color = '66DD33';
+		}
+		
+		else
+		{
+			$color = 'ffffff';
+		}
+
+		$html = '<span style="color:#' . $color . ';">' . $heroic . '</span><br />';
+
+		return $html;
+	}
+	
 	function _getTimeless()
 	{
 		global $roster;
@@ -758,7 +780,10 @@ class item
 			{
 				$html_tt .= $this->_getWarforged();
 			}
-			
+			if( isset($this->attributes['Stage']) )
+			{
+				$html_tt .= $this->_getStage();
+			}
 			if( isset($this->attributes['Heroic']) )
 			{
 				$html_tt .= $this->_getHeroic();
@@ -1224,7 +1249,11 @@ class item
 				//warforged
 				$tt['Attributes']['Warforged'] = $line;
 			}
-			
+			elseif( preg_match( $roster->locale->act['tooltip_preg_crafted'], $line) )
+			{
+				//stage
+				$tt['Attributes']['Stage'] = $line;
+			}
 			elseif( preg_match( $roster->locale->act['tooltip_preg_heroic'], $line) )
 			{
 				//heroic

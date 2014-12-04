@@ -274,7 +274,7 @@ function defaultgroup( $values )
 
 	foreach ($roster->auth->groups as $id => $data)
 	{
-		$input_field .= '<option value="'. $id .'" '. ($values['value']==$id ? 'selected' : '') .'>'. $data['name'] ."</option>\n";
+		$input_field .= '<option value="'. $id .'" '. ($values['value']==$id ? 'selected' : '') .'>'. $data['group_name'] ."</option>\n";
 	}
 	$input_field .= '</select>';
 

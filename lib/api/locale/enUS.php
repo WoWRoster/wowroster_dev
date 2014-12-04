@@ -237,7 +237,6 @@ $lang['apiitem']['statlocal'] = array(
 	'12' => 'Defense',
 	'13' => 'Dodge',
 	'37' => 'Expertise',
-	'40' => 'attack power by in Cat, Bear, Dire Bear, and Moonkin forms only.',
 	'28' => 'Melee Haste',
 	'29' => 'Ranged Haste',
 	'36' => 'Haste',
@@ -259,6 +258,11 @@ $lang['apiitem']['statlocal'] = array(
 	'41' => 'damage done by magical spells and effects by up to.',
 	'42' => 'healing done by magical spells and effects by up to.',
 	'47' => 'Spell Penetration',
+	// new in wod
+	'59' => "Multistrike",
+	'73' => "Agility or Intellect",
+	'40' => 'Versatility',
+	// end of new wod 
 	'45' => 'Spell Power'
 );
 $lang['apiitem']['itemstat'] = array(
@@ -286,7 +290,7 @@ $lang['apiitem']['itemstat'] = array(
 	'12' => '+%s Defense',
 	'13' => '+%s Dodge',
 	'37' => '+%s Expertise',
-	'40' => 'attack power by %s in Cat, Bear, Dire Bear, and Moonkin forms only.',
+	
 	'28' => '+%s Melee Haste',
 	'29' => '+%s Ranged Haste',
 	'36' => '+%s Haste',
@@ -308,6 +312,11 @@ $lang['apiitem']['itemstat'] = array(
 	'41' => 'damage done by magical spells and effects by up to %s.',
 	'42' => 'healing done by magical spells and effects by up to %s.',
 	'47' => '+%s Spell Penetration',
+	// new in wod
+	'59' => "+%s Multistrike",
+	'73' => "+%s Agility or Intellect",
+	'40' => '+%s Versatility',
+	// end of new wod 
 	'45' => '+%s Spell Power'
 );
 

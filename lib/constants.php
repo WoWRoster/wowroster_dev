@@ -84,9 +84,9 @@ define('ROSTER_ADDONUPDATEURL', 'http://www.wowroster.net/downloads.php?id=%1$s'
 /**
  * Some static and semi-static game data.
  */
-define('ROSTER_MAXCHARLEVEL', '90');
-define('ROSTER_MAXSKILLLEVEL', '600');
-define('ROSTER_MAXQUESTS', '25');
+define('ROSTER_MAXCHARLEVEL', '100');
+define('ROSTER_MAXSKILLLEVEL', '700');
+define('ROSTER_MAXQUESTS', '100');
 define('ROSTER_TALENT_ROWS', '7');//not changed new talent processor determins this
 define('ROSTER_TALENT_COLS', '4');// above note
 
