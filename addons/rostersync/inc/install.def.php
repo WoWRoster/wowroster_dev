@@ -29,7 +29,7 @@ class rostersyncInstall
 	var $active = true;
 	var $icon = 'spell_deathknight_bladedarmor';
 
-	var $version = '0.0.1';
+	var $version = '0.0.2';
 	var $wrnet_id  = '';
 
 	var $fullname = 'Roster Sync';
@@ -78,9 +78,9 @@ class rostersyncInstall
 		/*
 			rsync_conf
 		*/
-		$installer->add_config("'100', 'rsync_minlevel', '10', 'text{2|2', 'rsync_conf'");
+		$installer->add_config("'100', 'rsync_minlevel', '10', 'text{3|3', 'rsync_conf'");
 		$installer->add_config("'101', 'rsync_synchcutofftime', '1', 'text{4|4', 'rsync_conf'");
-		$installer->add_config("'102', 'rsync_use_ajax', '0', 'radio{off^0|Off^0', 'rsync_conf'");
+		//$installer->add_config("'102', 'rsync_use_ajax', '0', 'radio{off^0|Off^0', 'rsync_conf'");
 		$installer->add_config("'103', 'rsync_reloadwaittime', '24', 'text{4|4', 'rsync_conf'");
 		$installer->add_config("'104', 'rsync_fetch_timeout', '8', 'text{2|2', 'rsync_conf'");
 		$installer->add_config("'105', 'rsync_skip_start', '0', 'radio{On^1|Off^0', 'rsync_conf'");
@@ -104,8 +104,8 @@ class rostersyncInstall
 		/*
 			rsync_scanning
 		*/
-		$installer->add_config("'301','rsync_MinLvl','10', 'text{2|2', 'rsync_scaning'");
-		$installer->add_config("'302','rsync_MaxLvl','90', 'text{2|2', 'rsync_scaning'");
+		$installer->add_config("'301','rsync_MinLvl','10', 'text{3|3', 'rsync_scaning'");
+		$installer->add_config("'302','rsync_MaxLvl','100', 'text{3|3', 'rsync_scaning'");
 		$installer->add_config("'303','rsync_Rank','','select{----None----^|GuildMaster^0|Rank 1^1|Rank 2^2|Rank 3^3|Rank 4^4|Rank 5^5|Rank 6^6|Rank 7^7|Rank 8^8|Rank 9^9|Rank 10^10|Rank 11^11|Rank 12^12', 'rsync_scaning'");
 		$installer->add_config("'304','rsync_Class','','select{----None----^|Warrior^1|Paladin^2|Hunter^3|Rogue^4|Priest^5|Death Knight^6|Shaman^7|Mage^8|Warlock^9|Monk^10|Druid^11', 'rsync_scaning'");
 
@@ -208,12 +208,21 @@ class rostersyncInstall
 	{
 		global $installer;
 
-		/*
-		$installer->add_config("'519', 'rsync_char_companions', '0', 'radio{yes^1|no^0', 'rsync_scan_char'");
-		$installer->add_config("'520', 'rsync_char_statistics', '0', 'radio{yes^1|no^0', 'rsync_scan_char'");
-		$installer->add_config("'521', 'rsync_char_hunterPets', '0', 'radio{yes^1|no^0', 'rsync_scan_char'");
+		if( version_compare('0.0.2', $oldversion, '>') == true )
+		{
 		
-		*/
+			$installer->remove_config('102');
+			$installer->remove_config('100');
+			$installer->remove_config('301');
+			$installer->remove_config('302');
+			
+			$installer->add_config("'100', 'rsync_minlevel', '10', 'text{3|3', 'rsync_conf'");
+			$installer->add_config("'301','rsync_MinLvl','10', 'text{2|2', 'rsync_scaning'");
+			$installer->add_config("'302','rsync_MaxLvl','100', 'text{3|3', 'rsync_scaning'");
+			
+			
+		}
+
 		return true;
 	}
 
