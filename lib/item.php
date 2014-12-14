@@ -706,7 +706,7 @@ class item
 
 	function _getItemNote()
 	{
-		$html = '<span style="color:#ffd517;">' . $this->attributes['ItemNote'] . '</span><br />';
+		$html = '<span style="color:#ffd517;">2' . $this->attributes['ItemNote'] . '</span><br />';
 		return $html;
 	}
 
@@ -879,7 +879,7 @@ class item
 			}
 			if( isset($this->attributes['ItemNote']) )
 			{
-				$html_tt .= $this->_getItemNote();
+				//$html_tt .= $this->_getItemNote();
 			}
 			if( isset($this->attributes['Source']) )
 			{
@@ -1118,7 +1118,7 @@ class item
 			if( preg_match($roster->locale->act['tooltip_preg_enchant'], $tooltipWithoutColoredLines, $matches) )
 			{
 				//echo '<pre>';print_r($matches);echo '</pre>';
-				$tt['Attributes']['Enchantment'] = $matches[0];
+				$tt['Attributes']['Enchantment'] = $matches[1];
 			}
 			else
 			{
@@ -1322,9 +1322,9 @@ class item
 					$tt['Attributes']['Set']['InactiveSet'][] = $line;
 				}
 			}
-			elseif( preg_match('/"/',$line) )
+			elseif( preg_match('/"([^"]+)"/',$line) )
 			{
-				$tt['Attributes']['ItemNote'] = '';//$line;
+				$tt['Attributes']['ItemNote'] = $line;
 			}
 			elseif( preg_match("/" . $roster->locale->act['tooltip_sha'] . "/",$line) )
 			{

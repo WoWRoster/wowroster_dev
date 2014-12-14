@@ -69,11 +69,14 @@ else
 			{
 				$params['bl'] = implode(',',$uitem['bonusLists']);
 			}
-			//if (isset($uitem['context']) && !empty($uitem['context']) && $uitem['context'] != 'quest-reward')
-			//{
-			//	$params['context'] = $uitem['context'];
-			//}
-				
+			if (isset($uitem['context']) && !empty($uitem['context']) && $uitem['context'] != 'quest-reward' && $uitem['context'] != 'vendor')
+			{
+				$params['id'] .= "/".$uitem['context'];
+			}
+			if (isset($enchant))
+			{
+				$enchant = $enchant ? $enchant : null;
+			}	
 			$gemx = array();
 			$item = $roster->api2->fetch('item',$params);//$roster->api->Data->getItemInfo($item_id);
 			if (isset( $item['id']))
