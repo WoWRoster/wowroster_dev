@@ -180,10 +180,10 @@ class Upgrade {
 		return;
 	}
 	
-	function beta_2991121()
+	function beta_2991122()
 	{
 		global $roster, $installer;
-		if (version_compare($roster->config['version'], '2.9.9.1122'))
+		if (version_compare($roster->config['version'], '2.9.9.1123'))
 		{
 			$roster->db->query("DROP TABLE IF EXISTS `" . $roster->db->table('permissions') . "`;");
 			$roster->db->query("CREATE TABLE IF NOT EXISTS `" . $roster->db->table('permissions') . "` (
