@@ -773,7 +773,7 @@ class rsyncBase {
 				{
 					$params['bl'] = implode(',',$item['bonusLists']);
 				}
-				if (isset($item['context']) && !empty($item['context']) && $item['context'] != 'quest-reward')
+				if (isset($item['context']) && !empty($item['context']) && $item['context'] != 'quest-reward' && $item['context'] != 'vendor')
 				{
 					$params['context'] = $item['context'];
 				}
@@ -877,7 +877,7 @@ class rsyncBase {
 				{
 					$slot = 'SecondaryHand';
 				}
-				$enchant = 0;
+				//$enchant = 0;
 				$item_api = $roster->api2->fetch('item',$params);
 				$this->data["Equipment"][$slot] = array();
 				$this->data["Equipment"][$slot]['Item'] = $item['id'];
