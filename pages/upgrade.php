@@ -202,7 +202,7 @@ class Upgrade {
 			$roster->db->query("INSERT INTO `" . $roster->db->table('permissions') . "` VALUES ('', 'roster', '00', 'core', 'gp_update', 'gp_update_desc' , 'gp_update');");
 			$roster->db->query("INSERT INTO `" . $roster->db->table('permissions') . "` VALUES ('', 'roster', '00', 'core', 'cp_update', 'cp_update_desc' , 'cp_update');");
 			$roster->db->query("INSERT INTO `" . $roster->db->table('permissions') . "` VALUES ('', 'roster', '00', 'core', 'lua_update', 'lua_update_desc' , 'lua_update');");
-			$roster->db->query("UPDATE `" . $db->table('user_members') . "` SET `user_permissions` = '{\"id\":\"1\",\"roster_cp\":\"1\",\"gp_update\":\"1\",\"cp_update\":\"1\",\"lua_update\":\"1\"}' WHERE `usr` = 'Admin';"
+			$roster->db->query("UPDATE `" . $roster->db->table('user_members') . "` SET `user_permissions` = '{\"id\":\"1\",\"roster_cp\":\"1\",\"gp_update\":\"1\",\"cp_update\":\"1\",\"lua_update\":\"1\"}' WHERE `usr` = 'Admin';"
 			$roster->db->query("INSERT INTO `" . $roster->db->table('config') . "` VALUES (1056, 'default_group', '0', 'function{defaultgroup', 'main_conf');");
 			
 		$this->beta_upgrade();
