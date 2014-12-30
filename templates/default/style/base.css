@@ -1887,8 +1887,32 @@ margin: 1px;}
 .tab-menu .selected { cursor:default; border-color:#FC0; background: #fece2f url(../images/jquery-ui/ui-bg_gloss-wave_80_fece2f_500x100.png) 50% 50% repeat-x;}
 .tab-menu .selected .text { color:#ffffff; }
 
-
-
+/* Socket icons */
+.socket-line { margin: 1px 0;padding: 0;clear: both;}
+.icon-socket { display:inline-block; position: relative; width: 15px; height: 15px; float: left;
+margin-right: 4px;
+margin-top: 1px;}
+.icon-socket a.gem { display: block; width: 15px; height: 15px; }
+.icon-socket a.gem img { display: block; width: 13px; height: 13px; padding: 1px 0 0 1px; }
+.icon-socket .empty { position: absolute; left: 1px; top: 1px; width: 13px; height: 13px; }
+.icon-socket .frame { position: absolute; left: 0; top: 0; width: 15px; height: 15px; background: url("../images/sockets.png") no-repeat; }
+.icon-socket.socket-meta  .empty { background-color: #29292a; } /* meta */
+.icon-socket.socket-red  .empty { background-color: #301010; } /* red */
+.icon-socket.socket-yellow  .empty { background-color: #403010; } /* yellow */
+.icon-socket.socket-blue  .empty { background-color: #102040; } /* blue */
+.icon-socket.socket-prismatic .empty { background-color: #29292a; } /* prismatic */
+.icon-socket.socket-sha-touched .empty { background-color: #000; }     /* sha-touched */
+.icon-socket.socket-cogwheel .empty { background-color: #29292a; } /* cogwheel */
+.icon-socket.socket-meta  .frame { background-position:  -45px   0; } /* meta */
+.icon-socket.socket-red  .frame { background-position:      0   0; } /* red */
+.icon-socket.socket-yellow  .frame { background-position:  -15px   0; } /* yellow */
+.icon-socket.socket-blue  .frame { background-position:  -30px   0; } /* blue */
+.icon-socket.socket-orange  .frame { background-position:  -90px   0; } /* orange */
+.icon-socket.socket-purple .frame { background-position:  -75px   0; } /* purple */
+.icon-socket.socket-green .frame { background-position: -105px   0; } /* green */
+.icon-socket.socket-prismatic .frame { background-position:  -60px   0; } /* prismatic */
+.icon-socket.socket-sha-touched .frame { background-position: -120px   0; } /* sha-touched */
+.icon-socket.socket-Cogwheel .frame { background-position:  -45px   0; } /* Cogwheel */
 
 
 

@@ -18,7 +18,13 @@ if( !defined('IN_ROSTER') || !defined('IN_ROSTER_ADMIN') )
 {
 	exit('Detected invalid access to this file!');
 }
+if (isset($_POST))
+{
+echo '<pre>';
+print_r($_POST);
+echo '</pre>';
 
+}
 if (isset($_POST['process']) && $_POST['process'] == 'process')
 {
 	$count=1;
@@ -84,26 +90,43 @@ if (isset($_POST['process']) && $_POST['process'] == 'process')
 		$roster->set_message(sprintf($roster->locale->act['adata_update_class'], $roster->locale->act['id_to_class'][$classid]));
 		$roster->set_message(sprintf($roster->locale->act['adata_update_row'], $count));
 	}
-	
-	if (isset($_POST['clear']))
-	{
-		//TRUNCATE TABLE  `roster_api_gems`
-		$usage = "TRUNCATE TABLE `" . $roster->db->table('api_usage') . "`;";
-		$resultusage = $roster->db->query($usage);
-		
-		$roster->set_message(sprintf($roster->locale->act['installer_purge_0'],'Api Usage'));
-	}
-	
+
 	if (isset($_POST['truncate']))
 	{
-		//TRUNCATE TABLE  `roster_api_gems`
-		$qgem = "TRUNCATE TABLE `" . $roster->db->table('api_gems') . "`;";
-		$resultgem = $roster->db->query($qgem);
+		switch($_POST['truncate'])
+		{
+            case 'cache':
+                /* No break */
+				//TRUNCATE TABLE  `roster_api_gems`
+				$qgem = "TRUNCATE TABLE `" . $roster->db->table('api_gems') . "`;";
+				$resultgem = $roster->db->query($qgem);
 
-		$qitem = "TRUNCATE TABLE `" . $roster->db->table('api_items') . "`;";
-		$resultitem = $roster->db->query($qitem);
-		
-		$roster->set_message(sprintf($roster->locale->act['installer_purge_0'],'Item/gem cache'));
+				$qitem = "TRUNCATE TABLE `" . $roster->db->table('api_items') . "`;";
+				$resultitem = $roster->db->query($qitem);
+				
+				$qcache = "TRUNCATE TABLE `" . $roster->db->table('api_cache') . "`;";
+				$resultitem = $roster->db->query($qcache);
+				
+				$qenchant = "TRUNCATE TABLE `" . $roster->db->table('api_enchant') . "`;";
+				$resultitem = $roster->db->query($qenchant);
+				
+				$roster->set_message(sprintf($roster->locale->act['installer_purge_0'],'Item/Gem/Enchant/Cache cleared'));
+			break;
+			
+			case 'api_usage':
+				$qenchant = "TRUNCATE TABLE `" . $roster->db->table('api_usage') . "`;";
+				$resultitem = $roster->db->query($qenchant);
+				
+				$roster->set_message(sprintf($roster->locale->act['installer_purge_0'],' Api Usage cleared '));
+			break;
+			
+			case 'api_error':
+				$qenchant = "TRUNCATE TABLE `" . $roster->db->table('api_error') . "`;";
+				$resultitem = $roster->db->query($qenchant);
+				
+				$roster->set_message(sprintf($roster->locale->act['installer_purge_0'],' Api Error '));
+			break;
+		}
 	}
 
 
@@ -213,6 +236,7 @@ $roster->tpl->assign_block_vars('sections', array(
 					'ID'        => 'class',
 					'NAME'		=> 'class data',
 					'TYPE'		=> 'ALL',
+					'VALUE'		=> 'talents_data',
 				)
 			);
 foreach ($classes as $class => $num)
@@ -236,7 +260,7 @@ $roster->tpl->assign_block_vars('sections', array(
 					'ID'        => 'cache',
 					'NAME'		=> 'cache data',
 					'TYPE'		=> 'truncate',
-					'VALUE'		=> 'truncate',
+					'VALUE'		=> 'cache',
 				)
 			);	
 	$qgem = "SELECT * FROM `" . $roster->db->table('api_gems') . "`;";
@@ -257,9 +281,27 @@ $roster->tpl->assign_block_vars('sections', array(
 		'ROW'        => (($i % 2) + 1)
 		)
 	);
+	$qitem = "SELECT * FROM `" . $roster->db->table('api_enchant') . "`;";
+	$resultitem = $roster->db->query($qitem);
+	$item = $roster->db->num_rows($resultitem);
+	$roster->tpl->assign_block_vars('sections.lines', array(
+		'NAME'       => 'enchant',
+		'ROWS'       => $item,
+		'ROW'        => (($i % 2) + 1)
+		)
+	);
+	$qitem = "SELECT * FROM `" . $roster->db->table('api_cache') . "`;";
+	$resultitem = $roster->db->query($qitem);
+	$item = $roster->db->num_rows($resultitem);
+	$roster->tpl->assign_block_vars('sections.lines', array(
+		'NAME'       => 'General',
+		'ROWS'       => $item,
+		'ROW'        => (($i % 2) + 1)
+		)
+	);
 	$queryx = "SELECT COUNT(`id`) as total, type FROM `" . $roster->db->table('api_cache') . "` GROUP BY `type`";
 	$resultx = $roster->db->query($queryx);
-	$usage = array();
+
 	while ($row = $roster->db->fetch($resultx))
 	{
 		$roster->tpl->assign_block_vars('sections.lines', array(
@@ -272,7 +314,7 @@ $roster->tpl->assign_block_vars('sections', array(
 
 	
 	
-	$queryx = "SELECT * FROM `" . $roster->db->table('api_usage') . "` ORDER BY `date` desc LIMIT 0,150;";
+	$queryx = "SELECT * FROM `" . $roster->db->table('api_usage') . "` ORDER BY `date` desc;";
 	$resultx = $roster->db->query($queryx);
 	$usage = array();
 	while ($row = $roster->db->fetch($resultx))
@@ -280,13 +322,14 @@ $roster->tpl->assign_block_vars('sections', array(
 		//$usage[$row['date']][$row['type']]['total']=$row['total'];
 		$usage[$row['type']][] = array('url'=>$row['url'],'date'=>$row['date'],'count'=>$row['total']);
 	}
-
+	//echo '<pre>';
+	//print_r($usage);
+	//echo '</pre>';
 	$roster->tpl->assign_block_vars('sections', array(
 				'ID'		=> 'usage',
 				'NAME'		=> 'Usage Data',
-				'TYPE'		=> 'usage',
-				
-					'VALUE'		=> 'truncate',
+				'TYPE'		=> 'truncate',
+				'VALUE'		=> 'api_usage',
 			)
 		);
 	foreach($usage as $type => $x)
@@ -307,6 +350,25 @@ $roster->tpl->assign_block_vars('sections', array(
 		}
 	}
 
+	$roster->tpl->assign_block_vars('sections', array(
+					'ID'        => 'errors',
+					'NAME'		=> 'Errors',
+					'TYPE'		=> 'truncate',
+					'VALUE'		=> 'api_error',
+				)
+			);	
+	$err = "SELECT * FROM `" . $roster->db->table('api_error') . "`;";
+	$resulterr = $roster->db->query($err);
+	while ($row = $roster->db->fetch($resulterr))
+	{
+		$roster->tpl->assign_block_vars('sections.lines', array(
+			'NAME'       => $row['error_info'],
+			'ROWS'       => $row['url'].' - '.$row['total'],
+			'ROW'        => (($i % 2) + 1)
+			)
+		);
+	}
+	
 $menuz = 'tab-menu';
 $js2 ='
 $(document).ready(function() {

@@ -290,7 +290,7 @@ class Client
             throw new InvalidArgumentException('The grant_type is mandatory.', InvalidArgumentException::INVALID_GRANT_TYPE);
         }
         $grantTypeClassName = $this->convertToCamelCase($grant_type);
-        $grantTypeClass =  __NAMESPACE__ . '\\GrantType\\' . $grantTypeClassName;
+        $grantTypeClass =  __NAMESPACE__ . '' . $grantTypeClassName;
         if (!class_exists($grantTypeClass)) {
             throw new InvalidArgumentException('Unknown grant type \'' . $grant_type . '\'', InvalidArgumentException::INVALID_GRANT_TYPE);
         }
@@ -316,7 +316,9 @@ class Client
                 break;
         }
 
-        return $this->executeRequest($token_endpoint, $parameters, self::HTTP_METHOD_POST, $http_headers, self::HTTP_FORM_CONTENT_TYPE_APPLICATION);
+        $result = $this->executeRequest($token_endpoint, $parameters, self::HTTP_METHOD_POST, $http_headers, self::HTTP_FORM_CONTENT_TYPE_APPLICATION);
+
+		return $result;
     }
 
     /**
@@ -528,6 +530,7 @@ class Client
 					{
 						$q = 'wow/user/characters';
 					}else{
+					echo $this->access_token.'<br>';
 						throw new Exception('Access Token Required for this call.', Exception::MISSING_PARAMETER);
 					}
 					break;
@@ -669,10 +672,14 @@ class Client
             CURLOPT_SSL_VERIFYPEER => true,
             CURLOPT_CUSTOMREQUEST  => $http_method
         );
-//echo $url.'<br>';
         switch($http_method) {
             case self::HTTP_METHOD_POST:
                 $curl_options[CURLOPT_POST] = true;
+				if (is_array($parameters)) {
+                    $url .= '?' . http_build_query($parameters, null, '&');
+                } elseif ($parameters) {
+                    $url .= '?' . $parameters;
+                }
                 /* No break */
             case self::HTTP_METHOD_PUT:
 			case self::HTTP_METHOD_PATCH:
@@ -693,9 +700,9 @@ class Client
             case self::HTTP_METHOD_DELETE:
             case self::HTTP_METHOD_GET:
                 if (is_array($parameters)) {
-                    //$url .= '?' . http_build_query($parameters, null, '&');
+                    $url .= '?' . http_build_query($parameters, null, '&');
                 } elseif ($parameters) {
-                    //$url .= '?' . $parameters;
+                    $url .= '?' . $parameters;
                 }
                 break;
             default:
@@ -733,9 +740,12 @@ class Client
 		$this->errno	= curl_errno($ch);
 		$this->error	= curl_error($ch);
         if ($this->errno) {
-			print_r($this->errno);
-			print_r($this->error);
+			//print_r($this->errno);
+			//print_r($this->error);
 			$roster->set_message( "".print_r($this->errno)."<br/>\n\r [".print_r($this->error).']', 'API Error', 'error' );
+			//$e = "INSERT INTO `roster_talents` SET `type` = '637', `type` = 'Saved by the Light', `error` = 'Retribution', `error_info` = '0'";
+			$this->cache->api_error($this->usage['type'], $this->usage['url'], $this->errno, $this->error, $http_code, $content_type);
+
 			return false;
         } else {
             $json_decode = json_decode($result, true);
@@ -749,9 +759,10 @@ class Client
 			$this->cache->api_track($this->usage['type'], $this->usage['url'], $this->usage['responce_code'], $this->usage['content_type']);
 		}
 
-		if ($json_decode['status'] == 'nok')
+		if (isset($json_decode['status']) && $json_decode['status'] == 'nok')
 		{
 			$roster->set_message( "".$json_decode['reason']."<br/>\n\r [".$this->usage['url'].'] : '.$this->usage['responce_code'].'', 'API Error', 'error' );
+			$this->cache->api_error($this->usage['type'], $this->usage['url'], $this->errno.' - '.$json_decode['status'], $json_decode['reason'], $http_code, $content_type);
 			//print_r($json_decode);
 			return;
 		}

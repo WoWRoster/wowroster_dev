@@ -208,6 +208,22 @@ class Upgrade {
 		$this->beta_upgrade();
 		$this->finalize();
 		}
+		// next push
+		/*
+		DROP TABLE IF EXISTS `renprefix_api_error`;
+		CREATE TABLE `renprefix_api_error` (
+		`id` int(11) NOT NULL AUTO_INCREMENT,
+		`type` varchar(50) DEFAULT NULL,
+		`error` varchar(250) DEFAULT NULL,
+		`error_info` text,
+		`content_type` varchar(100) DEFAULT NULL,
+		`responce_code` varchar(100) DEFAULT NULL,
+		`url` varchar(250) DEFAULT NULL,
+		`total` int(10) NOT NULL DEFAULT '0',
+		`date` date DEFAULT NULL,
+		PRIMARY KEY (`id`)
+		) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+		*/
 		return;
 	}
 

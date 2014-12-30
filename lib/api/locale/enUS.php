@@ -215,6 +215,7 @@ $lang['apiitem']['slotType'] = array(
 stat types
 */
 $lang['apiitem']['statlocal'] = array(
+/*
 	'1' => 'Health',
 	'2' => 'Mana',
 	'3' => 'Agility',
@@ -264,6 +265,79 @@ $lang['apiitem']['statlocal'] = array(
 	'40' => 'Versatility',
 	// end of new wod 
 	'45' => 'Spell Power'
+	*/
+	"-1" => "None",
+	"0" => "Mana",
+	"1" => "Health",
+	"3" => "Agility",
+	"4" => "Strenght",
+	"5" => "Intellect",
+	"6" => "Spirit",
+	"7" => "Stamina",
+	//-------------------------------
+	"12" => "Defense Skill",
+	"13" => "Dodge",
+	"14" => "Parry",
+	"15" => "Block",
+	"16" => "Melee Hit",
+	"17" => "Ranged Hit",
+	"18" => "Spell Hit",
+	"19" => "Melee Crit",
+	"20" => "Ranged Crit",
+	"21" => "Spell Crit",
+	"22" => "Melee Hit Taken",
+	"23" => "Ranged Hit Taken",
+	"24" => "Spell Hit Taken",
+	"25" => "Melee Crit Taken",
+	"26" => "Ranged Crit Taken",
+	"27" => "Spell Crit Taken",
+	"28" => "Melee Haste",
+	"29" => "Ranged Haste",
+	"30" => "Spell Haste",
+	"31" => "Hit",
+	"32" => "Crit",
+	"33" => "Hit Taken",
+	"34" => "Crit Taken",
+	"35" => "Resilience",
+	"36" => "Haste",
+	"37" => "Expertise",
+	"38" => "Attack Power",
+	"39" => "Ranged Attack Power",
+	"40" => "Versatility",
+	"41" => "Spell Healing Done", // deprecated
+	"42" => "Spell Damage Done", // deprecated
+	"43" => "Mana Regeneration",
+	"44" => "Armor Penetration",
+	"45" => "Spell Power",
+	"46" => "Health Regen",
+	"47" => "Spell Penetration",
+	"48" => "Block Value",
+	"49" => "Mastery",
+	"50" => "Bonus Armor",
+	"51" => "Fire Resistance",
+	"52" => "Frost Resistance",
+	"53" => "Holy Resistance",
+	"54" => "Shadow Resistance",
+	"55" => "Nature Resistance",
+	"56" => "Arcane Resistance",
+	"57" => "PVP Power",
+	"58" => "Amplify",
+	"66" => "Cleave",
+	// new in wod
+	"60" => "Readiness",
+	"61" => "Speed",
+	"62" => "Leech",
+	"63" => "Avoidence",
+	"64" => "Indestructible",
+	"65" => "WOD_5",
+	'59' => "Multistrike",
+	'73' => "Agility or Intellect",
+	'40' => 'Versatility',
+	"71" => "Strenght, Agility orIntelect",
+	"72" => "Strenght or Agility",
+	"74" => "Strenght or Intelect",
+	// end of new wod 
+	'45' => 'Spell Power',
 );
 $lang['apiitem']['itemstat'] = array(
 	'1' => '+%s Health',
@@ -313,11 +387,24 @@ $lang['apiitem']['itemstat'] = array(
 	'42' => 'healing done by magical spells and effects by up to %s.',
 	'47' => '+%s Spell Penetration',
 	// new in wod
+	"60" => "+%s Readiness",
+	"61" => "+%s Speed",
+	"62" => "+%s Leech",
+	"63" => "+%s Avoidence",
+	"64" => "+%s Indestructible",
+	"65" => "+%s WOD_5",
+
 	'59' => "+%s Multistrike",
 	'73' => "+%s Agility or Intellect",
 	'40' => '+%s Versatility',
+	"71" => "+%s Strenght, Agility orIntelect",
+	"72" => "+%s Strenght or Agility",
+	//"73" => "Agility, Intelect",
+	"74" => "+%s Strenght or Intelect",
 	// end of new wod 
-	'45' => '+%s Spell Power'
+	'45' => '+%s Spell Power',
+	"58" => "+%s Amplify",
+	"66" => "+%s Cleave",
 );
 
 $lang['apiitem']['bind'] = array(

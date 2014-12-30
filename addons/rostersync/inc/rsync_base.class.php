@@ -778,7 +778,7 @@ class rsyncBase {
 					$params['context'] = $item['context'];
 				}
 				
-				$enchant =  $gem0 =  $gem1 =  $gem2 = $es = $set = $reforge = $suffex = $seed = $upgrade = null;
+				$enchant =  $gem0 =  $gem1 =  $gem2 = $gem3 = $es = $set = $reforge = $suffex = $seed = $upgrade = null;
 				$gam['enchant']=$gam['enchant']=$gam['reforge']=$gam['suffix']=$gam['seed']=$gam['set']=null;
 				$gam['gem0']=$gam['gem1']=$gam['gem2']=$gam['extraSocket']=null;
 				$tip = '';//str_replace($string, '', $x);
@@ -881,8 +881,8 @@ class rsyncBase {
 				$item_api = $roster->api2->fetch('item',$params);
 				$this->data["Equipment"][$slot] = array();
 				$this->data["Equipment"][$slot]['Item'] = $item['id'];
-				$this->data["Equipment"][$slot]['Type'] = $roster->api->Item->itemclass[$item_api['itemClass']];
-				$this->data["Equipment"][$slot]['SubType'] = $roster->api->Item->itemSubClass[$item_api['itemClass']][$item_api['itemSubClass']];
+				$this->data["Equipment"][$slot]['Type'] = (isset( $roster->api->Item->itemclass[$item_api['itemClass']] ) ? $roster->api->Item->itemclass[$item_api['itemClass']] : '' );
+				$this->data["Equipment"][$slot]['SubType'] = (isset( $roster->api->Item->itemSubClass[$item_api['itemClass']][$item_api['itemSubClass']] ) ? $roster->api->Item->itemSubClass[$item_api['itemClass']][$item_api['itemSubClass']] : '' );
 				$this->data["Equipment"][$slot]['Icon'] = ''.$item['icon'].'';
 				$this->data["Equipment"][$slot]['Name'] = ''.$item['name'].'';
 				$this->data["Equipment"][$slot]['Color'] = $this->_getItemColor($item['quality']);
@@ -1165,19 +1165,20 @@ class rsyncBase {
 				foreach($gl as $xx => $glyph)
 				{
 				//echo '<pre>'; print_r($glyph); echo $glyph['name'].'</pre>';
-				$item_api = $tx = $tt = null;
-					$item_api = $roster->api2->fetch('item',array('id'=>$glyph['item']));
-					$tx =  $roster->api->Item->item($item_api);
-					$tt = $this->processtooltips($tx);
-				
-					$_talents["Glyphs"][] = array(
-						'Type'		=> $this->glyphtype($a),
-						'Tooltip'	=> $tt,
-						'Icon'		=> $glyph['icon'],
-						'Name'		=> $glyph['name'],
-					);
-
-
+					if ($glyph['item'] != 0)
+					{
+						$item_api = $tx = $tt = null;
+						$item_api = $roster->api2->fetch('item',array('id'=>$glyph['item']));
+						$tx =  $roster->api->Item->item($item_api);
+						$tt = $this->processtooltips($tx);
+					
+						$_talents["Glyphs"][] = array(
+							'Type'		=> $this->glyphtype($a),
+							'Tooltip'	=> $tt,
+							'Icon'		=> $glyph['icon'],
+							'Name'		=> $glyph['name'],
+						);
+					}
 				}
 				
 			}

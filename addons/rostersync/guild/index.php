@@ -1,9 +1,9 @@
 <?php
 
-echo '<pre>';
-print_r($_POST);
+//echo '<pre>';
+//print_r($_POST);
+//echo '</pre>';
 
-echo '</pre>';
 if($roster->pages[2] == 'memberlist')
 {
 

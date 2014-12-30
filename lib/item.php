@@ -452,9 +452,14 @@ class item
 			$emptysockets = $this->attributes['Sockets'];
 			foreach( $emptysockets as $socket_color => $socket_line )
 			{
+			/*
 				$html .= '<img width="10px" height="10px" src="' . $roster->config['interface_url'] . 'Interface/ItemSocketingFrame/ui-emptysocket-'
 					   . $roster->locale->act['socket_colors_to_en'][strtolower($socket_color)] . '.' . $roster->config['img_suffix'] . '" />&nbsp;&nbsp;'
 					   . $socket_line . '<br />';
+					   */
+					   $html .= '<div class="socket-line"><span class="icon-socket socket-'
+					   . $roster->locale->act['socket_colors_to_en'][strtolower($socket_color)] . '"><span class="empty"></span><span class="frame"></span></span>&nbsp;&nbsp;'
+					   . $socket_line . '</div>';
 			}
 		}
 		//now lets do sockets with gems
@@ -463,9 +468,21 @@ class item
 			$gems = $this->attributes['Gems'];
 			foreach( $gems as $gem )
 			{
+			//echo'<pre>';print_r($gem);echo '</pre>';
+			/*
 				$html .= '<img width="10px" height="10px" src="' . $roster->config['interface_url'] . 'Interface/Icons/'
 					   . $gem['Icon'] . '.' . $roster->config['img_suffix'] . '" />'
 					   . '<span style="color:#ffffff;">&nbsp;&nbsp;' . $gem['Bonus'] . '</span><br />';
+					   */
+				$html .= '<div class="socket-line"><span class="icon-socket socket-'
+					   . $roster->locale->act['gem_colors_to_en'][strtolower($gem['Color'])] . '">
+			<a href="" class="gem">
+				<img src="' . $roster->config['interface_url'] . 'Interface/Icons/'
+					   . $gem['Icon'] . '.' . $roster->config['img_suffix'] . '" alt="" />
+				<span class="frame"></span>
+			</a>
+	</span><span style="color:#ffffff;">&nbsp;&nbsp;' . $gem['Bonus'] . '</span></div>';
+	
 				if( $this->hasMetaGem && preg_match('/inv_misc_gem_diamond/', $gem['Icon']) )
 				{
 					foreach ( $this->attributes['MetaRequires'] as $requirement )

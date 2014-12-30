@@ -42,17 +42,18 @@ if(isset($_POST['op']) && $_POST['op']=='start')
 }
 if (isset($_GET['stage']) && $_GET['stage'] == 2)
 {
-		
+
 	$params = array('code' => $_GET['code'], 'auth_flow' => 'auth_code', 'redirect_uri' => $roster->api2->redirect_uri);
 	$response = $roster->api2->getAccessToken($roster->api2->baseurl[$roster->api2->region]['TOKEN_ENDPOINT'], 'authorization_code', $params);
-	$roster->api2->setAccessToken($response['result']['access_token']);
+
+	$roster->api2->setAccessToken($response['access_token']);
 	$chars = $roster->api2->fetch('wowprofile');
 	$update_sql = array();
 	if (is_array($chars['characters']))
 	{
 		$query1 = 'DELETE FROM `' . $roster->db->table('user_link', 'user') . '` WHERE `uid` = '.$roster->auth->user['id'].'';
 		$result1 = $roster->db->query($query1);
-		foreach ($chars['result']['characters'] as $id => $char)
+		foreach ($chars['characters'] as $id => $char)
 		{
 			$idww = array();
 			$idww = getcharid($char['name'],$char['realm']);

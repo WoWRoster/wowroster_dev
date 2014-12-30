@@ -57,6 +57,45 @@ class apicache {
 		}
 		$ret = $roster->db->query($query);
 	}
+	
+	public function api_error($method, $url, $error, $error_info, $responce_code, $content_type)
+	{
+		global $roster;
+		
+		$q = "SELECT * FROM `" . $roster->db->table('api_error') . "` WHERE `date`='".date("Y-m-d")."' AND `type` = '".$method."' AND `url` = '".$url."'";
+		$y = $roster->db->query($q);
+		$row = $roster->db->fetch($y);
+		if (!isset($row['total']))
+		{
+			$data = array(
+				'type'				=> $method,
+				'error'				=> $error,
+				'error_info'		=> $error_info,
+				'content_type'		=> $content_type,
+				'responce_code'		=> $responce_code,
+				'url'				=> $url,
+				'date'				=> date("Y-m-d"),
+				'total'				=> '+1',
+			);
+			$query = 'INSERT INTO `' . $roster->db->table('api_error') . '` ' . $roster->db->build_query('INSERT', $data);
+		}
+		else
+		{
+			$data = array(
+				'type'				=> $method,
+				'error'				=> $error,
+				'error_info'		=> $error_info,
+				'content_type'		=> $content_type,
+				'responce_code'		=> $responce_code,
+				'url'				=> $url,
+				'date'				=> date("Y-m-d"),
+				'total'				=> ($row['total']+1),
+			);
+			$query = "Update `" . $roster->db->table('api_error') . "` SET " . $roster->db->build_query('UPDATE', $data) . " WHERE `type` = '".$method."' AND `url` = '".$url."'";
+		}
+		$ret = $roster->db->query($query);
+	}
+	
 
 	public function InsertICache($data,$par)
 	{
@@ -71,14 +110,14 @@ class apicache {
 		$update->add_value('item_texture' , $data['icon']);
 		$update->add_value('item_rarity' , $data['quality']);
 		$update->add_value('item_tooltip' , $tooltip);
-		$update->add_value('item_type' , $roster->api->Item->itemclass[$data['itemClass']]);
-		$update->add_value('item_subtype' , $roster->api->Item->itemSubClass[$data['itemClass']][$data['itemSubClass']]);
+		$update->add_value('item_type' , (isset( $roster->api->Item->itemclass[$data['itemClass']] ) ? $roster->api->Item->itemclass[$data['itemClass']] : '') );
+		$update->add_value('item_subtype' , (isset( $roster->api->Item->itemSubClass[$data['itemClass']][$data['itemSubClass']] ) ? $roster->api->Item->itemSubClass[$data['itemClass']][$data['itemSubClass']] : '') );
 		$update->add_value('level' , $data['requiredLevel']);
 		$update->add_value('item_level' , $data['itemLevel']);
 		$update->add_value('locale' , $roster->config['api_url_locale']);
 		$update->add_value('timestamp' , time() );
-		$update->add_value('context' , $par['context'] );
-		$update->add_value('bonus' , $par['bl'] );
+		$update->add_value('context' , (isset( $par['context'] ) ? $par['context'] : '') );
+		$update->add_value('bonus' , (isset( $par['bl'] ) ? $par['bl'] : '' ) );
 		$update->add_value('json' ,json_encode($data, true));
 		$querystr = "INSERT INTO `" .$roster->db->table('api_items') . "` SET " . $update->assignstr;
 		$result = $roster->db->query($querystr);

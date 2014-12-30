@@ -154,14 +154,15 @@ class raidboxUpdate
 			"description" 	=> "Defeat the bosses of Highmaul on Normal difficulty or higher, while in a guild group.",
 			"points" 		=> "10",
 			"icon" 			=> "achievement_boss_highmaul_king",
-
-			'0' => Array ( "id" => '25713', "description" => "Kargath Bladefist"),
-			'1' => Array ( "id" => '25714', "description" => "The Butcher"),
-			'2' => Array ( "id" => '25715', "description" => "Tectus"),
-			'3' => Array ( "id" => '25716', "description" => "Brackenspore"),
-			'4' => Array ( "id" => '25717', "description" => "Twin Ogron"),
-			'5' => Array ( "id" => '25718', "description" => "Ko'ragh"),
-			'6' => Array ( "id" => '25719', "description" => "Imperator Mar'gok"),
+			'criteria' => Array (
+				'0' => Array ( "id" => '25713', "description" => "Kargath Bladefist"),
+				'1' => Array ( "id" => '25714', "description" => "The Butcher"),
+				'2' => Array ( "id" => '25715', "description" => "Tectus"),
+				'3' => Array ( "id" => '25716', "description" => "Brackenspore"),
+				'4' => Array ( "id" => '25717', "description" => "Twin Ogron"),
+				'5' => Array ( "id" => '25718', "description" => "Ko'ragh"),
+				'6' => Array ( "id" => '25719', "description" => "Imperator Mar'gok"),
+			),
 		),
 	);
 	/**
