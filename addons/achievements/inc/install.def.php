@@ -61,6 +61,10 @@ class achievementsInstall
 			  `achie_icon` varchar(255) DEFAULT NULL,
 			  `achie_tooltip` mediumtext ,
 			  `achie_isAccount` varchar(10) ,
+			  `achie_reward` VARCHAR( 255 ) NULL DEFAULT NULL,
+			  `achie_reward_id` VARCHAR( 10 ) NULL DEFAULT NULL,
+			  `achie_reward_name` VARCHAR( 255 ) NULL DEFAULT NULL,
+			  `achie_reward_icon` VARCHAR( 255 ) NULL DEFAULT NULL,
 			  `factionId` varchar(10) ,
 			  `c_id` int(10) NOT NULL,
 			  `p_id` int(10) DEFAULT NULL,
@@ -208,6 +212,22 @@ class achievementsInstall
 			  `crit_date` varchar(20) DEFAULT NULL,
 			  `crit_value` varchar(64) DEFAULT NULL");
 			  
+		}
+		if( version_compare('2.1.2560', $oldversion, '>') == true )
+		{
+
+			$installer->add_query("ALTER TABLE  `" . $installer->table('achie') . "` 
+			ADD  `achie_reward` VARCHAR( 255 ) NULL DEFAULT NULL AFTER `achie_isAccount` ,
+			ADD  `achie_reward_id` VARCHAR( 10 ) NULL DEFAULT NULL AFTER  `achie_reward` ,
+			ADD  `achie_reward_name` VARCHAR( 255 ) NULL DEFAULT NULL AFTER  `achie_reward_id` ,
+			ADD  `achie_reward_icon` VARCHAR( 255 ) NULL DEFAULT NULL AFTER  `achie_reward_name` ;");
+			
+			$installer->add_query("ALTER TABLE  `" . $installer->table('g_achie') . "` 
+			ADD  `achie_reward` VARCHAR( 255 ) NULL DEFAULT NULL AFTER `achie_isAccount` ,
+			ADD  `achie_reward_id` VARCHAR( 10 ) NULL DEFAULT NULL AFTER  `achie_reward` ,
+			ADD  `achie_reward_name` VARCHAR( 255 ) NULL DEFAULT NULL AFTER  `achie_reward_id` ,
+			ADD  `achie_reward_icon` VARCHAR( 255 ) NULL DEFAULT NULL AFTER  `achie_reward_name` ;");
+
 		}
 		
 		return true;

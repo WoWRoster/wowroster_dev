@@ -5,7 +5,7 @@
 
 if (isset($_POST['process']) && $_POST['process'] == 'process')
 {
-	$a = $roster->api->Data->getAchievInfo();
+	$a = $roster->api2->fetch('achievements');
 	$rx = 0;
 	$rc = 0;
 	$q = "TRUNCATE TABLE `" . $roster->db->table('achie', $addon['basename']) . "`;";
@@ -48,6 +48,10 @@ if (isset($_POST['process']) && $_POST['process'] == 'process')
 				$update->add_value('achie_icon',		$achi['icon']);
 				$update->add_value('achie_tooltip',		$tooltip);
 				$update->add_value('achie_isAccount',	$achi['accountWide']);
+				$update->add_ifvalue($achi, 'reward',		'achie_reward');
+				$update->add_ifvalue($achi['rewardItems'][0], 'id',		'achie_reward_id');
+				$update->add_ifvalue($achi['rewardItems'][0], 'name',		'achie_reward_name');
+				$update->add_ifvalue($achi['rewardItems'][0], 'icon',		'achie_reward_icon');
 				$update->add_value('factionId',			$achi['factionId']);
 				$update->add_value('c_id',				$cat['id']);
 				$update->add_value('p_id',				'-1');
@@ -95,6 +99,10 @@ if (isset($_POST['process']) && $_POST['process'] == 'process')
 					$update->add_value('achie_icon',		$achi['icon']);
 					$update->add_value('achie_tooltip',		$tooltip);
 					$update->add_value('achie_isAccount',	$achi['accountWide']);
+					$update->add_ifvalue($achi, 'reward',		'achie_reward');
+					$update->add_ifvalue($achi['rewardItems'][0], 'id',		'achie_reward_id');
+					$update->add_ifvalue($achi['rewardItems'][0], 'name',		'achie_reward_name');
+					$update->add_ifvalue($achi['rewardItems'][0], 'icon',		'achie_reward_icon');
 					$update->add_value('factionId',			$achi['factionId']);
 					$update->add_value('c_id',				$sub['id']);
 					$update->add_value('p_id',				$cat['id']);

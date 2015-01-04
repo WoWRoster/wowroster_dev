@@ -1165,8 +1165,8 @@ class rsyncBase {
 				foreach($gl as $xx => $glyph)
 				{
 				//echo '<pre>'; print_r($glyph); echo $glyph['name'].'</pre>';
-					if ($glyph['item'] != 0)
-					{
+					//if ($glyph['item'] != 0)
+					//{
 						$item_api = $tx = $tt = null;
 						$item_api = $roster->api2->fetch('item',array('id'=>$glyph['item']));
 						$tx =  $roster->api->Item->item($item_api);
@@ -1178,7 +1178,7 @@ class rsyncBase {
 							'Icon'		=> $glyph['icon'],
 							'Name'		=> $glyph['name'],
 						);
-					}
+					//}
 				}
 				
 			}

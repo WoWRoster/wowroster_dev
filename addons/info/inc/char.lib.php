@@ -1388,6 +1388,7 @@ class char
 		$glyph_data = array();
 		while($row = $roster->db->fetch($result))
 		{
+			$glyph_data = array('0'=>array(),'1' => array());
 			$glyph_build = $row['glyph_build'];
 			$glyph_order = $row['glyph_type'];
 			$glyph_data[$glyph_build][$glyph_order][] = array(
@@ -2989,6 +2990,7 @@ class char
 			case ROSTER_CLASS_PALADIN:
 			case ROSTER_CLASS_ROGUE:
 			case ROSTER_CLASS_MONK:
+			case ROSTER_CLASS_DEATHKNIGHT:
 				$rightbox = 'melee';
 				break;
 

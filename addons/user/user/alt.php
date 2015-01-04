@@ -40,6 +40,35 @@ if(isset($_POST['op']) && $_POST['op']=='start')
 	$stage++;
 	
 }
+$auth_url = $roster->api2->getAuthenticationUrl($roster->api2->baseurl[$roster->api2->region]['AUTHORIZATION_ENDPOINT'], $roster->api2->redirect_uri);
+$js1 = "
+var oAuth2AuthWindow;
+	function popupClosing() {
+		alert('About to refresh');
+		window.location.href = '".makelink('user-user-alt&amp;stage=3')."';
+	}
+	
+	function closepopup()
+	{
+		self.close();
+		opener.location.href = '".makelink('user-user-alt&stage=3')."';
+	}
+	function openWin()
+	{
+		oAuth2AuthWindow = window.open('".$auth_url."', 'masheryOAuth2AuthWindow', 'width=430,height=660');
+	}
+	jQuery(document).ready( function($){
+
+		jQuery('#charclaim').click(function(e)
+		{
+			e.preventDefault();
+			//alert('boo');
+			oAuth2AuthWindow = window.open('".$auth_url."', 'masheryOAuth2AuthWindow', 'width=430,height=660');
+		});
+
+	});
+";
+roster_add_js($js1, 'inline', 'header', false, false);
 if (isset($_GET['stage']) && $_GET['stage'] == 2)
 {
 
@@ -48,6 +77,9 @@ if (isset($_GET['stage']) && $_GET['stage'] == 2)
 
 	$roster->api2->setAccessToken($response['access_token']);
 	$chars = $roster->api2->fetch('wowprofile');
+	echo '<pre>';
+print_r($chars);
+echo '</pre>';
 	$update_sql = array();
 	if (is_array($chars['characters']))
 	{
@@ -87,12 +119,16 @@ if (isset($_GET['stage']) && $_GET['stage'] == 2)
 		{
 			$result = $roster->db->query($sql);
 		}
+		$jscript = '
+
+		//closepopup();
+
+		';
+		roster_add_js($jscript, 'inline', 'header', false, false);
 	}
 }
 
-$form = 'userApp';
-//$user->form->newForm('post', makelink('util-accounts-application'), $form, 'formClass', 4);
-$user->form->newForm('post', makelink('user-user-alt'), $form, 'formClass', 4);
+
 
 if ($stage == 1)
 {
@@ -101,14 +137,16 @@ if ($stage == 1)
 			'TEXT'		=> 'stage 1',
 		)
 	);
-/*
-$r = $roster->api2->fetch('character',array('name'=>'zenlee','server'=>'zangarmarsh'));
-echo '<pre>';
-print_r($r);
-echo '</pre>';
-*/
+
+	
+	$js = "
+	
+		
+	";
+	roster_add_js($js, 'inline', 'header', false, false);
+	
 }
-if ($stage == 2)
+if ($stage == 3)
 {
 	$roster->tpl->assign_vars(array(
 			'STAGE'		=> $stage,

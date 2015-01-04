@@ -522,7 +522,7 @@
 					<div class="tab-navigation info-navigation">
 						<ul id="talentbuild_nav">
 <!-- BEGIN talent -->
-							<li><a rel="TS{talent.ID}"<!-- IF S_GLYPH_TAB --> rev="GL{talent.ID}"<!-- ENDIF --> class="text">{talent.NAME}</a></li>
+							<li<!-- IF talent.SELECTED --> class="selected"<!-- ENDIF -->><a rel="TS{talent.ID}"<!-- IF S_GLYPH_TAB --> rev="GL{talent.ID}"<!-- ENDIF --> class="text">{talent.NAME}</a></li>
 <!-- END talent -->
 						</ul>
 					</div>

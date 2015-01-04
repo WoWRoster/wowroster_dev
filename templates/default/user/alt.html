@@ -11,8 +11,7 @@
 		</div>
 
 <!-- IF STAGE eq 1 -->
-
-<form name="claim" style="display:inline;" method="post" enctype="multipart/form-data" action="">		
+	
 		<div class="tier-1-a" style="margin-top: 5px;">
 			<div class="tier-1-b">
 				<div class="tier-1-c exp-content">
@@ -23,21 +22,15 @@
 						<br>
 						{TEXT}
 						<br>
-						<button xmlns="http://www.w3.org/1999/xhtml" type="submit" id="submit" class="btn btn-primary btn-block" data-loading-text="" tabindex="1">
-Begin
-<i class="spinner-battlenet"></i>
-</button>
-<input type="hidden" name="op" value="start" id="op" />
-<input type="hidden" name="stage" value="{STAGE}" id="stage" />
+						<button type="submit" onclick="openWin()" id="submit" class="btn btn-primary btn-block" data-loading-text="" tabindex="1">Begin<i class="spinner-battlenet"></i></button>
 					</div>
 				</div>
 			</div>
 		</div>
 
-</form>
 <!-- ENDIF -->
 
-<!-- IF STAGE eq 2 -->
+<!-- IF STAGE eq 3 -->
 		<div class="tier-1-a" style="margin-top: 5px;">
 			<div class="tier-1-b">
 				<div class="tier-1-c exp-content">
