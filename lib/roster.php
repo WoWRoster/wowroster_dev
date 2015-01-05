@@ -137,6 +137,10 @@ class roster
 				include_once (ROSTER_LIB . 'dbal' . DIR_SEP . 'mysqli.php');
 				break;
 
+			case 'pdo':
+			include_once (ROSTER_LIB . 'dbal' . DIR_SEP . 'pdo.php');
+				break;
+				
 			case 'external':
 				include_once (ROSTER_LIB . 'dbal' . DIR_SEP . 'external.php');
 				break;
@@ -151,7 +155,7 @@ class roster
 
 		if( !$this->db->link_id )
 		{
-			die(__FILE__ . ': line[' . __LINE__ . ']<br />Could not connect to database "' . $db_config['database'] . '"<br />MySQL said:<br />' . $this->db->connect_error());
+			die(__FILE__ . ': line[' . __LINE__ . ']<br />Could not connect to database "' . $db_config['database'] . '"<br />MySQL 1 said:<br />' . $this->db->connect_error());
 		}
 	}
 
@@ -165,7 +169,7 @@ class roster
 
 		if( !$results || $this->db->num_rows($results) == 0 )
 		{
-			die("Cannot get roster configuration from database<br />\nMySQL Said: " . $this->db->error() . "<br /><br />\nYou might not have roster installed<br />\n<a href=\"install.php\">INSTALL</a>");
+			die("Cannot get roster configuration from database<br />\nMySQL Said: " . print_r($this->db->link_id->errorInfo()) . "<br /><br />\nYou might not have roster installed<br />\n<a href=\"install.php\">INSTALL</a>");
 		}
 
 		while( $row = $this->db->fetch($results) )

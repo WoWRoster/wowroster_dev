@@ -277,6 +277,13 @@ $DBALS = array(
 		'comments'    => 'remove_remarks',
 		'delim'       => ';',
 		'delim_basic' => ';'
+	),
+	'pdo' => array(
+		'label'       => 'MySQL 5 / PHP 5.4+',
+		'structure'   => 'pdo',
+		'comments'    => 'remove_remarks',
+		'delim'       => ';',
+		'delim_basic' => ';'
 	)
 );
 
@@ -829,6 +836,10 @@ function process_step4( )
 	{
 		case 'mysql':
 			include_once (ROSTER_DB_DIR . 'mysql.php');
+			break;
+		
+		case 'PDO':
+			include_once (ROSTER_DB_DIR . 'pdo.php');
 			break;
 
 		default:

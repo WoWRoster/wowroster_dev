@@ -861,7 +861,6 @@ function getaddon( $addonname )
 	}
 
 	$addon = $roster->addon_data[$addonname];
-
 	// Get the addon's location
 	$addon['dir'] = ROSTER_ADDONS . $addon['basename'] . DIR_SEP;
 

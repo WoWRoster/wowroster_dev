@@ -75,10 +75,10 @@ class roster_db
 				return;
 			}
 
-			$result = mysql_query("DESCRIBE " . substr($query, $pos));
+			$result = $this->link_id->query("DESCRIBE " . substr($query, $pos));
 			if( $result )
 			{
-				while( $this->queries[$this->file][$this->query_count]['describe'][] = mysql_fetch_assoc( $result ) ) {};
+				while( $this->queries[$this->file][$this->query_count]['describe'][] = $this->link_id->fetch( $result ) ) {};
 				mysql_free_result( $result );
 			}
 		}
@@ -127,7 +127,11 @@ class roster_db
 		{
 			//$this->link_id = @mysql_connect($dbhost, $dbuser);
 			try {
-			$this->link_id = new PDO ("mysql:host=$dbhost;dbname=$dbname", $dbuser);
+				$this->link_id = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser);
+				$this->link_id->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+				$this->link_id->exec("set names utf8");
+				$this->link_id->exec("SET GLOBAL general_log = 'ON'");
+				//new PDO ("mysql:host=$dbhost;dbname=$dbname", $dbuser);
 			} catch (PDOException $e) {
 			echo 'Connection failed: ' . $e->getMessage();
 			}
@@ -136,16 +140,20 @@ class roster_db
 		{
 			//$this->link_id = @mysql_connect($dbhost, $dbuser, $dbpass);
 			try {
-			$this->link_id = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);
+				$this->link_id = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);
+				$this->link_id->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+				$this->link_id->exec("set names utf8");
+				$this->link_id->exec("SET GLOBAL general_log = 'ON'");
+				//new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);
 			} catch (PDOException $e) {
 			echo 'Connection failed: ' . $e->getMessage();
 			}
 		}
 
-		@mysql_query("SET NAMES 'utf8'");
-		@mysql_query("SET GLOBAL general_log = 'ON'");
+		//@mysql_query("SET NAMES 'utf8'");
+		//@mysql_query("SET GLOBAL general_log = 'ON'");
 
-		return $this->link_id;
+		//return $this->link_id;
 
 	}
 
@@ -188,7 +196,14 @@ class roster_db
 	 */
 	function errno()
 	{
-		$result = @mysql_errno($this->link_id);
+		//$result = @mysql_errno($this->link_id);
+		/*
+		catch (PDOException $e)
+		{
+			$result = "The statement failed.\n";
+			$result .= "getCode: ". $e->getCode () . "\n";
+			$result .= "getMessage: ". $e->getMessage () . "\n";
+		}*/
 		return $result;
 	}
 
@@ -215,10 +230,39 @@ class roster_db
 
 		$this->querytime = format_microtime();
 
+		try
+		{
+			if( $query != '' )
+			{
+				$this->query_count++;
+				$this->query_id = $this->link_id->query($query);//, $this->link_id);
+				//print_r($this->query_id);
+			}
+
+			if( !empty($this->query_id) )
+			{
+				if( $this->log_level > 0 )
+				{
+					$this->_log($query);
+				}
+				unset($this->record[spl_object_hash($this->query_id)]);
+				unset($this->record_set[spl_object_hash($this->query_id)]);
+				return $this->query_id;
+			}
+		}
+		catch (PDOException $e)
+		{
+			$err = "The statement failed.\n";
+			$err .= "getCode: ". $e->getCode () . "\n";
+			$err .= "getMessage: ". $e->getMessage () . "\n";
+			die(__FILE__ . ': line[' . __LINE__ . ']<br />Database Error "' . $query . '"<br />PDO said:<br />' .  $err );
+		}
+		/*
 		if( $query != '' )
 		{
 			$this->query_count++;
-			$this->query_id = @mysql_query($query, $this->link_id);
+			$this->query_id = $this->link_id->query($query);//, $this->link_id);
+			//print_r($this->query_id);
 		}
 
 		if( !empty($this->query_id) )
@@ -227,14 +271,16 @@ class roster_db
 			{
 				$this->_log($query);
 			}
-			unset($this->record[$this->query_id]);
-			unset($this->record_set[$this->query_id]);
+			unset($this->record[spl_object_hash($this->query_id)]);
+			unset($this->record_set[spl_object_hash($this->query_id)]);
 			return $this->query_id;
 		}
-		elseif( $this->error_die )
+		else
+		*/
+		if( $this->error_die )
 		{
 			// I think we should use this method for dying
-			die(__FILE__ . ': line[' . __LINE__ . ']<br />Database Error "' . $query . '"<br />MySQL said:<br />' . $this->error());
+			die(__FILE__ . ': line[' . __LINE__ . ']<br />Database Error "' . $query . '"<br />PDO said:<br />' .  $this->errno() );
 			//die_quietly($this->error(), 'Database Error',__FILE__,__LINE__,$query);
 		}
 		else
@@ -329,9 +375,8 @@ class roster_db
 	 * @param $result_type SQL_ASSOC SQL_NUM or SQL_BOTH
 	 * @return mixed Record / false
 	 */
-	function fetch( $query_id = 0, $result_type = SQL_BOTH)
+	function fetch( $query_id = 0, $result_type = PDO::FETCH_BOTH)
 	{
-
 		if( empty($query_id) )
 		{
 			$query_id = $this->query_id;
@@ -339,8 +384,9 @@ class roster_db
 
 		if( $query_id )
 		{
-			$this->record[(integer)$query_id] = mysql_fetch_array($query_id, $result_type);
-			return $this->record[(integer)$query_id];
+			$this->record[spl_object_hash($query_id)] = $query_id->fetch($this->Res_typ($result_type));//mysql_fetch_array($query_id, $result_type);
+			//echo '<pre>';print_r($this->record[spl_object_hash($query_id)]);echo '</pre>';
+			return $this->record[spl_object_hash($query_id)];
 		}
 		else
 		{
@@ -348,6 +394,28 @@ class roster_db
 		}
 	}
 
+	function Res_typ($type)
+	{
+		switch($type)
+		{
+			case 'PDO::FETCH_ASSOC':
+			case 'SQL_ASSOC':
+				return PDO::FETCH_ASSOC;
+			break;
+			
+			case 'PDO::FETCH_BOTH':
+			case 'SQL_NUM':
+			case 'SQL_BOTH':
+				return PDO::FETCH_BOTH;
+			break;
+			
+			default:
+				return PDO::FETCH_BOTH;
+			break;
+		}
+	}
+	
+	
 	/**
 	 * Fetch all records
 	 *
@@ -355,7 +423,7 @@ class roster_db
 	 * @param $result_type SQL_ASSOC, SQL_NUM, or SQL_BOTH
 	 * @return mixed Record Set / false
 	 */
-	function fetch_all( $query_id = 0, $result_type = SQL_BOTH )
+	function fetch_all( $query_id = 0, $result_type = PDO::FETCH_ASSOC )
 	{
 		if( !empty($this->query_id) )
 		{
@@ -364,11 +432,11 @@ class roster_db
 		if( $query_id )
 		{
 			$result = array();
-			unset($this->record_set[(integer)$query_id]);
-			unset($this->record[(integer)$query_id]);
-			while( $this->record_set[(integer)$query_id] = @mysql_fetch_array($query_id, $result_type) )
+			unset($this->record_set[spl_object_hash($query_id)]);
+			unset($this->record[spl_object_hash($query_id)]);
+			while( $this->record_set[spl_object_hash($query_id)] = $query_id->fetch($this->Res_typ($result_type)))//@mysql_fetch_array($query_id, $result_type) )
 			{
-				$result[] = $this->record_set[(integer)$query_id];
+				$result[] = $this->record_set[spl_object_hash($query_id)];
 			}
 			return $result;
 		}
@@ -395,8 +463,8 @@ class roster_db
 
 		if( $query_id )
 		{
-			$this->record[(integer)$query_id] = @mysql_result($query_id, $row, $field);
-			return $this->record[(integer)$query_id];
+			$this->record[spl_object_hash($query_id)] = @mysql_result($query_id, $row, $field);
+			return $this->record[spl_object_hash($query_id)];
 		}
 		else
 		{
@@ -419,8 +487,8 @@ class roster_db
 
 		if( $query_id )
 		{
-			$result = @mysql_num_rows($query_id);
-			return $result;
+
+			return $query_id->rowCount();
 		}
 		else
 		{
@@ -435,7 +503,7 @@ class roster_db
 	 */
 	function affected_rows( )
 	{
-		return ( $this->link_id ) ? @mysql_affected_rows($this->link_id) : false;
+		return ( $this->link_id ) ? $this->query_id->rowCount() : false;
 	}
 
 	/**
@@ -447,7 +515,7 @@ class roster_db
 	{
 		if( $this->link_id )
 		{
-			$result = @mysql_insert_id($this->link_id);
+			$result = $this->link_id->lastInsertId();//@mysql_insert_id($this->link_id);
 			return $result;
 		}
 		else
@@ -472,10 +540,10 @@ class roster_db
 
 		if( $query_id )
 		{
-			unset($this->record[(integer)$query_id]);
-			unset($this->record_set[(integer)$query_id]);
+			unset($this->record[spl_object_hash($query_id)]);
+			unset($this->record_set[spl_object_hash($query_id)]);
 
-			@mysql_free_result($query_id);
+			$query_id->closeCursor();
 
 			return true;
 		}
@@ -493,14 +561,7 @@ class roster_db
 	 */
 	function escape( $string )
 	{
-		if( version_compare( phpversion(), '4.3.0', '>' ) )
-		{
-			return mysql_real_escape_string( $string );
-		}
-		else
-		{
-			return mysql_escape_string( $string );
-		}
+		return $this->link_id->quote( $string );
 	}
 
 	/**

@@ -291,7 +291,7 @@ elseif( $roster->scope == 'user' )
 	}
 
 	$guilds = 0;
-	while( $data = $roster->db->fetch($result, SQL_NUM) )
+	while( $data = $roster->db->fetch($result,PDO::FETCH_BOTH) )
 	{
 		$menu_select[$data[1]][$data[2]] = $data[0];
 		$guilds++;
