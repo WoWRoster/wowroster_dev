@@ -65,14 +65,22 @@ else
 			
 			$params = array();
 			$params['id'] = $item_id;
+			$base_item = $roster->api2->fetch('item',$params);
 			if (isset($uitem['bonusLists']) && !empty($uitem['bonusLists']))
 			{
 				$params['bl'] = implode(',',$uitem['bonusLists']);
 			}
-			if (isset($uitem['context']) && !empty($uitem['context']) && $uitem['context'] != 'quest-reward' && $uitem['context'] != 'vendor')
+			//if (isset($uitem['context']) && !empty($uitem['context']) && $uitem['context'] != 'quest-reward' && $uitem['context'] != 'vendor')
+			//if (isset($uitem['availableContexts']) && !empty($uitem['availableContexts']) && $items['context'] != 'quest-reward')
+			if (isset($uitem['context']) && !empty($uitem['context']) && in_array($uitem['context'], $base_item['availableContexts']) )
+			{
+				$params['context'] = $uitem['context'];
+			}
+			/*
 			{
 				$params['id'] .= "/".$uitem['context'];
 			}
+			*/
 			if (isset($enchant))
 			{
 				$enchant = $enchant ? $enchant : null;

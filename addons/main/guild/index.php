@@ -66,6 +66,7 @@ $roster->tpl->assign_block_vars('right', array(
 // init the plugin for this addon and display them
 
 $func->_initPlugins();
+
 foreach($func->block as $id => $info)
 {
 	$roster->tpl->assign_block_vars('right', array(

@@ -324,8 +324,8 @@ class roster
 			$this->db->query($defquery);
 
 			$data = $this->db->fetch();
-
-			if( $data )
+			
+			if( is_array($data) )
 			{
 				$name = $this->db->escape($data['name']);
 				$realm = $this->db->escape($data['server']);

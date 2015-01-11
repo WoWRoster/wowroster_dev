@@ -216,4 +216,11 @@ $lang['rep'] = array(
 	"Tina Mudclaw"					=> array ("parent" => "Mists of Pandaria","faction" => "The Tillers"),
 	"Jogu the Drunk" 				=> array ("parent" => "Mists of Pandaria","faction" => "The Tillers"),
 	"Ella" 							=> array ("parent" => "Mists of Pandaria","faction" => "The Tillers"),
+		"Arakkoa Outcasts" 				=> array ("parent" => "Warlords of Draenor"),
+	"Barracks Bodyguards" 			=> array ("parent" => "Warlords of Draenor"),
+	"Council of Exarchs" 			=> array ("parent" => "Warlords of Draenor"),
+	"Sha'tari Defense" 				=> array ("parent" => "Warlords of Draenor"),
+	"Shadowmoon Exiles" 			=> array ("parent" => "Warlords of Draenor"),
+	"Steamwheedle Preservation Society" 				=> array ("parent" => "Warlords of Draenor"),
+	"Wrynn's Vanguard" 				=> array ("parent" => "Warlords of Draenor"),
 	"Guild" 		=> array ("parent" => "Guild"),);

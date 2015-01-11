@@ -19,9 +19,9 @@ if( !defined('IN_ROSTER') )
 	exit('Detected invalid access to this file!');
 }
 
-define('SQL_ASSOC',MYSQL_ASSOC);
-define('SQL_NUM',MYSQL_NUM);
-define('SQL_BOTH',MYSQL_BOTH);
+define('SQL_ASSOC',PDO::FETCH_ASSOC);
+define('SQL_NUM',PDO::FETCH_BOTH);
+define('SQL_BOTH',PDO::FETCH_BOTH);
 
 /**
  * SQL_DB class, MySQL version
@@ -62,7 +62,8 @@ class roster_db
 		$this->queries[$this->file][$this->query_count]['line'] = $this->line;
 
 		// Error message in case of failed query
-		$this->queries[$this->file][$this->query_count]['error'] = empty($this->query_id) ? $this->error() : '';
+		//print_r($this->link_id);echo ' - '; print_r($this->query_id);echo '<br>';
+		//$this->queries[$this->file][$this->query_count]['error'] = empty($this->query_id) ? $this->error() : '';
 
 		// Describe
 		$this->queries[$this->file][$this->query_count]['describe'] = array();
@@ -185,7 +186,8 @@ class roster_db
 	 */
 	function error()
 	{
-		$result = @mysql_errno($this->link_id) . ': ' . mysql_error($this->link_id);
+		
+		//$result = @mysql_errno($this->link_id) . ': ' . mysql_error($this->link_id);
 		return $result;
 	}
 
@@ -196,7 +198,7 @@ class roster_db
 	 */
 	function errno()
 	{
-		//$result = @mysql_errno($this->link_id);
+		print_r($this->link_id);
 		/*
 		catch (PDOException $e)
 		{
@@ -235,8 +237,12 @@ class roster_db
 			if( $query != '' )
 			{
 				$this->query_count++;
-				$this->query_id = $this->link_id->query($query);//, $this->link_id);
-				//print_r($this->query_id);
+				//$this->query_id = $this->link_id->query($query);//, $this->link_id);
+				//print_r($this->query_id);echo ' ~<br>';
+				$this->query_id =  $this->link_id->prepare($query);
+				//print_r($res);echo ' ~~<br>';
+				$this->query_id->execute();
+				//print_r($this->query_id);echo ' ~~~<br>';
 			}
 
 			if( !empty($this->query_id) )
@@ -252,10 +258,11 @@ class roster_db
 		}
 		catch (PDOException $e)
 		{
-			$err = "The statement failed.\n";
-			$err .= "getCode: ". $e->getCode () . "\n";
-			$err .= "getMessage: ". $e->getMessage () . "\n";
-			die(__FILE__ . ': line[' . __LINE__ . ']<br />Database Error "' . $query . '"<br />PDO said:<br />' .  $err );
+			$err = "The statement failed.<br />";
+			$err .= "getCode: ". $e->getCode () . "<br />";
+			$err .= "getMessage: ". $e->getMessage () . "<br />";
+			$this->queries[$this->file][$this->query_count]['error'] =  $e->getMessage ();
+			//die(__FILE__ . ': line[' . __LINE__ . ']<br />Database Error "' . $query . '"<br />PDO said:<br />' .  $err . ' <br />' . $this->_backtrace());
 		}
 		/*
 		if( $query != '' )
@@ -334,7 +341,7 @@ class roster_db
 				}
 				elseif( is_string($value) )
 				{
-					$values[] = "'" . $this->escape($value) . "'";
+					$values[] = $this->link_id->quote($value);
 				}
 				else
 				{
@@ -354,11 +361,11 @@ class roster_db
 				}
 				elseif( is_string($value) )
 				{
-					$values[] = "`$field` = '" . $this->escape($value) . "'";
+					$values[] = "`$field` = " . $this->link_id->quote($value) . "";
 				}
 				else
 				{
-					$values[] = ( is_bool($value) ) ? "`$field` = " . intval($value) : "`$field` = $value";
+					$values[] = ( is_bool($value) ) ? "`$field` = '" . intval($value)."'" : "`$field` = '$value'";
 				}
 			}
 
@@ -384,7 +391,7 @@ class roster_db
 
 		if( $query_id )
 		{
-			$this->record[spl_object_hash($query_id)] = $query_id->fetch($this->Res_typ($result_type));//mysql_fetch_array($query_id, $result_type);
+			$this->record[spl_object_hash($query_id)] = $query_id->fetch($result_type);//mysql_fetch_array($query_id, $result_type);
 			//echo '<pre>';print_r($this->record[spl_object_hash($query_id)]);echo '</pre>';
 			return $this->record[spl_object_hash($query_id)];
 		}
@@ -400,12 +407,15 @@ class roster_db
 		{
 			case 'PDO::FETCH_ASSOC':
 			case 'SQL_ASSOC':
+			case 'MYSQL_ASSOC':
 				return PDO::FETCH_ASSOC;
 			break;
 			
 			case 'PDO::FETCH_BOTH':
 			case 'SQL_NUM':
 			case 'SQL_BOTH':
+			case 'MYSQL_NUM':
+			case 'MYSQL_BOTH':
 				return PDO::FETCH_BOTH;
 			break;
 			
@@ -434,7 +444,7 @@ class roster_db
 			$result = array();
 			unset($this->record_set[spl_object_hash($query_id)]);
 			unset($this->record[spl_object_hash($query_id)]);
-			while( $this->record_set[spl_object_hash($query_id)] = $query_id->fetch($this->Res_typ($result_type)))//@mysql_fetch_array($query_id, $result_type) )
+			while( $this->record_set[spl_object_hash($query_id)] = $query_id->fetch($result_type))//@mysql_fetch_array($query_id, $result_type) )
 			{
 				$result[] = $this->record_set[spl_object_hash($query_id)];
 			}
@@ -558,10 +568,24 @@ class roster_db
 	 *
 	 * @param $string
 	 * @return string
-	 */
+	 *
 	function escape( $string )
 	{
 		return $this->link_id->quote( $string );
+	}*/
+	function escape( $string )
+	{
+		/*
+		if( version_compare( phpversion(), '4.3.0', '>' ) )
+		{
+			return mysqli::real_escape_string( $string );
+		}
+		else
+		{
+			return mysqli::escape_string( $string );
+		}
+		*/
+		return addslashes($string);
 	}
 
 	/**

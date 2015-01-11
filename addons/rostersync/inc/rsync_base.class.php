@@ -769,11 +769,15 @@ class rsyncBase {
 			{
 				$params = array();
 				$params['id'] = $item['id'];
+				/*
+					item check this is needed because of contexts it does count but all subsaquent calls are cached
+				*/
+				$base_item = $roster->api2->fetch('item',$params);
 				if (isset($item['bonusLists']) && !empty($item['bonusLists']))
 				{
 					$params['bl'] = implode(',',$item['bonusLists']);
 				}
-				if (isset($item['context']) && !empty($item['context']) && $item['context'] != 'quest-reward' && $item['context'] != 'vendor')
+				if (isset($item['context']) && !empty($item['context']) && in_array($item['context'], $base_item['availableContexts']) )//$item['context'] != 'quest-reward' && $item['context'] != 'vendor')
 				{
 					$params['context'] = $item['context'];
 				}
@@ -1078,6 +1082,15 @@ class rsyncBase {
 	"Tina Mudclaw"					=> array ("parent" => "Mists of Pandaria","faction" => "The Tillers"),
 	"Jogu the Drunk" 				=> array ("parent" => "Mists of Pandaria","faction" => "The Tillers"),
 	"Ella" 							=> array ("parent" => "Mists of Pandaria","faction" => "The Tillers"),
+
+	"Arakkoa Outcasts" 				=> array ("parent" => "Warlords of Draenor"),
+	"Barracks Bodyguards" 			=> array ("parent" => "Warlords of Draenor"),
+	"Council of Exarchs" 			=> array ("parent" => "Warlords of Draenor"),
+	"Sha'tari Defense" 				=> array ("parent" => "Warlords of Draenor"),
+	"Shadowmoon Exiles" 			=> array ("parent" => "Warlords of Draenor"),
+	"Steamwheedle Preservation Society" 				=> array ("parent" => "Warlords of Draenor"),
+	"Wrynn's Vanguard" 				=> array ("parent" => "Warlords of Draenor"),
+
 	"".$this->guild_name."" 		=> array ("parent" => "Guild"),);
 	//echo '<pre>';print_r($xrep);//echo'</pre>';
 	

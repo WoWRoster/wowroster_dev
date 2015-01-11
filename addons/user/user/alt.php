@@ -77,9 +77,9 @@ if (isset($_GET['stage']) && $_GET['stage'] == 2)
 
 	$roster->api2->setAccessToken($response['access_token']);
 	$chars = $roster->api2->fetch('wowprofile');
-	echo '<pre>';
-print_r($chars);
-echo '</pre>';
+	//echo '<pre>';
+	//print_r($chars);
+	//echo '</pre>';
 	$update_sql = array();
 	if (is_array($chars['characters']))
 	{
@@ -121,7 +121,7 @@ echo '</pre>';
 		}
 		$jscript = '
 
-		//closepopup();
+		closepopup();
 
 		';
 		roster_add_js($jscript, 'inline', 'header', false, false);
