@@ -19,7 +19,7 @@ if( !defined('IN_ROSTER') )
 	exit('Detected invalid access to this file!');
 }
 
-define('ROSTERLOGIN_ADMIN',11);
+define('ROSTERLOGIN_ADMIN',1); // user id for master admin
 
 /**
  * Login and authorization
@@ -198,19 +198,35 @@ class RosterLogin
 
 	function getAuthorized( $access )
 	{
+		global $roster;
+		$this->getgroups();
 		$a = explode(":",$access);
+		// set the default group in roster now 
+		$default = $roster->config['default_group'];
+		$up = json_decode($this->user['user_permissions'],true);
+		$groupA = $this->getgroupper();
+
 		if($access == '0' OR count($a) > 1 )
 		{
 			return $this->_getAuthorized( $access );
 		}
 		$pass = false;
-		$up = json_decode($this->user['user_permissions'],true);
-		$groups = explode(':',$this->access);
+		
+
+		//get the groups the user has access with can be more then 1
+		if (isset($this->access))
+		{
+			$groups = explode(':',$this->access);
+		}
+		else
+		{
+			$groups = explode(':',$default);
+		}
 		// check user groups if opne matches it passes fails are not held
 		// retuens on true
 		foreach ($groups as $id)
 		{
-			if(isset($this->groups[$access]) && $this->groups[$access] == 1)
+			if(isset($groupA[$id][$access]) && $groupA[$id][$access] == 1)
 			{
 				return true;
 			}
@@ -219,7 +235,22 @@ class RosterLogin
 		{
 			return true;
 		}
-		
+		foreach($a as $i)
+		{
+			if (in_array($i,$groups))
+			{
+				return true;
+			}
+			if (isset($up[$i]) && $up[$i] == '1')
+			{
+				return true;
+			}
+		}
+		// fail save to make sure cp admin allways hass access
+		if (ROSTERLOGIN_ADMIN == $this->uid)
+		{
+			return true;
+		}
 		return false;
 	}
 	
@@ -236,6 +267,20 @@ class RosterLogin
 			$g[$row['group_id']] = $row;
 		}
 		$this->groups = $g;
+	}
+	function getgroupper()
+	{
+		global $roster;
+		
+		$dm_query = "SELECT * FROM `" . $roster->db->table('user_groups') . "` ORDER BY `group_id` ASC";
+
+		$dm_result = $roster->db->query($dm_query);
+		$g = array();
+		while( $row = $roster->db->fetch($dm_result) )
+		{
+			$g[$row['group_id']] = json_decode($row['group_permissions'],true);
+		}
+		return $g;
 	}
 	
 	function getMessage()

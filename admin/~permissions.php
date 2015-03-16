@@ -123,7 +123,7 @@
 		$s[$row['type']][$row['catagory']][] = $row;
 	}
 	$roster->db->free_result($dm_result);
-	//echo '<pre>';print_r($s);echo '</pre>';
+	
 	foreach ($s as $addon => $cat)
 	{
 		$roster->tpl->assign_block_vars('type', array(
@@ -132,8 +132,6 @@
 		);
 		foreach ($cat as $r => $info)
 		{
-			if ($r != 'addon')
-			{
 			$roster->tpl->assign_block_vars('type.catagory', array(
 				'NAME'	=> $roster->locale->act['admin'][$r],
 				)
@@ -147,29 +145,6 @@
 					'CFGVALUE'	=> ( isset($values[$i['cfg_name']]) ? $values[$i['cfg_name']] : 0),
 					)
 				);
-			}
-			}
-		}
-		if( is_array($roster->addon_data) )
-		{
-			$roster->tpl->assign_block_vars('type.catagory', array(
-				'NAME'	=> $roster->locale->act['admin']['addon'],
-				)
-			);
-			foreach( $roster->addon_data as $name => $in )
-			{
-			
-				if ($in['active'])
-				{
-
-					$roster->tpl->assign_block_vars('type.catagory.info', array(
-						'NAME'		=> $in['fullname'],
-						'INFO'		=> $in['description'],
-						'CFG'		=> $in['basename'].'_access',
-						'CFGVALUE'	=> ( isset($values[$in['basename'].'_access']) ? $values[$in['basename'].'_access'] : 0),
-						)
-					);
-				}
 			}
 		}
 	}	
