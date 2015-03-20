@@ -52,7 +52,7 @@ else
 		case 'item':
 
 			list($id1,$member_id) = explode('|',$id);
-			list($item_id,$enchant,$gem0,$gem1,$gem2,$gem3,$suffixID,$uniqueID,$level,$reforgeId,$upgradeId) = explode(':',$id1);
+			list($item_id,$enchant,$gem0,$gem1,$gem2,$gem3,$suffixID,$uniqueID,$level,$reforgeId,$upgradeId,$bonus1,$bonus2,$bonus3,$bonus4,) = explode(':',$id1);
 			
 			$query12  = " SELECT *"
 			. " FROM `" . $roster->db->table('items') . "`"

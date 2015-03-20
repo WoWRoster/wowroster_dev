@@ -898,7 +898,7 @@ class rsyncBase {
 				$this->data["Equipment"][$slot]['Tooltip'] = $tt;//addslashes($tip);
 				$this->data["Equipment"][$slot]['json'] = "".json_encode($item,true)."";
 				//	$enchant =  $gem0 =  $gem1 =  $gem2 = $es = $set = $reforge = $suffex = $seed = null;
-				// itemID:enchant:gem1:gem2:gem3:gem4:suffixID:uniqueID:level:reforgeId:upgradeId:
+				// itemID:enchant:gem1:gem2:gem3:gem4:suffixID:uniqueID:level:reforgeId:upgradeId:bonus1:bonus2:bonus3
 				$this->data["Equipment"][$slot]['Item'] .= ":". $enchant;
 				$this->data["Equipment"][$slot]['Item'] .= ":". $gem0; // GemId0
 				$this->data["Equipment"][$slot]['Item'] .= ":". $gem1; // GemId1
@@ -909,6 +909,10 @@ class rsyncBase {
 				$this->data["Equipment"][$slot]['Item'] .= ":". "0"; // level
 				$this->data["Equipment"][$slot]['Item'] .= ":". $reforge; // reforgeId
 				$this->data["Equipment"][$slot]['Item'] .= ":". $upgrade; // upgradeId
+				$this->data["Equipment"][$slot]['Item'] .= ":".(isset($item['bonusLists'][0]) ? $item['bonusLists'][0] : '');
+				$this->data["Equipment"][$slot]['Item'] .= ":".(isset($item['bonusLists'][1]) ? $item['bonusLists'][1] : '');
+				$this->data["Equipment"][$slot]['Item'] .= ":".(isset($item['bonusLists'][2]) ? $item['bonusLists'][2] : '');
+				$this->data["Equipment"][$slot]['Item'] .= ":".(isset($item['bonusLists'][3]) ? $item['bonusLists'][3] : '');
 				// gems !!!!
 				$this->data["Equipment"][$slot]["Gem"]= array();
 				foreach($this->gemx as $gid => $gd)
