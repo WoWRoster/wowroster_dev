@@ -4,10 +4,7 @@
  *
  *
  * @copyright  2002-2011 WoWRoster.net
- * @license    http://www.gnu.org/licenses/gpl.html   Licensed under the GNU General Public License v3.
- * @version    SVN: $Id: index.php 2344 2011-09-10 08:35:53Z c.treyce@gmail.com $
- * @link       http://www.wowroster.net
- * @package    IntanceKeys
+ * @license    http://www.gnu.org/licenses/gpl.html   Licensed under the GNU General Public License v3. * @package    IntanceKeys
  */
 
 if ( !defined('IN_ROSTER') )

@@ -6,10 +6,7 @@
  *          "Attribution-NonCommercial-ShareAlike 2.5" license
  *
  * @copyright  2002-2007 WoWRoster.net
- * @license    http://creativecommons.org/licenses/by-nc-sa/2.5   Creative Commons "Attribution-NonCommercial-ShareAlike 2.5"
- * @version    SVN: $Id: install.def.php 1696 2008-02-19 21:52:03Z pleegwat $
- * @link       http://www.wowroster.net
- * @package    GuildHistory
+ * @license    http://creativecommons.org/licenses/by-nc-sa/2.5   Creative Commons "Attribution-NonCommercial-ShareAlike 2.5" * @package    GuildHistory
  * @subpackage Installer
 */
 

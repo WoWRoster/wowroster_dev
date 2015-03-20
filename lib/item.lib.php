@@ -7,9 +7,6 @@
  *
  * @copyright  2002-2011 WoWRoster.net
  * @license    http://www.gnu.org/licenses/gpl.html   Licensed under the GNU General Public License v3.
- * @version    SVN: $Id: item.php 2598 2012-08-30 22:17:28Z ulminia@gmail.com $
- * @link       http://www.wowroster.net
- * @since      File available since Release 1.03
  * @package    WoWRoster
  * @subpackage Item
 */

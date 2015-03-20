@@ -6,9 +6,9 @@
  *
  * @copyright  2005 dhtmlgoodies.com
  * @license    http://www.dhtmlgoodies.com/index.html?page=termsOfUse   dhtmlgoodies.com License
- * @version    SVN: $Id: color_functions.php 2346 2011-09-10 09:10:23Z c.treyce@gmail.com $
- * @link       http://www.dhtmlgoodies.com
- * @since      File available since Release 1.8.0
+
+
+
  */
 header('content-type: application/x-javascript');
 

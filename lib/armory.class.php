@@ -6,9 +6,6 @@
  *
  * @copyright  2002-2011 WoWRoster.net
  * @license    http://www.gnu.org/licenses/gpl.html   Licensed under the GNU General Public License v3.
- * @version	SVN: $Id: armory.class.php 2242 2010-12-17 05:25:44Z c.treyce@gmail.com $
- * @link	   http://www.wowroster.net
- * @since	  File available since Release 1.9.9
  * @package	WoWRoster
  * @subpackage Armory
 */

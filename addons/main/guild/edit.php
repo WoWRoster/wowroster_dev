@@ -3,10 +3,7 @@
  * WoWRoster.net WoWRoster
  *
  * @copyright  2002-2011 WoWRoster.net
- * @license    http://www.gnu.org/licenses/gpl.html   Licensed under the GNU General Public License v3.
- * @version    SVN: $Id: edit.php 2393 2012-02-15 19:56:10Z ulminia@gmail.com $
- * @link       http://www.wowroster.net
- * @package    News
+ * @license    http://www.gnu.org/licenses/gpl.html   Licensed under the GNU General Public License v3. * @package    News
  */
 
 if( !defined('IN_ROSTER') )

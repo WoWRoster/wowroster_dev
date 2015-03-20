@@ -7,9 +7,6 @@
  *
  * @copyright  2002-2011 WoWRoster.net
  * @license    http://www.gnu.org/licenses/gpl.html   Licensed under the GNU General Public License v3.
- * @version    SVN: $Id: rosterdiag.lib.php 2312 2011-03-26 21:41:38Z c.treyce@gmail.com $
- * @link       http://www.wowroster.net
- * @since      File available since Release 1.7.0
  * @package    WoWRoster
  * @subpackage RosterDiag
 */

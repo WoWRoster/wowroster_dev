@@ -6,10 +6,7 @@
  *
  *
  * @copyright  2002-2011 WoWRoster.net
- * @license    http://www.gnu.org/licenses/gpl.html   Licensed under the GNU General Public License v3.
- * @version    SVN: $Id: display.php 2493 2012-05-27 06:01:28Z c.treyce@gmail.com $
- * @link       http://www.wowroster.net
- * @package    CharacterInfo
+ * @license    http://www.gnu.org/licenses/gpl.html   Licensed under the GNU General Public License v3. * @package    CharacterInfo
  */
 
 if( !defined('IN_ROSTER') )

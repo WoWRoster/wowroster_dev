@@ -6,10 +6,7 @@
  *
  *
  * @copyright  2002-2011 WoWRoster.net
- * @license    http://www.gnu.org/licenses/gpl.html   Licensed under the GNU General Public License v3.
- * @version    SVN: $Id: frFR.php 2415 2012-03-12 17:45:13Z ulminia@gmail.com $
- * @link       http://www.wowroster.net
- * @package    Vault
+ * @license    http://www.gnu.org/licenses/gpl.html   Licensed under the GNU General Public License v3. * @package    Vault
  * @subpackage Locale
 */
 

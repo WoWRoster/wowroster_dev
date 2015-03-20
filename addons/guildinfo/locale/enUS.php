@@ -5,10 +5,7 @@
  *
  *
  * @copyright  2002-2011 WoWRoster.net
- * @license    http://www.gnu.org/licenses/gpl.html   Licensed under the GNU General Public License v3.
- * @version    SVN: $Id: enUS.php 2475 2012-05-23 04:34:43Z ulminia@gmail.com $
- * @link       http://www.wowroster.net
- * @package    GuildInfo
+ * @license    http://www.gnu.org/licenses/gpl.html   Licensed under the GNU General Public License v3. * @package    GuildInfo
  * @subpackage Locale
  */
 

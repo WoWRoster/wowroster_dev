@@ -3,11 +3,8 @@
  * WoWRoster.net WoWRoster
  *
  * @copyright  2002-2011 WoWRoster.net
- * @license    http://www.gnu.org/licenses/gpl.html   Licensed under the GNU General Public License v3.
- * @link       http://www.wowroster.net
- * @since      File available since Release 2.2.0
- * @package    WoWRoster
- * @version    SVN: $Id: HttpException.php 2353 2011-09-14 01:53:15Z ulminia@gmail.com $
+ * @license    http://www.gnu.org/licenses/gpl.html   Licensed under the GNU General Public License v3. * @package    WoWRoster
+
  */
 
 /**

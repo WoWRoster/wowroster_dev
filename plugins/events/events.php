@@ -4,10 +4,7 @@
  *
  *
  * @copyright  2002-2011 WoWRoster.net
- * @license    http://www.gnu.org/licenses/gpl.html   Licensed under the GNU General Public License v3.
- * @version    SVN: $Id: events.php 2405 2012-02-23 22:25:41Z ulminia@gmail.com $
- * @link       http://www.wowroster.net
- * @package    MembersList
+ * @license    http://www.gnu.org/licenses/gpl.html   Licensed under the GNU General Public License v3. * @package    MembersList
  * @subpackage MemberList Plugins
  */
 

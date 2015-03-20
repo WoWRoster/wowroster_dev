@@ -8,10 +8,7 @@
  * frFR Locale
  *
  * @copyright  2002-2007 WoWRoster.net
- * @license    http://creativecommons.org/licenses/by-nc-sa/2.5   Creative Commons "Attribution-NonCommercial-ShareAlike 2.5"
- * @version    SVN: $Id: frFR.php 1703 2008-02-24 18:41:00Z Nefuh (Translated by Timikana) $
- * @link       http://www.wowroster.net
- * @package    GuildHistory
+ * @license    http://creativecommons.org/licenses/by-nc-sa/2.5   Creative Commons "Attribution-NonCommercial-ShareAlike 2.5" * @package    GuildHistory
  * @subpackage Locale
 */
 

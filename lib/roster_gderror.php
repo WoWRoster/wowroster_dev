@@ -6,10 +6,7 @@
  *
  * @copyright  2002-2011 WoWRoster.net
  * @author     zanix
- * @license    http://www.gnu.org/licenses/gpl.html   Licensed under the GNU General Public License v3.
- * @version    SVN: $Id: roster_gderror.php 2292 2011-03-06 09:47:16Z c.treyce@gmail.com $
- * @link       http://www.wowroster.net
- * @package    WoWRoster
+ * @license    http://www.gnu.org/licenses/gpl.html   Licensed under the GNU General Public License v3. * @package    WoWRoster
  * @subpackage GDError
  * @filesource
  */

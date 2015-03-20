@@ -7,9 +7,6 @@
  *
  * @copyright  2002-2011 WoWRoster.net
  * @license    http://www.gnu.org/licenses/gpl.html   Licensed under the GNU General Public License v3.
- * @version    SVN: $Id: recipes.php 2585 2012-08-15 04:06:20Z ulminia@gmail.com $
- * @link       http://www.wowroster.net
- * @since      File available since Release 1.03
  * @package    WoWRoster
  * @subpackage Recipe
 */

@@ -8,7 +8,7 @@
  * @copyright  2005-2007 Pretty Kitty Development 
  * @author	   mdeshane
  * @license    http://creativecommons.org/licenses/by-nc-sa/2.5   Creative Commons "Attribution-NonCommercial-ShareAlike 2.5" 
- * @link       http://dev.pkcomp.net 
+
  * @package    user 
  * @subpackage Page Handler 
  */ 

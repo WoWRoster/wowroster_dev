@@ -5,10 +5,7 @@
  *
  *
  * @copyright  2002-2011 WoWRoster.net
- * @license    http://www.gnu.org/licenses/gpl.html   Licensed under the GNU General Public License v3.
- * @version    SVN: $Id: enUS.php 2459 2012-05-13 00:19:39Z ulminia@gmail.com $
- * @link       http://www.wowroster.net
- * @package    GuildInfo
+ * @license    http://www.gnu.org/licenses/gpl.html   Licensed under the GNU General Public License v3. * @package    GuildInfo
  * @subpackage Locale
  */
 $lang['raidbox'] = 'Raid Box';

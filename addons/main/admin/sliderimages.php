@@ -3,10 +3,10 @@
  * Project: SigGen - Signature and Avatar Generator for WoWRoster
  * File: /admin/index.php
  *
- * @link http://www.wowroster.net
+
  * @license    http://www.gnu.org/licenses/gpl.html   Licensed under the GNU General Public License v3.
  * @author Joshua Clark
- * @version $Id: sliderimages.php 2535 2012-06-06 15:59:30Z ulminia@gmail.com $
+
  * @copyright 2005-2011 Joshua Clark
  * @package SigGen
  * @filesource

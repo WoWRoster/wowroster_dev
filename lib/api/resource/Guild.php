@@ -4,9 +4,6 @@
  *
  * @copyright  2002-2011 WoWRoster.net
  * @license    http://www.gnu.org/licenses/gpl.html   Licensed under the GNU General Public License v3.
- * @version    SVN: $Id: Guild.php 2549 2012-06-14 12:49:01Z ulminia@gmail.com $
- * @link       http://www.wowroster.net
- * @since      File available since Release 2.2.0
  * @package    WoWRoster
  */
 

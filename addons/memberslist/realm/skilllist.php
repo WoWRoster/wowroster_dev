@@ -4,10 +4,7 @@
  *
  *
  * @copyright  2002-2011 WoWRoster.net
- * @license    http://www.gnu.org/licenses/gpl.html   Licensed under the GNU General Public License v3.
- * @version    SVN: $Id: skilllist.php 2295 2011-03-14 03:28:16Z c.treyce@gmail.com $
- * @link       http://www.wowroster.net
- * @package    MembersList
+ * @license    http://www.gnu.org/licenses/gpl.html   Licensed under the GNU General Public License v3. * @package    MembersList
  */
 
 if ( !defined('IN_ROSTER') )

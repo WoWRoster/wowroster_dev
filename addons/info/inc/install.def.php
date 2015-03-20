@@ -4,10 +4,7 @@
  *
  *
  * @copyright  2002-2011 WoWRoster.net
- * @license    http://www.gnu.org/licenses/gpl.html   Licensed under the GNU General Public License v3.
- * @version    SVN: $Id: install.def.php 2551 2012-06-16 14:47:56Z ulminia@gmail.com $
- * @link       http://www.wowroster.net
- * @package    CharacterInfo
+ * @license    http://www.gnu.org/licenses/gpl.html   Licensed under the GNU General Public License v3. * @package    CharacterInfo
  * @subpackage Installer
 */
 

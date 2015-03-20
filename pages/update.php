@@ -7,9 +7,6 @@
  *
  * @copyright  2002-2011 WoWRoster.net
  * @license    http://www.gnu.org/licenses/gpl.html   Licensed under the GNU General Public License v3.
- * @version    SVN: $Id: update.php 2278 2011-02-23 01:46:17Z c.treyce@gmail.com $
- * @link       http://www.wowroster.net
- * @since      File available since Release 1.8.0
  * @package    WoWRoster
  * @subpackage LuaUpdate
  */

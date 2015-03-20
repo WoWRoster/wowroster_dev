@@ -7,9 +7,6 @@
  *
  * @copyright  2002-2011 WoWRoster.net
  * @license    http://www.gnu.org/licenses/gpl.html   Licensed under the GNU General Public License v3.
- * @version    SVN: $Id: locale.php 2561 2012-07-02 06:28:46Z ulminia@gmail.com $
- * @link       http://www.wowroster.net
- * @since      File available since Release 1.8.0
  * @package    WoWRoster
  * @subpackage Locale
 */

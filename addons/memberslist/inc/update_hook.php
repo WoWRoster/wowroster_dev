@@ -4,10 +4,7 @@
  *
  *
  * @copyright  2002-2011 WoWRoster.net
- * @license    http://www.gnu.org/licenses/gpl.html   Licensed under the GNU General Public License v3.
- * @version    SVN: $Id: update_hook.php 2590 2012-08-25 02:53:29Z ulminia@gmail.com $
- * @link       http://www.wowroster.net
- * @package    MembersList
+ * @license    http://www.gnu.org/licenses/gpl.html   Licensed under the GNU General Public License v3. * @package    MembersList
  * @subpackage UpdateHook
  */
 

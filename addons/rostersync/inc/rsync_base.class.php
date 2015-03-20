@@ -8,10 +8,7 @@
  *          "Attribution-NonCommercial-ShareAlike 2.5" license
  *
  * @copyright  2002-2007 WoWRoster.net
- * @license    http://creativecommons.org/licenses/by-nc-sa/2.5   Creative Commons "Attribution-NonCommercial-ShareAlike 2.5"
- * @version    SVN: $Id: ApiSyncbase.class.php 550 2012-06-02 05:27:04Z ulminia@gmail.com $
- * @link       http://www.wowroster.net
- * @package    ApiSync
+ * @license    http://creativecommons.org/licenses/by-nc-sa/2.5   Creative Commons "Attribution-NonCommercial-ShareAlike 2.5" * @package    ApiSync
 */
 
 if( !defined('IN_ROSTER') )

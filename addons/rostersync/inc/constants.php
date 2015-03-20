@@ -9,9 +9,6 @@
  *
  * @copyright  2002-2007 WoWRoster.net
  * @license    http://creativecommons.org/licenses/by-nc-sa/2.5   Creative Commons "Attribution-NonCommercial-ShareAlike 2.5"
- * @version    SVN: $Id: constants.php 550 2012-06-02 05:27:04Z ulminia@gmail.com $
- * @link       http://www.wowroster.net
- * @since      File available since Release 2.6.0
  * @package    ApiSync
 */
 

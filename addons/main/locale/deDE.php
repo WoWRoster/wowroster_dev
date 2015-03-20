@@ -3,10 +3,7 @@
  * WoWRoster.net WoWRoster
  *
  * @copyright  2002-2011 WoWRoster.net
- * @license    http://www.gnu.org/licenses/gpl.html   Licensed under the GNU General Public License v3.
- * @version    SVN: $Id: deDE.php 2539 2012-06-10 03:40:09Z ulminia@gmail.com $
- * @link       http://www.wowroster.net
- * @package    News
+ * @license    http://www.gnu.org/licenses/gpl.html   Licensed under the GNU General Public License v3. * @package    News
  * @subpackage Locale
  */
 

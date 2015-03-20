@@ -8,9 +8,6 @@
  *
  * @copyright  2002-2011 WoWRoster.net
  * @license    http://www.gnu.org/licenses/gpl.html   Licensed under the GNU General Public License v3.
- * @version    SVN: $Id: settings.php 2552 2012-06-21 01:39:41Z ulminia@gmail.com $
- * @link       http://www.wowroster.net
- * @since      File available since Release 1.7.0
  * @package    WoWRoster
  */
 

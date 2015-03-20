@@ -9,9 +9,6 @@
  *
  * @copyright  2002-2011 WoWRoster.net
  * @license    http://www.gnu.org/licenses/gpl.html   Licensed under the GNU General Public License v3.
- * @version    SVN: $Id: aprint.php 2509 2012-05-30 05:26:32Z c.treyce@gmail.com $
- * @link       http://www.wowroster.net
- * @since      File available since Release 2.1.0
  * @package    WoWRoster
  * @subpackage aPrint
  */

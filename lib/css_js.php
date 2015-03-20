@@ -6,9 +6,6 @@
  *
  * @copyright  2002-2011 WoWRoster.net
  * @license    http://www.gnu.org/licenses/gpl.html   Licensed under the GNU General Public License v3.
- * @version    SVN: $Id: css_js.php 2631 2014-08-21 17:54:35Z ulminia@gmail.com $
- * @link       http://www.wowroster.net
- * @since      File available since Release 2.2.0
  * @package    WoWRoster
  */
 
@@ -552,8 +549,8 @@ function _roster_process_comment($matches) {
  * @copyright 2008 Ryan Grove <ryan@wonko.com> (PHP port)
  * @copyright 2012 Adam Goforth <aag@adamgoforth.com> (Updates)
  * @license http://opensource.org/licenses/mit-license.php MIT License
- * @version 1.1.2 (2012-05-01)
- * @link https://github.com/rgrove/jsmin-php
+
+
  */
 /*
 class JSMin {

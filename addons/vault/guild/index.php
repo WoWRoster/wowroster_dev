@@ -6,10 +6,7 @@
  *
  *
  * @copyright  2002-2011 WoWRoster.net
- * @license    http://www.gnu.org/licenses/gpl.html   Licensed under the GNU General Public License v3.
- * @version    SVN: $Id: index.php 2462 2012-05-16 07:33:04Z ulminia@gmail.com $
- * @link       http://www.wowroster.net
- * @package    Vault
+ * @license    http://www.gnu.org/licenses/gpl.html   Licensed under the GNU General Public License v3. * @package    Vault
  */
 
 if( !defined('IN_ROSTER') )

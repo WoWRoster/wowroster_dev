@@ -6,10 +6,7 @@
  *
  *
  * @copyright  2002-2011 WoWRoster.net
- * @license    http://www.gnu.org/licenses/gpl.html   Licensed under the GNU General Public License v3.
- * @version    SVN: $Id: inventory.php 2222 2010-12-05 10:05:37Z c.treyce@gmail.com $
- * @link       http://www.wowroster.net
- * @package    CharacterInfo
+ * @license    http://www.gnu.org/licenses/gpl.html   Licensed under the GNU General Public License v3. * @package    CharacterInfo
  * @subpackage Inventory
  */
 

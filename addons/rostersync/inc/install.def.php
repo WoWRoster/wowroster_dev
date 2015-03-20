@@ -8,10 +8,7 @@
  *          "Attribution-NonCommercial-ShareAlike 2.5" license
  *
  * @copyright  2002-2007 WoWRoster.net
- * @license    http://creativecommons.org/licenses/by-nc-sa/2.5   Creative Commons "Attribution-NonCommercial-ShareAlike 2.5"
- * @version    SVN: $Id: install.def.php 563 2013-02-13 23:09:46Z ulminia@gmail.com $
- * @link       http://www.wowroster.net
- * @package    rostersync
+ * @license    http://creativecommons.org/licenses/by-nc-sa/2.5   Creative Commons "Attribution-NonCommercial-ShareAlike 2.5" * @package    rostersync
 */
 
 if ( !defined('IN_ROSTER') )

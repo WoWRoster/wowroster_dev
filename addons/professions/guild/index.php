@@ -7,10 +7,7 @@
  *
  *
  * @copyright  2002-2011 WoWRoster.net
- * @license    http://www.gnu.org/licenses/gpl.html   Licensed under the GNU General Public License v3.
- * @version    SVN: $Id: index.php 2239 2010-12-16 04:07:41Z c.treyce@gmail.com $
- * @link       http://www.wowroster.net
- * @package    Professions
+ * @license    http://www.gnu.org/licenses/gpl.html   Licensed under the GNU General Public License v3. * @package    Professions
 */
 
 if ( !defined('IN_ROSTER') )

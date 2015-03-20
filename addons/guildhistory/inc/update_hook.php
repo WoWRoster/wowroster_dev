@@ -6,10 +6,7 @@
  *          "Attribution-NonCommercial-ShareAlike 2.5" license
  *
  * @copyright  2002-2007 WoWRoster.net
- * @license    http://creativecommons.org/licenses/by-nc-sa/2.5   Creative Commons "Attribution-NonCommercial-ShareAlike 2.5"
- * @version    SVN: $Id: update_hook.php 1701 2008-02-24 14:57:14Z Nefuh $
- * @link       http://www.wowroster.net
- * @package    InstanceKeys
+ * @license    http://creativecommons.org/licenses/by-nc-sa/2.5   Creative Commons "Attribution-NonCommercial-ShareAlike 2.5" * @package    InstanceKeys
  * @subpackage UpdateHook
 */
 

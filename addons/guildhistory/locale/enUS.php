@@ -8,10 +8,7 @@
  * enUS Locale
  *
  * @copyright  2002-2007 WoWRoster.net
- * @license    http://creativecommons.org/licenses/by-nc-sa/2.5   Creative Commons "Attribution-NonCommercial-ShareAlike 2.5"
- * @version    SVN: $Id: enUS.php 1701 2008-02-24 18:41:00Z Nefuh $
- * @link       http://www.wowroster.net
- * @package    GuildHistory
+ * @license    http://creativecommons.org/licenses/by-nc-sa/2.5   Creative Commons "Attribution-NonCommercial-ShareAlike 2.5" * @package    GuildHistory
  * @subpackage Locale
 */
 

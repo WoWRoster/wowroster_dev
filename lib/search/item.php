@@ -4,10 +4,7 @@
  *
  *
  * @copyright  2002-2011 WoWRoster.net
- * @license    http://www.gnu.org/licenses/gpl.html   Licensed under the GNU General Public License v3.
- * @version    SVN: $Id: item.php 2493 2012-05-27 06:01:28Z c.treyce@gmail.com $
- * @link       http://www.wowroster.net
- * @package    WoWRoster
+ * @license    http://www.gnu.org/licenses/gpl.html   Licensed under the GNU General Public License v3. * @package    WoWRoster
  * @subpackage Search
  */
 
